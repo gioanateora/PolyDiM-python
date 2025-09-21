@@ -1,0 +1,3 @@
+[submodule "PolyDiM"]
+	path = PolyDiM
+	url = git@github.com:AURION-Polito/PolyDiM.git
