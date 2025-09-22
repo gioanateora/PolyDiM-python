@@ -1,0 +1,3 @@
+[console_scripts]
+litgen-cli = litgen.cli.litgen_cli:main
+srcmlcpp-cli = srcmlcpp.cli.srcmlcpp_cli:main
