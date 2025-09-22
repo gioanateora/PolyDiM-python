@@ -5,4 +5,4 @@ CMakeFiles
 *CMakeCache.txt
 *Makefile
 *.cmake
-binder_build
+*.idea/

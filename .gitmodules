@@ -1,6 +1,3 @@
 [submodule "PolyDiM"]
 	path = PolyDiM
 	url = git@github.com:AURION-Polito/PolyDiM.git
-[submodule "binder"]
-	path = binder
-	url = git@github.com:RosettaCommons/binder.git
