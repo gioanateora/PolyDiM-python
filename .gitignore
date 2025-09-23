@@ -10,3 +10,5 @@ CMakeFiles
 *CMakeFiles*
 *build
 *.so
+*.a
+*.venv
