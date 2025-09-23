@@ -1,51 +1,70 @@
-#include <vector>
-#include <set>
-#include <iostream>
-
-// GeDiM - Algebra
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_Array.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_BiCGSTABSolver.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_LUSolver.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_PCGSolver.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_SparseArray.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_Utilities.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/IArray.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/ILinearSolver.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/ISparseArray.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/LAPACK_Utilities.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/Paradiso_CholeskySolver.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/Paradiso_LUSolver.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/PETSc_Array.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/PETSc_KSPSolver.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/PETSc_SparseArray.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/Algebra/SutieSparse_Utilties.hpp"
-
-// GeDiM - Geometry
-#include "./PolyDiM/gedim/GeDiM/src/Geometry/GeometryUtilities.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapHexahedron.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapParallelepiped.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapParallelogram.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapQuadrilateral.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapTetrahedron.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapTriangle.hpp"
-
-// GeDiM - IO
-// #include "./PolyDiM/gedim/GeDiM/src/IO/IOUtilities.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp"
-// #include "./PolyDiM/gedim/GeDiM/src/IO/TimeUtilities.hpp"
-
-// GeDiM - Mesh
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/ConformerMeshPolygon.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/ConformerMeshSegment.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/ConformerMeshUtilities.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/IMeshDAO.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/IntersectorMesh2DSegment.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/IntersectorMesh3DSegment.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshDAOExporterToCsv.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshDAOImporterFromCsv.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshFromCsvUtilties.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshMatrices.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshMatricesDAO.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshUtilities.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/ObjectFileFormatInterface.hpp"
-#include "./PolyDiM/gedim/GeDiM/src/Mesh/OpenVolumeMeshInterface.hpp"
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/VtkMeshInterface.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshDAOImporterFromCsv.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/ConformerMeshSegment.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshMatricesDAO.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/VoroInterface.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/IntersectorMesh3DSegment.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshFromCsvUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/ConformerMeshPolygon.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/ObjectFileFormatInterface.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/SphereMeshUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/TriangleInterface.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/UnionMeshSegment.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/OpenVolumeMeshInterface.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshDAOExporterToCsv.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/TetgenInterface.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshMatrices.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/RefinementUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/IntersectorMesh2DSegment.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/PlatonicSolid.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/IMeshDAO.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Mesh/ConformMeshUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/TimeUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/IOUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/UCDUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/VTKUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/Configurations.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/ImportExportUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/FileTextReader.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/IFileTextReader.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/ConfigurationPropertySupportedTypes.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Quadrature/Quadrature_Gauss2D_Triangle.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Quadrature/Quadrature_Gauss2D_Square.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Quadrature/Quadrature_Gauss3D_Hexahedron.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Quadrature/Quadrature_GaussLobatto1D.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Quadrature/Quadrature_Gauss1D.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Quadrature/QuadratureData.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Quadrature/Quadrature_Gauss3D_Tetrahedron_PositiveWeights.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Quadrature/Quadrature_Gauss3D_Tetrahedron.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Common/CommonUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/MpiTools/MpiParallelEnvironment.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/MpiTools/IMpiProcess.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/MpiTools/MetisUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/MpiTools/MpiProcess.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/MpiTools/GraphUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapTetrahedron.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapQuadrilateral.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapParallelogram.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapHexahedron.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Geometry/GeometryUtilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapParallelepiped.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Geometry/MapTriangle.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/PETSc_KSPSolver.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_Array.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_PCGSolver.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_LUSolver.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/IArray.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/PETSc_Array.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/LAPACK_utilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_CholeskySolver.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_BiCGSTABSolver.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Pardiso_LUSolver.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/SuiteSparse_Utilities.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/PETSc_SparseArray.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/ISparseArray.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/ILinearSolver.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_SparseArray.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Pardiso_CholeskySolver.hpp";
+#include "./PolyDiM/gedim/GeDiM/src/Algebra/Eigen_Utilities.hpp";
