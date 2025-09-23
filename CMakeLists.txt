@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(polydim_project LANGUAGES CXX C)
+project(pypolydim LANGUAGES CXX C)
 
 set(USE_MPI OFF CACHE BOOL "Enable MPI support")
 set(ENABLE_TRIANGLE OFF CACHE BOOL "Enable Triangle extension")
@@ -34,51 +34,51 @@ list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES PUBLIC LAPACK::LAPACK)
 ## MPI
 if(${USE_MPI})
     find_package(MPI REQUIRED)
-    list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES PUBLIC MPI::MPI_CXX)
+    list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES PUBLIC MPI::MPI_CXX)
 endif()
 
 ## MKL
 if(${ENABLE_MKL})
     set(MKL_INTERFACE lp64) # Eigen requires lp64 interface
     find_package(MKL CONFIG REQUIRED)
-    list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES MKL::MKL)
+    list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES MKL::MKL)
 endif()
 
 ## triangle
 if(${ENABLE_TRIANGLE})
     find_package(triangle CONFIG REQUIRED)
-    list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES PUBLIC triangle::triangle)
+    list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES PUBLIC triangle::triangle)
 endif()
 
 ## tetgen
 if(${ENABLE_TETGEN})
     find_package(tetgen CONFIG REQUIRED)
-    list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES PUBLIC tetgen::tetgen)
+    list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES PUBLIC tetgen::tetgen)
 endif()
 
 ## VORO
 if(${ENABLE_VORO})
     find_package(VORO CONFIG REQUIRED)
-    list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES PUBLIC VORO::voro++)
+    list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES PUBLIC VORO::voro++)
 endif()
 
 ## VTK
 if(${ENABLE_VTK})
     find_package(VTK CONFIG REQUIRED)
-    list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES PUBLIC ${VTK_LIBRARIES})
+    list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES PUBLIC ${VTK_LIBRARIES})
 endif()
 
 ## METIS
 if(${ENABLE_METIS})
     find_package(metis CONFIG REQUIRED)
-    list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES METIS::metis)
+    list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES METIS::metis)
 endif()
 
 ## SuiteSparse
 if(${ENABLE_SUITESPARSE})
     find_package(SuiteSparse CONFIG REQUIRED)
     message("Found SuiteSparse: ${SUITESPARSE_LIBRARIES}")
-    list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES ${SUITESPARSE_LIBRARIES})
+    list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES ${SUITESPARSE_LIBRARIES})
     list(APPEND GEDIM_LIBRARY_INCLUDE ${SUITESPARSE_INCLUDE_DIRS})
 endif()
 
@@ -95,7 +95,7 @@ if(${ENABLE_PETSC})
         message("Found PETSc: ${PETSC_LINK_LIBRARIES}")
         list(APPEND COMPILE_OPTIONS ${PETSC_CFLAGS})
         list(APPEND GEDIM_LIBRARY_INCLUDE ${PETSC_INCLUDE_DIRS})
-        list(APPEND GEDIM_LIBRARY_LINKED_LIBRARIES ${PETSC_LINK_LIBRARIES})
+        list(APPEND PYPOLYDIM_LIBRARY_LINKED_LIBRARIES ${PETSC_LINK_LIBRARIES})
         set(LINK_FLAGS "${LINK_FLAGS} ${PETSC_LDFLAGS}")
         set(CMAKE_REQUIRED_FLAGS ${PETSC_CFLAGS})
         set(CMAKE_REQUIRED_INCLUDES "${PETSC_INCLUDE_DIRS}")
@@ -138,7 +138,7 @@ list(APPEND pypolydim_includes ${GEDIM_LIBRARY_ADDITIONAL_INCLUDE_PATH})
 
 
 add_library(polydim_lib STATIC ${pypolydim_sources} ${pypolydim_headers})
-target_include_directories(polydim_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${pypolydim_includes})
+target_include_directories(polydim_lib PUBLIC  ${pypolydim_includes}) #  rimosso ${CMAKE_CURRENT_SOURCE_DIR}
 
 # Create the pybind11 module
 pybind11_add_module(polydim bindings.cpp)

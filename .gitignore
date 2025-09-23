@@ -4,5 +4,9 @@ py3.12.3
 CMakeFiles
 *CMakeCache.txt
 *Makefile
-*.cmake
+**/*.cmake
 *.idea/
+*Makefile
+*CMakeFiles*
+*build
+*.so
