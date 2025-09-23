@@ -104,6 +104,13 @@ endif()
 
 # Insert Sources
 #############################################################################################
+add_subdirectory(PolyDiM/PolyDiM/src)
+
+list(APPEND pypolydim_sources ${polydim_src_sources})
+list(APPEND pypolydim_headers ${polydim_src_headers})
+list(APPEND pypolydim_includes ${polydim_src_includes})
+
+
 add_subdirectory(PolyDiM/gedim/GeDiM/src)
 
 list(APPEND pypolydim_sources ${gedim_src_sources})
@@ -168,4 +175,4 @@ set_target_properties(polydim_lib PROPERTIES
     CXX_EXTENSIONS OFF
 )
 
-target_compile_options(polydim_lib PUBLIC -fPIC)
+target_compile_options(polydim_lib PUBLIC -fPIC -w)
