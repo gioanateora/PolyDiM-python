@@ -38,10 +38,10 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def default_min_tolerance() -> float:
             pass
 
-        min_tolerance: float = DefaultMinTolerance()
-        tolerance1_d: float = DefaultMinTolerance()
-        tolerance2_d: float = DefaultMinTolerance()
-        tolerance3_d: float = DefaultMinTolerance()
+        min_tolerance: float = Gedim.GeometryUtilitiesConfig.DefaultMinTolerance()
+        tolerance1_d: float = Gedim.GeometryUtilitiesConfig.DefaultMinTolerance()
+        tolerance2_d: float = Gedim.GeometryUtilitiesConfig.DefaultMinTolerance()
+        tolerance3_d: float = Gedim.GeometryUtilitiesConfig.DefaultMinTolerance()
         def __init__(
             self,
             min_tolerance: float = GeometryUtilitiesConfig.DefaultMinTolerance(),
@@ -3878,5 +3878,7668 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
 # </submodule gedim>
 ####################    </generated_from:MapTriangle.hpp>    ####################
+
+
+####################    <generated_from:ConformerMeshPolygon.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __ConformerMeshPolygon_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class ConformerMeshPolygon:
+        """
+        (final class)
+        """
+        class ConformerMeshPolygonConfiguration:
+            """
+            (final class)
+            """
+            class Types(enum.IntEnum):
+                generalized = enum.auto()   # (= 0)  # conform checking the intersection types
+                only_on_edges = enum.auto() # (= 1)  # mesh 2D is already conform on edges, check only vertices
+
+            type: Types = Types.generalized
+            def __init__(self, type: Types = Types.generalized) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        @overload
+        def __init__(self, geometry_utilities: GeometryUtilities) -> None:
+            pass
+        @overload
+        def __init__(
+            self,
+            geometry_utilities: GeometryUtilities,
+            configuration: ConformerMeshPolygon.ConformerMeshPolygonConfiguration
+            ) -> None:
+            pass
+
+        def create_conform_mesh(
+            self,
+            segment_origin: Eigen.Vector3d,
+            segment_end: Eigen.Vector3d,
+            segment_tangent: Eigen.Vector3d,
+            mesh1_d: ConformerMeshSegment.ConformMesh,
+            mesh2_d: IMeshDAO
+            ) -> None:
+            """/ \brief Conformer the input Mesh2D with a linear mesh1D
+            / \param mesh1D the 1D mesh
+            / \param mesh2DConformed the resulting conformed mesh
+            """
+            pass
+
+# </submodule gedim>
+####################    </generated_from:ConformerMeshPolygon.hpp>    ####################
+
+
+####################    <generated_from:ConformerMeshSegment.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __CONFORMERMESHSEGMENT_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class ConformerMeshSegment:
+        """
+        (final class)
+        """
+        class ConformMesh:
+            """
+            (final class)
+            """
+            class ConformMeshPoint:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()   # (= 0)
+                    original = enum.auto()  # (= 1)  #/< point belong to original intersection mesh
+                    inherited = enum.auto() # (= 2)  #/< point belong to other intersection mesh
+                    external = enum.auto()  # (= 3)  #/< other points not inherith from intersection mesh
+
+                cell2_d_ids: std.set[int] = std.set<int>()
+                edge2_d_ids: std.set[int] = std.set<int>()
+                vertex2_d_ids: std.set[int] = std.set<int>()
+                type: Types
+                def __init__(self, type: Types = Types()) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class ConformMeshSegment:
+                """
+                (final class)
+                """
+                points: List[float] = List[float]()
+                cell2_d_ids: std.set[int] = std.set<int>()
+                edge2_d_ids: std.set[int] = std.set<int>()
+                def __init__(self, points: List[float] = List[float]()) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            points: Dict[float, ConformMeshPoint]
+            segments: List[ConformMeshSegment]
+            def __init__(
+                self,
+                segments: List[ConformMeshSegment] = List[ConformMeshSegment]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        @staticmethod
+        def to_curvilinear_coordinates(
+            conform_mesh: ConformerMeshSegment.ConformMesh,
+            curvilinear_coordinates: List[float]
+            ) -> None:
+            """/ \brief convert IntersectionMesh to Curvilinear Coordinates vector"""
+            pass
+
+        @staticmethod
+        def to_string(conform_mesh: ConformerMeshSegment.ConformMesh) -> str:
+            pass
+
+        @staticmethod
+        def create_conform_segments(result: ConformerMeshSegment.ConformMesh) -> None:
+            pass
+
+        @staticmethod
+        def serialize(os: std.ostream, mesh: ConformerMeshSegment.ConformMesh) -> None:
+            pass
+
+        @staticmethod
+        def deserialize(is_: std.istream, mesh: ConformerMeshSegment.ConformMesh) -> None:
+            pass
+
+        def __init__(self, geometry_utilities: GeometryUtilities) -> None:
+            pass
+
+        def create_conform_mesh(
+            self,
+            mesh_intersection: IntersectorMesh2DSegment.IntersectionMesh,
+            mesh_union: UnionMeshSegment.UnionMesh,
+            mesh_intersection_position: int,
+            result: ConformerMeshSegment.ConformMesh
+            ) -> None:
+            """/ \brief Create ConformMesh on segment starting from an intersection mesh and the corresponding union mesh
+            / \param meshIntersection the segment intersection mesh
+            / \param meshUnion the segment mesh union of meshIntersection and an other meshIntersection
+            / \param meshIntersectionPosition the position of meshIntersection inside meshUnion, starting from 0
+            / \param result the resulting conform mesh
+            """
+            pass
+
+        def insert_external_point(
+            self,
+            segment_origin: Eigen.Vector3d,
+            segment_end: Eigen.Vector3d,
+            mesh2_d: IMeshDAO,
+            curvilinear_coordinate: float,
+            result: ConformerMeshSegment.ConformMesh
+            ) -> None:
+            """/ \brief Insert an external point on conform mesh
+            / \param mesh2D the bidimensional mesh where to add the new point
+            / \param curvilinearCoordinate the curvilinear coordinate of the new point
+            / \param result the resulting conform mesh
+            """
+            pass
+
+        def update_with_updated_mesh2_d(
+            self,
+            mesh2_d: IMeshDAO,
+            conformed_mesh: ConformerMeshSegment.ConformMesh
+            ) -> None:
+            """/ \brief Update the conformed 1D mesh with updated mesh 2D data
+            / \param mesh2D the updated mesh data
+            / \param conformedMesh the resulting conformed mesh
+            """
+            pass
+
+        def update_with_active_mesh2_d(
+            self,
+            active_mesh2_d_data: MeshUtilities.ExtractActiveMeshData,
+            conformed_mesh: ConformerMeshSegment.ConformMesh
+            ) -> None:
+            """/ \brief Update the conformed 1D mesh with active mesh 2D data
+            / \param activeMesh2DData the active mesh data
+            / \param conformedMesh the resulting conformed mesh
+            """
+            pass
+
+        def add_missing_mesh2_d_cell0_ds(
+            self,
+            segment_origin: Eigen.Vector3d,
+            segment_tangent: Eigen.Vector3d,
+            segment_squared_length: float,
+            mesh2_d: IMeshDAO,
+            conformed_mesh: ConformerMeshSegment.ConformMesh
+            ) -> List[float]:
+            """/ \brief Add Missing Mesh2D Cell0Ds generated from the intersections with other interfaces
+            / \param mesh2D the mesh data
+            / \param conformedMesh the resulting conformed mesh
+            / \note the mesh2D shall be made by only active elements
+            / \return the list of coordinates added
+            """
+            pass
+
+# </submodule gedim>
+####################    </generated_from:ConformerMeshSegment.hpp>    ####################
+
+
+####################    <generated_from:ConformMeshUtilities.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __ConformMeshUtilities_H
+#
+
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class ConformMeshUtilities:
+        """
+        (final class)
+        """
+        class ComputeDomainConformedMeshOptions:
+            """
+            (final class)
+            """
+            print_status: bool = False
+            vtk_export_folder: str = ""
+            def __init__(self, print_status: bool = False, vtk_export_folder: str = "") -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh_utilities: MeshUtilities
+            ) -> None:
+            pass
+
+        def compute_conformed_mesh_with_segments(
+            self,
+            segments_additional_points: List[std.list[float]],
+            segments_vertices: List[Eigen.MatrixXd],
+            segments_tangent: List[Eigen.Vector3d],
+            segments_barycenter: List[Eigen.Vector3d],
+            segments_length: List[float],
+            segments_squared_length: List[float],
+            domain_mesh: IMeshDAO,
+            segments_intersection_mesh: List[IntersectorMesh2DSegment.IntersectionMesh],
+            segments_curvilinear_coordinates_mesh: List[List[float]],
+            segments_union_mesh: List[UnionMeshSegment.UnionMesh],
+            segments_conform_mesh: List[ConformerMeshSegment.ConformMesh],
+            conform_domain_mesh_type: ConformerMeshPolygon.ConformerMeshPolygonConfiguration.Types,
+            options: ConformMeshUtilities.ComputeDomainConformedMeshOptions
+            ) -> None:
+            pass
+
+        def add_conformed_mesh_properties(
+            self,
+            segments_conform_mesh: List[ConformerMeshSegment.ConformMesh],
+            conformed_mesh: IMeshDAO
+            ) -> None:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:ConformMeshUtilities.hpp>    ####################
+
+
+####################    <generated_from:IMeshDAO.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __IMeshWrapper_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class IMeshDAO:
+        """/ \brief The IMeshDAO (mesh data access object) class to read and write mesh data"""
+
+        def initialize_dimension(self, dimension: int) -> None:
+            """/ \brief Initialize the mesh dimension"""
+            pass
+        def dimension(self) -> int:
+            """/ \return the geometric dimension of the mesh"""
+            pass
+
+        def cell0_ds_initialize(self, number_cell0_ds: int) -> None:
+            """/ \brief Initialize the Cell0Ds container
+            / \param numberCell0Ds the total number of Cell0Ds
+            / \note No reset of Cell0Ds is performed
+            """
+            pass
+        def cell0_d_append(self, number_cell0_ds: int) -> int:
+            """/ \brief Append Cell0Ds to the Cell0Ds container
+            / \param numberCell0Ds the number of Cell0Ds to append
+            / \return the previous number of Cell0Ds before the append operation
+            """
+            pass
+
+        def cell0_d_remove(self, cell0_d_index: int) -> None:
+            """/ \brief Remove the Cell0D from the mesh
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \note the cell0D is removed and no integrity check in the mesh are performed
+            """
+            pass
+        def cell0_d_insert_coordinates(
+            self,
+            cell0_d_index: int,
+            coordinates: Eigen.Vector3d
+            ) -> None:
+            """/ \brief Add the Cell0D Coordinates
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param coordinates the coordinates of the Cell0D
+            """
+            pass
+        def cell0_ds_insert_coordinates(self, coordinates: Eigen.MatrixXd) -> None:
+            """/ \brief Add the Cell0Ds Coordinates
+            / \param coordinates the coordinates of the Cell0Ds, size 3 x Cell0DTotalNumber()
+            """
+            pass
+        def cell0_d_set_marker(self, cell0_d_index: int, marker: int) -> None:
+            """/ \brief Set the Cell0D Marker
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param marker the marker of the Cell0D
+            """
+            pass
+        def cell0_d_set_state(self, cell0_d_index: int, state: bool) -> None:
+            """/ \brief Set the Cell0D state
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param state True if Cell0D is active, False otherwise
+            """
+            pass
+        def cell0_d_total_number(self) -> int:
+            """/ \return the total number of Cell0Ds"""
+            pass
+        def cell0_d_coordinate_x(self, cell0_d_index: int) -> float:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the X coordinate of cell0D
+            """
+            pass
+        def cell0_d_coordinate_y(self, cell0_d_index: int) -> float:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the Y coordinate of cell0D
+            """
+            pass
+        def cell0_d_coordinate_z(self, cell0_d_index: int) -> float:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the Z coordinate of cell0D
+            """
+            pass
+        def cell0_d_coordinates(self, cell0_d_index: int) -> Eigen.Vector3d:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the coordinates as Eigen Vector3 of cell0D, size 3x1
+            """
+            pass
+        #/ \return the coordinates as Eigen MatrixXd of cell0D, size 3xCell0DTotalNumber()
+        @overload
+        def cell0_ds_coordinates(self) -> Eigen.MatrixXd:
+            pass
+        @overload
+        def cell0_ds_coordinates(self, cell0_ds: List[int]) -> Eigen.MatrixXd:
+            pass
+        def cell0_d_is_active(self, cell0_d_index: int) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return if the cell0D is active
+            """
+            pass
+        #/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+        #/ \return the cell0D marker
+        def cell0_d_marker(self, cell0_d_index: int) -> int:
+            pass
+        def cell0_ds_marker(self) -> List[int]:
+            pass
+        def cell0_d_has_updated_cell0_ds(self, cell0_d_index: int) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return if the cell0D has new cell0Ds associated
+            """
+            pass
+        def cell0_d_number_updated_cell0_ds(self, cell0_d_index: int) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the number of new cell0Ds associated to cell0DIndex
+            """
+            pass
+        def cell0_d_has_updated_cell0_d(
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_idex: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param updatedCell0DIdex the index of the new cell0D from 0 to Cell0DTotalNumber()
+            / \return if the cell0D has the updatedCell0DIdex associated
+            """
+            pass
+        def cell0_d_insert_updated_cell0_d(
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_idex: int
+            ) -> None:
+            """/ \brief Add the new Cell0D to an existing Cell0D
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param updatedCell0DIdex the index of the new cell0D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell0_d_updated_cell0_ds(
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_ids: std.list[int]
+            ) -> bool:
+            """/ \brief return the updated Cell0D Ids for cell0DIndex
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param updatedCell0DIds the list of the new Cell0D Ids associated to cell0DIndex
+            / \return True if the cell0DIndex is contained in the updatedCell0DIds list, False otherwise
+            """
+            pass
+
+        def cell0_ds_neighbour_cell1_ds(self) -> List[List[int]]:
+            pass
+        def cell0_ds_initialize_neighbour_cell1_ds(
+            self,
+            numbers_neighbour_cell1_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds Cell1D neighbours number
+            / \param numbersNeighbourCell1Ds the number of Cell1D neighbours of each Cell0D, size 1 x Cell0DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell0D Cell1D neighbours number
+        #/ \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+        #/ \param numberNeighbourCell1Ds the number of Cell1D neighbours of the Cell0D
+        @overload
+        def cell0_d_initialize_neighbour_cell1_ds(
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell1_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell1_ds(
+            self,
+            cell0_d_index: int,
+            neighbour_cell1_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell1_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell1_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell0D Cell1D neighbour
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell1D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell1D(cell0DIndex) \param neigbourCell1DIndex the Cell1D neighbour index from 0 to
+            / Cell1DTotalNumber() \note Cell0DInitializeNeighbourCell1Ds() shall be called before
+            """
+            pass
+        def cell0_d_number_neighbour_cell1_d(self, cell0_d_index: int) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the number of Neighbour Cell1Ds of Cell0D
+            """
+            pass
+        def cell0_d_neighbour_cell1_d(self, cell0_d_index: int, neighbour_index: int) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell1D from 0 to Cell0DNumberNeighbourCell1D(cell0DIndex)
+            / \return the Cell1D index of Neighbour Cell1Ds of Cell0D from 0 to Cell1DTotalNumber()
+            """
+            pass
+
+        def cell0_d_neighbour_cell1_ds(self, cell0_d_index: int) -> List[int]:
+            pass
+
+        def cell0_d_has_neighbour_cell1_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell1D from 0 to Cell0DNumberNeighbourCell1D(cell0DIndex)
+            / \return True if Neighbour Cell1Ds of Cell0D at position neighbourIndex exists
+            """
+            pass
+
+        def cell0_d_reset_neighbour_cell1_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell0D Cell1D neighbour to empty value (Cell0DHasNeighbourCell1D is False)
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell1D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell1D(cell0DIndex)
+            """
+            pass
+
+        def cell0_ds_neighbour_cell2_ds(self) -> List[List[int]]:
+            pass
+        def cell0_ds_initialize_neighbour_cell2_ds(
+            self,
+            numbers_neighbour_cell2_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds Cell2D neighbours number
+            / \param numbersNeighbourCell2Ds the number of Cell2D neighbours of each Cell0D, size 1 x Cell0DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell0D Cell2D neighbours number
+        #/ \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+        #/ \param numberNeighbourCell2Ds the number of Cell2D neighbours of the Cell0D
+        @overload
+        def cell0_d_initialize_neighbour_cell2_ds(
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell2_ds(
+            self,
+            cell0_d_index: int,
+            neighbour_cell2_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell2_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell2_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell0D Cell2D neighbour
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell2D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell2D(cell0DIndex) \param neigbourCell2DIndex the Cell2D neighbour index from 0 to
+            / Cell2DTotalNumber() \note Cell0DInitializeNeighbourCell2Ds() shall be called before
+            """
+            pass
+        def cell0_d_number_neighbour_cell2_d(self, cell0_d_index: int) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the number of Neighbour Cell2Ds of Cell0D
+            """
+            pass
+        def cell0_d_neighbour_cell2_d(self, cell0_d_index: int, neighbour_index: int) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell2D from 0 to Cell0DNumberNeighbourCell2D(cell0DIndex)
+            / \return the Cell2D index of Neighbour Cell2Ds of Cell0D from 0 to Cell2DTotalNumber()
+            """
+            pass
+
+        def cell0_d_neighbour_cell2_ds(self, cell0_d_index: int) -> List[int]:
+            pass
+
+        def cell0_d_has_neighbour_cell2_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell2D from 0 to Cell0DNumberNeighbourCell2D(cell0DIndex)
+            / \return True if Neighbour Cell2Ds of Cell0D at position neighbourIndex exists
+            """
+            pass
+        def cell0_d_reset_neighbour_cell2_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell0D Cell2D neighbour to empty value (Cell0DHasNeighbourCell2D is False)
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell2D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell2D(cell0DIndex)
+            """
+            pass
+
+        def cell0_ds_neighbour_cell3_ds(self) -> List[List[int]]:
+            pass
+        def cell0_ds_initialize_neighbour_cell3_ds(
+            self,
+            numbers_neighbour_cell3_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds Cell3D neighbours number
+            / \param numbersNeighbourCell3Ds the number of Cell3D neighbours of each Cell0D, size 1 x Cell0DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell0D Cell3D neighbours number
+        #/ \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+        #/ \param numberNeighbourCell3Ds the number of Cell3D neighbours of the Cell0D
+        @overload
+        def cell0_d_initialize_neighbour_cell3_ds(
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell3_ds(
+            self,
+            cell0_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell3_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell0D Cell3D neighbour
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell3D(cell0DIndex) \param neigbourCell3DIndex the Cell3D neighbour index from 0 to
+            / Cell3DTotalNumber() \note Cell0DInitializeNeighbourCell3Ds() shall be called before
+            """
+            pass
+        def cell0_d_number_neighbour_cell3_d(self, cell0_d_index: int) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the number of Neighbour Cell3Ds of Cell0D
+            """
+            pass
+        #/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+        #/ \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell0DNumberNeighbourCell3D(cell0DIndex)
+        #/ \return the Cell3D index of Neighbour Cell3Ds of Cell0D from 0 to Cell3DTotalNumber()
+        def cell0_d_neighbour_cell3_d(self, cell0_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell0_d_neighbour_cell3_ds(self, cell0_d_index: int) -> List[int]:
+            pass
+        def cell0_d_has_neighbour_cell3_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell0DNumberNeighbourCell3D(cell0DIndex)
+            / \return True if Neighbour Cell3Ds of Cell0D at position neighbourIndex exists
+            """
+            pass
+        def cell0_d_reset_neighbour_cell3_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell0D Cell3D neighbour to empty value (Cell0DHasNeighbourCell3D is False)
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell3D(cell0DIndex)
+            """
+            pass
+
+        def cell0_d_initialize_double_properties(self, number_double_properties: int) -> None:
+            """/ \brief Initialize the Cell0Ds double properties
+            / \param numberDoubleProperties the total number of Cell0Ds properties
+            / \note No reset of Cell0Ds is performed
+            """
+            pass
+        def cell0_d_add_double_property(self, property_id: str) -> int:
+            """/ \brief Add the Cell0Ds double property identified by id
+            / \param propertyId the id of Cell0Ds property
+            / \return the double property position
+            """
+            pass
+        def cell0_ds_initialize_double_property_values(
+            self,
+            property_index: int,
+            porperty_sizes: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds double property sizes
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            / \param porpertySize the double property size of each Cell0D, size 1 x Cell0DTotalNumber()
+            """
+            pass
+        def cell0_d_initialize_double_property_values(
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            porperty_size: int
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds double property size
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            / \param porpertySize the double property size of Cell0D
+            """
+            pass
+        def cell0_d_insert_double_property_value(
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            """/ \brief Insert the Cell0Ds double property value at position
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            """
+            pass
+
+        def cell0_d_number_double_properties(self) -> int:
+            """/ \return the total number of double properties of Cell0Ds"""
+            pass
+        def cell0_d_double_property_id(self, property_index: int) -> str:
+            """/ \return the id of the double property of Cell0Ds
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            """
+            pass
+        def cell0_d_double_property_exists(self, property_id: str) -> bool:
+            """/ \return True if the double propertyId of Cell0Ds exists
+            / \param propertyId the id of Cell0D double property
+            """
+            pass
+        def cell0_d_double_property_index(self, property_id: str) -> int:
+            """/ \return the propertyIndex of the double property of Cell0Ds from 0 to Cell0DNumberProperties()
+            / \param propertyId the id of Cell0D double property
+            """
+            pass
+        def cell0_d_double_property_size(self, cell0_d_index: int, property_index: int) -> int:
+            """/ \return the size of the double property of Cell0D
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            """
+            pass
+        def cell0_d_double_property_value(
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            """/ \return the value of the double property at valueIndex of Cell0D
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            / \param propertyValueIndex the index of Cell0D double property value from 0 to Cell0DDoublePropertySize()
+            """
+            pass
+
+        def cell1_ds_initialize(self, number_cell1_ds: int) -> None:
+            """/ \brief Initialize the Cell1Ds container
+            / \param numberCell1Ds the total number of Cell1Ds
+            / \note No reset of Cell1Ds is performed
+            """
+            pass
+        def cell1_d_append(self, number_cell1_ds: int) -> int:
+            """/ \brief Append Cell1Ds to the Cell1Ds container
+            / \param numberCell1Ds the number of Cell1Ds to append
+            / \return the previous number of Cell1Ds before the append operation
+            """
+            pass
+        def cell1_d_remove(self, cell1_d_index: int) -> None:
+            """/ \brief Remove the Cell1D from the mesh
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \note the cell1D is removed and no integrity check in the mesh are performed
+            """
+            pass
+        def cell1_d_insert_extremes(
+            self,
+            cell1_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> None:
+            """/ \brief Set the Cell1D Origin and End
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param originCell0DIndex the Cell0D index of Cell1D origin from 0 to Cell0DTotalNumber()
+            / \param endCell0DIndex the Cell0D index of Cell1D end from 0 to Cell0DTotalNumber()
+            """
+            pass
+
+        def cell1_ds_insert_extremes(self, cell1_d_extremes: Eigen.MatrixXi) -> None:
+            """/ \brief Set the Cell1D Extremes for the whole mesh edges
+            / \param cell1DExtremes the origin and end indices of all the edges, size 2 x Cell1DTotalNumber()
+            """
+            pass
+
+        @overload
+        def cell1_ds_extremes(self) -> Eigen.MatrixXi:
+            """/ \return the extrems as Eigen MatrixXi of cell1Ds, size 2xCell1DTotalNumber()"""
+            pass
+        #/ \return the extrems as Eigen MatrixXi of cell1D, size 2
+        #/ \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+        def cell1_d_extremes(self, cell1_d_index: int) -> Eigen.VectorXi:
+            pass
+        @overload
+        def cell1_ds_extremes(self, cell1_ds: List[int]) -> Eigen.MatrixXi:
+            pass
+        def cell1_d_by_extremes(
+            self,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            """/ \return the Cell1D Index if Cell1D (origin->end) exists, Cell1DTotalNumber() otherwise
+            / \param originCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \param endCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell1_d_set_marker(self, cell1_d_index: int, marker: int) -> None:
+            """/ \brief Set the Cell1D Marker
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param marker the marker of the Cell1D
+            """
+            pass
+        def cell1_d_set_state(self, cell1_d_index: int, state: bool) -> None:
+            """/ \brief Set the Cell1D state
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param state True if Cell1D is active, False otherwise
+            """
+            pass
+        def cell1_d_total_number(self) -> int:
+            """/ \return the total number of Cell1Ds"""
+            pass
+        def cell1_d_vertex(self, cell1_d_index: int, vertex_index: int) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param vertexIndex the index of the vertex from 0 to 2
+            / \return Cell0D index of the vertex of Cell1D
+            """
+            pass
+        def cell1_d_coordinates(self, cell1_d_index: int) -> Eigen.MatrixXd:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the coordinates of Cell1D, size 3x2
+            """
+            pass
+        def cell1_d_origin_coordinates(self, cell1_d_index: int) -> Eigen.Vector3d:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the origin coordinates of Cell1D
+            """
+            pass
+        def cell1_d_end_coordinates(self, cell1_d_index: int) -> Eigen.Vector3d:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the end coordinates of Cell1D
+            """
+            pass
+        def cell1_d_origin(self, cell1_d_index: int) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the origin Cell0D index of Cell1D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell1_d_end(self, cell1_d_index: int) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the end Cell0D index of Cell1D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell1_d_find_extreme(self, cell1_d_index: int, cell0_d_index: int) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the index of the cell0DIndex on the cell1D from 0 to 1, 2 if not found
+            """
+            pass
+        #/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+        #/ \return the cell1D marker
+        def cell1_d_marker(self, cell1_d_index: int) -> int:
+            pass
+        def cell1_ds_marker(self) -> List[int]:
+            pass
+        def cell1_d_is_active(self, cell1_d_index: int) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return if the cell1D is active
+            """
+            pass
+
+        def cell1_d_has_original_cell1_d(self, updated_cell1_d_index: int) -> bool:
+            """/ \param updatedCell1DIndex the updated cell1D index, from 0 to Cell1DTotalNumber()
+            / \return True if has an original cell, False otherwise (the original cell is itself)
+            """
+            pass
+        def cell1_d_original_cell1_d(self, updated_cell1_d_index: int) -> int:
+            """/ \param updatedCell1DIndex the updated cell1D index, from 0 to Cell1DTotalNumber()
+            / \return the original cell1D index, from 0 to Cell1DTotalNumber()
+            """
+            pass
+        def cell1_d_has_updated_cell1_ds(self, cell1_d_index: int) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return if the cell1D has new cell1Ds associated
+            """
+            pass
+        def cell1_d_number_updated_cell1_ds(self, cell1_d_index: int) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the number of new cell1Ds associated to cell1DIndex
+            """
+            pass
+        def cell1_d_has_updated_cell1_d(
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_idex: int
+            ) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param updatedCell1DIdex the index of the new Cell1D from 0 to Cell1DTotalNumber()
+            / \return if the Cell1D has the updatedCell1DIdex associated
+            """
+            pass
+        def cell1_d_insert_updated_cell1_d(
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_idex: int
+            ) -> None:
+            """/ \brief Add the new Cell1D to an existing Cell1D
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param updatedCell1DIdex the index of the new Cell1D from 0 to Cell1DTotalNumber()
+            """
+            pass
+        def cell1_d_updated_cell1_ds(
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_ids: std.list[int]
+            ) -> bool:
+            """/ \brief return the updated Cell1D Ids for cell1DIndex
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param updatedCell1DIds the list of the new Cell1D Ids associated to cell1DIndex
+            / \return True if the cell1DIndex is contained in the updatedCell1DIds list, False otherwise
+            """
+            pass
+
+        def cell1_ds_neighbour_cell2_ds(self) -> List[List[int]]:
+            pass
+        @overload
+        def cell1_ds_initialize_neighbour_cell2_ds(
+            self,
+            numbers_neighbour_cell2_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds Cell2D neighbours number
+            / \param numbersNeighbourCell2Ds the number of Cell2D neighbours of each Cell1D, size 1 x Cell1DTotalNumber()
+            """
+            pass
+        @overload
+        def cell1_ds_initialize_neighbour_cell2_ds(
+            self,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds Cell2D neighbours number
+            / \param numberNeighbourCell2Ds the number of Cell2D neighbours of the Cell1D
+            """
+            pass
+
+        #/ \brief Initialize the Cell1D Cell2D neighbours number
+        #/ \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+        #/ \param numberNeighbourCell2Ds the number of Cell2D neighbours of the Cell1D
+        @overload
+        def cell1_d_initialize_neighbour_cell2_ds(
+            self,
+            cell1_d_index: int,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell1_d_initialize_neighbour_cell2_ds(
+            self,
+            cell1_d_index: int,
+            neighbour_cell2_ds: List[int]
+            ) -> None:
+            pass
+        def cell1_d_insert_neighbour_cell2_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int,
+            neigbour_cell2_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell1D Cell2D neighbour
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of Cell2D neighbour of the Cell1D from 0 to
+            / Cell1DNumberNeighbourCell2D(cell1DIndex) \param neigbourCell2DIndex the Cell2D neighbour index from 0 to
+            / Cell2DTotalNumber() \note Cell1DInitializeNeighbourCell2Ds() shall be called before
+            """
+            pass
+        def cell1_d_number_neighbour_cell2_d(self, cell1_d_index: int) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the number of Neighbour Cell2Ds of Cell1D
+            """
+            pass
+        def cell1_d_neighbour_cell2_d(self, cell1_d_index: int, neighbour_index: int) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell2D from 0 to Cell1DNumberNeighbourCell2D(cell1DIndex)
+            / \return the Cell2D index of Neighbour Cell2Ds of Cell1D from 0 to Cell2DTotalNumber()
+            """
+            pass
+
+        def cell1_d_neighbour_cell2_ds(self, cell1_d_index: int) -> List[int]:
+            pass
+
+        def cell1_d_has_neighbour_cell2_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell2D from 0 to Cell1DNumberNeighbourCell2D(cell1DIndex)
+            / \return True if Neighbour Cell2Ds of Cell1D at position neighbourIndex exists
+            """
+            pass
+        def cell1_d_reset_neighbour_cell2_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell1D Cell2D neighbour to empty value (Cell1DHasNeighbourCell2D is False)
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of Cell2D neighbour of the Cell1D from 0 to
+            / Cell1DNumberNeighbourCell2D(cell1DIndex)
+            """
+            pass
+
+        def cell1_ds_neighbour_cell3_ds(self) -> List[List[int]]:
+            pass
+        def cell1_ds_initialize_neighbour_cell3_ds(
+            self,
+            numbers_neighbour_cell3_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds Cell3D neighbours number
+            / \param numbersNeighbourCell3Ds the number of Cell2D neighbours of each Cell1D, size 1 x Cell1DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell1D Cell3D neighbours number
+        #/ \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+        #/ \param numberNeighbourCell3Ds the number of Cell3D neighbours of the Cell1D
+        @overload
+        def cell1_d_initialize_neighbour_cell3_ds(
+            self,
+            cell1_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell1_d_initialize_neighbour_cell3_ds(
+            self,
+            cell1_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell1_d_insert_neighbour_cell3_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell1D Cell3D neighbour
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell1D from 0 to
+            / Cell1DNumberNeighbourCell3D(cell1DIndex) \param neigbourCell3DIndex the Cell3D neighbour index from 0 to
+            / Cell3DTotalNumber() \note Cell1DInitializeNeighbourCell3Ds() shall be called before
+            """
+            pass
+        def cell1_d_number_neighbour_cell3_d(self, cell1_d_index: int) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the number of Neighbour Cell3Ds of Cell1D
+            """
+            pass
+        #/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+        #/ \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell1DNumberNeighbourCell3D(cell1DIndex)
+        #/ \return the Cell3D index of Neighbour Cell3Ds of Cell1D from 0 to Cell3DTotalNumber()
+        def cell1_d_neighbour_cell3_d(self, cell1_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell1_d_neighbour_cell3_ds(self, cell1_d_index: int) -> List[int]:
+            pass
+        def cell1_d_has_neighbour_cell3_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell1DNumberNeighbourCell3D(cell1DIndex)
+            / \return True if Neighbour Cell3Ds of Cell1D at position neighbourIndex exists
+            """
+            pass
+        def cell1_d_reset_neighbour_cell3_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell1D Cell3D neighbour to empty value (Cell1DHasNeighbourCell3D is False)
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell1D from 0 to
+            / Cell1DNumberNeighbourCell3D(cell1DIndex)
+            """
+            pass
+
+        def cell1_d_initialize_double_properties(self, number_double_properties: int) -> None:
+            """/ \brief Initialize the Cell1Ds double properties
+            / \param numberDoubleProperties the total number of Cell1Ds properties
+            / \note No reset of Cell1Ds is performed
+            """
+            pass
+        def cell1_d_add_double_property(self, property_id: str) -> int:
+            """/ \brief Add the Cell1Ds double property identified by id
+            / \param propertyId the id of Cell1Ds property
+            / \return the double property position
+            """
+            pass
+        def cell1_ds_initialize_double_property_values(
+            self,
+            property_index: int,
+            porperty_sizes: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds double property sizes
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            / \param porpertySize the double property size of each Cell1D, size 1 x Cell1DTotalNumber()
+            """
+            pass
+        def cell1_d_initialize_double_property_values(
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            porperty_size: int
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds double property size
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            / \param porpertySize the double property size of Cell1D
+            """
+            pass
+        def cell1_d_insert_double_property_value(
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            """/ \brief Insert the Cell1Ds double property value at position
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            """
+            pass
+
+        def cell1_d_number_double_properties(self) -> int:
+            """/ \return the total number of double properties of Cell1Ds"""
+            pass
+        def cell1_d_double_property_id(self, property_index: int) -> str:
+            """/ \return the id of the double property of Cell1Ds
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            """
+            pass
+        def cell1_d_double_property_exists(self, property_id: str) -> bool:
+            """/ \return True if the double propertyId of Cell1Ds exists
+            / \param propertyId the id of Cell1D double property
+            """
+            pass
+        def cell1_d_double_property_index(self, property_id: str) -> int:
+            """/ \return the propertyIndex of the double property of Cell1Ds from 0 to Cell1DNumberProperties()
+            / \param propertyId the id of Cell1D double property
+            """
+            pass
+        def cell1_d_double_property_size(self, cell1_d_index: int, property_index: int) -> int:
+            """/ \return the size of the double property of Cell1D
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            """
+            pass
+        def cell1_d_double_property_value(
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            """/ \return the value of the double property at valueIndex of Cell1D
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            / \param propertyValueIndex the index of Cell1D double property value from 0 to Cell1DDoublePropertySize()
+            """
+            pass
+
+        def cell2_ds_initialize(self, number_cell2_ds: int) -> None:
+            """/ \brief Initialize the Cell2Ds container
+            / \param numberCell2Ds the total number of Cell2Ds
+            / \note No reset of Cell2Ds is performed
+            """
+            pass
+        def cell2_d_append(self, number_cell2_ds: int) -> int:
+            """/ \brief Append Cell2Ds to the Cell2Ds container
+            / \param numberCell2Ds the number of Cell2Ds to append
+            / \return the previous number of Cell2Ds before the append operation
+            """
+            pass
+        def cell2_d_remove(self, cell2_d_index: int) -> None:
+            """/ \brief Remove the Cell2D from the mesh
+            / \param cell2DIndex the index of Cell0D from 0 to Cell2DTotalNumber()
+            / \note the cell2D is removed and no integrity check in the mesh are performed
+            """
+            pass
+        @overload
+        def cell2_ds_initialize_vertices(self, number_cell2_d_vertices: int) -> None:
+            """/ \brief Initialize the Cell2Ds vertices number
+            / \param numberCell2DVertices the number of vertices of all Cell2Ds
+            """
+            pass
+        @overload
+        def cell2_ds_initialize_vertices(self, number_cell2_ds_vertices: List[int]) -> None:
+            """/ \brief Initialize the Cell2Ds vertices number
+            / \param numberCell2DsVertices the number of vertices of each Cell2D
+            """
+            pass
+        def cell2_d_initialize_vertices(
+            self,
+            cell2_d_index: int,
+            number_cell2_d_vertices: int
+            ) -> None:
+            """/ \brief Initialize the Cell2D vertices  number
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param numberCell2DVertices the number of vertices of Cell2D
+            """
+            pass
+        @overload
+        def cell2_ds_initialize_edges(self, number_cell2_d_edges: int) -> None:
+            """/ \brief Initialize the Cell2Ds edges number
+            / \param numberCell2DEdges the number of edges of all Cell2Ds
+            """
+            pass
+        @overload
+        def cell2_ds_initialize_edges(self, number_cell2_ds_edges: List[int]) -> None:
+            """/ \brief Initialize the Cell2Ds edges number
+            / \param numberCell2DsEdges the number of edges of each Cell2D
+            """
+            pass
+        def cell2_d_initialize_edges(
+            self,
+            cell2_d_index: int,
+            number_cell2_d_edges: int
+            ) -> None:
+            """/ \brief Initialize the Cell2D edges number
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param numberCell2DEdges the number of edges of Cell2D
+            """
+            pass
+        def cell2_d_insert_vertices(
+            self,
+            cell2_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Insert the Cell2D vertex
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param verticesCell0DIndices the Cell0D vertices index from 0 to Cell0DTotalNumber()
+            / \note Cell2DInitializeVertices() should be called before using this method
+            """
+            pass
+        def cell2_d_insert_vertex(
+            self,
+            cell2_d_index: int,
+            vertex_index: int,
+            vertex_cell0_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell2D vertex
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param vertexIndex the number of vertex of the Cell2D from 0 to Cell2DNumberVertices(cell2DIndex)
+            / \param vertexCell0DIndex the Cell0D vertex index from 0 to Cell0DTotalNumber()
+            / \note Cell2DInitializeVertices() should be called before using this method
+            """
+            pass
+        def cell2_d_add_vertices(
+            self,
+            cell2_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell2D vertices
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param vertexCell0DIndices the Cell0D vertices indices from 0 to Cell0DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+        def cell2_d_insert_edges(
+            self,
+            cell2_d_index: int,
+            edges_cell1_d_indices: List[int]
+            ) -> None:
+            """/ \brief Insert the Cell2D edge
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param edgesCell1DIndices the Cell1D edges indices from 0 to Cell1DTotalNumber()
+            / \note Cell2DInitializeEdges() should be called before using this method
+            """
+            pass
+        def cell2_d_insert_edge(
+            self,
+            cell2_d_index: int,
+            edge_index: int,
+            edge_cell1_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell2D edge
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param edgeIndex the number of edge of the Cell2D from 0 to Cell2DNumberEdges(cell2DIndex)
+            / \param edgeCell0DIndex the Cell1D edge index from 0 to Cell1DTotalNumber()
+            / \note Cell2DInitializeEdges() should be called before using this method
+            """
+            pass
+        def cell2_d_add_edges(
+            self,
+            cell2_d_index: int,
+            edges_cell1_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell2D edges
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param edgesCell1DIndices the Cell1D edges indices from 0 to Cell1DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+
+        def cell2_d_add_vertices_and_edges(
+            self,
+            cell2_d_index: int,
+            vertices_and_edges_indices: Eigen.MatrixXi
+            ) -> None:
+            """/ \brief Cell2D Add Vertices And Edges
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param verticesAndEdgesIndices the matrix of Cell0Ds and Cell1Ds indices
+            / \note No itialization is necessary
+            """
+            pass
+
+        def cell2_d_set_marker(self, cell2_d_index: int, marker: int) -> None:
+            """/ \brief Set the Cell2D Marker
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param marker the marker of the Cell2D
+            """
+            pass
+        def cell2_d_set_state(self, cell2_d_index: int, state: bool) -> None:
+            """/ \brief Set the Cell1D state
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param state True if Cell1D is active, False otherwise
+            """
+            pass
+        def cell2_d_total_number(self) -> int:
+            """/ \return the total number of Cell2Ds"""
+            pass
+        def cell2_d_number_vertices(self, cell2_d_index: int) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the number of vertices of Cell2D
+            """
+            pass
+        def cell2_d_number_edges(self, cell2_d_index: int) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the number of edges of Cell2D
+            """
+            pass
+        def cell2_ds_vertices(self) -> List[List[int]]:
+            """/ \return the Cell0D index collections of all Cell2Ds, size Cell2DTotalNumber() x
+            / Cell2DNumberVertices(cell2DIndex)
+            """
+            pass
+        def cell2_ds_extremes(self) -> List[Eigen.MatrixXi]:
+            """/ \return the Cell0Ds and Cell1Ds index collections of all Cell2Ds, size Cell2DTotalNumber() x (2 x
+            / Cell2DNumberVertices(cell2DIndex))
+            """
+            pass
+        def cell2_d_vertices(self, cell2_d_index: int) -> List[int]:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the Cell0D index collections of Cell2D from 0 to Cell0DTotalNumber(), size
+            / Cell2DNumberVertices(cell2DIndex)
+            """
+            pass
+        def cell2_d_vertex(self, cell2_d_index: int, vertex_index: int) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param vertexIndex the index of cell0D vertex from 0 to NumberCell2DVertices(cell2DIndex)
+            / \return the Cell0D index of vertex of Cell2D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell2_d_vertex_coordinates(
+            self,
+            cell2_d_index: int,
+            vertex_index: int
+            ) -> Eigen.Vector3d:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param vertexIndex the index of cell0D vertex from 0 to NumberCell2DVertices(cell2DIndex)
+            / \return the Cell0D coordinates of vertex of Cell2D, size 3 x 1
+            """
+            pass
+        def cell2_d_vertices_coordinates(self, cell2_d_index: int) -> Eigen.MatrixXd:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the Cell0D coordinates of all the vertices of Cell2D, size 3 x NumberCell2DVertices(cell2DIndex)
+            """
+            pass
+        def cell2_d_find_vertex(self, cell2_d_index: int, cell0_d_index: int) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the index of the cell0DIndex on the cell2D from 0 to NumberCell2DVertices(cell2DIndex),
+            / NumberCell2DVertices(cell2DIndex) if not found
+            """
+            pass
+        def cell2_d_edges(self, cell2_d_index: int) -> List[int]:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the Cell1D index collections of Cell2D from 0 to Cell1DTotalNumber(), size
+            / Cell2DNumberEdges(cell2DIndex)
+            """
+            pass
+        def cell2_d_edge(self, cell2_d_index: int, edge_index: int) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param edgeIndex the index of cell1D edge from 0 to NumberCell2DEdges(cell2DIndex)
+            / \return the Cell1D index of edge of Cell2D from 0 to Cell1DTotalNumber()
+            """
+            pass
+        def cell2_d_find_edge(self, cell2_d_index: int, cell1_d_index: int) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the index of the cell1DIndex on the cell2D from 0 to NumberCell2DEdges(cell2DIndex),
+            / NumberCell2DEdges(cell2DIndex) if not found
+            """
+            pass
+        def cell2_d_find_edge_by_extremes(
+            self,
+            cell2_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param originCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \param endCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \return the index of the cell1DIndex on the cell2D from 0 to NumberCell2DEdges(cell2DIndex),
+            / NumberCell2DEdges(cell2DIndex) otherwise
+            """
+            pass
+        #/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+        #/ \return the cell2D marker
+        def cell2_d_marker(self, cell2_d_index: int) -> int:
+            pass
+        def cell2_ds_marker(self) -> List[int]:
+            pass
+        def cell2_d_is_active(self, cell2_d_index: int) -> bool:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return if the cell2D is active
+            """
+            pass
+
+        def cell2_d_has_updated_cell2_ds(self, cell2_d_index: int) -> bool:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return if the cell2D has new cell2Ds associated
+            """
+            pass
+        def cell2_d_number_updated_cell2_ds(self, cell2_d_index: int) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the number of new cell2Ds associated to cell2DIndex
+            """
+            pass
+        def cell2_d_has_updated_cell2_d(
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_index: int
+            ) -> bool:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param updatedCell2DIndex the index of the new Cell2D from 0 to Cell2DTotalNumber()
+            / \return if the Cell2D has the updatedCell2DIdex associated
+            """
+            pass
+        def cell2_d_insert_updated_cell2_d(
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_idex: int
+            ) -> None:
+            """/ \brief Add the new Cell2D to an existing Cell2D
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param updatedCell2DIdex the index of the new Cell2D from 0 to Cell2DTotalNumber()
+            """
+            pass
+
+        def cell2_d_has_original_cell2_d(self, updated_cell2_d_index: int) -> bool:
+            """/ \param updatedCell2DIndex the updated cell2D index, from 0 to Cell2DTotalNumber()
+            / \return True if has an original cell, False otherwise (the original cell is itself)
+            """
+            pass
+        def cell2_d_original_cell2_d(self, updated_cell2_d_index: int) -> int:
+            """/ \param updatedCell2DIndex the updated cell2D index, from 0 to Cell2DTotalNumber()
+            / \return the original cell2D index, from 0 to Cell2DTotalNumber()
+            """
+            pass
+        def cell2_d_updated_cell2_ds(
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_ids: std.list[int]
+            ) -> bool:
+            """/ \brief return the updated Cell2D Ids for cell2DIndex
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param updatedCell2DIds the list of the new Cell2D Ids associated to cell2DIndex
+            / \return True if the cell2DIndex is contained in the updatedCell2DIds list, False otherwise
+            """
+            pass
+
+        def cell2_ds_neighbour_cell3_ds(self) -> List[List[int]]:
+            pass
+        def cell2_ds_initialize_neighbour_cell3_ds(
+            self,
+            numbers_neighbour_cell3_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds Cell3D neighbours number
+            / \param numbersNeighbourCell3Ds the number of Cell3D neighbours of each Cell2D, size 1 x Cell2DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell2D Cell3D neighbours number
+        #/ \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+        #/ \param numberNeighbourCell3Ds the number of Cell3D neighbours of the Cell2D
+        @overload
+        def cell2_d_initialize_neighbour_cell3_ds(
+            self,
+            cell2_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell2_d_initialize_neighbour_cell3_ds(
+            self,
+            cell2_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell2_d_insert_neighbour_cell3_d(
+            self,
+            cell2_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell2D Cell3D neighbour
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell2D from 0 to
+            / Cell2DNumberNeighbourCell3D(cell2DIndex) \param neigbourCell3DIndex the Cell3D neighbour index from 0 to
+            / Cell3DTotalNumber() \note Cell2DInitializeNeighbourCell3Ds() shall be called before
+            """
+            pass
+        def cell2_d_number_neighbour_cell3_d(self, cell2_d_index: int) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the number of Neighbour Cell3Ds of Cell2D
+            """
+            pass
+        #/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+        #/ \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell2DNumberNeighbourCell3D(cell2DIndex)
+        #/ \return the Cell3D index of Neighbour Cell3Ds of Cell2D from 0 to Cell3DTotalNumber()
+        def cell2_d_neighbour_cell3_d(self, cell2_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell2_d_neighbour_cell3_ds(self, cell2_d_index: int) -> List[int]:
+            pass
+        def cell2_d_has_neighbour_cell3_d(
+            self,
+            cell2_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell2DNumberNeighbourCell3D(cell2DIndex)
+            / \return True if Neighbour Cell3Ds of Cell2D at position neighbourIndex exists
+            """
+            pass
+        def cell2_d_reset_neighbour_cell3_d(
+            self,
+            cell2_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell2D Cell3D neighbour to empty value (Cell2DHasNeighbourCell3D is False)
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell2D from 0 to
+            / Cell2DNumberNeighbourCell3D(cell2DIndex)
+            """
+            pass
+
+        def cell2_d_initialize_double_properties(self, number_double_properties: int) -> None:
+            """/ \brief Initialize the Cell2Ds double properties
+            / \param numberDoubleProperties the total number of Cell2Ds properties
+            / \note No reset of Cell2Ds is performed
+            """
+            pass
+        def cell2_d_add_double_property(self, property_id: str) -> int:
+            """/ \brief Add the Cell2Ds double property identified by id
+            / \param propertyId the id of Cell2Ds property
+            / \return the double property position
+            """
+            pass
+        def cell2_ds_initialize_double_property_values(
+            self,
+            property_index: int,
+            porperty_sizes: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds double property sizes
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            / \param porpertySize the double property size of each Cell2D, size 1 x Cell2DTotalNumber()
+            """
+            pass
+        def cell2_d_initialize_double_property_values(
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            porperty_size: int
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds double property size
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            / \param porpertySize the double property size of Cell2D
+            """
+            pass
+        def cell2_d_insert_double_property_value(
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            """/ \brief Insert the Cell2Ds double property value at position
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            """
+            pass
+
+        def cell2_d_number_double_properties(self) -> int:
+            """/ \return the total number of double properties of Cell2Ds"""
+            pass
+        def cell2_d_double_property_id(self, property_index: int) -> str:
+            """/ \return the id of the double property of Cell2Ds
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            """
+            pass
+        def cell2_d_double_property_exists(self, property_id: str) -> bool:
+            """/ \return True if the double propertyId of Cell2Ds exists
+            / \param propertyId the id of Cell2D double property
+            """
+            pass
+        def cell2_d_double_property_index(self, property_id: str) -> int:
+            """/ \return the propertyIndex of the double property of Cell2Ds from 0 to Cell2DNumberProperties()
+            / \param propertyId the id of Cell2D double property
+            """
+            pass
+        def cell2_d_double_property_size(self, cell2_d_index: int, property_index: int) -> int:
+            """/ \return the size of the double property of Cell2D
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            """
+            pass
+        def cell2_d_double_property_value(
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            """/ \return the value of the double property at valueIndex of Cell2D
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            / \param propertyValueIndex the index of Cell2D double property value from 0 to Cell2DDoublePropertySize()
+            """
+            pass
+
+        def cell2_ds_initialize_sub_division(self, number_sub_divisions: List[int]) -> None:
+            """/ \brief Initialize the Cell2D subdivision number for each Cell2D
+            / \param numberSubDivisions the number of sub-polygons for each Cell2D, size 1 x Cell2DTotalNumber()
+            / \note each subdivision is a triangle, thus numberSubDivision shall be a multiple of 3
+            """
+            pass
+        def cell2_d_initialize_sub_division(
+            self,
+            cell2_d_index: int,
+            number_sub_division: int
+            ) -> None:
+            """/ \brief Initialize the Cell2D subdivision number
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param numberSubDivision the number of sub-polygons of the Cell2D
+            / \note each subdivision is a triangle, thus numberSubDivision shall be a multiple of 3
+            """
+            pass
+        def cell2_d_insert_sub_division(
+            self,
+            cell2_d_index: int,
+            sub_division_index: int,
+            cell2_d_vertex_index: int
+            ) -> None:
+            """/ \brief Insert the subDivision vertex index
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param subDivisionIndex the subDivision index, from 0 to Cell2DNumberSubDivision(cell2DIndex)
+            / \param cell2DVertexIndex the Cell2D vertex index of the subDivision, from 0 to Cell0DTotalNumber()
+            / \note each subdivision is a triangle
+            """
+            pass
+
+        def cell2_d_number_sub_division(self, cell2_d_index: int) -> int:
+            """/ \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \return the total number of vertices of sub-polygons contained in the subdivision, a multiple of 3
+            / \note each subdivision is a triangle
+            """
+            pass
+
+        def cell2_d_sub_division_cell0_d(
+            self,
+            cell2_d_index: int,
+            sub_division_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param subDivisionIndex the subDivision index, from 0 to Cell2DNumberSubDivision(cell2DIndex)
+            / \return the Cell0D index of sub-polygons contained in the subdivision, from 0 to Cell0DTotalNumber()
+            / \note each sub-division shall be a triangle
+            """
+            pass
+
+        def cell3_ds_initialize(self, number_cell3_ds: int) -> None:
+            """/ \brief Initialize the Cell3Ds container
+            / \param numberCell3Ds the total number of Cell3Ds
+            / \note No reset of Cell3Ds is performed
+            """
+            pass
+        def cell3_d_append(self, number_cell3_ds: int) -> int:
+            """/ \brief Append Cell3Ds to the Cell3Ds container
+            / \param numberCell3Ds the number of Cell3Ds to append
+            / \return the previous number of Cell3Ds before the append operation
+            """
+            pass
+        def cell3_d_remove(self, cell3_d_index: int) -> None:
+            """/ \brief Remove the Cell3D from the mesh
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \note the cell3D is removed and no integrity check in the mesh are performed
+            """
+            pass
+        def cell3_ds_initialize_vertices(self, number_cell3_ds_vertices: List[int]) -> None:
+            """/ \brief Initialize the Cell3Ds vertices number
+            / \param numberCell3DsVertices the number of vertices of each Cell3D
+            """
+            pass
+        def cell3_d_initialize_vertices(
+            self,
+            cell3_d_index: int,
+            number_cell3_d_vertices: int
+            ) -> None:
+            """/ \brief Initialize the Cell3D vertices  number
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param numberCell3DVertices the number of vertices of Cell3D
+            """
+            pass
+        def cell3_ds_initialize_edges(self, number_cell3_ds_edges: List[int]) -> None:
+            """/ \brief Initialize the Cell3Ds edges number
+            / \param numberCell3DsEdges the number of edges of each Cell3D
+            """
+            pass
+        def cell3_d_initialize_edges(
+            self,
+            cell3_d_index: int,
+            number_cell3_d_edges: int
+            ) -> None:
+            """/ \brief Initialize the Cell3D edges number
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param numberCell3DEdges the number of edges of Cell3D
+            """
+            pass
+        def cell3_ds_initialize_faces(self, number_cell3_ds_faces: List[int]) -> None:
+            """/ \brief Initialize the Cell3Ds faces number
+            / \param numberCell3DsFaces the number of faces of each Cell3D
+            """
+            pass
+        def cell3_d_initialize_faces(
+            self,
+            cell3_d_index: int,
+            number_cell3_d_faces: int
+            ) -> None:
+            """/ \brief Initialize the Cell3D faces number
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param numberCell3DFaces the number of faces of Cell3D
+            """
+            pass
+        def cell3_d_insert_vertex(
+            self,
+            cell3_d_index: int,
+            vertex_index: int,
+            vertex_cell0_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell3D vertex
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param vertexIndex the number of vertex of the Cell3D from 0 to Cell3DNumberVertices(cell3DIndex)
+            / \param vertexCell0DIndex the Cell0D vertex index from 0 to Cell0DTotalNumber()
+            / \note Cell3DInitializeVertices() should be called before using this method
+            """
+            pass
+        def cell3_d_add_vertices(
+            self,
+            cell3_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell3D vertices
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param vertexCell0DIndices the Cell0D vertices indices from 0 to Cell0DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+        def cell3_d_insert_edge(
+            self,
+            cell3_d_index: int,
+            edge_index: int,
+            edge_cell1_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell3D edge
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param edgeIndex the number of edge of the Cell3D from 0 to Cell3DNumberEdges(cell3DIndex)
+            / \param edgeCell0DIndex the Cell1D edge index from 0 to Cell1DTotalNumber()
+            / \note Cell3DInitializeEdges() should be called before using this method
+            """
+            pass
+        def cell3_d_add_edges(
+            self,
+            cell3_d_index: int,
+            edges_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell3D edges
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param edgesCell0DIndices the Cell1D edges indices from 0 to Cell1DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+        def cell3_d_find_vertex(self, cell3_d_index: int, cell0_d_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the index of the cell0DIndex on the cell3D from 0 to NumberCell3DVertices(cell3DIndex),
+            / NumberCell3DVertices(cell3DIndex) if not found
+            """
+            pass
+        def cell3_d_find_edge(self, cell3_d_index: int, cell1_d_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the index of the cell1DIndex on the cell3D from 0 to NumberCell3DEdges(cell3DIndex),
+            / NumberCell3DEdges(cell3DIndex) if not found
+            """
+            pass
+        def cell3_d_find_face(self, cell3_d_index: int, cell2_d_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the index of the cell2DIndex on the cell3D from 0 to NumberCell3DFaces(cell3DIndex),
+            / NumberCell3DFaces(cell3DIndex) if not found
+            """
+            pass
+
+        def cell3_d_find_edge_by_extremes(
+            self,
+            cell3_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param originCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \param endCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \return the index of the cell1DIndex on the cell2D from 0 to NumberCell2DEdges(cell3DIndex),
+            / NumberCell2DEdges(cell2DIndex) otherwise
+            """
+            pass
+        def cell3_d_insert_face(
+            self,
+            cell3_d_index: int,
+            face_index: int,
+            face_cell2_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell3D face
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param faceIndex the number of face of the Cell3D from 0 to Cell3DNumberFaces(cell3DIndex)
+            / \param faceCell0DIndex the Cell2D face index from 0 to Cell2DTotalNumber()
+            / \note Cell3DInitializeFaces() should be called before using this method
+            """
+            pass
+        def cell3_d_add_faces(
+            self,
+            cell3_d_index: int,
+            faces_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell3D faces
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param facesCell0DIndices the Cell2D faces indices from 0 to Cell2DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+        def cell3_d_set_marker(self, cell3_d_index: int, marker: int) -> None:
+            """/ \brief Set the Cell1D Marker
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param marker the marker of the Cell3D
+            """
+            pass
+        def cell3_d_set_state(self, cell3_d_index: int, state: bool) -> None:
+            """/ \brief Set the Cell3D state
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param state True if Cell3D is active, False otherwise
+            """
+            pass
+        def cell3_d_total_number(self) -> int:
+            """/ \return the total number of Cell3Ds"""
+            pass
+        def cell3_d_number_vertices(self, cell3_d_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the number of vertices of Cell3D
+            """
+            pass
+        def cell3_d_number_edges(self, cell3_d_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the number of edges of Cell3D
+            """
+            pass
+        def cell3_d_number_faces(self, cell3_d_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the number of faces of Cell3D
+            """
+            pass
+        def cell3_d_vertices(self, cell3_d_index: int) -> List[int]:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the Cell0D index collections of Cell3D from 0 to Cell0DTotalNumber(), size
+            / Cell3DNumberVertices(cell3DIndex)
+            """
+            pass
+        def cell3_d_vertex(self, cell3_d_index: int, vertex_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param vertexIndex the index of cell0D vertex from 0 to NumberCell3DVertices(cell3DIndex)
+            / \return the Cell0D index of vertex of Cell3D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell3_d_vertex_coordinates(
+            self,
+            cell3_d_index: int,
+            vertex_index: int
+            ) -> Eigen.Vector3d:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param vertexIndex the index of cell0D vertex from 0 to NumberCell3DVertices(cell3DIndex)
+            / \return the Cell0D coordinates of vertex of Cell3D, size 3 x 1
+            """
+            pass
+        def cell3_d_vertices_coordinates(self, cell3_d_index: int) -> Eigen.MatrixXd:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the Cell0D coordinates of all the vertices of Cell3D, size 3 x NumberCell3DVertices(cell3DIndex)
+            """
+            pass
+
+        def cell3_d_edges(self, cell3_d_index: int) -> List[int]:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the Cell1D index collections of Cell3D from 0 to Cell1DTotalNumber(), size
+            / Cell3DNumberEdges(cell3DIndex)
+            """
+            pass
+
+        def cell3_d_edge(self, cell3_d_index: int, edge_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param edgeIndex the index of cell1D edge from 0 to NumberCell3DEdges(edgeIndex)
+            / \return the Cell1D index of edge of Cell3D from 0 to Cell1DTotalNumber()
+            """
+            pass
+
+        def cell3_d_faces(self, cell3_d_index: int) -> List[int]:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the Cell2D index collections of Cell3D from 0 to Cell2DTotalNumber(), size
+            / Cell3DNumberFaces(cell3DIndex)
+            """
+            pass
+
+        def cell3_ds_faces_vertices(self) -> List[List[List[int]]]:
+            """/ \return the Cell0D index collections of all the faces of all Cell3Ds, size Cell3DTotalNumber() x
+            / Cell3DNumberFaces(cell3DIndex) x Cell2DNumberVertices(cell2DIndex)
+            """
+            pass
+        def cell3_ds_vertices(self) -> List[List[int]]:
+            """/ \return the Cell0D index collections of all Cell3Ds, size Cell3DTotalNumber() x
+            / Cell3DNumberVertices(cell3DIndex)
+            """
+            pass
+        def cell3_ds_edges(self) -> List[List[int]]:
+            """/ \return the Cell1D index collections of all Cell3Ds, size Cell3DTotalNumber() x Cell3DNumberEdges(cell3DIndex)"""
+            pass
+        def cell3_ds_faces(self) -> List[List[int]]:
+            """/ \return the Cell2D index collections of all Cell3Ds, size Cell3DTotalNumber() x Cell3DNumberFaces(cell3DIndex)"""
+            pass
+
+        def cell3_d_face(self, cell3_d_index: int, face_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param faceIndex the index of cell2D face from 0 to NumberCell3DFaces(cell3DIndex)
+            / \return the Cell2D index of face of Cell3D from 0 to Cell2DTotalNumber()
+            """
+            pass
+        #/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+        #/ \return the cell3D marker
+        def cell3_d_marker(self, cell3_d_index: int) -> int:
+            pass
+        def cell3_ds_marker(self) -> List[int]:
+            pass
+        def cell3_d_is_active(self, cell3_d_index: int) -> bool:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return if the cell3D is active
+            """
+            pass
+
+        def cell3_d_has_original_cell3_d(self, updated_cell3_d_index: int) -> bool:
+            """/ \param updatedCell3DIndex the updated cell3D index, from 0 to Cell3DTotalNumber()
+            / \return True if has an original cell, False otherwise (the original cell is itself)
+            """
+            pass
+        def cell3_d_original_cell3_d(self, updated_cell3_d_index: int) -> int:
+            """/ \param updatedCell3DIndex the updated cell3D index, from 0 to Cell3DTotalNumber()
+            / \return the original cell3D index, from 0 to Cell3DTotalNumber()
+            """
+            pass
+        def cell3_d_has_updated_cell3_ds(self, cell3_d_index: int) -> bool:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return if the cell3D has new cell3Ds associated
+            """
+            pass
+        def cell3_d_number_updated_cell3_ds(self, cell3_d_index: int) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the number of new cell3Ds associated to cell3DIndex
+            """
+            pass
+        def cell3_d_has_updated_cell3_d(
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_idex: int
+            ) -> bool:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param updatedCell3DIdex the index of the new Cell3D from 0 to Cell3DTotalNumber()
+            / \return if the Cell3D has the updatedCell3DIdex associated
+            """
+            pass
+        def cell3_d_insert_updated_cell3_d(
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_idex: int
+            ) -> None:
+            """/ \brief Add the new Cell3D to an existing Cell3D
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param updatedCell3DIdex the index of the new Cell3D from 0 to Cell3DTotalNumber()
+            """
+            pass
+        def cell3_d_updated_cell3_ds(
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_ids: std.list[int]
+            ) -> bool:
+            """/ \brief return the updated Cell3D Ids for cell3DIndex
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param updatedCell3DIds the list of the new Cell3D Ids associated to cell3DIndex
+            / \return True if the cell3DIndex is contained in the updatedCell3DIds list, False otherwise
+            """
+            pass
+
+        def cell3_d_initialize_double_properties(self, number_double_properties: int) -> None:
+            """/ \brief Initialize the Cell3Ds double properties
+            / \param numberDoubleProperties the total number of Cell3Ds properties
+            / \note No reset of Cell3Ds is performed
+            """
+            pass
+        def cell3_d_add_double_property(self, property_id: str) -> int:
+            """/ \brief Add the Cell3Ds double property identified by id
+            / \param propertyId the id of Cell3Ds property
+            / \return the double property position
+            """
+            pass
+        def cell3_ds_initialize_double_property_values(
+            self,
+            property_index: int,
+            porperty_sizes: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds double property sizes
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            / \param porpertySize the double property size of each Cell3D, size 1 x Cell3DTotalNumber()
+            """
+            pass
+        def cell3_d_initialize_double_property_values(
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            porperty_size: int
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds double property size
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            / \param porpertySize the double property size of Cell3D
+            """
+            pass
+        def cell3_d_insert_double_property_value(
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            """/ \brief Insert the Cell3Ds double property value at position
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            """
+            pass
+
+        def cell3_d_number_double_properties(self) -> int:
+            """/ \return the total number of double properties of Cell3Ds"""
+            pass
+        def cell3_d_double_property_id(self, property_index: int) -> str:
+            """/ \return the id of the double property of Cell3Ds
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            """
+            pass
+        def cell3_d_double_property_exists(self, property_id: str) -> bool:
+            """/ \return True if the double propertyId of Cell3Ds exists
+            / \param propertyId the id of Cell3D double property
+            """
+            pass
+        def cell3_d_double_property_index(self, property_id: str) -> int:
+            """/ \return the propertyIndex of the double property of Cell3Ds from 0 to Cell3DNumberProperties()
+            / \param propertyId the id of Cell3D double property
+            """
+            pass
+        def cell3_d_double_property_size(self, cell3_d_index: int, property_index: int) -> int:
+            """/ \return the size of the double property of Cell3D
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            """
+            pass
+        def cell3_d_double_property_value(
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            """/ \return the value of the double property at valueIndex of Cell3D
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            / \param propertyValueIndex the index of Cell3D double property value from 0 to Cell3DDoublePropertySize()
+            """
+            pass
+
+        def compress(self) -> None:
+            """/ \brief Compact the mesh to save memory"""
+            pass
+
+        def to_string(self) -> str:
+            """/ \return The mesh converted to string"""
+            pass
+        def __init__(self) -> None:
+            """Autogenerated default constructor"""
+            pass
+
+# </submodule gedim>
+####################    </generated_from:IMeshDAO.hpp>    ####################
+
+
+####################    <generated_from:IntersectorMesh2DSegment.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __IntersectorMesh2DSegment_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class IntersectorMesh2DSegment:
+        """
+        (final class)
+        """
+        class IntersectionMesh:
+            """
+            (final class)
+            """
+            class IntersectionMeshPoint:
+                """
+                (final class)
+                """
+                cell2_d_ids: std.set[int] = std.set<int>()
+                edge2_d_ids: std.set[int] = std.set<int>()
+                vertex2_d_ids: std.set[int] = std.set<int>()
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            class IntersectionMeshSegment:
+                """
+                (final class)
+                """
+                points: List[float] = List[float]()
+                cell2_d_ids: std.set[int] = std.set<int>()
+                edge2_d_ids: std.set[int] = std.set<int>()
+                def __init__(self, points: List[float] = List[float]()) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            points: Dict[float, IntersectionMeshPoint]
+            segments: List[IntersectionMeshSegment]
+            def __init__(
+                self,
+                segments: List[IntersectionMeshSegment] = List[IntersectionMeshSegment]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        @staticmethod
+        def to_curvilinear_coordinates(
+            intersecting_mesh: IntersectorMesh2DSegment.IntersectionMesh,
+            curvilinear_coordinates: List[float]
+            ) -> None:
+            """/ \brief convert IntersectionMesh to Curvilinear Coordinates vector"""
+            pass
+
+        @staticmethod
+        def to_string(intersecting_mesh: IntersectorMesh2DSegment.IntersectionMesh) -> None:
+            pass
+
+        def __init__(self, mesh: IMeshDAO, geometry_utilities: GeometryUtilities) -> None:
+            pass
+
+        def create_intersection_mesh(
+            self,
+            segment_origin: Eigen.Vector3d,
+            segment_end: Eigen.Vector3d,
+            segment_tangent: Eigen.Vector3d,
+            segment_barycenter: Eigen.Vector3d,
+            segment_length: float,
+            result: IntersectorMesh2DSegment.IntersectionMesh
+            ) -> None:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:IntersectorMesh2DSegment.hpp>    ####################
+
+
+####################    <generated_from:IntersectorMesh3DSegment.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __IntersectorMesh3DSegment_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class IntersectorMesh3DSegment:
+        """
+        (final class)
+        """
+        class IntersectionMesh:
+            """
+            (final class)
+            """
+            class IntersectionMeshPoint:
+                """
+                (final class)
+                """
+                curvilinear_coordinate: float
+                cell3_d_ids: List[int]
+                positions: List[GeometryUtilities.PointPolyhedronPositionResult]
+                def __init__(
+                    self,
+                    curvilinear_coordinate: float = float(),
+                    positions: List[GeometryUtilities.PointPolyhedronPositionResult] = List[GeometryUtilities.PointPolyhedronPositionResult]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class IntersectionMeshSegment:
+                """
+                (final class)
+                """
+                points_index: List[int]
+                cell3_d_ids: List[int]
+                positions: List[GeometryUtilities.SegmentPolyhedronPositionResult]
+                def __init__(
+                    self,
+                    positions: List[GeometryUtilities.SegmentPolyhedronPositionResult] = List[GeometryUtilities.SegmentPolyhedronPositionResult]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            points: List[IntersectionMeshPoint]
+            segments: List[IntersectionMeshSegment]
+            def __init__(
+                self,
+                points: List[IntersectionMeshPoint] = List[IntersectionMeshPoint](),
+                segments: List[IntersectionMeshSegment] = List[IntersectionMeshSegment]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class IntersectionPoint:
+            """
+            (final class)
+            """
+            cell3_d_ids: std.set[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class FindSegmentStartingCell3DResult:
+            """
+            (final class)
+            """
+            starting_cell3_d_index: int
+            segment_full_inside_cell3_d: bool
+            position: GeometryUtilities.PointPolyhedronPositionResult
+            def __init__(
+                self,
+                segment_full_inside_cell3_d: bool = bool(),
+                position: GeometryUtilities.PointPolyhedronPositionResult = GeometryUtilities.PointPolyhedronPositionResult()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh_utilities: MeshUtilities
+            ) -> None:
+            pass
+
+        @staticmethod
+        def to_curvilinear_coordinates(
+            intersecting_mesh: IntersectorMesh3DSegment.IntersectionMesh
+            ) -> List[float]:
+            pass
+        @staticmethod
+        def mesh_segments_cell3_ds(
+            intersecting_mesh: IntersectorMesh3DSegment.IntersectionMesh
+            ) -> List[List[int]]:
+            pass
+        @staticmethod
+        def to_string(intersecting_mesh: IntersectorMesh3DSegment.IntersectionMesh) -> str:
+            pass
+
+        def create_intersection_mesh(
+            self,
+            segment_origin: Eigen.Vector3d,
+            segment_end: Eigen.Vector3d,
+            segment_tangent: Eigen.Vector3d,
+            mesh3_d: IMeshDAO,
+            mesh3_d_geometric_data: MeshUtilities.MeshGeometricData3D
+            ) -> IntersectorMesh3DSegment.IntersectionMesh:
+            pass
+
+        def find_segment_starting_cell3_d(
+            self,
+            segment_origin: Eigen.Vector3d,
+            segment_end: Eigen.Vector3d,
+            mesh3_d: IMeshDAO,
+            mesh3_d_geometric_data: MeshUtilities.MeshGeometricData3D
+            ) -> IntersectorMesh3DSegment.FindSegmentStartingCell3DResult:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:IntersectorMesh3DSegment.hpp>    ####################
+
+
+####################    <generated_from:MeshDAOExporterToCsv.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __MeshDAOExporterToCsv_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class MeshDAOExporterToCsv:
+        """/ \brief MeshDAOExporterToCsv
+        / \copyright See top level LICENSE file for details.
+        (final class)
+        """
+        def __init__(self, utilities: MeshFromCsvUtilities) -> None:
+            pass
+
+        def export(
+            self,
+            configuration: MeshFromCsvUtilities.Configuration,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export the mesh in all parts
+            / \param configuration the configuration for export
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:MeshDAOExporterToCsv.hpp>    ####################
+
+
+####################    <generated_from:MeshDAOImporterFromCsv.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __MeshDAOImporterFromCsv_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class MeshDAOImporterFromCsv:
+        """/ \brief MeshDAOImporterFromCsv
+        / \note each file could be EmptyFileReader if not necessary
+        / \copyright See top level LICENSE file for details
+        (final class)
+        """
+        def __init__(self, utilities: MeshFromCsvUtilities) -> None:
+            pass
+
+        def import_(
+            self,
+            configuration: MeshFromCsvUtilities.Configuration,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def import_mesh2_d(
+            self,
+            configuration: MeshFromCsvUtilities.Configuration,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:MeshDAOImporterFromCsv.hpp>    ####################
+
+
+####################    <generated_from:MeshFromCsvUtilities.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __MeshImporterFromCsvUtilities_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class MeshFromCsvUtilities:
+        """/ \brief MeshImporterFromCsvUtilities
+        / \note each file could be EmptyFileReader if not necessary
+        / \copyright See top level LICENSE file for details
+        (final class)
+        """
+        class Configuration:
+            folder: str = "./"
+            file_cell0_ds_name: str = "Cell0Ds"
+            file_cell1_ds_name: str = "Cell1Ds"
+            file_cell2_ds_name: str = "Cell2Ds"
+            file_cell3_ds_name: str = "Cell3Ds"
+            file_cell0_d_neighbours_name: str = "Cell0DNeighbours"
+            file_cell1_d_neighbours_name: str = "Cell1DNeighbours"
+            file_cell2_d_neighbours_name: str = "Cell2DNeighbours"
+            file_cell0_d_properties_name: str = "Cell0DProperties"
+            file_cell1_d_properties_name: str = "Cell1DProperties"
+            file_cell2_d_properties_name: str = "Cell2DProperties"
+            file_cell3_d_properties_name: str = "Cell3DProperties"
+            file_cell2_d_sub_divisions_name: str = "Cell2DSubDivisions"
+            file_cell0_d_updated_cells_name: str = "Cell0DUpdatedCells"
+            file_cell1_d_updated_cells_name: str = "Cell1DUpdatedCells"
+            file_cell2_d_updated_cells_name: str = "Cell2DUpdatedCells"
+            file_cell3_d_updated_cells_name: str = "Cell3DUpdatedCells"
+            separator: char = ';'
+            file_extension: str = "csv"
+            def __init__(
+                self,
+                folder: str = "./",
+                file_cell0_ds_name: str = "Cell0Ds",
+                file_cell1_ds_name: str = "Cell1Ds",
+                file_cell2_ds_name: str = "Cell2Ds",
+                file_cell3_ds_name: str = "Cell3Ds",
+                file_cell0_d_neighbours_name: str = "Cell0DNeighbours",
+                file_cell1_d_neighbours_name: str = "Cell1DNeighbours",
+                file_cell2_d_neighbours_name: str = "Cell2DNeighbours",
+                file_cell0_d_properties_name: str = "Cell0DProperties",
+                file_cell1_d_properties_name: str = "Cell1DProperties",
+                file_cell2_d_properties_name: str = "Cell2DProperties",
+                file_cell3_d_properties_name: str = "Cell3DProperties",
+                file_cell2_d_sub_divisions_name: str = "Cell2DSubDivisions",
+                file_cell0_d_updated_cells_name: str = "Cell0DUpdatedCells",
+                file_cell1_d_updated_cells_name: str = "Cell1DUpdatedCells",
+                file_cell2_d_updated_cells_name: str = "Cell2DUpdatedCells",
+                file_cell3_d_updated_cells_name: str = "Cell3DUpdatedCells",
+                separator: char = ';',
+                file_extension: str = "csv"
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class CellDoubleProperty:
+            class Value:
+                cell_id: int
+                values: List[float]
+                def __init__(self, values: List[float] = List[float]()) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            id: str
+            file_path: str
+            values: List[Value]
+            def __init__(
+                self,
+                id: str = "",
+                file_path: str = "",
+                values: List[Value] = List[Value]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Cell0D:
+            id: int
+            x: float
+            y: float
+            z: float
+            marker: int
+            active: bool
+            def __init__(
+                self,
+                x: float = float(),
+                y: float = float(),
+                z: float = float(),
+                active: bool = bool()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Cell0DNeighbours:
+            id: int
+            cell1_d_neighbours: List[int]
+            cell2_d_neighbours: List[int]
+            cell3_d_neighbours: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class CellUpdatedCells:
+            id: int
+            updated_cells: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class Cell1D:
+            id: int
+            origin: int
+            end: int
+            marker: int
+            active: bool
+            def __init__(self, active: bool = bool()) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Cell1DNeighbours:
+            id: int
+            cell2_d_neighbours: List[int]
+            cell3_d_neighbours: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class Cell2D:
+            id: int
+            vertices: List[int]
+            edges: List[int]
+            marker: int
+            active: bool
+            def __init__(self, active: bool = bool()) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Cell2DNeighbours:
+            id: int
+            cell3_d_neighbours: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class Cell2DSubDivision:
+            id: int
+            sub_division: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class Cell3D:
+            id: int
+            vertices: List[int]
+            edges: List[int]
+            faces: List[int]
+            marker: int
+            active: bool
+            def __init__(self, active: bool = bool()) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self) -> None:
+            pass
+
+        def convert_mesh2_d(
+            self,
+            cell0_ds: List[MeshFromCsvUtilities.Cell0D],
+            cell1_ds: List[MeshFromCsvUtilities.Cell1D],
+            cell2_ds: List[MeshFromCsvUtilities.Cell2D],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert a 2D Mesh
+            / \param cell0Ds the container of cell0Ds
+            / \param cell1Ds the container of cell1Ds
+            / \param cell2Ds the container of cell2Ds
+            / \param mesh the resulting mesh
+            """
+            pass
+
+        def convert_cell0_ds(
+            self,
+            cell0_ds: List[MeshFromCsvUtilities.Cell0D],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell0Ds to mesh
+            / \param cell0Ds the container of cell0Ds
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell1_ds(
+            self,
+            cell1_ds: List[MeshFromCsvUtilities.Cell1D],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell1Ds to mesh
+            / \param cell1Ds the container of cell1Ds
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell2_ds(
+            self,
+            cell2_ds: List[MeshFromCsvUtilities.Cell2D],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell2Ds to mesh
+            / \param cell2Ds the container of cell2Ds
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell3_ds(
+            self,
+            cell3_ds: List[MeshFromCsvUtilities.Cell3D],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell3Ds to mesh
+            / \param cell3Ds the container of cell3Ds
+            / \param mesh the mesh
+            """
+            pass
+
+        def convert_cell0_d_neighbours(
+            self,
+            cell0_d_neighbours: List[MeshFromCsvUtilities.Cell0DNeighbours],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell0D neighbours to mesh
+            / \param cell0DNeighbours the container of cell0D neighbours
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell1_d_neighbours(
+            self,
+            cell1_d_neighbours: List[MeshFromCsvUtilities.Cell1DNeighbours],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell1D neighbours to mesh
+            / \param cell1DNeighbours the container of cell1D neighbours
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell2_d_neighbours(
+            self,
+            cell2_d_neighbours: List[MeshFromCsvUtilities.Cell2DNeighbours],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell2D neighbours to mesh
+            / \param cell2DNeighbours the container of cell2D neighbours
+            / \param mesh the mesh
+            """
+            pass
+
+        def convert_cell2_d_sub_divisions(
+            self,
+            cell2_d_sub_divisions: List[MeshFromCsvUtilities.Cell2DSubDivision],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell2D subdivision to mesh
+            / \param cell2DSubDivisions the container of cell2D neighbours
+            / \param mesh the mesh
+            """
+            pass
+
+        def convert_cell0_d_double_properties(
+            self,
+            cell0_d_double_properties: List[MeshFromCsvUtilities.CellDoubleProperty],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell0D double properties to mesh
+            / \param cell0DDoubleProperties the container of cell0D double properties
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell1_d_double_properties(
+            self,
+            cell1_d_double_properties: List[MeshFromCsvUtilities.CellDoubleProperty],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell1D double properties to mesh
+            / \param cell1DDoubleProperties the container of cell1D double properties
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell2_d_double_properties(
+            self,
+            cell2_d_double_properties: List[MeshFromCsvUtilities.CellDoubleProperty],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell2D double properties to mesh
+            / \param cell2DDoubleProperties the container of cell2D double properties
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell3_d_double_properties(
+            self,
+            cell3_d_double_properties: List[MeshFromCsvUtilities.CellDoubleProperty],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell3D double properties to mesh
+            / \param cell3DDoubleProperties the container of cell3D double properties
+            / \param mesh the mesh
+            """
+            pass
+
+        def convert_cell0_d_updated_cells(
+            self,
+            cell0_d_updated_cells: List[MeshFromCsvUtilities.CellUpdatedCells],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell0D updated cells to mesh
+            / \param cell0DUpdatedCells the container of cell0D updated cells
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell1_d_updated_cells(
+            self,
+            cell1_d_updated_cells: List[MeshFromCsvUtilities.CellUpdatedCells],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell1D updated cells to mesh
+            / \param cell1DUpdatedCells the container of cell1D updated cells
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell2_d_updated_cells(
+            self,
+            cell2_d_updated_cells: List[MeshFromCsvUtilities.CellUpdatedCells],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell2D updated cells to mesh
+            / \param cell2DUpdatedCells the container of cell2D updated cells
+            / \param mesh the mesh
+            """
+            pass
+        def convert_cell3_d_updated_cells(
+            self,
+            cell3_d_updated_cells: List[MeshFromCsvUtilities.CellUpdatedCells],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Convert the imported Cell3D updated cells to mesh
+            / \param cell3DUpdatedCells the container of cell3D updated cells
+            / \param mesh the mesh
+            """
+            pass
+
+        def import_cell0_ds(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.Cell0D]:
+            """/ \brief Import Cell0Ds; format: Id, Marker, Active, X, Y, Z
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            / \param mesh the mesh to be Imported
+            """
+            pass
+        def import_cell1_ds(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.Cell1D]:
+            """/ \brief Import Cell1Ds; format: Id, Marker, Active, Origin, End
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            """
+            pass
+        def import_cell2_ds(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.Cell2D]:
+            """/ \brief Import Cell2Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            """
+            pass
+        def import_cell3_ds(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.Cell3D]:
+            """/ \brief Import Cell3Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges, NumFaces, Faces
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            """
+            pass
+
+        def import_cell0_d_neighbours(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.Cell0DNeighbours]:
+            """/ \brief Import Cell0DNeighbours; format: Id, Num1DNeighbours, 1DNeighbours, Num2DNeighbours, 2DNeighbours,
+            / Num3DNeighbours, 3DNeighbours \param csvFileReader the file reader \param separator the file separator
+            """
+            pass
+        def import_cell1_d_neighbours(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.Cell1DNeighbours]:
+            """/ \brief Import Cell1DNeighbours; format: Id, Num2DNeighbours, 2DNeighbours, Num3DNeighbours, 3DNeighbours
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            """
+            pass
+
+        def import_cell2_d_neighbours(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.Cell2DNeighbours]:
+            """/ \brief Import Cell2DNeighbours; format: Id, Num3DNeighbours, 3DNeighbours
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            """
+            pass
+
+        def import_cell2_d_sub_division(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.Cell2DSubDivision]:
+            """/ \brief Import Cell2DSubDivision; format: Id, NumSubDivision, SubDivisions
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            """
+            pass
+
+        def import_cell_double_properties(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.CellDoubleProperty]:
+            """/ \brief Import CellProperties; format: Id, FilePath
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            """
+            pass
+
+        def import_cell_updated_cells(
+            self,
+            csv_file_reader: IFileReader,
+            separator: str
+            ) -> List[MeshFromCsvUtilities.CellUpdatedCells]:
+            """/ \brief Import CellUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
+            / \param csvFileReader the file reader
+            / \param separator the file separator
+            """
+            pass
+
+        def export_cell0_ds(self, file_path: str, separator: str, mesh: IMeshDAO) -> None:
+            """/ \brief Export Cell0Ds; format: Id, Marker, Active, X, Y, Z
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+        def export_cell1_ds(self, file_path: str, separator: str, mesh: IMeshDAO) -> None:
+            """/ \brief Export Cell1Ds; format: Id, Marker, Active, Origin, End
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+        def export_cell2_ds(self, file_path: str, separator: str, mesh: IMeshDAO) -> None:
+            """/ \brief Export Cell2Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+        def export_cell3_ds(self, file_path: str, separator: str, mesh: IMeshDAO) -> None:
+            """/ \brief Export Cell3Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges, NumFaces, Faces
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell0_d_properties(
+            self,
+            export_folder: str,
+            property_file_name: str,
+            property_file_extension: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell0DProperties; format: Id, FilePath
+            / \param exportFolder the folder where to export the files
+            / \param propertyFileName the name of property file
+            / \param propertyFileExtension the extension of the files
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell0_d_property(
+            self,
+            property_index: int,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell0DProperty identified by index; format: Id, PropertySize, PropertyValues
+            / \param propertyIndex the property index
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell1_d_properties(
+            self,
+            export_folder: str,
+            property_file_name: str,
+            property_file_extension: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell1DProperties; format: Id, FilePath
+            / \param exportFolder the folder where to export the files
+            / \param propertyFileName the name of property file
+            / \param propertyFileExtension the extension of the files
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell1_d_property(
+            self,
+            property_index: int,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell1DProperty identified by index; format: Id, PropertySize, PropertyValues
+            / \param propertyIndex the property index
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell2_d_properties(
+            self,
+            export_folder: str,
+            property_file_name: str,
+            property_file_extension: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell2DProperties; format: Id, FilePath
+            / \param exportFolder the folder where to export the files
+            / \param propertyFileName the name of property file
+            / \param propertyFileExtension the extension of the files
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell2_d_property(
+            self,
+            property_index: int,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell2DProperty identified by index; format: Id, PropertySize, PropertyValues
+            / \param propertyIndex the property index
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell3_d_properties(
+            self,
+            export_folder: str,
+            property_file_name: str,
+            property_file_extension: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell3DProperties; format: Id, FilePath
+            / \param exportFolder the folder where to export the files
+            / \param propertyFileName the name of property file
+            / \param propertyFileExtension the extension of the files
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell3_d_property(
+            self,
+            property_index: int,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell3DProperty identified by index; format: Id, PropertySize, PropertyValues
+            / \param propertyIndex the property index
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell0_d_neighbours(
+            self,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell0DNeighbours; format: Id, Num1DNeighbours, 1DNeighbours, Num2DNeighbours, 2DNeighbours,
+            / Num3DNeighbours, 3DNeighbours \param filePath the path of the file \param separator the file separator \param
+            / mesh the mesh to be exported
+            """
+            pass
+        def export_cell1_d_neighbours(
+            self,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell1DNeighbours; format: Id, Num2DNeighbours, 2DNeighbours, Num3DNeighbours, 3DNeighbours
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+        def export_cell2_d_neighbours(
+            self,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell2DNeighbours; format: Id, Num3DNeighbours, 3DNeighbours
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+        def export_cell2_d_sub_divisions(
+            self,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell2DSubDivisions; format: Id, NumSubDivision, SubDivisions
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+        def export_cell0_d_updated_cells(
+            self,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell0DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+        def export_cell1_d_updated_cells(
+            self,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell1DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+        def export_cell2_d_updated_cells(
+            self,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell2DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+        def export_cell3_d_updated_cells(
+            self,
+            file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Export Cell3DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
+            / \param filePath the path of the file
+            / \param separator the file separator
+            / \param mesh the mesh to be exported
+            """
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:MeshFromCsvUtilities.hpp>    ####################
+
+
+####################    <generated_from:MeshMatrices.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __MeshMatrices_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class MeshMatrices:
+        """
+        (final class)
+        """
+        dimension: int = 0                                                                                                   #/< Geometric dimension
+        number_cell0_d: int = 0                                                                                              #/< number of Cell0D
+        cell0_d_coordinates: List[float] = List[float]()                                                                     #/< Cell0D coordinates, size 3 x NumberCell0D (x,y,z)
+        cell0_d_markers: List[int] = List[int]()                                                                             #/< Cell0D markers, size 1 x NumberCell0D (marker)
+        number_cell0_d_neighbour_cell1_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell1D indices per cell, size  1
+        #/< x NumberCell0D + 1
+        cell0_d_neighbour_cell1_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell1D indices, size 1 x
+        #/< NumberCell0DNeighbourCell1D[NumberCell0D]
+        number_cell0_d_neighbour_cell2_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell2D indices per cell, size  1
+        #/< x NumberCell0D + 1
+        cell0_d_neighbour_cell2_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell2D indices, size 1 x
+        #/< NumberCell0DNeighbourCell2D[NumberCell0D]
+        number_cell0_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell2D indices per cell, size  1
+        #/< x NumberCell0D + 1
+        cell0_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell3D indices, size 1 x
+        #/< NumberCell0DNeighbourCell3D[NumberCell0D]
+        active_cell0_d: List[bool] = List[bool]()                                                                            #/< active Cell0D
+        updated_cell0_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell0D the
+        #/< list to the new cell0Ds
+        cell0_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell0D double property id - double property index
+        cell0_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell0D double property id -
+        #/< double property index
+        cell0_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell0D double property sizes
+        cell0_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell0D double property values
+        number_cell1_d: int = 0                                                                                              #/< number of Cell1D
+        cell1_d_vertices: List[int] = List[int]()                                                                            #/< Cell1D vertices indices, size 2 x NumberCell1D (fromId,toId)
+        number_cell1_d_neighbour_cell2_d: List[int] = List[int](0)                                                           #/< Cell1D neighbour Cell2D indices per cell, size  1
+        #/< x NumberCell1D + 1
+        number_cell1_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell1D neighbour Cell3D indices per cell, size  1
+        #/< x NumberCell1D + 1
+        cell1_d_neighbour_cell2_ds: List[int] = List[int]()                                                                  #/< Cell1D neighbour Cell2D indices, size 1 x
+        #/< NumberCell1DNeighbourCell2D[NumberCell1D]
+        cell1_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell1D neighbour Cell3D indices, size 1 x
+        #/< NumberCell1DNeighbourCell3D[NumberCell1D]
+        cell1_d_markers: List[int] = List[int]()                                                                             #/< Cell1D propertoes, size 1 x NumberCell1D (marker)
+        active_cell1_d: List[bool] = List[bool]()                                                                            #/< active Cell1D
+        cell1_d_original_cell1_ds: List[int] = List[int]()                                                                   #/< for each cell1D the index of original cell1D,
+        #/< NumberCell1D is the default value (no original cell),
+        #/< size 1 x NumberCell1D
+        updated_cell1_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell1D the
+        #/< list to the new cell1Ds
+        cell1_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell1D double property id - double property index
+        cell1_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell1D double property id -
+        #/< double property index
+        cell1_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell1D double property sizes
+        cell1_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell1D double property values
+        number_cell2_d: int = 0                                                                                              #/< number of Cell2D
+        number_cell2_d_vertices: List[int] = List[int](0)                                                                    #/< number of Vertices per Cell2D, size 1 x NumberCell2D + 1
+        number_cell2_d_edges: List[int] = List[int](0)                                                                       #/< number of Edges per Cell2D, size 1 x NumberCell2D + 1
+        cell2_d_vertices: List[int] = List[int]()                                                                            #/< Cell2D Vertices indices, size 1 x
+        #/< NumberCell2DVertices[NumberCell2D]
+        cell2_d_edges: List[int] = List[int]()                                                                               #/< Cell2D Cell1D indices, size 1 x NumberCell2DEdges[NumberCell2D]
+        number_cell2_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell2D neighbour Cell3D indices per cell, size  1
+        #/< x NumberCell2D + 1
+        cell2_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell2D neighbour Cell3D indices, size 1 x
+        #/< NumberCell2DNeighbourCell3D[NumberCell2D]
+        cell2_d_markers: List[int] = List[int]()                                                                             #/< Cell2D markers, size 1 x NumberCell2D (marker)
+        active_cell2_d: List[bool] = List[bool]()                                                                            #/< active Cell2D
+        number_cell2_d_subdivision: List[int] = List[int](0)                                                                 #/< number of sub-division per Cell2D, size 1 x
+        #/< NumberCell2D + 1
+        cell2_d_subdivision: List[int] = List[int]()                                                                         #/< Sub-division of Cell2Ds, used for Concave polygons, size 1 x
+        #/< NumberCell2DSubdivision[NumberCell2D]
+        cell2_d_original_cell2_ds: List[int] = List[int]()                                                                   #/< for each cell2D the index of original cell2D,
+        #/< NumberCell2D is the default value (no original cell),
+        #/< size 1 x NumberCell2D
+        updated_cell2_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell2D the
+        #/< list to the new cell2Ds
+        cell2_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell2D double property id - double property index
+        cell2_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell2D double property id -
+        #/< double property index
+        cell2_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell2D double property sizes
+        cell2_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell2D double property values
+        number_cell3_d: int = 0                                                                                              #/< number of Cell3D
+        number_cell3_d_vertices: List[int] = List[int](0)                                                                    #/< number of Vertices per Cell3D, size 1 x NumberCell3D + 1
+        number_cell3_d_edges: List[int] = List[int](0)                                                                       #/< number of Edges per Cell3D, size 1 x NumberCell3D + 1
+        number_cell3_d_faces: List[int] = List[int](0)                                                                       #/< number of Faces per Cell3D, size 1 x NumberCell3D + 1
+        cell3_d_vertices: List[int] = List[int]()                                                                            #/< Cell3D Cell0D indices, size 1 x
+        #/< NumberCell3DVertices[NumberCell3D]
+        cell3_d_edges: List[int] = List[int]()                                                                               #/< Cell3D Cell1D indices, size 1 x NumberCell3DEdges[NumberCell3D]
+        cell3_d_faces: List[int] = List[int]()                                                                               #/< Cell3D Cell2D indices, size 1 x NumberCell3DFaces[NumberCell3D]
+        cell3_d_markers: List[int] = List[int]()                                                                             #/< Cell3D markers, size 1 x NumberCell3D (marker)
+        active_cell3_d: List[bool] = List[bool]()                                                                            #/< active Cell3D
+        cell3_d_original_cell3_ds: List[int] = List[int]()                                                                   #/< for each cell3D the index of original cell3D,
+        #/< NumberCell3D is the default value (no original cell),
+        #/< size 1 x NumberCell3D
+        updated_cell3_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell3D the
+        #/< list to the new cell3Ds
+        cell3_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell3D double property id - double property index
+        cell3_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell3D double property id -
+        #/< double property index
+        cell3_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell3D double property sizes
+        cell3_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell3D double property values
+        def __init__(
+            self,
+            cell0_d_coordinates: List[float] = List[float](),
+            active_cell0_d: List[bool] = List[bool](),
+            cell0_d_double_property_ids: List[str] = List[str](),
+            cell0_d_double_property_values: List[List[float]] = List[List[float]](),
+            active_cell1_d: List[bool] = List[bool](),
+            cell1_d_double_property_ids: List[str] = List[str](),
+            cell1_d_double_property_values: List[List[float]] = List[List[float]](),
+            active_cell2_d: List[bool] = List[bool](),
+            cell2_d_double_property_ids: List[str] = List[str](),
+            cell2_d_double_property_values: List[List[float]] = List[List[float]](),
+            active_cell3_d: List[bool] = List[bool](),
+            cell3_d_double_property_ids: List[str] = List[str](),
+            cell3_d_double_property_values: List[List[float]] = List[List[float]]()
+            ) -> None:
+            """Auto-generated default constructor with named params"""
+            pass
+
+# </submodule gedim>
+####################    </generated_from:MeshMatrices.hpp>    ####################
+
+
+####################    <generated_from:MeshMatricesDAO.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __MeshMatricesWrapper_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class MeshMatricesDAO:
+        """
+        (final class)
+        """
+        def __init__(self, mesh: MeshMatrices) -> None:
+            pass
+
+        def initialize_dimension(self, dimension: int) -> None:
+            pass
+        def dimension(self) -> int:
+            pass
+
+        def cell0_ds_initialize(self, number_cell0_ds: int) -> None:
+            pass
+        def cell0_d_append(self, number_cell0_ds: int) -> int:
+            pass
+        def cell0_d_remove(self, cell0_d_index: int) -> None:
+            pass
+
+        def cell0_d_insert_coordinates(
+            self,
+            cell0_d_index: int,
+            coordinates: Eigen.Vector3d
+            ) -> None:
+            pass
+        def cell0_ds_insert_coordinates(self, coordinates: Eigen.MatrixXd) -> None:
+            pass
+        def cell0_d_set_marker(self, cell0_d_index: int, marker: int) -> None:
+            pass
+        def cell0_d_set_state(self, cell0_d_index: int, state: bool) -> None:
+            pass
+
+        def cell0_d_total_number(self) -> int:
+            pass
+        def cell0_d_coordinate_x(self, cell0_d_index: int) -> float:
+            pass
+        def cell0_d_coordinate_y(self, cell0_d_index: int) -> float:
+            pass
+        def cell0_d_coordinate_z(self, cell0_d_index: int) -> float:
+            pass
+        def cell0_d_coordinates(self, cell0_d_index: int) -> Eigen.Vector3d:
+            pass
+        @overload
+        def cell0_ds_coordinates(self) -> Eigen.MatrixXd:
+            pass
+        @overload
+        def cell0_ds_coordinates(self, cell0_ds: List[int]) -> Eigen.MatrixXd:
+            pass
+        def cell0_d_marker(self, cell0_d_index: int) -> int:
+            pass
+        def cell0_ds_marker(self) -> List[int]:
+            pass
+        def cell0_d_is_active(self, cell0_d_index: int) -> bool:
+            pass
+
+        def cell0_d_has_updated_cell0_ds(self, cell0_d_index: int) -> bool:
+            pass
+        def cell0_d_number_updated_cell0_ds(self, cell0_d_index: int) -> int:
+            pass
+        def cell0_d_has_updated_cell0_d(
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_idex: int
+            ) -> bool:
+            pass
+        def cell0_d_insert_updated_cell0_d(
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_idex: int
+            ) -> None:
+            pass
+        def cell0_d_updated_cell0_ds(
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_ids: std.list[int]
+            ) -> bool:
+            pass
+
+        def cell0_ds_neighbour_cell1_ds(self) -> List[List[int]]:
+            pass
+        def cell0_ds_initialize_neighbour_cell1_ds(
+            self,
+            number_neighbour_cell1_ds: List[int]
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell1_ds(
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell1_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell1_ds(
+            self,
+            cell0_d_index: int,
+            neighbour_cell1_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell1_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell1_d_index: int
+            ) -> None:
+            pass
+        def cell0_d_number_neighbour_cell1_d(self, cell0_d_index: int) -> int:
+            pass
+        def cell0_d_neighbour_cell1_d(self, cell0_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell0_d_neighbour_cell1_ds(self, cell0_d_index: int) -> List[int]:
+            pass
+        def cell0_d_has_neighbour_cell1_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            pass
+        def cell0_d_reset_neighbour_cell1_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            pass
+
+        def cell0_ds_neighbour_cell2_ds(self) -> List[List[int]]:
+            pass
+        def cell0_ds_initialize_neighbour_cell2_ds(
+            self,
+            number_neighbour_cell2_ds: List[int]
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell2_ds(
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell2_ds(
+            self,
+            cell0_d_index: int,
+            neighbour_cell2_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell2_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell2_d_index: int
+            ) -> None:
+            pass
+        def cell0_d_number_neighbour_cell2_d(self, cell0_d_index: int) -> int:
+            pass
+        def cell0_d_neighbour_cell2_d(self, cell0_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell0_d_neighbour_cell2_ds(self, cell0_d_index: int) -> List[int]:
+            pass
+        def cell0_d_has_neighbour_cell2_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            pass
+        def cell0_d_reset_neighbour_cell2_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            pass
+        def cell0_ds_neighbour_cell3_ds(self) -> List[List[int]]:
+            pass
+        def cell0_ds_initialize_neighbour_cell3_ds(
+            self,
+            number_neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell3_ds(
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell3_ds(
+            self,
+            cell0_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell3_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            pass
+        def cell0_d_number_neighbour_cell3_d(self, cell0_d_index: int) -> int:
+            pass
+        def cell0_d_neighbour_cell3_d(self, cell0_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell0_d_neighbour_cell3_ds(self, cell0_d_index: int) -> List[int]:
+            pass
+        def cell0_d_has_neighbour_cell3_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            pass
+        def cell0_d_reset_neighbour_cell3_d(
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            pass
+
+        def cell0_d_initialize_double_properties(self, number_double_properties: int) -> None:
+            pass
+        def cell0_d_add_double_property(self, property_id: str) -> int:
+            pass
+        def cell0_ds_initialize_double_property_values(
+            self,
+            property_index: int,
+            property_sizes: List[int]
+            ) -> None:
+            pass
+        def cell0_d_initialize_double_property_values(
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            property_size: int
+            ) -> None:
+            pass
+        def cell0_d_insert_double_property_value(
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            pass
+        def cell0_d_number_double_properties(self) -> int:
+            pass
+        def cell0_d_double_property_id(self, property_index: int) -> str:
+            pass
+        def cell0_d_double_property_exists(self, property_id: str) -> bool:
+            pass
+        def cell0_d_double_property_index(self, property_id: str) -> int:
+            pass
+        def cell0_d_double_property_size(self, cell0_d_index: int, property_index: int) -> int:
+            pass
+        def cell0_d_double_property_value(
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            pass
+
+        def cell1_ds_initialize(self, number_cell1_ds: int) -> None:
+            pass
+        def cell1_d_append(self, number_cell1_ds: int) -> int:
+            pass
+        def cell1_d_remove(self, cell1_d_index: int) -> None:
+            pass
+        def cell1_d_insert_extremes(
+            self,
+            cell1_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> None:
+            pass
+
+        def cell1_ds_insert_extremes(self, cell1_d_extremes: Eigen.MatrixXi) -> None:
+            pass
+
+        @overload
+        def cell1_ds_extremes(self) -> Eigen.MatrixXi:
+            pass
+        @overload
+        def cell1_ds_extremes(self, cell1_ds: List[int]) -> Eigen.MatrixXi:
+            pass
+        def cell1_d_extremes(self, cell1_d_index: int) -> Eigen.VectorXi:
+            """/ \return the extrems as Eigen MatrixXi of cell1D, size 2
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            """
+            pass
+
+        def cell1_d_by_extremes(
+            self,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            pass
+
+        def cell1_d_set_marker(self, cell1_d_index: int, marker: int) -> None:
+            pass
+        def cell1_d_set_state(self, cell1_d_index: int, state: bool) -> None:
+            pass
+        def cell1_ds_neighbour_cell2_ds(self) -> List[List[int]]:
+            pass
+        @overload
+        def cell1_ds_initialize_neighbour_cell2_ds(
+            self,
+            number_neighbour_cell2_ds: List[int]
+            ) -> None:
+            pass
+        @overload
+        def cell1_ds_initialize_neighbour_cell2_ds(
+            self,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell1_d_initialize_neighbour_cell2_ds(
+            self,
+            cell1_d_index: int,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell1_d_initialize_neighbour_cell2_ds(
+            self,
+            cell1_d_index: int,
+            neighbour_cell2_ds: List[int]
+            ) -> None:
+            pass
+        def cell1_d_insert_neighbour_cell2_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int,
+            neigbour_cell2_d_index: int
+            ) -> None:
+            pass
+        def cell1_d_total_number(self) -> int:
+            pass
+        def cell1_d_vertex(self, cell1_d_index: int, vertex_index: int) -> int:
+            pass
+        def cell1_d_origin(self, cell1_d_index: int) -> int:
+            pass
+        def cell1_d_end(self, cell1_d_index: int) -> int:
+            pass
+        def cell1_d_find_extreme(self, cell1_d_index: int, cell0_d_index: int) -> int:
+            pass
+        def cell1_d_coordinates(self, cell1_d_index: int) -> Eigen.MatrixXd:
+            pass
+        def cell1_d_origin_coordinates(self, cell1_d_index: int) -> Eigen.Vector3d:
+            pass
+        def cell1_d_end_coordinates(self, cell1_d_index: int) -> Eigen.Vector3d:
+            pass
+        def cell1_d_number_neighbour_cell2_d(self, cell1_d_index: int) -> int:
+            pass
+        def cell1_d_neighbour_cell2_d(self, cell1_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell1_d_neighbour_cell2_ds(self, cell1_d_index: int) -> List[int]:
+            pass
+        def cell1_d_has_neighbour_cell2_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            pass
+        def cell1_d_reset_neighbour_cell2_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            pass
+
+        def cell1_d_marker(self, cell1_d_index: int) -> int:
+            pass
+        def cell1_ds_marker(self) -> List[int]:
+            pass
+        def cell1_d_is_active(self, cell1_d_index: int) -> bool:
+            pass
+        def cell1_d_has_original_cell1_d(self, updated_cell1_d_index: int) -> bool:
+            pass
+        def cell1_d_original_cell1_d(self, updated_cell1_d_index: int) -> int:
+            pass
+        def cell1_d_has_updated_cell1_ds(self, cell1_d_index: int) -> bool:
+            pass
+        def cell1_d_number_updated_cell1_ds(self, cell1_d_index: int) -> int:
+            pass
+        def cell1_d_has_updated_cell1_d(
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_idex: int
+            ) -> bool:
+            pass
+        def cell1_d_insert_updated_cell1_d(
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_idex: int
+            ) -> None:
+            pass
+        def cell1_d_updated_cell1_ds(
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_ids: std.list[int]
+            ) -> bool:
+            pass
+        def cell1_d_initialize_double_properties(self, number_double_properties: int) -> None:
+            pass
+
+        def cell1_ds_neighbour_cell3_ds(self) -> List[List[int]]:
+            pass
+        def cell1_ds_initialize_neighbour_cell3_ds(
+            self,
+            number_neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        @overload
+        def cell1_d_initialize_neighbour_cell3_ds(
+            self,
+            cell1_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell1_d_initialize_neighbour_cell3_ds(
+            self,
+            cell1_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell1_d_insert_neighbour_cell3_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            pass
+        def cell1_d_number_neighbour_cell3_d(self, cell1_d_index: int) -> int:
+            pass
+        def cell1_d_neighbour_cell3_d(self, cell1_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell1_d_neighbour_cell3_ds(self, cell1_d_index: int) -> List[int]:
+            pass
+        def cell1_d_has_neighbour_cell3_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            pass
+        def cell1_d_reset_neighbour_cell3_d(
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            pass
+
+        def cell1_d_add_double_property(self, property_id: str) -> int:
+            pass
+        def cell1_ds_initialize_double_property_values(
+            self,
+            property_index: int,
+            property_sizes: List[int]
+            ) -> None:
+            pass
+        def cell1_d_initialize_double_property_values(
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            property_size: int
+            ) -> None:
+            pass
+        def cell1_d_insert_double_property_value(
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            pass
+        def cell1_d_number_double_properties(self) -> int:
+            pass
+        def cell1_d_double_property_id(self, property_index: int) -> str:
+            pass
+        def cell1_d_double_property_exists(self, property_id: str) -> bool:
+            pass
+        def cell1_d_double_property_index(self, property_id: str) -> int:
+            pass
+        def cell1_d_double_property_size(self, cell1_d_index: int, property_index: int) -> int:
+            pass
+        def cell1_d_double_property_value(
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            pass
+
+        def cell2_ds_initialize(self, number_cell2_ds: int) -> None:
+            pass
+        def cell2_d_append(self, number_cell2_ds: int) -> int:
+            pass
+        def cell2_d_remove(self, cell2_d_index: int) -> None:
+            pass
+        def cell2_d_set_marker(self, cell2_d_index: int, marker: int) -> None:
+            pass
+        def cell2_d_set_state(self, cell2_d_index: int, state: bool) -> None:
+            pass
+        @overload
+        def cell2_ds_initialize_vertices(self, number_cell2_d_vertices: int) -> None:
+            pass
+        @overload
+        def cell2_ds_initialize_vertices(self, number_cell2_ds_vertices: List[int]) -> None:
+            pass
+        def cell2_d_initialize_vertices(
+            self,
+            cell2_d_index: int,
+            number_cell2_d_vertices: int
+            ) -> None:
+            pass
+        @overload
+        def cell2_ds_initialize_edges(self, number_cell2_d_edges: int) -> None:
+            pass
+        @overload
+        def cell2_ds_initialize_edges(self, number_cell2_ds_edges: List[int]) -> None:
+            pass
+        def cell2_d_initialize_edges(
+            self,
+            cell2_d_index: int,
+            number_cell2_d_edges: int
+            ) -> None:
+            pass
+        def cell2_d_insert_vertices(
+            self,
+            cell2_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            pass
+        def cell2_d_insert_vertex(
+            self,
+            cell2_d_index: int,
+            vertex_index: int,
+            vertex_cell0_d_index: int
+            ) -> None:
+            pass
+        def cell2_d_insert_edges(
+            self,
+            cell2_d_index: int,
+            edges_cell1_d_indices: List[int]
+            ) -> None:
+            pass
+        def cell2_d_insert_edge(
+            self,
+            cell2_d_index: int,
+            edge_index: int,
+            edge_cell1_d_index: int
+            ) -> None:
+            pass
+        def cell2_d_add_vertices(
+            self,
+            cell2_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            pass
+        def cell2_d_add_edges(
+            self,
+            cell2_d_index: int,
+            edges_cell1_d_indices: List[int]
+            ) -> None:
+            pass
+        def cell2_d_add_vertices_and_edges(
+            self,
+            cell2_d_index: int,
+            vertices_and_edges_indices: Eigen.MatrixXi
+            ) -> None:
+            pass
+
+        def cell2_d_total_number(self) -> int:
+            pass
+        def cell2_d_number_vertices(self, cell2_d_index: int) -> int:
+            pass
+        def cell2_d_number_edges(self, cell2_d_index: int) -> int:
+            pass
+
+        def cell2_d_vertices(self, cell2_d_index: int) -> List[int]:
+            pass
+        def cell2_ds_vertices(self) -> List[List[int]]:
+            pass
+        def cell2_ds_extremes(self) -> List[Eigen.MatrixXi]:
+            pass
+
+        def cell2_d_vertex(self, cell2_d_index: int, vertex_index: int) -> int:
+            pass
+        def cell2_d_vertex_coordinates(
+            self,
+            cell2_d_index: int,
+            vertex_index: int
+            ) -> Eigen.Vector3d:
+            pass
+        def cell2_d_vertices_coordinates(self, cell2_d_index: int) -> Eigen.MatrixXd:
+            pass
+        def cell2_d_find_vertex(self, cell2_d_index: int, cell0_d_index: int) -> int:
+            pass
+
+        def cell2_d_edges(self, cell2_d_index: int) -> List[int]:
+            pass
+
+        def cell2_d_edge(self, cell2_d_index: int, edge_index: int) -> int:
+            pass
+        def cell2_d_find_edge(self, cell2_d_index: int, cell1_d_index: int) -> int:
+            pass
+        def cell2_d_find_edge_by_extremes(
+            self,
+            cell2_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            pass
+        def cell2_d_marker(self, cell2_d_index: int) -> int:
+            pass
+        def cell2_ds_marker(self) -> List[int]:
+            pass
+        def cell2_d_is_active(self, cell2_d_index: int) -> bool:
+            pass
+
+        def cell2_d_has_updated_cell2_ds(self, cell2_d_index: int) -> bool:
+            pass
+        def cell2_d_number_updated_cell2_ds(self, cell2_d_index: int) -> int:
+            pass
+        def cell2_d_has_updated_cell2_d(
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_index: int
+            ) -> bool:
+            pass
+        def cell2_d_insert_updated_cell2_d(
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_idex: int
+            ) -> None:
+            pass
+        def cell2_d_has_original_cell2_d(self, updated_cell2_d_index: int) -> bool:
+            pass
+        def cell2_d_original_cell2_d(self, updated_cell2_d_index: int) -> int:
+            pass
+        def cell2_d_updated_cell2_ds(
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_ids: std.list[int]
+            ) -> bool:
+            pass
+
+        def cell2_ds_neighbour_cell3_ds(self) -> List[List[int]]:
+            pass
+        def cell2_ds_initialize_neighbour_cell3_ds(
+            self,
+            number_neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        @overload
+        def cell2_d_initialize_neighbour_cell3_ds(
+            self,
+            cell2_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell2_d_initialize_neighbour_cell3_ds(
+            self,
+            cell2_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell2_d_insert_neighbour_cell3_d(
+            self,
+            cell2_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            pass
+        def cell2_d_number_neighbour_cell3_d(self, cell2_d_index: int) -> int:
+            pass
+        def cell2_d_neighbour_cell3_d(self, cell2_d_index: int, neighbour_index: int) -> int:
+            pass
+        def cell2_d_neighbour_cell3_ds(self, cell2_d_index: int) -> List[int]:
+            pass
+        def cell2_d_has_neighbour_cell3_d(
+            self,
+            cell2_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            pass
+        def cell2_d_reset_neighbour_cell3_d(
+            self,
+            cell2_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            pass
+        def cell2_d_initialize_double_properties(self, number_double_properties: int) -> None:
+            pass
+        def cell2_d_add_double_property(self, property_id: str) -> int:
+            pass
+        def cell2_ds_initialize_double_property_values(
+            self,
+            property_index: int,
+            property_sizes: List[int]
+            ) -> None:
+            pass
+        def cell2_d_initialize_double_property_values(
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            property_size: int
+            ) -> None:
+            pass
+        def cell2_d_insert_double_property_value(
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            pass
+        def cell2_d_number_double_properties(self) -> int:
+            pass
+        def cell2_d_double_property_id(self, property_index: int) -> str:
+            pass
+        def cell2_d_double_property_exists(self, property_id: str) -> bool:
+            pass
+        def cell2_d_double_property_index(self, property_id: str) -> int:
+            pass
+        def cell2_d_double_property_size(self, cell2_d_index: int, property_index: int) -> int:
+            pass
+        def cell2_d_double_property_value(
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            pass
+
+        def cell2_ds_initialize_sub_division(self, number_sub_divisions: List[int]) -> None:
+            pass
+
+        def cell2_d_initialize_sub_division(
+            self,
+            cell2_d_index: int,
+            number_sub_division: int
+            ) -> None:
+            pass
+        def cell2_d_insert_sub_division(
+            self,
+            cell2_d_index: int,
+            sub_division_index: int,
+            cell0_d_index: int
+            ) -> None:
+            pass
+        def cell2_d_number_sub_division(self, cell2_d_index: int) -> int:
+            pass
+        def cell2_d_sub_division_cell0_d(
+            self,
+            cell2_d_index: int,
+            sub_division_index: int
+            ) -> int:
+            pass
+
+        def cell3_ds_initialize(self, number_cell3_ds: int) -> None:
+            pass
+        def cell3_d_append(self, number_cell3_ds: int) -> int:
+            pass
+        def cell3_d_remove(self, cell3_d_index: int) -> None:
+            pass
+        def cell3_d_set_marker(self, cell3_d_index: int, marker: int) -> None:
+            pass
+        def cell3_d_set_state(self, cell3_d_index: int, state: bool) -> None:
+            pass
+        def cell3_ds_initialize_vertices(self, number_cell3_ds_vertices: List[int]) -> None:
+            pass
+        def cell3_ds_initialize_edges(self, number_cell3_ds_edges: List[int]) -> None:
+            pass
+        def cell3_ds_initialize_faces(self, number_cell3_ds_faces: List[int]) -> None:
+            pass
+        def cell3_d_initialize_vertices(
+            self,
+            cell3_d_index: int,
+            number_cell3_d_vertices: int
+            ) -> None:
+            pass
+        def cell3_d_initialize_edges(
+            self,
+            cell3_d_index: int,
+            number_cell3_d_edges: int
+            ) -> None:
+            pass
+        def cell3_d_initialize_faces(
+            self,
+            cell3_d_index: int,
+            number_cell3_d_faces: int
+            ) -> None:
+            pass
+        def cell3_d_insert_vertex(
+            self,
+            cell3_d_index: int,
+            vertex_index: int,
+            vertex_cell0_d_index: int
+            ) -> None:
+            pass
+        def cell3_d_insert_edge(
+            self,
+            cell3_d_index: int,
+            edge_index: int,
+            edge_cell1_d_index: int
+            ) -> None:
+            pass
+        def cell3_d_insert_face(
+            self,
+            cell3_d_index: int,
+            face_index: int,
+            face_cell2_d_index: int
+            ) -> None:
+            pass
+        def cell3_d_add_vertices(
+            self,
+            cell3_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            pass
+        def cell3_d_add_edges(
+            self,
+            cell3_d_index: int,
+            edges_cell1_d_indices: List[int]
+            ) -> None:
+            pass
+        def cell3_d_add_faces(
+            self,
+            cell3_d_index: int,
+            faces_cell2_d_indices: List[int]
+            ) -> None:
+            pass
+
+        def cell3_d_find_vertex(self, cell3_d_index: int, cell0_d_index: int) -> int:
+            pass
+        def cell3_d_find_edge(self, cell3_d_index: int, cell1_d_index: int) -> int:
+            pass
+        def cell3_d_find_face(self, cell3_d_index: int, cell2_d_index: int) -> int:
+            pass
+
+        def cell3_d_find_edge_by_extremes(
+            self,
+            cell3_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            pass
+
+        def cell3_d_total_number(self) -> int:
+            pass
+        def cell3_d_number_vertices(self, cell3_d_index: int) -> int:
+            pass
+        def cell3_d_number_edges(self, cell3_d_index: int) -> int:
+            pass
+        def cell3_d_number_faces(self, cell3_d_index: int) -> int:
+            pass
+        def cell3_d_vertices(self, cell3_d_index: int) -> List[int]:
+            pass
+        def cell3_d_vertex(self, cell3_d_index: int, vertex_index: int) -> int:
+            pass
+        def cell3_d_vertex_coordinates(
+            self,
+            cell3_d_index: int,
+            vertex_index: int
+            ) -> Eigen.Vector3d:
+            pass
+        def cell3_d_vertices_coordinates(self, cell3_d_index: int) -> Eigen.MatrixXd:
+            pass
+        def cell3_d_edges(self, cell3_d_index: int) -> List[int]:
+            pass
+        def cell3_d_edge(self, cell3_d_index: int, edge_index: int) -> int:
+            pass
+        def cell3_d_faces(self, cell3_d_index: int) -> List[int]:
+            pass
+        def cell3_d_face(self, cell3_d_index: int, face_index: int) -> int:
+            pass
+        def cell3_ds_faces_vertices(self) -> List[List[List[int]]]:
+            pass
+        def cell3_ds_vertices(self) -> List[List[int]]:
+            pass
+        def cell3_ds_edges(self) -> List[List[int]]:
+            pass
+        def cell3_ds_faces(self) -> List[List[int]]:
+            pass
+        def cell3_d_marker(self, cell3_d_index: int) -> int:
+            pass
+        def cell3_ds_marker(self) -> List[int]:
+            pass
+        def cell3_d_is_active(self, cell3_d_index: int) -> bool:
+            pass
+
+        def cell3_d_has_updated_cell3_ds(self, cell3_d_index: int) -> bool:
+            pass
+        def cell3_d_number_updated_cell3_ds(self, cell3_d_index: int) -> int:
+            pass
+        def cell3_d_has_updated_cell3_d(
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_idex: int
+            ) -> bool:
+            pass
+        def cell3_d_insert_updated_cell3_d(
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_idex: int
+            ) -> None:
+            pass
+        def cell3_d_updated_cell3_ds(
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_ids: std.list[int]
+            ) -> bool:
+            pass
+        def cell3_d_has_original_cell3_d(self, updated_cell3_d_index: int) -> bool:
+            pass
+        def cell3_d_original_cell3_d(self, updated_cell3_d_index: int) -> int:
+            pass
+
+        def cell3_d_initialize_double_properties(self, number_double_properties: int) -> None:
+            pass
+        def cell3_d_add_double_property(self, property_id: str) -> int:
+            pass
+        def cell3_ds_initialize_double_property_values(
+            self,
+            property_index: int,
+            property_sizes: List[int]
+            ) -> None:
+            pass
+        def cell3_d_initialize_double_property_values(
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            property_size: int
+            ) -> None:
+            pass
+        def cell3_d_insert_double_property_value(
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            pass
+        def cell3_d_number_double_properties(self) -> int:
+            pass
+        def cell3_d_double_property_id(self, property_index: int) -> str:
+            pass
+        def cell3_d_double_property_exists(self, property_id: str) -> bool:
+            pass
+        def cell3_d_double_property_index(self, property_id: str) -> int:
+            pass
+        def cell3_d_double_property_size(self, cell3_d_index: int, property_index: int) -> int:
+            pass
+        def cell3_d_double_property_value(
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            pass
+
+        def compress(self) -> None:
+            pass
+
+        def to_string(self) -> str:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:MeshMatricesDAO.hpp>    ####################
+
+
+####################    <generated_from:MeshUtilities.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __MeshUtilities_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class MeshUtilities:
+        """/ \brief MeshUtilities
+        / \copyright See top level LICENSE file for details.
+        (final class)
+        """
+        class CheckMesh2DConfiguration:
+            """
+            (final class)
+            """
+            cell0_d_check_coordinates2_d: bool = True
+            cell0_d_check_duplications: bool = True
+            cell1_d_check_duplications: bool = True
+            cell1_d_check_neighbours: bool = True
+            cell1_d_check_measure: bool = True
+            cell2_d_check_edges: bool = True
+            cell2_d_check_duplications: bool = True
+            cell2_d_check_convexity: bool = True
+            cell2_d_check_measure: bool = True
+            def __init__(
+                self,
+                cell0_d_check_coordinates2_d: bool = True,
+                cell0_d_check_duplications: bool = True,
+                cell1_d_check_duplications: bool = True,
+                cell1_d_check_neighbours: bool = True,
+                cell1_d_check_measure: bool = True,
+                cell2_d_check_edges: bool = True,
+                cell2_d_check_duplications: bool = True,
+                cell2_d_check_convexity: bool = True,
+                cell2_d_check_measure: bool = True
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class CheckMesh3DConfiguration:
+            """
+            (final class)
+            """
+            cell0_d_check_duplications: bool = True
+            cell1_d_check_duplications: bool = True
+            cell1_d_check_measure: bool = True
+            cell2_d_check_edges: bool = True
+            cell2_d_check_duplications: bool = True
+            cell2_d_check_convexity: bool = True
+            cell2_d_check_measure: bool = True
+            cell3_d_check_duplications: bool = True
+            cell3_d_check_edges: bool = True
+            cell3_d_check_edges_are_active: bool = True
+            cell3_d_check_convexity: bool = True
+            cell3_d_check_measure: bool = True
+            def __init__(
+                self,
+                cell0_d_check_duplications: bool = True,
+                cell1_d_check_duplications: bool = True,
+                cell1_d_check_measure: bool = True,
+                cell2_d_check_edges: bool = True,
+                cell2_d_check_duplications: bool = True,
+                cell2_d_check_convexity: bool = True,
+                cell2_d_check_measure: bool = True,
+                cell3_d_check_duplications: bool = True,
+                cell3_d_check_edges: bool = True,
+                cell3_d_check_edges_are_active: bool = True,
+                cell3_d_check_convexity: bool = True,
+                cell3_d_check_measure: bool = True
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class CheckMeshGeometricData3DConfiguration:
+            """
+            (final class)
+            """
+            cell1_d_check_measure: bool = True
+            cell1_d_check_normals: bool = True
+            cell2_d_check_measure: bool = True
+            cell2_d_check_triangles: bool = True
+            cell2_d_check_normals: bool = True
+            cell3_d_check_measure: bool = True
+            cell3_d_check_tetrahedra: bool = True
+            cell1_d_quadrature_order: int = 0
+            cell2_d_quadrature_order: int = 0
+            cell3_d_quadrature_order: int = 0
+            def __init__(
+                self,
+                cell1_d_check_measure: bool = True,
+                cell1_d_check_normals: bool = True,
+                cell2_d_check_measure: bool = True,
+                cell2_d_check_triangles: bool = True,
+                cell2_d_check_normals: bool = True,
+                cell3_d_check_measure: bool = True,
+                cell3_d_check_tetrahedra: bool = True
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class ExtractActiveMeshData:
+            """
+            (final class)
+            """
+            old_cell0_d_to_new_cell0_d: std.unordered_map[int, int]                                             #/< each pair is {old Cell0D index, new
+            #/< Cell0D index}
+            old_cell1_d_to_new_cell1_d: std.unordered_map[int, int]                                             #/< each pair is {old Cell1D index, new
+            #/< Cell1D index}
+            old_cell2_d_to_new_cell2_d: std.unordered_map[int, int]                                             #/< each pair is {old Cell2D index, new
+            #/< Cell2D index}
+            old_cell3_d_to_new_cell3_d: std.unordered_map[int, int]                                             #/< each pair is {old Cell3D index, new
+            #/< Cell3D index}
+            new_cell0_d_to_old_cell0_d: std.unordered_map[int, int]                                             #/< each pair is {new Cell0D index, old
+            #/< Cell0D index}
+            new_cell1_d_to_old_cell1_d: std.unordered_map[int, int]                                             #/< each pair is {new Cell1D index, old
+            #/< Cell1D index}
+            new_cell2_d_to_old_cell2_d: std.unordered_map[int, int]                                             #/< each pair is {new Cell2D index, old
+            #/< Cell2D index}
+            new_cell3_d_to_old_cell3_d: std.unordered_map[int, int]                                             #/< each pair is {new Cell3D index, old
+            #/< Cell3D index}
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class FilterMeshData:
+            """
+            (final class)
+            """
+            cell0_ds: List[int]
+            cell1_ds: List[int]
+            cell2_ds: List[int]
+            cell3_ds: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class ExtractMeshData:
+            """
+            (final class)
+            """
+            old_cell0_d_to_new_cell0_d: List[int] = List[int]()                                                 #/< each element is [old Cell0D index] = new Cell0D index
+            old_cell1_d_to_new_cell1_d: List[int] = List[int]()                                                 #/< each element is [old Cell1D index] = new Cell1D index
+            old_cell2_d_to_new_cell2_d: List[int] = List[int]()                                                 #/< each element is [old Cell2D index] = new Cell2D index
+            old_cell3_d_to_new_cell3_d: List[int] = List[int]()                                                 #/< each element is [old Cell3D index] = new Cell3D index
+            new_cell0_d_to_old_cell0_d: List[int] = List[int]()                                                 #/< each element is [new Cell0D index] = old Cell0D index
+            new_cell1_d_to_old_cell1_d: List[int] = List[int]()                                                 #/< each element is [new Cell1D index] = old Cell1D index
+            new_cell2_d_to_old_cell2_d: List[int] = List[int]()                                                 #/< each element is [new Cell2D index] = old Cell2D index
+            new_cell3_d_to_old_cell3_d: List[int] = List[int]()                                                 #/< each element is [new Cell3D index] = old Cell3D index
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class ComputeMesh2DCell1DsResult:
+            """
+            (final class)
+            """
+            cell1_ds: Eigen.MatrixXi                                                                            #/ Cell1Ds vertices, size 2 x Cell1DTotalNumber()
+            cell2_ds: List[Eigen.MatrixXi]                                                                      #/< Cell2Ds vertices and edges, size
+            #/< Cell2DTotalNumber()x2xCell2DNumberVertices()
+            def __init__(
+                self,
+                cell1_ds: Eigen.MatrixXi = Eigen.MatrixXi(),
+                cell2_ds: List[Eigen.MatrixXi] = List[Eigen.MatrixXi]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class ComputeMesh3DAlignedCell1DsResult:
+            """
+            (final class)
+            """
+
+            aligned_cell1_ds: Eigen.MatrixXi
+            cell0_ds_aligned_cell1_ds_index: List[Eigen.MatrixXi]
+            cell1_ds_aligned_cell1_ds_index: List[Eigen.MatrixXi]
+            cell3_ds_aligned_cell1_ds_index: List[Eigen.MatrixXi]
+            aligned_cell1_ds_sub_cell0_ds: List[List[int]]
+            aligned_cell1_ds_sub_cell1_ds: List[List[int]]
+            aligned_cell1_ds_cell3_ds: List[List[int]]
+            def __init__(
+                self,
+                aligned_cell1_ds: Eigen.MatrixXi = Eigen.MatrixXi(),
+                cell0_ds_aligned_cell1_ds_index: List[Eigen.MatrixXi] = List[Eigen.MatrixXi](),
+                cell1_ds_aligned_cell1_ds_index: List[Eigen.MatrixXi] = List[Eigen.MatrixXi](),
+                cell3_ds_aligned_cell1_ds_index: List[Eigen.MatrixXi] = List[Eigen.MatrixXi]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class MeshGeometricData1D:
+            """
+            (final class)
+            """
+            cell1_ds_bounding_box: List[Eigen.MatrixXd]
+            cell1_ds_vertices: List[Eigen.MatrixXd]                                                             #/< cell1D vertices coordinates
+            cell1_ds_tangents: List[Eigen.Vector3d]                                                             #/< cell1D tangents
+            cell1_ds_lengths: List[float]                                                                       #/< cell1D lengths
+            cell1_ds_squared_lengths: List[float]                                                               #/< cell1D squared lengths
+            cell1_ds_centroids: List[Eigen.Vector3d]                                                            #/< cell1D centroids
+            def __init__(
+                self,
+                cell1_ds_bounding_box: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell1_ds_vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell1_ds_tangents: List[Eigen.Vector3d] = List[Eigen.Vector3d](),
+                cell1_ds_lengths: List[float] = List[float](),
+                cell1_ds_squared_lengths: List[float] = List[float](),
+                cell1_ds_centroids: List[Eigen.Vector3d] = List[Eigen.Vector3d]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class MeshGeometricData2D:
+            """
+            (final class)
+            """
+            cell2_ds_bounding_box: List[Eigen.MatrixXd]
+            cell2_ds_vertices: List[Eigen.MatrixXd]                                                             #/< cell2D vertices coordinates
+            cell2_ds_triangulations: List[List[Eigen.Matrix3d]]                                                 #/< cell2D triangulations
+            cell2_ds_areas: List[float]                                                                         #/< cell2D areas
+            cell2_ds_centroids: List[Eigen.Vector3d]                                                            #/< cell2D centroids
+            cell2_ds_diameters: List[float]                                                                     #/< cell2D diameters
+            cell2_ds_edge_directions: List[List[bool]]                                                          #/< cell2D edge directions
+            cell2_ds_edges_centroid: List[Eigen.MatrixXd]                                                       #/< cell2D edge centroid
+            cell2_ds_edge_lengths: List[Eigen.VectorXd]                                                         #/< cell2D edge lengths
+            cell2_ds_edge_tangents: List[Eigen.MatrixXd]                                                        #/< cell2D edge tangents
+            cell2_ds_edge_normals: List[Eigen.MatrixXd]                                                         #/< cell2D edge normals
+            def __init__(
+                self,
+                cell2_ds_bounding_box: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell2_ds_vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell2_ds_triangulations: List[List[Eigen.Matrix3d]] = List[List[Eigen.Matrix3d]](),
+                cell2_ds_areas: List[float] = List[float](),
+                cell2_ds_centroids: List[Eigen.Vector3d] = List[Eigen.Vector3d](),
+                cell2_ds_diameters: List[float] = List[float](),
+                cell2_ds_edge_directions: List[List[bool]] = List[List[bool]](),
+                cell2_ds_edges_centroid: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell2_ds_edge_lengths: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                cell2_ds_edge_tangents: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell2_ds_edge_normals: List[Eigen.MatrixXd] = List[Eigen.MatrixXd]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class MeshGeometricData3D:
+            """
+            (final class)
+            """
+            cell3_ds_vertices: List[Eigen.MatrixXd]
+            cell3_ds_edges: List[Eigen.MatrixXi]
+            cell3_ds_faces: List[List[Eigen.MatrixXi]]
+            cell3_ds_bounding_box: List[Eigen.MatrixXd]
+            cell3_ds_volumes: List[float]
+            cell3_ds_diameters: List[float]
+            cell3_ds_centroids: List[Eigen.Vector3d]
+            cell3_ds_edges_centroid: List[Eigen.MatrixXd]
+            cell3_ds_edge_lengths: List[Eigen.VectorXd]
+            cell3_ds_edge_tangents: List[Eigen.MatrixXd]
+            cell3_ds_edge_directions: List[List[bool]]
+            cell3_ds_tetrahedron_points: List[List[Eigen.MatrixXd]]
+            cell3_ds_faces_translations: List[List[Eigen.Vector3d]]
+            cell3_ds_faces_rotation_matrices: List[List[Eigen.Matrix3d]]
+            cell3_ds_faces_normals: List[List[Eigen.Vector3d]]
+            cell3_ds_faces_tangents: List[List[List[Eigen.Vector3d]]]
+            cell3_ds_faces_normal_directions: List[List[bool]]
+            cell3_ds_faces_normal_global_direction: List[List[bool]]
+            cell3_ds_faces_tangents_global_direction: List[List[List[bool]]]
+            cell3_ds_faces_edge_directions: List[List[List[bool]]]
+            cell3_ds_faces3_d_vertices: List[List[Eigen.MatrixXd]]                                              #/< faces vertices 3D coordinates
+            cell3_ds_faces2_d_vertices: List[List[Eigen.MatrixXd]]                                              #/< faces vertices 2D coordinates
+            cell3_ds_faces3_d_triangulations: List[List[List[Eigen.Matrix3d]]]                                  #/< faces triangulations
+            #/< 2D
+            cell3_ds_faces2_d_triangulations: List[List[List[Eigen.Matrix3d]]]                                  #/< faces triangulations
+            #/< 2D
+            cell3_ds_faces_areas: List[List[float]]                                                             #/< faces areas
+            cell3_ds_faces2_d_centroids: List[List[Eigen.Vector3d]]                                             #/< faces centroids
+            cell3_ds_faces_diameters: List[List[float]]                                                         #/< faces diameters
+            cell3_ds_faces_edge_lengths: List[List[Eigen.VectorXd]]                                             #/< faces edge lengths
+            cell3_ds_faces_edge3_d_tangents: List[List[Eigen.MatrixXd]]                                         #/< faces edge 3D tangents
+            cell3_ds_faces_edges3_d_centroid: List[List[Eigen.MatrixXd]]
+            cell3_ds_faces_edge2_d_tangents: List[List[Eigen.MatrixXd]]                                         #/< faces edge 2D tangents
+            cell3_ds_faces_edges2_d_centroid: List[List[Eigen.MatrixXd]]
+            cell3_ds_faces_edge2_d_normals: List[List[Eigen.MatrixXd]]                                          #/< faces edge normals
+            def __init__(
+                self,
+                cell3_ds_vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell3_ds_edges: List[Eigen.MatrixXi] = List[Eigen.MatrixXi](),
+                cell3_ds_faces: List[List[Eigen.MatrixXi]] = List[List[Eigen.MatrixXi]](),
+                cell3_ds_bounding_box: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell3_ds_volumes: List[float] = List[float](),
+                cell3_ds_diameters: List[float] = List[float](),
+                cell3_ds_centroids: List[Eigen.Vector3d] = List[Eigen.Vector3d](),
+                cell3_ds_edges_centroid: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell3_ds_edge_lengths: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                cell3_ds_edge_tangents: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                cell3_ds_edge_directions: List[List[bool]] = List[List[bool]](),
+                cell3_ds_tetrahedron_points: List[List[Eigen.MatrixXd]] = List[List[Eigen.MatrixXd]](),
+                cell3_ds_faces_translations: List[List[Eigen.Vector3d]] = List[List[Eigen.Vector3d]](),
+                cell3_ds_faces_rotation_matrices: List[List[Eigen.Matrix3d]] = List[List[Eigen.Matrix3d]](),
+                cell3_ds_faces_normals: List[List[Eigen.Vector3d]] = List[List[Eigen.Vector3d]](),
+                cell3_ds_faces_normal_directions: List[List[bool]] = List[List[bool]](),
+                cell3_ds_faces_normal_global_direction: List[List[bool]] = List[List[bool]](),
+                cell3_ds_faces_edge_directions: List[List[List[bool]]] = List[List[List[bool]]](),
+                cell3_ds_faces3_d_vertices: List[List[Eigen.MatrixXd]] = List[List[Eigen.MatrixXd]](),
+                cell3_ds_faces2_d_vertices: List[List[Eigen.MatrixXd]] = List[List[Eigen.MatrixXd]](),
+                cell3_ds_faces3_d_triangulations: List[List[List[Eigen.Matrix3d]]] = List[List[List[Eigen.Matrix3d]]](),
+                cell3_ds_faces2_d_triangulations: List[List[List[Eigen.Matrix3d]]] = List[List[List[Eigen.Matrix3d]]](),
+                cell3_ds_faces_areas: List[List[float]] = List[List[float]](),
+                cell3_ds_faces2_d_centroids: List[List[Eigen.Vector3d]] = List[List[Eigen.Vector3d]](),
+                cell3_ds_faces_diameters: List[List[float]] = List[List[float]](),
+                cell3_ds_faces_edge_lengths: List[List[Eigen.VectorXd]] = List[List[Eigen.VectorXd]](),
+                cell3_ds_faces_edge3_d_tangents: List[List[Eigen.MatrixXd]] = List[List[Eigen.MatrixXd]](),
+                cell3_ds_faces_edges3_d_centroid: List[List[Eigen.MatrixXd]] = List[List[Eigen.MatrixXd]](),
+                cell3_ds_faces_edge2_d_tangents: List[List[Eigen.MatrixXd]] = List[List[Eigen.MatrixXd]](),
+                cell3_ds_faces_edges2_d_centroid: List[List[Eigen.MatrixXd]] = List[List[Eigen.MatrixXd]](),
+                cell3_ds_faces_edge2_d_normals: List[List[Eigen.MatrixXd]] = List[List[Eigen.MatrixXd]]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class VTPPolyhedron:
+            """
+            (final class)
+            """
+            vertices: Eigen.MatrixXd                                                                            #/ size 3xnumVertices
+            polyhedron_faces: List[List[int]]                                                                   #/ size numFaces x numFaceVertices
+            def __init__(self, vertices: Eigen.MatrixXd = Eigen.MatrixXd()) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class AgglomerateTrianglesResult:
+            """
+            (final class)
+            """
+            removed_edges: List[int]
+            vertices_index: List[int]
+            edges_index: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class AgglomerateMeshFromTriangularMeshResult:
+            """
+            (final class)
+            """
+            class ConcaveCell2D:
+                cell2_d_index: int
+                convex_cell2_ds_index: List[int]
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            concave_cell2_ds: List[ConcaveCell2D]
+            removed_cell1_ds: List[int]
+            removed_cell2_ds: List[int]
+            def __init__(
+                self,
+                concave_cell2_ds: List[ConcaveCell2D] = List[ConcaveCell2D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class AgglomerationInformation:
+            """
+            (final class)
+            """
+            original_cell0_d_to_agglomerated_cell0_ds: List[int] = List[int]()
+            original_cell1_d_to_agglomerated_cell1_ds: List[int] = List[int]()
+            original_cell2_d_to_agglomerated_cell2_ds: List[int] = List[int]()
+            agglomerated_cell0_d_to_original_cell0_ds: List[int] = List[int]()
+            agglomerated_cell1_d_to_original_cell1_ds: List[List[int]] = List[List[int]]()
+            agglomerated_cell2_d_to_original_cell2_ds: List[List[int]] = List[List[int]]()
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class AgglomerateCell1DInformation:
+            """
+            (final class)
+            """
+            agglomerate_cell1_d_vertices: List[int]
+            sub_cell1_ds_removed_vertices: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class AgglomerateCell2DInformation:
+            """
+            (final class)
+            """
+            agglomerate_cell2_d_vertices: List[int]
+            agglomerate_cell2_d_edges: List[int]
+            sub_cell2_ds_removed_vertices: List[int]
+            sub_cell2_ds_removed_edges: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class AgglomerateCell3DInformation:
+            """
+            (final class)
+            """
+            agglomerate_cell3_d_vertices: List[int]
+            agglomerate_cell3_d_edges: List[int]
+            agglomerate_cell3_d_faces: List[int]
+            sub_cell3_ds_removed_vertices: List[int]
+            sub_cell3_ds_removed_edges: List[int]
+            sub_cell3_ds_removed_faces: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class FindConcaveCell3DFacesConvexCell2DResult:
+            """
+            (final class)
+            """
+            class ConvexCell2D:
+                """
+                (final class)
+                """
+                convex_cell3_d_index: int = 0
+                convex_cell3_d_face_index: int = 0
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            concave_cell3_d_faces_convex_cell2_d: List[ConvexCell2D] = List[ConvexCell2D]()
+            def __init__(
+                self,
+                concave_cell3_d_faces_convex_cell2_d: List[ConvexCell2D] = List[ConvexCell2D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Mesh3DPolyhedron:
+            """
+            (final class)
+            """
+            vertices_index: List[int]
+            edges_index: List[int]
+            faces_index: List[int]
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class FindPointMeshPositionResult:
+            """
+            (final class)
+            """
+            class PointMeshPosition:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                                                                       # (= 0)
+                    outside = enum.auto()                                                                       # (= 1)
+                    cell0_d = enum.auto()                                                                       # (= 2)
+                    cell1_d = enum.auto()                                                                       # (= 3)
+                    cell2_d = enum.auto()                                                                       # (= 4)
+                    cell3_d = enum.auto()                                                                       # (= 5)
+
+                type: Types
+                cell_index: int
+                def __init__(self, type: Types = Types()) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            mesh_positions: List[PointMeshPosition]
+            def __init__(
+                self,
+                mesh_positions: List[PointMeshPosition] = List[PointMeshPosition]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class FindPointCell2DResult:
+            """
+            (final class)
+            """
+            class PointCell2DFound:
+                """
+                (final class)
+                """
+                cell2_d_index: int
+                cell2_d_position: GeometryUtilities.PointPolygonPositionResult
+                def __init__(
+                    self,
+                    cell2_d_position: GeometryUtilities.PointPolygonPositionResult = GeometryUtilities.PointPolygonPositionResult()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            cell2_ds_found: List[PointCell2DFound]
+            def __init__(
+                self,
+                cell2_ds_found: List[PointCell2DFound] = List[PointCell2DFound]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class FindPointCell3DResult:
+            """
+            (final class)
+            """
+            class PointCell3DFound:
+                """
+                (final class)
+                """
+                cell3_d_index: int
+                cell3_d_position: GeometryUtilities.PointPolyhedronPositionResult
+                def __init__(
+                    self,
+                    cell3_d_position: GeometryUtilities.PointPolyhedronPositionResult = GeometryUtilities.PointPolyhedronPositionResult()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            cell3_ds_found: List[PointCell3DFound]
+            def __init__(
+                self,
+                cell3_ds_found: List[PointCell3DFound] = List[PointCell3DFound]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Intersect_mesh_polyhedron_result:
+            """
+            (final class)
+            """
+            class Types(enum.IntEnum):
+                none = enum.auto()                                                                              # (= 1)  #/< No intersection found
+                vertices = enum.auto()                                                                          # (= 2)  #/< Vertices
+
+            class Polyhedron_Intersection:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    vertex = enum.auto()                                                                        # (= 1)
+                    edge = enum.auto()                                                                          # (= 2)
+                    face = enum.auto()                                                                          # (= 3)
+                    polyhedron = enum.auto()                                                                    # (= 4)
+
+                type: Types
+                geometry_index: int
+                cell0_ds_index: List[int]
+                cell1_ds_index: List[int]
+                cell2_ds_index: List[int]
+                cell3_ds_index: List[int]
+                def __init__(self, type: Types = Types()) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class Mesh_Intersections:
+                """
+                (final class)
+                """
+                cell0_ds_intersections: Dict[int, int]
+                cell1_ds_intersections: Dict[int, List[int]]
+                cell2_ds_intersections: Dict[int, List[int]]
+                cell3_ds_intersections: Dict[int, List[int]]
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            type: Types
+            intersections_coordinates: Eigen.MatrixXd
+            polyhedron_intersections: List[Polyhedron_Intersection]
+            mesh_intersections: Mesh_Intersections
+            def __init__(
+                self,
+                type: Types = Types(),
+                intersections_coordinates: Eigen.MatrixXd = Eigen.MatrixXd(),
+                polyhedron_intersections: List[Polyhedron_Intersection] = List[Polyhedron_Intersection](),
+                mesh_intersections: Mesh_Intersections = Mesh_Intersections()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self) -> None:
+            pass
+
+        def extract_active_mesh(
+            self,
+            mesh: IMeshDAO,
+            extraction_data: MeshUtilities.ExtractActiveMeshData
+            ) -> None:
+            """/ \brief Extract Active Cells from mesh
+            / \note the resulting mesh has no inactive elements
+            """
+            pass
+
+        def filter_active_mesh(self, mesh: IMeshDAO) -> MeshUtilities.FilterMeshData:
+            pass
+
+        def filter_mesh1_d(
+            self,
+            cell1_ds_filter: List[int],
+            mesh: IMeshDAO
+            ) -> MeshUtilities.FilterMeshData:
+            """/ \brief Extract mesh1D cells from a mesh"""
+            pass
+
+        def filter_mesh2_d(
+            self,
+            cell2_ds_filter: List[int],
+            mesh: IMeshDAO
+            ) -> MeshUtilities.FilterMeshData:
+            """/ \brief Extract mesh2D cells from a mesh"""
+            pass
+
+        def filter_mesh3_d(
+            self,
+            cell3_ds_filter: List[int],
+            mesh: IMeshDAO
+            ) -> MeshUtilities.FilterMeshData:
+            """/ \brief Extract mesh3D cells from a mesh"""
+            pass
+
+        def extract_mesh1_d(
+            self,
+            cell0_ds_filter: List[int],
+            cell1_ds_filter: List[int],
+            original_mesh: IMeshDAO,
+            mesh: IMeshDAO
+            ) -> MeshUtilities.ExtractMeshData:
+            pass
+
+        def extract_mesh2_d(
+            self,
+            cell0_ds_filter: List[int],
+            cell1_ds_filter: List[int],
+            cell2_ds_filter: List[int],
+            original_mesh: IMeshDAO,
+            mesh: IMeshDAO
+            ) -> MeshUtilities.ExtractMeshData:
+            pass
+
+        def extract_mesh3_d(
+            self,
+            cell0_ds_filter: List[int],
+            cell1_ds_filter: List[int],
+            cell2_ds_filter: List[int],
+            cell3_ds_filter: List[int],
+            original_mesh: IMeshDAO,
+            mesh: IMeshDAO
+            ) -> MeshUtilities.ExtractMeshData:
+            pass
+
+        def fill_mesh1_d(
+            self,
+            geometry_utilities: GeometryUtilities,
+            segment_origin: Eigen.Vector3d,
+            segment_tangent: Eigen.Vector3d,
+            coordinates: List[float],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Fill Mesh 1D From segment Coordinates
+            / \param segmentOrigin the segment origin
+            / \param segmentTangent the segment tangent vector
+            / \param coordinates relative coordinates between [0.0, 1.0]
+            / \param mesh the resulting mesh
+            """
+            pass
+
+        def fill_mesh2_d(
+            self,
+            cell0_ds: Eigen.MatrixXd,
+            cell1_ds: Eigen.MatrixXi,
+            cell2_ds: List[Eigen.MatrixXi],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Fill a Mesh 2D with vertices, edges and polygons
+            / \param cell0Ds the coordinates as Eigen MatrixXd of cell0Ds, size 3xCell0DTotalNumber()
+            / \param cell1Ds the origin and end as Eigen MatrixXd of cell1Ds, size 2xCell1DTotalNumber()
+            / \param cell2Ds the vertices and edges indices of the cell2Ds ordered counterclockwise, size
+            / Cell2DTotalNumber()x2xCell2DNumberVertices()
+            """
+            pass
+
+        def fill_mesh3_d(
+            self,
+            cell0_ds: Eigen.MatrixXd,
+            cell1_ds: Eigen.MatrixXi,
+            cell2_ds: List[Eigen.MatrixXi],
+            cell3_ds: List[MeshUtilities.Mesh3DPolyhedron],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def compute_mesh2_d_cell1_ds(
+            self,
+            cell0_ds: Eigen.MatrixXd,
+            cell2_ds: List[Eigen.VectorXi]
+            ) -> MeshUtilities.ComputeMesh2DCell1DsResult:
+            """/ \brief Compute edges in a Mesh 2D with vertices and polygons
+            / \param cell0Ds the coordinates as Eigen MatrixXd of cell0Ds, size 3xCell0DTotalNumber()
+            / \param cell2Ds the vertices indices of the cell2Ds ordered counterclockwise, size
+            / Cell2DTotalNumber()xCell2DNumberVertices() \return the Cell1Ds data
+            """
+            pass
+
+        def check_mesh2_d(
+            self,
+            configuration: MeshUtilities.CheckMesh2DConfiguration,
+            geometry_utilities: GeometryUtilities,
+            convex_mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Check Mesh2D correctness
+            / \param geometryUtilities the geometry utilities
+            / \param convexMesh a convex 2D mesh
+            """
+            pass
+
+        def check_mesh3_d(
+            self,
+            configuration: MeshUtilities.CheckMesh3DConfiguration,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Check Mesh3D correctness
+            / \param geometryUtilities the geometry utilities
+            / \param mesh a 3D mesh
+            """
+            pass
+
+        def compute_mesh3_d_aligned_cell1_ds(
+            self,
+            cell3_ds_aligned_edges_vertices: List[List[List[int]]],
+            cell3_ds_aligned_edges_edges: List[List[List[int]]],
+            mesh: IMeshDAO
+            ) -> MeshUtilities.ComputeMesh3DAlignedCell1DsResult:
+            """/ \brief Compute edges in a Mesh 2D with vertices and polygons
+            / \param cell0Ds the coordinates as Eigen MatrixXd of cell0Ds, size 3xCell0DTotalNumber()
+            / \param cell2Ds the vertices indices of the cell2Ds ordered counterclockwise, size
+            / Cell2DTotalNumber()xCell2DNumberVertices() \return the Cell1Ds data
+            """
+            pass
+
+        def check_mesh_geometric_data3_d(
+            self,
+            configuration: MeshUtilities.CheckMeshGeometricData3DConfiguration,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO,
+            geometric_data: MeshUtilities.MeshGeometricData3D
+            ) -> None:
+            """/ \brief Check MeshGeometricData3D correctness
+            / \param geometryUtilities the geometry utilities
+            / \param mesh the 3D mesh
+            / \param geometricData the mesh geometric data
+            """
+            pass
+
+        def mesh1_d_from_segment(
+            self,
+            geometry_utilities: GeometryUtilities,
+            segment_vertices: Eigen.MatrixXd,
+            vertex_markers: List[int],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Create a Mesh 1D with a segment
+            / \param segmentVertices the segment coordinates, size 3x2
+            / \param vertexMarkers mesh markers of vertices, size 1xNumPolygonVertices()
+            """
+            pass
+
+        def mesh2_d_from_polygon(
+            self,
+            polygon_vertices: Eigen.MatrixXd,
+            vertex_markers: List[int],
+            edge_markers: List[int],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Create a Mesh 2D with a polygon
+            / \param polygonVertices the polygon coordinates, size 3xNumPolygonVertices()
+            / \param vertexMarkers mesh markers of vertices, size 1xNumPolygonVertices()
+            / \param edgeMarkers mesh markers of edges, size 1xNumPolygonVertices()
+            """
+            pass
+
+        def set_mesh_markers_on_line(
+            self,
+            geometry_utilities: GeometryUtilities,
+            line_origin: Eigen.Vector3d,
+            line_tangent: Eigen.Vector3d,
+            line_tangent_squared_length: float,
+            marker: int,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Set the marker on all the mesh 2D elements laying on the line
+            / \param geometryUtilities the geometry utilities
+            / \param lineTangent the line tangent
+            / \param lineOrigin the line origin
+            / \param lineTangentSquaredLength the line tangent squared length
+            / \param marker the marker
+            / \param mesh the mesh
+            """
+            pass
+
+        def set_mesh_markers_on_segment(
+            self,
+            geometry_utilities: GeometryUtilities,
+            segment_origin: Eigen.Vector3d,
+            segment_tangent: Eigen.Vector3d,
+            segment_tangent_squared_length: float,
+            marker: int,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def mesh3_d_from_polyhedron(
+            self,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_faces: List[Eigen.MatrixXi],
+            vertex_markers: List[int],
+            edge_markers: List[int],
+            face_markers: List[int],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Create a Mesh 3D with a polyhedron
+            / \param polyhedronVertices the polyhedron vertices, size 3 x numVertices
+            / \param polyhedronEdges the polyhedron edges, size 2 x numEdges
+            / \param polyhedronFaces the polyhedron face vertices and edges, size numFaces x 2 x numVertices
+            / \param vertexMarkers mesh markers of vertices, size 1xnumVertices
+            / \param edgeMarkers mesh markers of edges, size 1xnumEdges
+            / \param faceMarkers mesh markers of faces, size 1xnumFaces
+            """
+            pass
+
+        def set_mesh_markers_on_plane(
+            self,
+            geometry_utilities: GeometryUtilities,
+            plane_normal: Eigen.Vector3d,
+            plane_origin: Eigen.Vector3d,
+            marker: int,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Set the marker on all the mesh 3D elements laying on the plane
+            / \param geometryUtilities the geometry utilities
+            / \param planeNormal the plane normal
+            / \param planeOrigin the plane origin
+            / \param marker the marker
+            / \param mesh the mesh
+            """
+            pass
+
+        def set_mesh_markers_by_face_normal(
+            self,
+            geometry_utilities: GeometryUtilities,
+            normal: Eigen.Vector3d,
+            cell2_ds_normal: List[Eigen.Vector3d],
+            marker: int,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        @overload
+        def set_mesh_markers_on_polygon(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polygon_plane_normal: Eigen.Vector3d,
+            polygon_plane_origin: Eigen.Vector3d,
+            polygon_vertices_2_d: Eigen.MatrixXd,
+            polygon_translation: Eigen.Vector3d,
+            polygon_rotation_matrix: Eigen.Matrix3d,
+            marker: int,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \warning Only for convex points"""
+            pass
+
+        @overload
+        def set_mesh_markers_on_polygon(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polygon_plane_normal: Eigen.Vector3d,
+            polygon_plane_origin: Eigen.Vector3d,
+            polygon_vertices_2_d: Eigen.MatrixXd,
+            polygon_translation: Eigen.Vector3d,
+            polygon_rotation_matrix: Eigen.Matrix3d,
+            cell1_ds_centroid: List[Eigen.Vector3d],
+            cell2_ds_centroid: List[Eigen.Vector3d],
+            marker: int,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def mesh_cell2_d_roots(self, mesh: IMeshDAO) -> List[int]:
+            """/ \brief Extract the mesh Cell2D Roots
+            / \param mesh the mesh
+            / \return the root cell for each cell2D, size 1xCell2DTotalNumber()
+            """
+            pass
+
+        def fill_mesh1_d_geometric_data(
+            self,
+            geometry_utilities: GeometryUtilities,
+            convex_mesh: IMeshDAO
+            ) -> MeshUtilities.MeshGeometricData1D:
+            """/ \brief Fill Mesh1D Geometric Data given a mesh with convex mesh cells
+            / \param convexMesh the convex mesh
+            / \return the MeshGeometricData computed
+            """
+            pass
+
+        def import_mesh_geometric_data1_d_from_txt(
+            self,
+            file_path: str
+            ) -> MeshUtilities.MeshGeometricData1D:
+            pass
+        def export_mesh_geometric_data1_d_to_txt(
+            self,
+            mesh_geometric_data: MeshUtilities.MeshGeometricData1D,
+            file_path: str
+            ) -> None:
+            pass
+
+        @overload
+        def fill_mesh2_d_geometric_data(
+            self,
+            geometry_utilities: GeometryUtilities,
+            convex_mesh: IMeshDAO
+            ) -> MeshUtilities.MeshGeometricData2D:
+            """/ \brief Fill Mesh2D Geometric Data given a mesh with convex mesh cells
+            / \param convexMesh the convex mesh
+            / \return the MeshGeometricData computed
+            """
+            pass
+
+        @overload
+        def fill_mesh2_d_geometric_data(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO,
+            mesh_cell2_ds_polygon_type: List[GeometryUtilities.PolygonTypes]
+            ) -> MeshUtilities.MeshGeometricData2D:
+            """/ \brief Fill Mesh2D Geometric Data given a mesh with mesh cells type
+            / \param mesh the mesh
+            / \param meshCell2DsPolygonType the cell2D polygon type
+            / \return the MeshGeometricData computed
+            """
+            pass
+
+        @overload
+        def fill_mesh2_d_geometric_data(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO,
+            convex_mesh: IMeshDAO,
+            mesh_cell2_d_to_convex_cell2_d_indices: List[List[int]]
+            ) -> MeshUtilities.MeshGeometricData2D:
+            """/ \brief Fill Mesh2D Geometric Data starting given a mesh with non convex mesh cells and its convex sub-mesh cells
+            / \param mesh the mesh
+            / \param convexMesh the convex mesh cells of mesh
+            / \param meshCell2DToConvexCell2DIndices the collection of convex cell2Ds for each mesh cell2D
+            / \return the MeshGeometricData computed
+            """
+            pass
+
+        def import_mesh_geometric_data2_d_from_txt(
+            self,
+            file_path: str
+            ) -> MeshUtilities.MeshGeometricData2D:
+            pass
+        def export_mesh_geometric_data2_d_to_txt(
+            self,
+            mesh_geometric_data: MeshUtilities.MeshGeometricData2D,
+            file_path: str
+            ) -> None:
+            pass
+
+        @overload
+        def fill_mesh3_d_geometric_data(
+            self,
+            geometry_utilities: GeometryUtilities,
+            convex_mesh: IMeshDAO
+            ) -> MeshUtilities.MeshGeometricData3D:
+            """/ \brief Fill Mesh3D Geometric Data given a mesh with convex mesh cells
+            / \param convexMesh the convex mesh
+            / \return the MeshGeometricData computed
+            """
+            pass
+
+        @overload
+        def fill_mesh3_d_geometric_data(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO,
+            convex_mesh: IMeshDAO,
+            mesh_cell3_d_to_convex_cell3_d_indices: List[List[int]]
+            ) -> MeshUtilities.MeshGeometricData3D:
+            """/ \brief Fill Mesh3D Geometric Data starting given a mesh with non convex mesh cells and its convex sub-mesh cells
+            / \param mesh the mesh
+            / \param convexMesh the convex mesh
+            / \param meshCell2DToConvexCell2DIndices the collection of convex cell2Ds for each mesh cell2D
+            / \param meshCell3DToConvexCell3DIndices the collection of convex cell3Ds for each mesh cell3D
+            / \return the MeshGeometricData computed
+            """
+            pass
+
+        @overload
+        def fill_mesh3_d_geometric_data(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO,
+            cell3_ds_tetra_vertices: List[List[Eigen.MatrixXd]],
+            cell2_ds_triangles_3_d_vertices: List[List[Eigen.Matrix3d]]
+            ) -> MeshUtilities.MeshGeometricData3D:
+            pass
+
+        def import_mesh_geometric_data3_d_from_txt(
+            self,
+            file_path: str
+            ) -> MeshUtilities.MeshGeometricData3D:
+            pass
+        def export_mesh_geometric_data3_d_to_txt(
+            self,
+            mesh_geometric_data: MeshUtilities.MeshGeometricData3D,
+            file_path: str
+            ) -> None:
+            pass
+
+        def compute_cell0_d_cell1_d_neighbours(self, mesh: IMeshDAO) -> None:
+            pass
+        def compute_cell0_d_cell2_d_neighbours(self, mesh: IMeshDAO) -> None:
+            pass
+        def compute_cell0_d_cell3_d_neighbours(self, mesh: IMeshDAO) -> None:
+            pass
+
+        def compute_cell1_d_cell2_d_neighbours(self, mesh: IMeshDAO) -> None:
+            """/ \brief Compute Cell1D Cell2DNeighbours with given mesh data
+            / \param mesh the resulting mesh
+            """
+            pass
+
+        def compute_cell1_d_cell3_d_neighbours(self, mesh: IMeshDAO) -> None:
+            """/ \brief Compute Cell1D Cell3DNeighbours with given mesh data
+            / \param mesh the resulting mesh
+            """
+            pass
+
+        def compute_cell2_d_cell3_d_neighbours(self, mesh: IMeshDAO) -> None:
+            """/ \brief Compute Cell2D Cell3DNeighbours with given mesh data
+            / \param mesh the resulting mesh
+            """
+            pass
+
+        def create_rectangle_mesh(
+            self,
+            rectangle_origin: Eigen.Vector3d,
+            rectangle_base_tangent: Eigen.Vector3d,
+            rectangle_height_tangent: Eigen.Vector3d,
+            base_mesh_curvilinear_coordinates: List[float],
+            height_mesh_curvilinear_coordinates: List[float],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Crete rectange Mesh on rectangle base x height
+            / \param rectangleOrigin the rectangle origin point
+            / \param rectangleBaseTangent the rectangle base tangent vector
+            / \param rectangleHeightTangent the rectangle height tangent vector
+            / \param baseMeshCurvilinearCoordinates the base mesh 1D curvilinear coordinates
+            / \param heightMeshCurvilinearCoordinates the height mesh 1D curvilinear coordinates
+            / \note markers on border are set as { 1, 2, 3, 4, ..., numVertices } for cell0Ds and { 5, 6, 7, 8, ..., 2 *
+            / numVertices } for cell1Ds
+            """
+            pass
+
+        def create_parallelepiped_mesh(
+            self,
+            rectangle_origin: Eigen.Vector3d,
+            rectangle_length_tangent: Eigen.Vector3d,
+            rectangle_height_tangent: Eigen.Vector3d,
+            rectangle_width_tangent: Eigen.Vector3d,
+            length_mesh_curvilinear_coordinates: List[float],
+            height_mesh_curvilinear_coordinates: List[float],
+            width_mesh_curvilinear_coordinates: List[float],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def create_triangle_plus_hanging_nodes_mesh(
+            self,
+            rectangle_origin: Eigen.Vector3d,
+            rectangle_base_tangent: Eigen.Vector3d,
+            rectangle_height_tangent: Eigen.Vector3d,
+            base_mesh_curvilinear_coordinates: List[float],
+            height_mesh_curvilinear_coordinates: List[float],
+            number_of_added_vertices_for_each_rectangle: List[int],
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def create_rectangle_plus_hanging_nodes_mesh(
+            self,
+            rectangle_origin: Eigen.Vector3d,
+            rectangle_base_tangent: Eigen.Vector3d,
+            rectangle_height_tangent: Eigen.Vector3d,
+            base_mesh_curvilinear_coordinates: List[float],
+            height_mesh_curvilinear_coordinates: List[float],
+            number_of_added_vertices_for_each_rectangle: List[int],
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def create_triangular_mesh(
+            self,
+            polygon_vertices: Eigen.MatrixXd,
+            max_triangle_area: float,
+            mesh: IMeshDAO,
+            options: str = "-QDzpqnea"
+            ) -> None:
+            """/ \brief Create triangular mesh on 2D polygon
+            / \param polygonVertices the 2D polygon vertices, size 3xnumVertices
+            / \param maxTriangleArea the maximum triangular area
+            / \param options mesh options, see https://www.cs.cmu.edu/~quake/triangle.switch.html
+            / \note markers on border are set as { 1, 2, 3, 4, ..., numVertices } for cell0Ds and { 5, 6, 7, 8, ..., 2 *
+            / numVertices } for cell1Ds \note use triangle library
+            """
+            pass
+
+        def create_polygonal_mesh(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polygon_vertices: Eigen.MatrixXd,
+            num_points: int,
+            num_iterations: int,
+            mesh: IMeshDAO,
+            random_seed: int = 0
+            ) -> None:
+            pass
+
+        #/ \brief Create tetrahedral mesh on 3D polyhedron
+        #/ \param polyhedronVertices the polyhedron vertices, size 3 x numVertices
+        #/ \param polyhedronEdges the polyhedron edges, size 2 x numEdges
+        #/ \param polyhedronFaces the polyhedron face vertices and edges, size numFaces x 2 x numVertices
+        #/ \param maxTetrahedronVolume the maximum tetrahedron area
+        #/ \param options mesh options, see https://wias-berlin.de/software/tetgen/1.5/doc/manual/manual005.html#cmd-q
+        #/ \note markers on border are set as { 1, 2, 3, 4, ..., numVertices } for cell0Ds and { 5, 6, 7, 8, ..., 2 *
+        #/ numVertices } for cell1Ds \note use tetgen library
+        @overload
+        def create_tetrahedral_mesh(
+            self,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_faces: List[Eigen.MatrixXi],
+            max_tetrahedron_volume: float,
+            mesh: IMeshDAO,
+            options: str = "Qpqfezna"
+            ) -> None:
+            pass
+        @overload
+        def create_tetrahedral_mesh(
+            self,
+            points: Eigen.MatrixXd,
+            facets: List[List[int]],
+            max_tetrahedron_volume: float,
+            mesh: IMeshDAO,
+            options: str = "Qpqfezna"
+            ) -> None:
+            pass
+
+        def create_delaunay_mesh3_d(
+            self,
+            points: Eigen.MatrixXd,
+            points_marker: List[int],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def create_polyhedral_mesh(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_faces: List[Eigen.MatrixXi],
+            num_points: int,
+            num_iterations: int,
+            mesh: IMeshDAO,
+            random_seed: int = 0
+            ) -> None:
+            pass
+
+        def make_mesh_triangular_faces(
+            self,
+            faces_triangulation: List[List[int]],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def import_open_volume_mesh(
+            self,
+            ovm_file_path: str,
+            mesh: IMeshDAO,
+            mesh_cell3_ds_faces_orientation: List[List[bool]]
+            ) -> None:
+            """/ \brief Import 3D mesh from OVM file"""
+            pass
+
+        def export_mesh_to_open_volume(
+            self,
+            mesh: IMeshDAO,
+            mesh_cell3_ds_faces_orientation: List[List[bool]],
+            ovm_file_path: str
+            ) -> None:
+            """/ \brief Export 3D mesh to OVM file"""
+            pass
+
+        def import_vtk_mesh3_d(self, vtk_file_path: str, mesh: IMeshDAO) -> None:
+            """/ \brief Import 3D mesh from VTK file"""
+            pass
+
+        def import_object_file_format(self, off_file_path: str, mesh: IMeshDAO) -> None:
+            """/ \brief Import 2D mesh from OFF file"""
+            pass
+
+        def export_mesh_to_object_file_format(
+            self,
+            mesh: IMeshDAO,
+            off_file_path: str
+            ) -> None:
+            """/ \brief Export 2D mesh to OFF file"""
+            pass
+
+        def change_polygon_mesh_markers(
+            self,
+            polygon_vertices: Eigen.MatrixXd,
+            cell0_d_markers: List[int],
+            cell1_d_markers: List[int],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Change Polygon Mesh Markers from { 1, 2, 3, 4, ..., numVertices } for cell0Ds and { 5, 6, 7, 8, ..., 2 *
+            / numVertices } for cell1Ds to cell0DMarkers and cell1DMarkers \param polygonVertices the 2D polygon vertices,
+            / size 3xnumVertices \param cell0DMarkers the new cell0D markers, size 1xnumPolygonVertices \param cell1DMarkers
+            / the new cell1D markers, size 1xnumPolygonVertices \param mesh the mesh
+            """
+            pass
+
+        def change_polyhedron_mesh_markers(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_faces: List[Eigen.MatrixXi],
+            polyhedron_edges_tangent: Eigen.MatrixXd,
+            polyhedron_edges_length: Eigen.VectorXd,
+            polyhedron_faces_normal: List[Eigen.Vector3d],
+            polyhedron_faces_vertices: List[Eigen.MatrixXd],
+            polyhedron_faces_vertices_2_d: List[Eigen.MatrixXd],
+            polyhedron_faces_translation: List[Eigen.Vector3d],
+            polyhedron_faces_rotation_matrix: List[Eigen.Matrix3d],
+            polyhedron_vertices_marker: List[int],
+            polyhedron_edges_marker: List[int],
+            polyhedron_faces_marker: List[int],
+            cell1_ds_centroid: List[Eigen.Vector3d],
+            cell2_ds_centroid: List[Eigen.Vector3d],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def export_mesh_to_vtu(
+            self,
+            mesh: IMeshDAO,
+            export_folder: str,
+            file_name: str,
+            separate_file: bool = False
+            ) -> None:
+            """/ \brief Export Mesh To VTU
+            / \param mesh the mesh
+            / \param exportFolder the folder in which the mesh is exported
+            """
+            pass
+
+        def export_mesh_to_ucd(
+            self,
+            mesh: IMeshDAO,
+            export_folder: str,
+            file_name: str,
+            separate_file: bool = False
+            ) -> None:
+            """/ \brief Export Mesh To UCD
+            / \param mesh the mesh
+            / \param exportFolder the folder in which the mesh is exported
+            """
+            pass
+
+        def export_cell2_d_to_vtu(
+            self,
+            mesh: IMeshDAO,
+            cell2_d_index: int,
+            cell2_d_vertices: Eigen.MatrixXd,
+            cell2_d_triangulations: List[Eigen.Matrix3d],
+            cell2_d_area: float,
+            cell2_d_centroid: Eigen.Vector3d,
+            export_folder: str
+            ) -> None:
+            """/ \brief Export Cell2D To VTU
+            / \param mesh the mesh
+            / \param cell2DIndex the cell2D index
+            / \param cell2DVertices the cell2D vertices
+            / \param cell2DTriangulations the cell2D triangulation
+            / \param cell2DArea the cell2D area
+            / \param cell2DCentroid the cell2D centroid
+            / \param exportFolder the folder in which to export
+            """
+            pass
+
+        def export_cell3_d_to_vtu(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO,
+            cell3_d_index: int,
+            cell3_d_vertices: Eigen.MatrixXd,
+            cell3_d_tetrahedrons: List[Eigen.MatrixXd],
+            cell3_d_faces3_d_triangulations: List[List[Eigen.Matrix3d]],
+            cell3_d_volume: float,
+            cell3_d_centroid: Eigen.Vector3d,
+            cell3_d_faces_translation: List[Eigen.Vector3d],
+            cell3_d_faces_rotation_matrix: List[Eigen.Matrix3d],
+            cell3_d_faces_area: List[float],
+            cell3_d_faces2_d_vertices: List[Eigen.MatrixXd],
+            cell3_d_faces3_d_vertices: List[Eigen.MatrixXd],
+            cell3_d_faces_edge_lengths: List[Eigen.VectorXd],
+            cell3_d_faces_edge_directions: List[List[bool]],
+            cell3_d_faces_edges2_d_tangent: List[Eigen.MatrixXd],
+            cell3_d_faces_edges2_d_normal: List[Eigen.MatrixXd],
+            cell3_d_faces_normals: List[Eigen.Vector3d],
+            cell3_d_faces_normal_directions: List[bool],
+            cell3_d_faces2_d_centroids: List[Eigen.Vector3d],
+            export_folder: str
+            ) -> None:
+            pass
+
+        def mesh_cell3_d_to_polyhedron(
+            self,
+            mesh: IMeshDAO,
+            cell3_d_index: int
+            ) -> GeometryUtilities.Polyhedron:
+            """/ \brief Convert a mesh cell3D to a geometric polydheron
+            / \param mesh a mesh
+            / \param cell3DIndex the cell3D index
+            / \return polyhedron from mesh 3D cell
+            """
+            pass
+
+        def mesh_cell3_d_to_vtp_polyhedron(
+            self,
+            mesh: IMeshDAO,
+            cell3_d_index: int
+            ) -> MeshUtilities.VTPPolyhedron:
+            """/ \brief Convert a mesh cell3D to a VTP polydheron
+            / \param mesh a mesh
+            / \param cell3DIndex the cell3D index
+            / \return VTP polyhedron from mesh 3D cell
+            """
+            pass
+
+        def split_cell1_d(
+            self,
+            cell1_d_index: int,
+            sub_cell1_ds: Eigen.MatrixXi,
+            mesh: IMeshDAO
+            ) -> List[int]:
+            """/ \brief Split cell2D into subcells
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param subCell1Ds the list of sub-cells 1D mesh vertices indices, size 2 x numSubCells)
+            / \param mesh the mesh to update
+            / \return the list of new cell1Ds indices, from 0 to Cell1DTotalNumber()
+            """
+            pass
+
+        def split_cell2_d(
+            self,
+            cell2_d_index: int,
+            sub_cell2_ds: List[Eigen.MatrixXi],
+            mesh: IMeshDAO
+            ) -> List[int]:
+            """/ \brief Split cell2D into subcells
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param subCell2Ds the list of sub-cells 2D mesh vertices and edges indices, size numSubCells x (2 x numVertices)
+            / \param mesh the mesh to update
+            / \return the list of new cell2Ds indices, from 0 to Cell2DTotalNumber()
+            """
+            pass
+
+        def split_cell3_d(
+            self,
+            cell3_d_index: int,
+            sub_cell3_ds_vertices: List[List[int]],
+            sub_cell3_ds_edges: List[List[int]],
+            sub_cell3_ds_faces: List[List[int]],
+            mesh: IMeshDAO
+            ) -> List[int]:
+            """/ \brief Split cell3D into subcells
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param subCell3Ds the list of sub-cells 3D mesh vertices and edges indices, size numSubCells x (2 x numVertices)
+            / \param mesh the mesh to update
+            / \return the list of new cell3Ds indices, from 0 to Cell3DTotalNumber()
+            """
+            pass
+
+        @overload
+        def agglomerate_cell1_ds(
+            self,
+            cell1_ds_index: std.unordered_set[int],
+            mesh: IMeshDAO
+            ) -> MeshUtilities.AgglomerateCell1DInformation:
+            pass
+
+        @overload
+        def agglomerate_cell2_ds(
+            self,
+            geometry_utilities: GeometryUtilities,
+            cell2_ds_index: std.unordered_set[int],
+            mesh: IMeshDAO
+            ) -> MeshUtilities.AgglomerateCell2DInformation:
+            pass
+
+        @overload
+        def agglomerate_cell3_ds(
+            self,
+            cell3_ds_index: std.unordered_set[int],
+            mesh: IMeshDAO
+            ) -> MeshUtilities.AgglomerateCell3DInformation:
+            pass
+
+        @overload
+        def agglomerate_cell1_ds(
+            self,
+            sub_cell1_ds_index: std.unordered_set[int],
+            agglomerate_cell1_d_vertices: List[int],
+            sub_cell1_ds_removed_cell0_ds: List[int],
+            mesh: IMeshDAO,
+            mesh_cell1_ds_original_cell1_ds: List[List[int]],
+            mantain_neigh2_d_order: bool = False
+            ) -> int:
+            pass
+
+        @overload
+        def agglomerate_cell2_ds(
+            self,
+            sub_cell2_ds_index: std.unordered_set[int],
+            agglomerate_cell2_d_vertices: List[int],
+            agglomerate_cell2_d_edges: List[int],
+            sub_cell2_ds_removed_cell0_ds: List[int],
+            sub_cell2_ds_removed_cell1_ds: List[int],
+            mesh: IMeshDAO,
+            mesh_cell2_ds_original_cell2_ds: List[List[int]]
+            ) -> int:
+            pass
+
+        @overload
+        def agglomerate_cell3_ds(
+            self,
+            sub_cell3_ds_index: std.unordered_set[int],
+            agglomerate_cell3_d_vertices: List[int],
+            agglomerate_cell3_d_edges: List[int],
+            agglomerate_cell3_d_faces: List[int],
+            sub_cell3_ds_removed_cell0_ds: List[int],
+            sub_cell3_ds_removed_cell1_ds: List[int],
+            sub_cell3_ds_removed_cell2_ds: List[int],
+            mesh: IMeshDAO,
+            mesh_cell3_ds_original_cell3_ds: List[List[int]]
+            ) -> int:
+            pass
+
+        def create_randomly_deformed_quadrilaterals(
+            self,
+            geometry_utilities: GeometryUtilities,
+            rectangle_origin: Eigen.Vector3d,
+            rectangle_base_tangent: Eigen.Vector3d,
+            rectangle_height_tangent: Eigen.Vector3d,
+            num_quadrilaterals_base_tangent: int,
+            num_quadrilaterals_height_tangent: int,
+            max_deforming_percentage_base: float,
+            max_deforming_percentage_height: float,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def create_distorted_quadrilaterals(
+            self,
+            geometry_utilities: GeometryUtilities,
+            rectangle_origin: Eigen.Vector3d,
+            rectangle_base_tangent: Eigen.Vector3d,
+            rectangle_height_tangent: Eigen.Vector3d,
+            num_quadrilaterals_base_tangent: int,
+            num_quadrilaterals_height_tangent: int,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+        def find_cell2_ds_common_vertices(
+            self,
+            cell2_ds_index: List[int],
+            mesh: IMeshDAO
+            ) -> List[int]:
+            """/ \brief Given a set of Cell2Ds find the common Cell0Ds
+            / \param cell2DsIndex the cell2Ds index
+            / \param mesh the mesh
+            / \return the Cell0D indices
+            """
+            pass
+
+        def find_cell2_ds_common_edges(
+            self,
+            cell2_ds_index: List[int],
+            mesh: IMeshDAO
+            ) -> List[int]:
+            """/ \brief Given a set of Cell2Ds find the common Cell1Ds
+            / \param cell2DsIndex the cell2Ds index
+            / \param mesh the mesh
+            / \return the Cell1D indices
+            """
+            pass
+
+        @overload
+        def find_concave_cell3_d_faces_convex_cell2_d(
+            self,
+            geometry_utilities: GeometryUtilities,
+            concave_cell3_d_index: int,
+            mesh: IMeshDAO,
+            convex_mesh: IMeshDAO,
+            convex_cell3_d_indices: List[int],
+            concave_cell3_d_faces3_d_vertices: List[Eigen.MatrixXd],
+            concave_cell3_d_faces2_d_vertices: List[Eigen.MatrixXd],
+            concave_cell3_d_faces_translation: List[Eigen.Vector3d],
+            concave_cell3_d_faces_rotation_matrix: List[Eigen.Matrix3d],
+            concave_cell3_d_faces_normal: List[Eigen.Vector3d],
+            convex_cell3_ds_faces3_d_vertices: List[List[Eigen.MatrixXd]],
+            convex_cell3_ds_faces_unaligned_vertices: List[List[List[int]]]
+            ) -> MeshUtilities.FindConcaveCell3DFacesConvexCell2DResult:
+            pass
+
+        @overload
+        def find_concave_cell3_d_faces_convex_cell2_d(
+            self,
+            geometry_utilities: GeometryUtilities,
+            concave_cell3_d_index: int,
+            mesh: IMeshDAO,
+            concave_cell3_d_tetra: List[Eigen.MatrixXd],
+            concave_cell3_d_faces_2_d_triangles: List[List[Eigen.Matrix3d]],
+            concave_cell3_d_faces3_d_vertices: List[Eigen.MatrixXd],
+            concave_cell3_d_faces_translation: List[Eigen.Vector3d],
+            concave_cell3_d_faces_rotation_matrix: List[Eigen.Matrix3d],
+            concave_cell3_d_faces_normal: List[Eigen.Vector3d],
+            convex_cell3_ds_faces3_d_vertices: List[List[Eigen.MatrixXd]],
+            convex_cell3_ds_faces_unaligned_vertices: List[List[List[int]]]
+            ) -> MeshUtilities.FindConcaveCell3DFacesConvexCell2DResult:
+            pass
+
+        @overload
+        def find_point_mesh_position(
+            self,
+            find_cell2_d_result: MeshUtilities.FindPointCell2DResult,
+            mesh: IMeshDAO
+            ) -> MeshUtilities.FindPointMeshPositionResult:
+            pass
+
+        @overload
+        def find_point_mesh_position(
+            self,
+            find_cell3_d_result: MeshUtilities.FindPointCell3DResult,
+            mesh: IMeshDAO
+            ) -> MeshUtilities.FindPointMeshPositionResult:
+            pass
+
+        def find_point_cell2_d(
+            self,
+            geometry_utilities: GeometryUtilities,
+            point: Eigen.Vector3d,
+            mesh: IMeshDAO,
+            cell2_ds_vertices: List[Eigen.MatrixXd],
+            cell2_ds_bounding_box: List[Eigen.MatrixXd],
+            find_only_first_cell2_d: bool = True,
+            starting_cell2_d_index: int = 0
+            ) -> MeshUtilities.FindPointCell2DResult:
+            pass
+
+        @overload
+        def find_point_cell3_d(
+            self,
+            geometry_utilities: GeometryUtilities,
+            point: Eigen.Vector3d,
+            mesh: IMeshDAO,
+            cell3_ds_faces: List[List[Eigen.MatrixXi]],
+            cell3_ds_face_vertices: List[List[Eigen.MatrixXd]],
+            cell3_ds_face_rotated_vertices: List[List[Eigen.MatrixXd]],
+            cell3_ds_face_normals: List[List[Eigen.Vector3d]],
+            cell3_ds_face_normal_directions: List[List[bool]],
+            cell3_ds_face_translations: List[List[Eigen.Vector3d]],
+            cell3_ds_face_rotation_matrices: List[List[Eigen.Matrix3d]],
+            cell3_ds_bounding_box: List[Eigen.MatrixXd],
+            find_only_first_cell3_d: bool = True,
+            starting_cell3_d_index: int = 0
+            ) -> MeshUtilities.FindPointCell3DResult:
+            pass
+
+        @overload
+        def find_point_cell3_d(
+            self,
+            geometry_utilities: GeometryUtilities,
+            point: Eigen.Vector3d,
+            mesh: IMeshDAO,
+            cell3_ds_faces: List[List[Eigen.MatrixXi]],
+            cell3_ds_face_vertices: List[List[Eigen.MatrixXd]],
+            cell3_ds_face_rotated_vertices: List[List[Eigen.MatrixXd]],
+            cell3_ds_face_normals: List[List[Eigen.Vector3d]],
+            cell3_ds_face_normal_directions: List[List[bool]],
+            cell3_ds_face_translations: List[List[Eigen.Vector3d]],
+            cell3_ds_face_rotation_matrices: List[List[Eigen.Matrix3d]],
+            cell3_ds_bounding_box: List[Eigen.MatrixXd],
+            cell3_ds_tetrahedra: List[List[Eigen.MatrixXd]],
+            find_only_first_cell3_d: bool,
+            starting_cell3_d_index: int
+            ) -> MeshUtilities.FindPointCell3DResult:
+            pass
+
+        def agglomerate_triangles(
+            self,
+            triangles_index_to_agglomerate: List[int],
+            triangular_mesh: IMeshDAO
+            ) -> MeshUtilities.AgglomerateTrianglesResult:
+            """/ \brief Agglomerate Triangles with one vertex in common
+            / \param trianglesIndexToAgglomerate the cell2Ds triangular index in the mesh
+            / \param triangularMesh the triangular mesh
+            / \return the agglomearted polygon indices
+            / \note the triangular index shall be done counterclockwise
+            """
+            pass
+
+        def agglomerate_mesh_from_triangular_mesh(
+            self,
+            triangles_indices_to_agglomerate: List[List[int]],
+            triangular_mesh: IMeshDAO
+            ) -> MeshUtilities.AgglomerateMeshFromTriangularMeshResult:
+            pass
+
+        def import_agglomeration_information_from_csv(
+            self,
+            geometry_utilities: GeometryUtilities,
+            original_mesh: IMeshDAO,
+            agglomerated_mesh: IMeshDAO,
+            file_name: str,
+            separator: str
+            ) -> MeshUtilities.AgglomerationInformation:
+            """/ \brief Import Agglomeration mesh Information From file Csv
+            / \param geometryUtilities the geometry utilities
+            / \param originalMesh the original mesh
+            / \param agglomeratedMesh the agglomerated mesh
+            / \param fileName the csv file name
+            / \param separator the csv file separator
+            / \param originalCell0DToAgglomeratedCell0Ds original Cell0Ds to agglomerated Cell0Ds
+            / \param originalCell1DToAgglomeratedCell1Ds original Cell1Ds to agglomerated Cell1Ds
+            / \param originalCell2DToAgglomeratedCell2Ds original Cell2Ds to agglomerated Cell2Ds
+            / \param agglomeratedCell0DToOriginalCell0Ds agglomerated Cell0Ds to original Cell0Ds
+            / \param agglomeratedCell1DToOriginalCell1Ds agglomerated Cell1Ds to original Cell1Ds
+            / \param agglomeratedCell2DToOriginalCell2Ds agglomerated Cell2Ds to original Cell2Ds
+            """
+            pass
+
+        def import_agglomeration_information_from_off(
+            self,
+            geometry_utilities: GeometryUtilities,
+            original_mesh: IMeshDAO,
+            agglomerated_mesh: IMeshDAO,
+            file_name: str,
+            separator: str
+            ) -> MeshUtilities.AgglomerationInformation:
+            """/ \brief Import Agglomeration mesh Information From file OFF
+            / \param geometryUtilities the geometry utilities
+            / \param originalMesh the original mesh
+            / \param agglomeratedMesh the agglomerated mesh
+            / \param fileName the csv file name
+            / \param separator the csv file separator
+            / \param originalCell0DToAgglomeratedCell0Ds original Cell0Ds to agglomerated Cell0Ds
+            / \param originalCell1DToAgglomeratedCell1Ds original Cell1Ds to agglomerated Cell1Ds
+            / \param originalCell2DToAgglomeratedCell2Ds original Cell2Ds to agglomerated Cell2Ds
+            / \param agglomeratedCell0DToOriginalCell0Ds agglomerated Cell0Ds to original Cell0Ds
+            / \param agglomeratedCell1DToOriginalCell1Ds agglomerated Cell1Ds to original Cell1Ds
+            / \param agglomeratedCell2DToOriginalCell2Ds agglomerated Cell2Ds to original Cell2Ds
+            """
+            pass
+
+        def export_mesh_to_csv(
+            self,
+            mesh: IMeshDAO,
+            separator: str,
+            export_folder_path: str
+            ) -> None:
+            """/ \brief Export mesh to csv file"""
+            pass
+
+        def export_concave_mesh2_d_to_csv(
+            self,
+            mesh: IMeshDAO,
+            convex_cell2_ds_index: List[List[int]],
+            separator: str,
+            export_folder_path: str
+            ) -> None:
+            """/ \brief Export 2D concave mesh to csv file"""
+            pass
+
+        def mark_cells(
+            self,
+            marking_function: Callable[[ Eigen.MatrixXd ], Eigen.VectorXi],
+            cells_points: List[Eigen.MatrixXd],
+            default_mark: int
+            ) -> List[int]:
+            pass
+
+        def intersect_mesh_polyhedron(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_edges_vertices: List[Eigen.MatrixXd],
+            polyhedron_edges_tangent: Eigen.MatrixXd,
+            polyhedron_edges_bouding_box: List[Eigen.MatrixXd],
+            polyhedron_faces: List[Eigen.MatrixXi],
+            polyhedron_faces_vertices: List[Eigen.MatrixXd],
+            polyhedron_faces_rotated_vertices: List[Eigen.MatrixXd],
+            polyhedron_faces_normals: List[Eigen.Vector3d],
+            polyhedron_faces_normal_direction: List[bool],
+            polyhedron_faces_translation: List[Eigen.Vector3d],
+            polyhedron_faces_rotation_matrix: List[Eigen.Matrix3d],
+            polyhedron_faces_bouding_box: List[Eigen.MatrixXd],
+            polyhedron_bouding_box: Eigen.MatrixXd,
+            mesh: IMeshDAO,
+            mesh_cell1_ds_bouding_box: List[Eigen.MatrixXd],
+            mesh_cell1_ds_vertices: List[Eigen.MatrixXd],
+            mesh_cell1_ds_tangent: List[Eigen.Vector3d],
+            mesh_cell2_ds_vertices: List[Eigen.MatrixXd],
+            mesh_cell2_ds_normal: List[Eigen.Vector3d],
+            mesh_cell2_ds_2_d_vertices: List[Eigen.MatrixXd],
+            mesh_cell2_ds_translation: List[Eigen.Vector3d],
+            mesh_cell2_ds_rotation_matrix: List[Eigen.Matrix3d],
+            mesh_cell2_ds_bouding_box: List[Eigen.MatrixXd],
+            mesh_cell3_ds_bouding_box: List[Eigen.MatrixXd],
+            mesh_cell3_ds_faces: List[List[Eigen.MatrixXi]],
+            mesh_cell3_ds_faces_vertices: List[List[Eigen.MatrixXd]],
+            mesh_cell3_ds_faces_2_d_vertices: List[List[Eigen.MatrixXd]],
+            mesh_cell3_ds_faces_normal: List[List[Eigen.Vector3d]],
+            mesh_cell3_ds_faces_normal_directions: List[List[bool]],
+            mesh_cell3_ds_faces_translation: List[List[Eigen.Vector3d]],
+            mesh_cell3_ds_faces_rotation_matrix: List[List[Eigen.Matrix3d]]
+            ) -> MeshUtilities.Intersect_mesh_polyhedron_result:
+            pass
+
+        def set_polygon_mesh_markers(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polygon_vertices: Eigen.MatrixXd,
+            cell0_d_markers: List[int],
+            cell1_d_markers: List[int],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:MeshUtilities.hpp>    ####################
+
+
+####################    <generated_from:ObjectFileFormatInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __ObjectFileFormatInterface_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class ObjectFileFormatInterface:
+        """
+        (final class)
+        """
+        class OFFMesh:
+            """
+            (final class)
+            """
+            num_cell0_ds: int
+            num_cell1_ds: int
+            num_cell2_ds: int
+
+            cell0_ds: Eigen.MatrixXd
+            cell2_ds: List[Eigen.VectorXi]
+            def __init__(
+                self,
+                cell0_ds: Eigen.MatrixXd = Eigen.MatrixXd(),
+                cell2_ds: List[Eigen.VectorXi] = List[Eigen.VectorXi]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self) -> None:
+            pass
+
+        def strings_to_off_mesh(
+            self,
+            file_lines: List[str]
+            ) -> ObjectFileFormatInterface.OFFMesh:
+            pass
+        def off_mesh_to_strings(self, mesh: ObjectFileFormatInterface.OFFMesh) -> List[str]:
+            pass
+        def mesh_dao_to_off_mesh(
+            self,
+            original_mesh: IMeshDAO
+            ) -> ObjectFileFormatInterface.OFFMesh:
+            pass
+        def off_mesh_to_mesh_dao(
+            self,
+            original_mesh: ObjectFileFormatInterface.OFFMesh,
+            mesh_utilities: MeshUtilities,
+            converted_mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def import_mesh_from_file(
+            self,
+            off_file_path: str,
+            mesh_utilities: MeshUtilities,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def export_mesh_to_file(self, mesh: IMeshDAO, off_file_path: str) -> None:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:ObjectFileFormatInterface.hpp>    ####################
+
+
+####################    <generated_from:OpenVolumeMeshInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __OpenVolumeMeshInterface_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class OpenVolumeMeshInterface:
+        """
+        (final class)
+        """
+        class OVMMesh:
+            """
+            (final class)
+            """
+            class Cell3D:
+                """
+                (final class)
+                """
+                faces_index: List[int]
+                faces_orientation: List[bool]
+                def __init__(self, faces_orientation: List[bool] = List[bool]()) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            num_cell0_ds: int
+            num_cell1_ds: int
+            num_cell2_ds: int
+            num_cell3_ds: int
+
+            cell0_ds: Eigen.MatrixXd
+            cell1_ds: Eigen.MatrixXi
+            cell2_ds: List[Eigen.MatrixXi]
+            cell3_ds: List[Cell3D]
+            def __init__(
+                self,
+                cell0_ds: Eigen.MatrixXd = Eigen.MatrixXd(),
+                cell1_ds: Eigen.MatrixXi = Eigen.MatrixXi(),
+                cell2_ds: List[Eigen.MatrixXi] = List[Eigen.MatrixXi](),
+                cell3_ds: List[Cell3D] = List[Cell3D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self) -> None:
+            pass
+
+        def strings_to_ovm_mesh(
+            self,
+            file_lines: List[str]
+            ) -> OpenVolumeMeshInterface.OVMMesh:
+            pass
+        def ovm_mesh_to_strings(self, mesh: OpenVolumeMeshInterface.OVMMesh) -> List[str]:
+            pass
+        def mesh_dao_to_ovm_mesh(
+            self,
+            original_mesh: IMeshDAO,
+            cell3_ds_faces_orientation: List[List[bool]]
+            ) -> OpenVolumeMeshInterface.OVMMesh:
+            pass
+        def ovm_mesh_to_mesh_dao(
+            self,
+            original_mesh: OpenVolumeMeshInterface.OVMMesh,
+            converted_mesh: IMeshDAO,
+            converted_mesh_cell3_ds_faces_orientation: List[List[bool]]
+            ) -> None:
+            pass
+
+        def import_mesh_from_file(
+            self,
+            ovm_file_path: str,
+            mesh: IMeshDAO,
+            mesh_cell3_ds_faces_orientation: List[List[bool]]
+            ) -> None:
+            pass
+
+        def export_mesh_to_file(
+            self,
+            mesh: IMeshDAO,
+            mesh_cell3_ds_faces_orientation: List[List[bool]],
+            ovm_file_path: str
+            ) -> None:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:OpenVolumeMeshInterface.hpp>    ####################
+
+
+####################    <generated_from:PlatonicSolid.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __PlatonicSolid_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class PlatonicSolid:
+        """/ \brief MeshUtilities
+        / \copyright See top level LICENSE file for details.
+        /
+        / https://danielsieger.com/blog/2021/01/03/generating-platonic-solids.html
+        (final class)
+        """
+        def __init__(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh_utilities: MeshUtilities
+            ) -> None:
+            pass
+
+
+        def project_to_unit_sphere(self, polyhedron: GeometryUtilities.Polyhedron) -> None:
+            pass
+
+        def project_to_unit_sphere_geodesic(
+            self,
+            mesh_data: MeshMatrices,
+            mesh: MeshMatricesDAO
+            ) -> None:
+            pass
+
+        def project_to_unit_sphere_goldberg(
+            self,
+            mesh_data: MeshMatrices,
+            mesh: MeshMatricesDAO
+            ) -> None:
+            pass
+
+        def dual_polyhedron(
+            self,
+            polyhedron: GeometryUtilities.Polyhedron
+            ) -> GeometryUtilities.Polyhedron:
+            pass
+
+        def first_class_geodesic_polyhedron(
+            self,
+            starting_polyhedron: GeometryUtilities.Polyhedron,
+            frequency: int,
+            filter_mesh: MeshMatricesDAO
+            ) -> None:
+            pass
+
+        def second_class_geodesic_polyhedron(
+            self,
+            starting_polyhedron: GeometryUtilities.Polyhedron,
+            frequency: int,
+            filter_mesh: MeshMatricesDAO
+            ) -> None:
+            pass
+
+        def goldberg_polyhedron(
+            self,
+            p: int,
+            q: int,
+            b: int,
+            c: int
+            ) -> GeometryUtilities.Polyhedron:
+            pass
+
+        def geodesic_polyhedron(
+            self,
+            p: int,
+            q: int,
+            b: int,
+            c: int
+            ) -> GeometryUtilities.Polyhedron:
+            pass
+
+        def tetrahedron(self) -> GeometryUtilities.Polyhedron:
+            pass
+
+        def hexahedron(self) -> GeometryUtilities.Polyhedron:
+            pass
+
+        def octahedron(self) -> GeometryUtilities.Polyhedron:
+            pass
+
+        def icosahedron(self) -> GeometryUtilities.Polyhedron:
+            pass
+
+        def dodecahedron(self) -> GeometryUtilities.Polyhedron:
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:PlatonicSolid.hpp>    ####################
+
+
+####################    <generated_from:RefinementUtilities.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __RefinementUtilities_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class RefinementUtilities:
+        """/ \brief RefinementUtilities
+        / \copyright See top level LICENSE file for details.
+        (final class)
+        """
+        class TriangleMaxEdgeDirection:
+            """
+            (final class)
+            """
+            max_edge_index: int = 0
+            opposite_vertex_index: int = 0
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class TetrahedronMaxEdgeDirection:
+            """
+            (final class)
+            """
+            max_edge_index: int = 0
+            opposite_vertices_index: List[int] = List[int]()
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class PolygonDirection:
+            """
+            (final class)
+            """
+            line_origin: Eigen.Vector3d
+            line_tangent: Eigen.Vector3d
+            def __init__(
+                self,
+                line_origin: Eigen.Vector3d = Eigen.Vector3d(),
+                line_tangent: Eigen.Vector3d = Eigen.Vector3d()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class MeshQuality:
+            """
+            (final class)
+            """
+            cell2_ds_quality: List[float]
+            cell1_ds_quality: List[float]
+            def __init__(
+                self,
+                cell2_ds_quality: List[float] = List[float](),
+                cell1_ds_quality: List[float] = List[float]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class SplitCell1D_Result:
+            """
+            (final class)
+            """
+            new_cell0_d_index: int = 0
+            new_cell1_ds_index: List[int] = List[int]()
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class SplitPolygon_Result:
+            """
+            (final class)
+            """
+            class Types(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                split = enum.auto()                              # (= 1)
+                no_split = enum.auto()                           # (= 2)
+
+            type: Types = Types.unknown
+            new_cell1_d_index: int = 0
+            new_cell2_ds_index: List[int] = List[int]()
+            def __init__(self, type: Types = Types.unknown) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolygon_CheckResult:
+            """
+            (final class)
+            """
+            class ResultTypes(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                cell2_d_to_be_splitted = enum.auto()             # (= 1)
+                cell2_d_already_splitted = enum.auto()           # (= 2)
+                cell2_d_split_under_tolerance = enum.auto()      # (= 3)
+                split_direction_not_inside_cell2_d = enum.auto() # (= 4)
+
+            class Cell1DToSplit:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                        # (= 0)
+                    not_inside = enum.auto()                     # (= 1)
+                    edge_length_not_enough = enum.auto()         # (= 2)
+                    only_local_quality_not_enough = enum.auto()  # (= 3)
+                    only_neigh_quality_not_enough = enum.auto()  # (= 4)
+                    both_quality_not_enough = enum.auto()        # (= 5)
+                    only_local_aligned_not_respect = enum.auto() # (= 6)
+                    only_neigh_aligned_not_respect = enum.auto() # (= 7)
+                    both_aligned_not_respect = enum.auto()       # (= 8)
+                    to_split = enum.auto()                       # (= 9)
+
+                is_intersection_inside: bool = False
+                is_edge_length_enough: bool = False
+                is_local_quality_enough: bool = False
+                is_quality_enough: bool = False
+                is_neigh_quality_enough: List[bool] = List[bool]()
+                is_local_aligned_respect: bool = False
+                is_aligned_respect: bool = False
+                is_neigh_aligned_respect: List[bool] = List[bool]()
+                is_to_split: bool = False
+                cell2_d_edge_index: int = 0
+                type: Types = Types.unknown
+                def __init__(
+                    self,
+                    is_intersection_inside: bool = False,
+                    is_edge_length_enough: bool = False,
+                    is_local_quality_enough: bool = False,
+                    is_quality_enough: bool = False,
+                    is_neigh_quality_enough: List[bool] = List[bool](),
+                    is_local_aligned_respect: bool = False,
+                    is_aligned_respect: bool = False,
+                    is_neigh_aligned_respect: List[bool] = List[bool](),
+                    is_to_split: bool = False,
+                    type: Types = Types.unknown
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            cell1_ds_index: List[int] = List[int]()
+            cell1_ds_intersection: List[GeometryUtilities.LinePolygonPositionResult.EdgeIntersection] = List[GeometryUtilities.LinePolygonPositionResult.EdgeIntersection]()
+            cell1_ds_to_split: List[Cell1DToSplit] = List[Cell1DToSplit]()
+            result_type: ResultTypes = ResultTypes.unknown
+            def __init__(
+                self,
+                cell1_ds_intersection: List[GeometryUtilities.LinePolygonPositionResult.EdgeIntersection] = List[GeometryUtilities.LinePolygonPositionResult.EdgeIntersection](),
+                cell1_ds_to_split: List[Cell1DToSplit] = List[Cell1DToSplit](),
+                result_type: ResultTypes = ResultTypes.unknown
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class CheckSplitType_Result:
+            """
+            (final class)
+            """
+            class SplitTypes(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                no_split = enum.auto()                           # (= 1)
+                no_new_vertices = enum.auto()                    # (= 2)
+                new_vertex_from = enum.auto()                    # (= 3)
+                new_vertex_to = enum.auto()                      # (= 4)
+                new_vertices = enum.auto()                       # (= 5)
+
+            no_new_vertices_index: List[int] = List[int]()       #/< valid only for NoNewVertices type
+            type: SplitTypes = SplitTypes.unknown
+            def __init__(self, type: SplitTypes = SplitTypes.unknown) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolyhedron_Result:
+            """
+            (final class)
+            """
+            class ResultTypes(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                successfull = enum.auto()                        # (= 1)
+                cell3_d_already_splitted = enum.auto()           # (= 2)
+                cell3_d_split_under_tolerance = enum.auto()      # (= 3)
+                cell3_d_split_none = enum.auto()                 # (= 4)
+
+            class RefinedCell1D:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                        # (= 0)
+                    updated = enum.auto()                        # (= 1)
+                    new = enum.auto()                            # (= 2)
+
+                type: Types = Types.unknown
+                new_cell1_ds_index: List[int] = List[int]()
+                original_cell1_d_index: int = 0
+                new_cell0_d_index: int = 0
+                original_cell3_d_edge_index: int = 0
+                def __init__(self, type: Types = Types.unknown) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class RefinedCell2D:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                        # (= 0)
+                    updated = enum.auto()                        # (= 1)
+                    new = enum.auto()                            # (= 2)
+
+                type: Types = Types.unknown
+                new_cell2_ds_index: List[int] = List[int]()
+                original_cell2_d_index: int = 0
+                new_cell1_d_index: int = 0
+                new_cell1_ds_position: List[int] = List[int]()   #/< Position in NewCell1DsIndex array
+                original_cell3_d_face_index: int = 0
+                def __init__(self, type: Types = Types.unknown) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            result_type: ResultTypes = ResultTypes.unknown
+            new_cell0_ds_index: List[int] = List[int]()
+            new_cell1_ds_index: List[RefinedCell1D] = List[RefinedCell1D]()
+            new_cell2_ds_index: List[RefinedCell2D] = List[RefinedCell2D]()
+            new_cell3_ds_index: List[int] = List[int]()
+            def __init__(
+                self,
+                result_type: ResultTypes = ResultTypes.unknown,
+                new_cell1_ds_index: List[RefinedCell1D] = List[RefinedCell1D](),
+                new_cell2_ds_index: List[RefinedCell2D] = List[RefinedCell2D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolygon_Result:
+            """
+            (final class)
+            """
+            class ResultTypes(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                successfull = enum.auto()                        # (= 1)
+                cell2_d_already_splitted = enum.auto()           # (= 2)
+                cell2_d_split_under_tolerance = enum.auto()      # (= 3)
+                split_direction_not_inside_cell2_d = enum.auto() # (= 4)
+                split_quality_check_cell2_d_failed = enum.auto() # (= 5)
+
+            class RefinedCell1D:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                        # (= 0)
+                    updated = enum.auto()                        # (= 1)
+                    new = enum.auto()                            # (= 2)
+
+                type: Types = Types.unknown
+                new_cell1_ds_index: List[int] = List[int]()
+                original_cell1_d_index: int = 0
+                new_cell0_d_index: int = 0
+                original_cell2_d_edge_index: int = 0
+                def __init__(self, type: Types = Types.unknown) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            new_cell0_ds_index: List[int] = List[int]()
+            new_cell1_ds_index: List[RefinedCell1D] = List[RefinedCell1D]()
+            new_cell2_ds_index: List[int] = List[int]()
+
+            split_type: CheckSplitType_Result.SplitTypes = CheckSplitType_Result.SplitTypes.unknown
+            result_type: ResultTypes = ResultTypes.unknown
+            def __init__(
+                self,
+                new_cell1_ds_index: List[RefinedCell1D] = List[RefinedCell1D](),
+                split_type: CheckSplitType_Result.SplitTypes = CheckSplitType_Result.SplitTypes.unknown,
+                result_type: ResultTypes = ResultTypes.unknown
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolygon_UpdateNeighbour_Result:
+            """
+            (final class)
+            """
+            class UpdatedCell2D:
+                """
+                (final class)
+                """
+                original_cell2_d_index: int = 0
+                new_cell2_d_index: int = 0
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            updated_cell2_ds: List[UpdatedCell2D] = List[UpdatedCell2D]()
+            def __init__(
+                self,
+                updated_cell2_ds: List[UpdatedCell2D] = List[UpdatedCell2D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolyhedron_UpdateNeighbour_Result:
+            """
+            (final class)
+            """
+            class UpdatedCell3D:
+                """
+                (final class)
+                """
+                original_cell3_d_index: int = 0
+                new_cell3_d_index: int = 0
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            updated_cell3_ds: List[UpdatedCell3D] = List[UpdatedCell3D]()
+            def __init__(
+                self,
+                updated_cell3_ds: List[UpdatedCell3D] = List[UpdatedCell3D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Cell2Ds_GeometricData:
+            """
+            (final class)
+            """
+            class Cell2D_GeometricData:
+                """
+                (final class)
+                """
+                unaligned_vertices_index: List[List[int]] = List[List[int]]()
+                vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd]()
+                area: List[float] = List[float]()
+                centroid: List[Eigen.Vector3d] = List[Eigen.Vector3d]()
+                edges_direction: List[List[bool]] = List[List[bool]]()
+                edges_normal: List[Eigen.MatrixXd] = List[Eigen.MatrixXd]()
+                edges_length: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                triangulations: List[List[Eigen.Matrix3d]] = List[List[Eigen.Matrix3d]]()
+                inertia: List[Eigen.Matrix3d] = List[Eigen.Matrix3d]()
+                unaligned_vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd]()
+                unaligned_edges_length: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                centroid_edges_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                centroid_vertices_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                in_radius: List[float] = List[float]()
+                quality: List[float] = List[float]()
+                def __init__(
+                    self,
+                    vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                    area: List[float] = List[float](),
+                    centroid: List[Eigen.Vector3d] = List[Eigen.Vector3d](),
+                    edges_direction: List[List[bool]] = List[List[bool]](),
+                    edges_normal: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                    edges_length: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                    triangulations: List[List[Eigen.Matrix3d]] = List[List[Eigen.Matrix3d]](),
+                    inertia: List[Eigen.Matrix3d] = List[Eigen.Matrix3d](),
+                    unaligned_vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                    unaligned_edges_length: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                    centroid_edges_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                    centroid_vertices_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                    in_radius: List[float] = List[float](),
+                    quality: List[float] = List[float]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class Cell1D_GeometricData:
+                """
+                (final class)
+                """
+                max_aligned: int = 0
+                aligned: List[int] = List[int]()
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            cell1_ds: Cell1D_GeometricData
+            cell2_ds: Cell2D_GeometricData
+            def __init__(
+                self,
+                cell1_ds: Cell1D_GeometricData = Cell1D_GeometricData(),
+                cell2_ds: Cell2D_GeometricData = Cell2D_GeometricData()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh_utilities: MeshUtilities
+            ) -> None:
+            pass
+
+        def split_cell1_d(
+            self,
+            cell1_d_index: int,
+            new_vertex_coordinate: Eigen.Vector3d,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.SplitCell1D_Result:
+            pass
+        def update_cell2_d_new_vertex(
+            self,
+            cell2_d_index: int,
+            cell2_d_edge_direction: bool,
+            cell2_d_edge_position: int,
+            new_cell1_ds_index: List[int],
+            new_cell0_d_index: int,
+            mesh: IMeshDAO
+            ) -> int:
+            """/ \brief update cell2DIndex with a new splitted edge cell1DIndex by newCell0DIndex"""
+            pass
+
+        def split_cell1_d_middle_point(
+            self,
+            cell1_d_index: int,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.SplitCell1D_Result:
+            pass
+
+        def are_vertices_aligned(
+            self,
+            cell2_d_vertices: Eigen.MatrixXd,
+            from_vertex: int,
+            to_vertex: int
+            ) -> bool:
+            pass
+
+        def split_polygon_check_split_type(
+            self,
+            cell2_d_polygon_type: GeometryUtilities.PolygonTypes,
+            cell2_d_unaligned_polygon_type: GeometryUtilities.PolygonTypes,
+            cell2_d_vertices: Eigen.MatrixXd,
+            cell2_d_check_to_refine: RefinementUtilities.RefinePolygon_CheckResult
+            ) -> RefinementUtilities.CheckSplitType_Result:
+            pass
+
+        def split_polygon_check_is_not_to_extend(
+            self,
+            cell1_d_split_one: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit,
+            cell1_d_split_two: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit
+            ) -> bool:
+            pass
+        def split_polygon_check_is_to_split_relaxed(
+            self,
+            cell1_d_split_one: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit,
+            cell1_d_split_two: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit
+            ) -> bool:
+            pass
+
+        def split_polygon_is_area_positive(
+            self,
+            new_cell2_d_indices: Eigen.VectorXi,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            mesh: IMeshDAO
+            ) -> bool:
+            pass
+
+        def split_polygon_no_new_vertices(
+            self,
+            cell2_d_index: int,
+            cell2_d_num_vertices: int,
+            from_vertex: int,
+            to_vertex: int,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.SplitPolygon_Result:
+            pass
+        def split_polygon_new_vertex_from(
+            self,
+            cell2_d_index: int,
+            cell2_d_num_vertices: int,
+            from_edge: int,
+            to_vertex: int,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            from_new_cell0_d_index: int,
+            from_split_cell1_ds_index: List[int],
+            from_edge_direction: bool,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.SplitPolygon_Result:
+            pass
+        def split_polygon_new_vertex_to(
+            self,
+            cell2_d_index: int,
+            cell2_d_num_vertices: int,
+            from_vertex: int,
+            to_edge: int,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            to_new_cell0_d_index: int,
+            to_split_cell1_ds_index: List[int],
+            to_edge_direction: bool,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.SplitPolygon_Result:
+            pass
+        def split_polygon_new_vertices(
+            self,
+            cell2_d_index: int,
+            cell2_d_num_vertices: int,
+            from_edge: int,
+            to_edge: int,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            from_new_cell0_d_index: int,
+            to_new_cell0_d_index: int,
+            from_split_cell1_ds_index: List[int],
+            to_split_cell1_ds_index: List[int],
+            from_edge_direction: bool,
+            to_edge_direction: bool,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.SplitPolygon_Result:
+            pass
+
+        def compute_triangle_max_edge_direction(
+            self,
+            edges_length: Eigen.VectorXd
+            ) -> RefinementUtilities.TriangleMaxEdgeDirection:
+            pass
+
+        def compute_polygon_max_diameter_direction(
+            self,
+            unaligned_vertices: Eigen.MatrixXd,
+            centroid: Eigen.Vector3d
+            ) -> RefinementUtilities.PolygonDirection:
+            pass
+        def compute_polygon_max_inertia_direction(
+            self,
+            unaligned_vertices: Eigen.MatrixXd,
+            unaligned_edges_length: Eigen.VectorXd,
+            centroid: Eigen.Vector3d,
+            inertia: Eigen.Matrix3d
+            ) -> RefinementUtilities.PolygonDirection:
+            pass
+
+        def compute_tetrahedron_max_edge_direction(
+            self,
+            polyhedron_edges: Eigen.MatrixXi,
+            edges_length: Eigen.VectorXd
+            ) -> RefinementUtilities.TetrahedronMaxEdgeDirection:
+            pass
+
+        def refine_triangle_cell_by_edge(
+            self,
+            cell2_d_index: int,
+            edge_index: int,
+            opposite_vertex_index: int,
+            cell2_d_edges_direction: List[bool],
+            cell2_d_area: float,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            cell2_d_edges_length: Eigen.VectorXd,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.RefinePolygon_Result:
+            """/ \brief Refine Triangle Cell2D By Edge
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param cell2DVertices the cell2D 2D vertices
+            / \param edgeIndex the edge local index to split
+            / \param oppositeVertexIndex the vertex opposite to edge local index
+            / \param mesh the mesh to be updated
+            """
+            pass
+
+        def refine_polyhedron_cell_by_plane(
+            self,
+            cell3_d_index: int,
+            cell3_d_vertices: Eigen.MatrixXd,
+            cell3_d_edges: Eigen.MatrixXi,
+            cell3_d_edges_length: Eigen.VectorXd,
+            cell3_d_faces: List[Eigen.MatrixXi],
+            cell3_d_faces3_d_vertices: List[Eigen.MatrixXd],
+            cell3_d_faces_edges3_d_tangent: List[Eigen.MatrixXd],
+            cell3_d_faces_translation: List[Eigen.Vector3d],
+            cell3_d_faces_rotation_matrix: List[Eigen.Matrix3d],
+            cell3_d_volume: float,
+            plane_normal: Eigen.Vector3d,
+            plane_origin: Eigen.Vector3d,
+            plane_rotation_matrix: Eigen.Matrix3d,
+            plane_translation: Eigen.Vector3d,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.RefinePolyhedron_Result:
+            """/ \brief Refine Polyhedral Cell3D By Plane"""
+            pass
+
+        def refine_polyhedron_cell_update_face_neighbours(
+            self,
+            cell3_d_index: int,
+            cell2_d_index: int,
+            new_cell1_d_index: int,
+            split_cell1_ds_original_index: List[int],
+            split_cell1_ds_new_cell0_d_index: List[int],
+            split_cell1_ds_updated_indices: List[List[int]],
+            split_cell2_ds_index: List[int],
+            cell3_ds_faces_edges_direction: List[List[List[bool]]],
+            updated_cell2_ds: Dict[int, int],
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result:
+            pass
+
+        def refine_polyhedron_cell_update_edge_neighbours(
+            self,
+            cell3_d_index: int,
+            cell1_d_index: int,
+            new_cell1_ds_index: List[int],
+            new_cell0_d_index: int,
+            cell3_ds_faces_edges_direction: List[List[List[bool]]],
+            updated_cell2_ds: Dict[int, int],
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result:
+            pass
+
+        def refine_triangle_cell_update_neighbours(
+            self,
+            cell2_d_index: int,
+            cell1_d_index: int,
+            new_cell0_d_index: int,
+            split_cell1_ds_index: List[int],
+            cell2_d_edge_direction: bool,
+            cell2_ds_rotation: List[Eigen.Matrix3d],
+            cell2_ds_translation: List[Eigen.Vector3d],
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Update Cell1D neighbours of refined triangle by edge with refine by edge
+            / \param cell2DIndex the index of Cell2D refined, from 0 to Cell2DTotalNumber()
+            / \param cell1DIndex the index of Cell1D splitted by the refinement, from 0 to Cell1DTotalNumber()
+            / \param newCell0DIndex the index of Cell0D created by the cell1D splitting process, from 0 to Cell0DTotalNumber()
+            / \param splitCell1DsIndex the indices of the new Cell1Ds created by the splitting process, from 0 to
+            / Cell1DTotalNumber() \param cell2DEdgeDirection the direction of the Cell1D splitted in the Cell2D \param mesh
+            / the mesh to be updated
+            """
+            pass
+
+        def refine_polygon_cell_check_refinement(
+            self,
+            cell2_d_index: int,
+            cell2_d_vertices: Eigen.MatrixXd,
+            line_tangent: Eigen.Vector3d,
+            line_origin: Eigen.Vector3d,
+            cell2_ds_quality: List[float],
+            cell1_ds_aligned: List[int],
+            cell1_ds_quality_weight: float,
+            cell1_ds_aligned_weight: float,
+            cell2_d_area: float,
+            cell2_ds_edges_length: List[Eigen.VectorXd],
+            cell2_d_edges_direction: List[bool],
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.RefinePolygon_CheckResult:
+            """/ \brief Refine Polygon Cell2D By Direction"""
+            pass
+
+        def refine_polygon_cell_by_direction(
+            self,
+            cell2_d_index: int,
+            cell2_d_polygon_type: GeometryUtilities.PolygonTypes,
+            cell2_d_unaligned_polygon_type: GeometryUtilities.PolygonTypes,
+            cell2_d_vertices: Eigen.MatrixXd,
+            cell2_d_check_to_refine: RefinementUtilities.RefinePolygon_CheckResult,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            cell2_d_edges_direction: List[bool],
+            extend_to_neighbours: bool,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.RefinePolygon_Result:
+            """/ \brief Refine Polygon Cell2D By Direction"""
+            pass
+
+        def refine_polygon_cell_update_neighbours(
+            self,
+            cell2_d_index: int,
+            cell1_d_index: int,
+            new_cell0_d_index: int,
+            split_cell1_ds_index: List[int],
+            cell2_ds_edges_direction: List[List[bool]],
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.RefinePolygon_UpdateNeighbour_Result:
+            pass
+
+        def refine_polygon_cell_initialize_geometric_data(
+            self,
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.Cell2Ds_GeometricData:
+            """/ Compute the geometric data for all the mesh"""
+            pass
+
+        def refine_polygon_cell_update_geometric_data(
+            self,
+            mesh: IMeshDAO,
+            cell2_ds_index: List[int],
+            geometric_data: RefinementUtilities.Cell2Ds_GeometricData
+            ) -> None:
+            """/ \brief Update the geometric data for only cell2Ds"""
+            pass
+
+        def refine_polygon_cell_is_cell1_d_to_split(
+            self,
+            cell1_d_index: int,
+            cell2_d_index: int,
+            edge_intersection: GeometryUtilities.LinePolygonPositionResult.EdgeIntersection,
+            cell2_ds_edges_length: List[Eigen.VectorXd],
+            cell1_ds_quality_weight: float,
+            cell1_ds_aligned_weight: float,
+            cell2_ds_quality: List[float],
+            cell1_ds_aligned: List[int],
+            mesh: IMeshDAO
+            ) -> RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit:
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:RefinementUtilities.hpp>    ####################
+
+
+####################    <generated_from:SphereMeshUtilities.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __SphereMeshUtilities_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class SphereMeshUtilities:
+        """/ \brief MeshUtilities
+        / \copyright See top level LICENSE file for details.
+        /
+        / https://danielsieger.com/blog/2021/03/27/generating-spheres.html
+        (final class)
+        """
+        def __init__(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh_utilities: MeshUtilities
+            ) -> None:
+            pass
+
+
+        def uv_sphere(self, meridians: int, parallels: int) -> GeometryUtilities.Polyhedron:
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:SphereMeshUtilities.hpp>    ####################
+
+
+####################    <generated_from:TetgenInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __TetgenInterface_H
+#
+
+
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class TetgenInterface:
+        """/ \brief The Tetgen Interface
+        / \see http://wias-berlin.de/software/tetgen/files/tetcall.cxx
+        (final class)
+        """
+        class Region:
+            id: int                   # unique id of the region
+            centroid: Eigen.Vector3d  # internal point of the region
+            max_volume: float         # default -1.0
+            def __init__(
+                self,
+                id: int = int(),
+                centroid: Eigen.Vector3d = Eigen.Vector3d(),
+                max_volume: float = float()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self) -> None:
+            pass
+
+        def create_delaunay(
+            self,
+            points: Eigen.MatrixXd,
+            points_marker: List[int],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        @overload
+        def create_mesh(
+            self,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_faces: List[Eigen.MatrixXi],
+            max_tetrahedron_volume: float,
+            mesh: IMeshDAO,
+            tetgen_options: str = "Qpqfezna"
+            ) -> None:
+            pass
+
+        @overload
+        def create_mesh(
+            self,
+            points: Eigen.MatrixXd,
+            facets: List[List[int]],
+            max_tetrahedron_volume: float,
+            mesh: IMeshDAO,
+            tetgen_options: str = "Qpqfezna"
+            ) -> None:
+            pass
+
+        @overload
+        def create_mesh(
+            self,
+            points: Eigen.MatrixXd,
+            facets: List[List[int]],
+            regions: List[TetgenInterface.Region],
+            mesh: IMeshDAO,
+            tetgen_options: str = "QpqfeznaA"
+            ) -> None:
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:TetgenInterface.hpp>    ####################
+
+
+####################    <generated_from:TriangleInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __TriangleInterface_H
+#
+
+
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class TriangleInterface:
+        """
+        (final class)
+        """
+        def __init__(self) -> None:
+            pass
+
+        def create_mesh(
+            self,
+            polygon_vertices: Eigen.MatrixXd,
+            max_triangle_area: float,
+            mesh: IMeshDAO,
+            triangle_options: str = "-QDzpqnea"
+            ) -> None:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:TriangleInterface.hpp>    ####################
+
+
+####################    <generated_from:UnionMeshSegment.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __UNIONMESHSEGMENT_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class UnionMeshSegment:
+        """
+        (final class)
+        """
+        class UnionMesh:
+            """
+            (final class)
+            """
+            class UnionMeshPoint:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()              # (= 0)
+                    first = enum.auto()                # (= 1)
+                    second = enum.auto()               # (= 2)
+                    both = enum.auto()                 # (= 3)
+
+                type: Types = Types.unknown
+                mesh_indices: List[int] = List[int]()  #/< vector of size 2 containing in each i the indices in mesh_i
+                def __init__(self, type: Types = Types.unknown) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class UnionMeshSegment:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()              # (= 0)
+                    first = enum.auto()                # (= 1)
+                    second = enum.auto()               # (= 2)
+                    both = enum.auto()                 # (= 3)
+
+                type: Types = Types.unknown
+                points: List[float] = List[float]()
+                mesh_indices: List[int] = List[int]()  #/< vector of size 2 containing in each i the indices in mesh_i
+                def __init__(
+                    self,
+                    type: Types = Types.unknown,
+                    points: List[float] = List[float]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            points: Dict[float, UnionMeshPoint] = Dict[float, UnionMeshPoint]()
+            segments: List[UnionMeshSegment] = List[UnionMeshSegment]()
+            def __init__(
+                self,
+                segments: List[UnionMeshSegment] = List[UnionMeshSegment]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        @staticmethod
+        def to_curvilinear_coordinates(
+            union_mesh: UnionMeshSegment.UnionMesh,
+            curvilinear_coordinates: List[float]
+            ) -> None:
+            """/ \brief convert UnionMesh to Curvilinear Coordinates vector"""
+            pass
+
+        @staticmethod
+        def to_string(union_mesh: UnionMeshSegment.UnionMesh) -> None:
+            pass
+
+        def __init__(self, geometry_utilities: GeometryUtilities) -> None:
+            pass
+
+        def create_union_mesh(
+            self,
+            curvilinear_coordinates_mesh_one: List[float],
+            curvilinear_coordinates_mesh_two: List[float],
+            result: UnionMeshSegment.UnionMesh
+            ) -> None:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:UnionMeshSegment.hpp>    ####################
+
+
+####################    <generated_from:VoroInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __VoroInterface_H
+#
+
+
+
+
+
+def generate_voronoi_tassellations2_d(
+    polygon_vertices: Eigen.MatrixXd,
+    num_iterations: int,
+    voronoi_points: Eigen.MatrixXd,
+    mesh: gedim.IMeshDAO
+    ) -> None:
+    pass
+
+
+def generate_cartesian_points3_d(
+    polyhedron_vertices: Eigen.MatrixXd,
+    num_points: int,
+    con: voro.container
+    ) -> None:
+    pass
+
+def generate_random_points(
+    domain_vertices: Eigen.MatrixXd,
+    num_points: int,
+    voronoi_points: Eigen.MatrixXd,
+    random_seed: int = static_cast<int>(time(None)
+    ) -> None:
+    pass
+# #endif
+# };
+#
+
+# namespace Gedim
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    class VoroInterface:
+        """
+        (final class)
+        """
+        class Cell0D:
+            x: float # (const)
+            y: float # (const)
+            z: float # (const)
+
+            id: int
+            marker: int
+
+            def __init__(self, x: float, y: float, z: float) -> None:
+                pass
+
+        class Cell2D:
+            id: int
+            marker: int
+            vertices: List[int]
+            edges: List[int]
+            def __init__(self, marker: int = int()) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self, geometry_utilities: GeometryUtilities) -> None:
+            pass
+
+        def generate_voronoi_tassellations3_d(
+            self,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_faces: List[Eigen.MatrixXi],
+            num_points: int,
+            num_iterations: int,
+            mesh: IMeshDAO,
+            random_seed: int = static_cast<int>(time(None)
+            ) -> None:
+            pass
+
+    @staticmethod
+    def generate_voronoi_tassellations2_d(
+        polygon_vertices: Eigen.MatrixXd,
+        num_points: int,
+        num_iterations: int,
+        mesh: IMeshDAO,
+        random_seed: int = static_cast<int>(time(None)
+        ) -> None:
+        pass
+
+# </submodule gedim>
+####################    </generated_from:VoroInterface.hpp>    ####################
+
+
+####################    <generated_from:VtkMeshInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __VtkMeshInterface_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class VtkMeshInterface:
+        """
+        (final class)
+        """
+        class VtkMesh:
+            """
+            (final class)
+            """
+            class Cell3D:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()     # (= 0)
+                    tetrahedron = enum.auto() # (= 1)
+                    hexahedron = enum.auto()  # (= 2)
+
+                cell0_d_id: List[int]
+                type: Types
+                def __init__(self, type: Types = Types()) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            num_cell0_ds: int
+            num_cell3_ds: int
+
+            cell0_ds: Eigen.MatrixXd
+            cell3_ds: List[Cell3D]
+            def __init__(
+                self,
+                cell0_ds: Eigen.MatrixXd = Eigen.MatrixXd(),
+                cell3_ds: List[Cell3D] = List[Cell3D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class VtkMesh3D:
+            """
+            (final class)
+            """
+            markers: List[List[int]]
+
+            cell0_ds: Eigen.MatrixXd
+            cell1_ds: Eigen.MatrixXi
+            cell2_ds: List[Eigen.MatrixXi]
+            cell3_ds: List[Gedim.MeshUtilities.Mesh3DPolyhedron]
+            def __init__(
+                self,
+                cell0_ds: Eigen.MatrixXd = Eigen.MatrixXd(),
+                cell1_ds: Eigen.MatrixXi = Eigen.MatrixXi(),
+                cell2_ds: List[Eigen.MatrixXi] = List[Eigen.MatrixXi](),
+                cell3_ds: List[MeshUtilities.Mesh3DPolyhedron] = List[MeshUtilities.Mesh3DPolyhedron]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self) -> None:
+            pass
+
+        def import_mesh3_d_from_file(self, vtk_file_path: str) -> VtkMeshInterface.VtkMesh3D:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:VtkMeshInterface.hpp>    ####################
 
 # </litgen_stub> // Autogenerated code end!
