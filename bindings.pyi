@@ -6067,6 +6067,26 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
                 """Auto-generated default constructor with named params"""
                 pass
 
+        class CheckMeshGeometricData2DConfiguration:
+            """
+            (final class)
+            """
+            cell1_d_check_measure: bool = True
+            cell1_d_check_normals: bool = True
+            cell2_d_check_measure: bool = True
+            cell2_d_check_triangles: bool = True
+            cell1_d_quadrature_order: int = 0
+            cell2_d_quadrature_order: int = 0
+            def __init__(
+                self,
+                cell1_d_check_measure: bool = True,
+                cell1_d_check_normals: bool = True,
+                cell2_d_check_measure: bool = True,
+                cell2_d_check_triangles: bool = True
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
         class CheckMeshGeometricData3DConfiguration:
             """
             (final class)
@@ -7759,6 +7779,15 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             ) -> None:
             pass
 
+        def check_mesh_geometric_data2_d(
+            self,
+            configuration: MeshUtilities.CheckMeshGeometricData2DConfiguration,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO,
+            geometric_data: MeshUtilities.MeshGeometricData2D
+            ) -> None:
+            pass
+
 
 # </submodule gedim>
 ####################    </generated_from:MeshUtilities.hpp>    ####################
@@ -8335,5 +8364,279 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
 # </submodule polydim>
 ####################    </generated_from:lagrange_1D.hpp>    ####################
+
+
+####################    <generated_from:VEM_Quadrature_2D.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __VEM_Quadrature_2D_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule vem>
+    class vem:  # Proxy class that introduces typings for the *submodule* vem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace VEM"""
+
+        # <submodule quadrature>
+        class quadrature:  # Proxy class that introduces typings for the *submodule* quadrature
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace Quadrature"""
+            class VEM_QuadratureData_2D:
+                reference_segment_quadrature: Gedim.Quadrature.QuadratureData
+                reference_edge_do_fs_quadrature: Gedim.Quadrature.QuadratureData
+                reference_triangle_quadrature: Gedim.Quadrature.QuadratureData
+
+                reference_segment_internal_points: Eigen.MatrixXd
+                reference_segment_internal_weights: Eigen.VectorXd
+                reference_segment_extrema_weights: Eigen.Vector2d
+
+                reference_edge_do_fs_internal_points: Eigen.MatrixXd
+                reference_edge_do_fs_internal_weights: Eigen.VectorXd
+                reference_edge_do_fs_extrema_weights: Eigen.Vector2d
+                def __init__(
+                    self,
+                    reference_segment_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    reference_edge_do_fs_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    reference_triangle_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    reference_segment_internal_points: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    reference_segment_internal_weights: Eigen.VectorXd = Eigen.VectorXd(),
+                    reference_segment_extrema_weights: Eigen.Vector2d = Eigen.Vector2d(),
+                    reference_edge_do_fs_internal_points: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    reference_edge_do_fs_internal_weights: Eigen.VectorXd = Eigen.VectorXd(),
+                    reference_edge_do_fs_extrema_weights: Eigen.Vector2d = Eigen.Vector2d()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class VEM_Quadrature_2D:
+                """
+                (final class)
+                """
+                class Edges_QuadratureData:
+                    quadrature: Gedim.Quadrature.QuadratureData
+                    weights_times_normal: List[Eigen.VectorXd]
+                    def __init__(
+                        self,
+                        quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                        weights_times_normal: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+
+                def compute_pcc_2_d(self, order: int) -> VEM_QuadratureData_2D:
+                    pass
+                def compute_mcc_2_d(self, order: int) -> VEM_QuadratureData_2D:
+                    pass
+                def compute_mcc_edge_ortho_2_d(self, order: int) -> VEM_QuadratureData_2D:
+                    pass
+                def compute_df_pcc_2_d(self, order: int) -> VEM_QuadratureData_2D:
+                    pass
+                def compute_df_pcc_3_d(self, order: int) -> VEM_QuadratureData_2D:
+                    pass
+
+                def polygon_internal_quadrature(
+                    self,
+                    data: Gedim.Quadrature.QuadratureData,
+                    polygon_triangulation_vertices: List[Eigen.Matrix3d]
+                    ) -> Gedim.Quadrature.QuadratureData:
+                    pass
+
+                def polygon_edges_lobatto_quadrature(
+                    self,
+                    reference_segment_internal_points: Eigen.MatrixXd,
+                    reference_segment_internal_weights: Eigen.VectorXd,
+                    reference_segment_extrema_weights: Eigen.Vector2d,
+                    polygon_vertices: Eigen.MatrixXd,
+                    edge_lengths: Eigen.VectorXd,
+                    edge_directions: List[bool],
+                    edge_tangents: Eigen.MatrixXd,
+                    edge_normals: Eigen.MatrixXd
+                    ) -> VEM_Quadrature_2D.Edges_QuadratureData:
+                    pass
+
+                def polygon_edges_quadrature(
+                    self,
+                    data: Gedim.Quadrature.QuadratureData,
+                    polygon_vertices: Eigen.MatrixXd,
+                    edge_lengths: Eigen.VectorXd,
+                    edge_directions: List[bool],
+                    edge_tangents: Eigen.MatrixXd,
+                    edge_normals: Eigen.MatrixXd
+                    ) -> VEM_Quadrature_2D.Edges_QuadratureData:
+                    pass
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+        # </submodule quadrature>
+
+    # </submodule vem>
+
+# </submodule polydim>
+####################    </generated_from:VEM_Quadrature_2D.hpp>    ####################
+
+
+####################    <generated_from:VEM_Quadrature_3D.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __VEM_Quadrature_3D_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule vem>
+    class vem:  # Proxy class that introduces typings for the *submodule* vem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace VEM"""
+
+        # <submodule quadrature>
+        class quadrature:  # Proxy class that introduces typings for the *submodule* quadrature
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace Quadrature"""
+            class VEM_QuadratureData_3D:
+                """
+                (final class)
+                """
+                reference_tetrahedron_quadrature: Gedim.Quadrature.QuadratureData
+                quadrature_data_2_d: VEM_QuadratureData_2D
+                def __init__(
+                    self,
+                    reference_tetrahedron_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    quadrature_data_2_d: VEM_QuadratureData_2D = VEM_QuadratureData_2()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class VEM_Quadrature_3D:
+                """
+                (final class)
+                """
+                class Faces_QuadratureData_PCC:
+                    quadrature: Gedim.Quadrature.QuadratureData
+                    weights_times_normal: List[Eigen.VectorXd]
+                    def __init__(
+                        self,
+                        quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                        weights_times_normal: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+
+                class Faces_QuadratureData_MCC:
+                    quadrature: Gedim.Quadrature.QuadratureData
+                    faces_quadrature: List[Gedim.Quadrature.QuadratureData]
+                    def __init__(
+                        self,
+                        quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                        faces_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData]()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+
+                def compute_pcc_3_d(self, order: int) -> VEM_QuadratureData_3D:
+                    pass
+                def compute_mcc_3_d(self, order: int) -> VEM_QuadratureData_3D:
+                    pass
+                def compute_df_pcc_3_d(self, order: int) -> VEM_QuadratureData_3D:
+                    pass
+
+                @overload
+                def polyhedron_internal_quadrature(
+                    self,
+                    data: VEM_QuadratureData_3D,
+                    geometry_utility: Gedim.GeometryUtilities,
+                    polyhedron_tetrahedron_vertices: List[Eigen.MatrixXd]
+                    ) -> Gedim.Quadrature.QuadratureData:
+                    pass
+
+                @overload
+                def polyhedron_internal_quadrature(
+                    self,
+                    geometry_utility: Gedim.GeometryUtilities,
+                    data: Gedim.Quadrature.QuadratureData,
+                    polyhedron_tetrahedron_vertices: List[Eigen.MatrixXd]
+                    ) -> Gedim.Quadrature.QuadratureData:
+                    pass
+
+                @overload
+                def polyhedron_faces_quadrature(
+                    self,
+                    geometry_utility: Gedim.GeometryUtilities,
+                    polyhedron_faces: List[Eigen.MatrixXi],
+                    faces_rotation_matrix: List[Eigen.Matrix3d],
+                    faces_translation: List[Eigen.Vector3d],
+                    faces_normals: List[Eigen.Vector3d],
+                    face_normal_directions: List[bool],
+                    faces_quadrature_points: List[Eigen.MatrixXd],
+                    faces_quadrature_weights: List[Eigen.VectorXd]
+                    ) -> VEM_Quadrature_3D.Faces_QuadratureData_PCC:
+                    pass
+
+                def polyhedron_internal_edges_quadrature_points(
+                    self,
+                    reference_segment_internal_points: Eigen.MatrixXd,
+                    polyhedron_vertices: Eigen.MatrixXd,
+                    polyhedron_edges: Eigen.MatrixXi,
+                    edge_directions: List[bool],
+                    edge_tangents: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def polyhedron_faces_quadrature(
+                    self,
+                    data: VEM_QuadratureData_3D,
+                    geometry_utility: Gedim.GeometryUtilities,
+                    faces_triangulations2_d: List[List[Eigen.Matrix3d]],
+                    faces_rotation_matrix: List[Eigen.Matrix3d],
+                    faces_translation: List[Eigen.Vector3d]
+                    ) -> VEM_Quadrature_3D.Faces_QuadratureData_MCC:
+                    pass
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+        # </submodule quadrature>
+
+    # </submodule vem>
+
+# </submodule polydim>
+####################    </generated_from:VEM_Quadrature_3D.hpp>    ####################
 
 # </litgen_stub> // Autogenerated code end!

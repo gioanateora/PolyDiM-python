@@ -3576,6 +3576,28 @@ void py_init_module_polydim(py::module &m)
                 .def_readwrite("cell3_d_check_convexity", &Gedim::MeshUtilities::CheckMesh3DConfiguration::Cell3D_CheckConvexity, "")
                 .def_readwrite("cell3_d_check_measure", &Gedim::MeshUtilities::CheckMesh3DConfiguration::Cell3D_CheckMeasure, "")
                 ;
+            auto pyNsGedim_ClassMeshUtilities_ClassCheckMeshGeometricData2DConfiguration =
+                py::class_<Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration>
+                    (pyNsGedim_ClassMeshUtilities, "CheckMeshGeometricData2DConfiguration", py::is_final(), "\n(final class)")
+                .def(py::init<>([](
+                bool Cell1D_CheckMeasure = true, bool Cell1D_CheckNormals = true, bool Cell2D_CheckMeasure = true, bool Cell2D_CheckTriangles = true)
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration>();
+                    r_ctor_->Cell1D_CheckMeasure = Cell1D_CheckMeasure;
+                    r_ctor_->Cell1D_CheckNormals = Cell1D_CheckNormals;
+                    r_ctor_->Cell2D_CheckMeasure = Cell2D_CheckMeasure;
+                    r_ctor_->Cell2D_CheckTriangles = Cell2D_CheckTriangles;
+                    return r_ctor_;
+                })
+                , py::arg("cell1_d_check_measure") = true, py::arg("cell1_d_check_normals") = true, py::arg("cell2_d_check_measure") = true, py::arg("cell2_d_check_triangles") = true
+                )
+                .def_readwrite("cell1_d_check_measure", &Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration::Cell1D_CheckMeasure, "")
+                .def_readwrite("cell1_d_check_normals", &Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration::Cell1D_CheckNormals, "")
+                .def_readwrite("cell2_d_check_measure", &Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration::Cell2D_CheckMeasure, "")
+                .def_readwrite("cell2_d_check_triangles", &Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration::Cell2D_CheckTriangles, "")
+                .def_readwrite("cell1_d_quadrature_order", &Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration::Cell1D_QuadratureOrder, "")
+                .def_readwrite("cell2_d_quadrature_order", &Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration::Cell2D_QuadratureOrder, "")
+                ;
             auto pyNsGedim_ClassMeshUtilities_ClassCheckMeshGeometricData3DConfiguration =
                 py::class_<Gedim::MeshUtilities::CheckMeshGeometricData3DConfiguration>
                     (pyNsGedim_ClassMeshUtilities, "CheckMeshGeometricData3DConfiguration", py::is_final(), "\n(final class)")
@@ -4419,6 +4441,8 @@ void py_init_module_polydim(py::module &m)
                 &Gedim::MeshUtilities::Intersect_mesh_polyhedron, py::arg("geometry_utilities"), py::arg("polyhedron_vertices"), py::arg("polyhedron_edges"), py::arg("polyhedron_edges_vertices"), py::arg("polyhedron_edges_tangent"), py::arg("polyhedron_edges_bouding_box"), py::arg("polyhedron_faces"), py::arg("polyhedron_faces_vertices"), py::arg("polyhedron_faces_rotated_vertices"), py::arg("polyhedron_faces_normals"), py::arg("polyhedron_faces_normal_direction"), py::arg("polyhedron_faces_translation"), py::arg("polyhedron_faces_rotation_matrix"), py::arg("polyhedron_faces_bouding_box"), py::arg("polyhedron_bouding_box"), py::arg("mesh"), py::arg("mesh_cell1_ds_bouding_box"), py::arg("mesh_cell1_ds_vertices"), py::arg("mesh_cell1_ds_tangent"), py::arg("mesh_cell2_ds_vertices"), py::arg("mesh_cell2_ds_normal"), py::arg("mesh_cell2_ds_2_d_vertices"), py::arg("mesh_cell2_ds_translation"), py::arg("mesh_cell2_ds_rotation_matrix"), py::arg("mesh_cell2_ds_bouding_box"), py::arg("mesh_cell3_ds_bouding_box"), py::arg("mesh_cell3_ds_faces"), py::arg("mesh_cell3_ds_faces_vertices"), py::arg("mesh_cell3_ds_faces_2_d_vertices"), py::arg("mesh_cell3_ds_faces_normal"), py::arg("mesh_cell3_ds_faces_normal_directions"), py::arg("mesh_cell3_ds_faces_translation"), py::arg("mesh_cell3_ds_faces_rotation_matrix"))
             .def("set_polygon_mesh_markers",
                 &Gedim::MeshUtilities::SetPolygonMeshMarkers, py::arg("geometry_utilities"), py::arg("polygon_vertices"), py::arg("cell0_d_markers"), py::arg("cell1_d_markers"), py::arg("mesh"))
+            .def("check_mesh_geometric_data2_d",
+                &Gedim::MeshUtilities::CheckMeshGeometricData2D, py::arg("configuration"), py::arg("geometry_utilities"), py::arg("mesh"), py::arg("geometric_data"))
             ;
     } // </namespace Gedim>
     ////////////////////    </generated_from:MeshUtilities.hpp>    ////////////////////
@@ -4697,6 +4721,196 @@ void py_init_module_polydim(py::module &m)
 
     } // </namespace Polydim>
     ////////////////////    </generated_from:lagrange_1D.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_Quadrature_2D.hpp>    ////////////////////
+    // #ifndef __VEM_Quadrature_2D_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace Quadrature>
+                py::module_ pyNsPolydim_NsVEM_NsQuadrature = pyNsPolydim_NsVEM.def_submodule("quadrature", "namespace Quadrature");
+                auto pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_QuadratureData_2D =
+                    py::class_<Polydim::VEM::Quadrature::VEM_QuadratureData_2D>
+                        (pyNsPolydim_NsVEM_NsQuadrature, "VEM_QuadratureData_2D", "")
+                    .def(py::init<>([](
+                    Gedim::Quadrature::QuadratureData ReferenceSegmentQuadrature = Gedim::Quadrature::QuadratureData(), Gedim::Quadrature::QuadratureData ReferenceEdgeDOFsQuadrature = Gedim::Quadrature::QuadratureData(), Gedim::Quadrature::QuadratureData ReferenceTriangleQuadrature = Gedim::Quadrature::QuadratureData(), Eigen::MatrixXd ReferenceSegmentInternalPoints = Eigen::MatrixXd(), Eigen::VectorXd ReferenceSegmentInternalWeights = Eigen::VectorXd(), Eigen::Vector2d ReferenceSegmentExtremaWeights = Eigen::Vector2d(), Eigen::MatrixXd ReferenceEdgeDOFsInternalPoints = Eigen::MatrixXd(), Eigen::VectorXd ReferenceEdgeDOFsInternalWeights = Eigen::VectorXd(), Eigen::Vector2d ReferenceEdgeDOFsExtremaWeights = Eigen::Vector2d())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::VEM::Quadrature::VEM_QuadratureData_2D>();
+                        r_ctor_->ReferenceSegmentQuadrature = ReferenceSegmentQuadrature;
+                        r_ctor_->ReferenceEdgeDOFsQuadrature = ReferenceEdgeDOFsQuadrature;
+                        r_ctor_->ReferenceTriangleQuadrature = ReferenceTriangleQuadrature;
+                        r_ctor_->ReferenceSegmentInternalPoints = ReferenceSegmentInternalPoints;
+                        r_ctor_->ReferenceSegmentInternalWeights = ReferenceSegmentInternalWeights;
+                        r_ctor_->ReferenceSegmentExtremaWeights = ReferenceSegmentExtremaWeights;
+                        r_ctor_->ReferenceEdgeDOFsInternalPoints = ReferenceEdgeDOFsInternalPoints;
+                        r_ctor_->ReferenceEdgeDOFsInternalWeights = ReferenceEdgeDOFsInternalWeights;
+                        r_ctor_->ReferenceEdgeDOFsExtremaWeights = ReferenceEdgeDOFsExtremaWeights;
+                        return r_ctor_;
+                    })
+                    , py::arg("reference_segment_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_edge_do_fs_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_triangle_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_segment_internal_points") = Eigen::MatrixXd(), py::arg("reference_segment_internal_weights") = Eigen::VectorXd(), py::arg("reference_segment_extrema_weights") = Eigen::Vector2d(), py::arg("reference_edge_do_fs_internal_points") = Eigen::MatrixXd(), py::arg("reference_edge_do_fs_internal_weights") = Eigen::VectorXd(), py::arg("reference_edge_do_fs_extrema_weights") = Eigen::Vector2d()
+                    )
+                    .def_readwrite("reference_segment_quadrature", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceSegmentQuadrature, "")
+                    .def_readwrite("reference_edge_do_fs_quadrature", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceEdgeDOFsQuadrature, "")
+                    .def_readwrite("reference_triangle_quadrature", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceTriangleQuadrature, "")
+                    .def_readwrite("reference_segment_internal_points", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceSegmentInternalPoints, "")
+                    .def_readwrite("reference_segment_internal_weights", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceSegmentInternalWeights, "")
+                    .def_readwrite("reference_segment_extrema_weights", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceSegmentExtremaWeights, "")
+                    .def_readwrite("reference_edge_do_fs_internal_points", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceEdgeDOFsInternalPoints, "")
+                    .def_readwrite("reference_edge_do_fs_internal_weights", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceEdgeDOFsInternalWeights, "")
+                    .def_readwrite("reference_edge_do_fs_extrema_weights", &Polydim::VEM::Quadrature::VEM_QuadratureData_2D::ReferenceEdgeDOFsExtremaWeights, "")
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_2D =
+                    py::class_<Polydim::VEM::Quadrature::VEM_Quadrature_2D>
+                        (pyNsPolydim_NsVEM_NsQuadrature, "VEM_Quadrature_2D", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of VEM_Quadrature_2D
+                    auto pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_2D_ClassEdges_QuadratureData =
+                        py::class_<Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData>
+                            (pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_2D, "Edges_QuadratureData", "")
+                        .def(py::init<>([](
+                        Gedim::Quadrature::QuadratureData Quadrature = Gedim::Quadrature::QuadratureData(), std::vector<Eigen::VectorXd> WeightsTimesNormal = std::vector<Eigen::VectorXd>())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData>();
+                            r_ctor_->Quadrature = Quadrature;
+                            r_ctor_->WeightsTimesNormal = WeightsTimesNormal;
+                            return r_ctor_;
+                        })
+                        , py::arg("quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("weights_times_normal") = std::vector<Eigen::VectorXd>()
+                        )
+                        .def_readwrite("quadrature", &Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData::Quadrature, "")
+                        .def_readwrite("weights_times_normal", &Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData::WeightsTimesNormal, "")
+                        ;
+                } // end of inner classes & enums of VEM_Quadrature_2D
+
+                pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_2D
+                    .def(py::init<>()) // implicit default constructor
+                    .def("compute_pcc_2_d",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_2D::Compute_PCC_2D, py::arg("order"))
+                    .def("compute_mcc_2_d",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_2D::Compute_MCC_2D, py::arg("order"))
+                    .def("compute_mcc_edge_ortho_2_d",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_2D::Compute_MCC_EdgeOrtho_2D, py::arg("order"))
+                    .def("compute_df_pcc_2_d",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_2D::Compute_DF_PCC_2D, py::arg("order"))
+                    .def("compute_df_pcc_3_d",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_2D::Compute_DF_PCC_3D, py::arg("order"))
+                    .def("polygon_internal_quadrature",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_2D::PolygonInternalQuadrature, py::arg("data"), py::arg("polygon_triangulation_vertices"))
+                    .def("polygon_edges_lobatto_quadrature",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_2D::PolygonEdgesLobattoQuadrature, py::arg("reference_segment_internal_points"), py::arg("reference_segment_internal_weights"), py::arg("reference_segment_extrema_weights"), py::arg("polygon_vertices"), py::arg("edge_lengths"), py::arg("edge_directions"), py::arg("edge_tangents"), py::arg("edge_normals"))
+                    .def("polygon_edges_quadrature",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_2D::PolygonEdgesQuadrature, py::arg("data"), py::arg("polygon_vertices"), py::arg("edge_lengths"), py::arg("edge_directions"), py::arg("edge_tangents"), py::arg("edge_normals"))
+                    ;
+            } // </namespace Quadrature>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_Quadrature_2D.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_Quadrature_3D.hpp>    ////////////////////
+    // #ifndef __VEM_Quadrature_3D_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace Quadrature>
+                py::module_ pyNsPolydim_NsVEM_NsQuadrature = pyNsPolydim_NsVEM.def_submodule("quadrature", "namespace Quadrature");
+                auto pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_QuadratureData_3D =
+                    py::class_<Polydim::VEM::Quadrature::VEM_QuadratureData_3D>
+                        (pyNsPolydim_NsVEM_NsQuadrature, "VEM_QuadratureData_3D", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Gedim::Quadrature::QuadratureData ReferenceTetrahedronQuadrature = Gedim::Quadrature::QuadratureData(), VEM_QuadratureData_2D QuadratureData_2D = VEM_QuadratureData_2D())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::VEM::Quadrature::VEM_QuadratureData_3D>();
+                        r_ctor_->ReferenceTetrahedronQuadrature = ReferenceTetrahedronQuadrature;
+                        r_ctor_->QuadratureData_2D = QuadratureData_2D;
+                        return r_ctor_;
+                    })
+                    , py::arg("reference_tetrahedron_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("quadrature_data_2_d") = VEM_QuadratureData_2D()
+                    )
+                    .def_readwrite("reference_tetrahedron_quadrature", &Polydim::VEM::Quadrature::VEM_QuadratureData_3D::ReferenceTetrahedronQuadrature, "")
+                    .def_readwrite("quadrature_data_2_d", &Polydim::VEM::Quadrature::VEM_QuadratureData_3D::QuadratureData_2D, "")
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_3D =
+                    py::class_<Polydim::VEM::Quadrature::VEM_Quadrature_3D>
+                        (pyNsPolydim_NsVEM_NsQuadrature, "VEM_Quadrature_3D", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of VEM_Quadrature_3D
+                    auto pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_3D_ClassFaces_QuadratureData_PCC =
+                        py::class_<Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC>
+                            (pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_3D, "Faces_QuadratureData_PCC", "")
+                        .def(py::init<>([](
+                        Gedim::Quadrature::QuadratureData Quadrature = Gedim::Quadrature::QuadratureData(), std::vector<Eigen::VectorXd> WeightsTimesNormal = std::vector<Eigen::VectorXd>())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC>();
+                            r_ctor_->Quadrature = Quadrature;
+                            r_ctor_->WeightsTimesNormal = WeightsTimesNormal;
+                            return r_ctor_;
+                        })
+                        , py::arg("quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("weights_times_normal") = std::vector<Eigen::VectorXd>()
+                        )
+                        .def_readwrite("quadrature", &Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC::Quadrature, "")
+                        .def_readwrite("weights_times_normal", &Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC::WeightsTimesNormal, "")
+                        ;
+                    auto pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_3D_ClassFaces_QuadratureData_MCC =
+                        py::class_<Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_MCC>
+                            (pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_3D, "Faces_QuadratureData_MCC", "")
+                        .def(py::init<>([](
+                        Gedim::Quadrature::QuadratureData Quadrature = Gedim::Quadrature::QuadratureData(), std::vector<Gedim::Quadrature::QuadratureData> FacesQuadrature = std::vector<Gedim::Quadrature::QuadratureData>())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_MCC>();
+                            r_ctor_->Quadrature = Quadrature;
+                            r_ctor_->FacesQuadrature = FacesQuadrature;
+                            return r_ctor_;
+                        })
+                        , py::arg("quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("faces_quadrature") = std::vector<Gedim::Quadrature::QuadratureData>()
+                        )
+                        .def_readwrite("quadrature", &Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_MCC::Quadrature, "")
+                        .def_readwrite("faces_quadrature", &Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_MCC::FacesQuadrature, "")
+                        ;
+                } // end of inner classes & enums of VEM_Quadrature_3D
+
+                pyNsPolydim_NsVEM_NsQuadrature_ClassVEM_Quadrature_3D
+                    .def(py::init<>()) // implicit default constructor
+                    .def("compute_pcc_3_d",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_3D::Compute_PCC_3D, py::arg("order"))
+                    .def("compute_mcc_3_d",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_3D::Compute_MCC_3D, py::arg("order"))
+                    .def("compute_df_pcc_3_d",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_3D::Compute_DF_PCC_3D, py::arg("order"))
+                    .def("polyhedron_internal_quadrature",
+                        py::overload_cast<const Polydim::VEM::Quadrature::VEM_QuadratureData_3D &, const Gedim::GeometryUtilities &, const std::vector<Eigen::MatrixXd> &>(&Polydim::VEM::Quadrature::VEM_Quadrature_3D::PolyhedronInternalQuadrature, py::const_), py::arg("data"), py::arg("geometry_utility"), py::arg("polyhedron_tetrahedron_vertices"))
+                    .def("polyhedron_internal_quadrature",
+                        py::overload_cast<const Gedim::GeometryUtilities &, const Gedim::Quadrature::QuadratureData &, const std::vector<Eigen::MatrixXd> &>(&Polydim::VEM::Quadrature::VEM_Quadrature_3D::PolyhedronInternalQuadrature, py::const_), py::arg("geometry_utility"), py::arg("data"), py::arg("polyhedron_tetrahedron_vertices"))
+                    .def("polyhedron_faces_quadrature",
+                        py::overload_cast<const Gedim::GeometryUtilities &, const std::vector<Eigen::MatrixXi> &, const std::vector<Eigen::Matrix3d> &, const std::vector<Eigen::Vector3d> &, const std::vector<Eigen::Vector3d> &, const std::vector<bool> &, const std::vector<Eigen::MatrixXd> &, const std::vector<Eigen::VectorXd> &>(&Polydim::VEM::Quadrature::VEM_Quadrature_3D::PolyhedronFacesQuadrature, py::const_), py::arg("geometry_utility"), py::arg("polyhedron_faces"), py::arg("faces_rotation_matrix"), py::arg("faces_translation"), py::arg("faces_normals"), py::arg("face_normal_directions"), py::arg("faces_quadrature_points"), py::arg("faces_quadrature_weights"))
+                    .def("polyhedron_internal_edges_quadrature_points",
+                        &Polydim::VEM::Quadrature::VEM_Quadrature_3D::PolyhedronInternalEdgesQuadraturePoints, py::arg("reference_segment_internal_points"), py::arg("polyhedron_vertices"), py::arg("polyhedron_edges"), py::arg("edge_directions"), py::arg("edge_tangents"))
+                    .def("polyhedron_faces_quadrature",
+                        py::overload_cast<const Polydim::VEM::Quadrature::VEM_QuadratureData_3D &, const Gedim::GeometryUtilities &, const std::vector<std::vector<Eigen::Matrix3d>> &, const std::vector<Eigen::Matrix3d> &, const std::vector<Eigen::Vector3d> &>(&Polydim::VEM::Quadrature::VEM_Quadrature_3D::PolyhedronFacesQuadrature, py::const_), py::arg("data"), py::arg("geometry_utility"), py::arg("faces_triangulations2_d"), py::arg("faces_rotation_matrix"), py::arg("faces_translation"))
+                    ;
+            } // </namespace Quadrature>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_Quadrature_3D.hpp>    ////////////////////
 
     // </litgen_pydef> // Autogenerated code end
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  AUTOGENERATED CODE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
