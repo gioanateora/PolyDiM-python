@@ -184,8 +184,9 @@ set_target_properties(pypolydim PROPERTIES
 )
 
 
-# install(TARGETS pypolydim DESTINATION pypolydim)
-# install(FILES __init__.py DESTINATION pypolydim)
+install(TARGETS pypolydim DESTINATION pypolydim)
+install(FILES __init__.py DESTINATION pypolydim)
+install(FILES pypolydim.pyi DESTINATION pypolydim)
 
 
 
