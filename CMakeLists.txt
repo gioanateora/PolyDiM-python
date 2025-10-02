@@ -16,8 +16,17 @@ set(ENABLE_PETSC OFF CACHE BOOL "Enable PETSc extension")
 ###########################################################################################
 
 ## PyBind11
-find_package(pybind11 REQUIRED)
+# Use Python from venv if one is active
+if(DEFINED ENV{VIRTUAL_ENV})
+    set(Python3_EXECUTABLE $ENV{VIRTUAL_ENV}/bin/python)
+    message(STATUS "Using Python from: $ENV{VIRTUAL_ENV}")
+endif()
+
+# Find required packages
 find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
+find_package(pybind11 REQUIRED)
+
+add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
 
 ## Eigen3
 find_package(Eigen3 CONFIG REQUIRED)
@@ -143,30 +152,8 @@ list(APPEND pypolydim_includes ${GEDIM_LIBRARY_ADDITIONAL_INCLUDE_PATH})
 ############################################################################################
 # Create a static library with the C++ sources (excluding main)
 
-
 add_library(polydim_lib STATIC ${pypolydim_sources} ${pypolydim_headers})
 target_include_directories(polydim_lib PUBLIC  ${pypolydim_includes}) #  rimosso ${CMAKE_CURRENT_SOURCE_DIR}
-
-# Create the pybind11 module
-pybind11_add_module(polydim bindings.cpp)
-
-# Link the library to the pybind11 module
-target_link_libraries(polydim_lib ${PYPOLYDIM_LIBRARY_LINKED_LIBRARIES})
-target_link_libraries(polydim PRIVATE polydim_lib ${PYPOLYDIM_LIBRARY_LINKED_LIBRARIES})
-target_include_directories(polydim PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${pypolydim_includes})
-
-# Set properties for the module
-target_compile_definitions(polydim PRIVATE VERSION_INFO=${EXAMPLE_VERSION_INFO})
-
-# Set the output directory to the parent directory for easier Python import
-set_target_properties(polydim PROPERTIES
-    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    LINKER_LANGUAGE CXX
-    CXX_STANDARD 20
-    CXX_STANDARD_REQUIRED ON
-    CXX_EXTENSIONS OFF
-)
-
 
 set_target_properties(polydim_lib PROPERTIES
     LINKER_LANGUAGE CXX
@@ -176,3 +163,29 @@ set_target_properties(polydim_lib PROPERTIES
 )
 
 target_compile_options(polydim_lib PUBLIC -fPIC -w)
+
+# Create the pybind11 module
+pybind11_add_module(pypolydim bindings.cpp)
+
+# Link the library to the pybind11 module
+target_link_libraries(polydim_lib ${PYPOLYDIM_LIBRARY_LINKED_LIBRARIES})
+target_link_libraries(pypolydim PRIVATE polydim_lib ${PYPOLYDIM_LIBRARY_LINKED_LIBRARIES})
+target_include_directories(pypolydim PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${pypolydim_includes})
+
+# Set properties for the module
+target_compile_definitions(pypolydim PRIVATE VERSION_INFO=${EXAMPLE_VERSION_INFO})
+
+# Set the output directory to the parent directory for easier Python import
+set_target_properties(pypolydim PROPERTIES
+    LINKER_LANGUAGE CXX
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    CXX_EXTENSIONS OFF
+)
+
+
+# install(TARGETS pypolydim DESTINATION pypolydim)
+# install(FILES __init__.py DESTINATION pypolydim)
+
+
+
