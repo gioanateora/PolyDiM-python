@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.28)
 project(pypolydim LANGUAGES CXX C)
 
 set(USE_MPI OFF CACHE BOOL "Enable MPI support")
@@ -23,7 +23,7 @@ if(DEFINED ENV{VIRTUAL_ENV})
 endif()
 
 # Find required packages
-find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
+find_package(Python3 3.12 REQUIRED COMPONENTS Interpreter Development.Module)
 find_package(pybind11 REQUIRED)
 
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)

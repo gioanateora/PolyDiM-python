@@ -12,3 +12,5 @@ CMakeFiles
 *.so
 *.a
 *.venv
+*wheelhouse
+*dist
