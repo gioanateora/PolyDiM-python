@@ -19,8 +19,8 @@ jobs:
         uses: pypa/cibuildwheel@v3.2.0
         env:
           CIBW_BEFORE_ALL_LINUX: >
-            apt-get update &&
-            apt-get install -y python3-dev
+            apt update &&
+            apt install -y python3-dev
 
         # env:
         #   CIBW_SOME_OPTION: value
@@ -30,7 +30,7 @@ jobs:
           output-dir: wheelhouse
           config-file: "{package}/pyproject.toml"
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
-          path: ./wheelhouse/*.whl
+      #- uses: actions/upload-artifact@v4
+      #  with:
+      #    name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+      #    path: ./wheelhouse/*.whl
