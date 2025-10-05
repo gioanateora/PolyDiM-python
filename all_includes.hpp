@@ -142,12 +142,6 @@
 #include "./PolyDiM/PolyDiM/src/VEM/DF_PCC/3D/VEM_DF_PCC_3D_ReferenceElement.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/DF_PCC/3D/VEM_DF_PCC_3D_Velocity_LocalSpace.hpp"
 
-#include "./PolyDiM/PolyDiM/src/PDETools/Assembler/Assembler_Utilities.hpp"
-#include "./PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp"
-#include "./PolyDiM/PolyDiM/src/PDETools/Equations/EllipticEquation.hpp"
-#include "./PolyDiM/PolyDiM/src/PDETools/Mesh/MeshMatricesDAO_mesh_connectivity_data.hpp"
-#include "./PolyDiM/PolyDiM/src/PDETools/Mesh/PDE_Mesh_Utilities.hpp"
-
 #include "./PolyDiM/PolyDiM/src/FEM/PCC/1D/FEM_PCC_1D_LocalSpace.hpp"
 #include "./PolyDiM/PolyDiM/src/FEM/PCC/1D/FEM_PCC_1D_ReferenceElement.hpp"
 
@@ -166,3 +160,21 @@
 #include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_Hexahedron_PCC_3D_ReferenceElement.hpp"
 #include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_Tetrahedron_PCC_3D_LocalSpace.hpp"
 #include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_Tetrahedron_PCC_3D_ReferenceElement.hpp"
+
+#include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_PCC_3D_LocalSpace_Data.hpp"
+#include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_PCC_3D_LocalSpace.hpp"
+#include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_PCC_3D_ReferenceElement.hpp"
+#include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_Hexahedron_PCC_3D_LocalSpace.hpp"
+#include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_Hexahedron_PCC_3D_ReferenceElement.hpp"
+#include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_Tetrahedron_PCC_3D_LocalSpace.hpp"
+#include "./PolyDiM/PolyDiM/src/FEM/PCC/3D/FEM_Tetrahedron_PCC_3D_ReferenceElement.hpp"
+
+#include "./PolyDiM/PolyDiM/src/PDETools/Assembler/Assembler_Utilities.hpp"
+#include "./PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp"
+#include "./PolyDiM/PolyDiM/src/PDETools/Equations/EllipticEquation.hpp"
+#include "./PolyDiM/PolyDiM/src/PDETools/Mesh/MeshMatricesDAO_mesh_connectivity_data.hpp"
+#include "./PolyDiM/PolyDiM/src/PDETools/Mesh/PDE_Mesh_Utilities.hpp"
+
+#include "./PolyDiM/PolyDiM/LocalSpace/LocalSpace_PCC_2D.hpp"
+#include "./PolyDiM/PolyDiM/LocalSpace/LocalSpace_PCC_3D.hpp"
+#include "./PolyDiM/PolyDiM/LocalSpace/LocalSpace_MCC_2D.hpp"
