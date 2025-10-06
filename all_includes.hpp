@@ -175,6 +175,6 @@
 #include "./PolyDiM/PolyDiM/src/PDETools/Mesh/MeshMatricesDAO_mesh_connectivity_data.hpp"
 #include "./PolyDiM/PolyDiM/src/PDETools/Mesh/PDE_Mesh_Utilities.hpp"
 
-#include "./PolyDiM/PolyDiM/LocalSpace/LocalSpace_PCC_2D.hpp"
-#include "./PolyDiM/PolyDiM/LocalSpace/LocalSpace_PCC_3D.hpp"
-#include "./PolyDiM/PolyDiM/LocalSpace/LocalSpace_MCC_2D.hpp"
+#include "./PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_2D.hpp"
+#include "./PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp"
+#include "./PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_MCC_2D.hpp"

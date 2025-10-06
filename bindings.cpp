@@ -8930,6 +8930,202 @@ void py_init_module_polydim(py::module &m)
     } // </namespace Polydim>
     ////////////////////    </generated_from:FEM_PCC_3D_LocalSpace.hpp>    ////////////////////
 
+
+    ////////////////////    <generated_from:PDE_Mesh_Utilities.hpp>    ////////////////////
+    // #ifndef __PDETOOLS_MESH_PDE_Mesh_Utilities_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace Mesh>
+                py::module_ pyNsPolydim_NsPDETools_NsMesh = pyNsPolydim_NsPDETools.def_submodule("mesh", "namespace Mesh");
+                { // <namespace PDE_Mesh_Utilities>
+                    py::module_ pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities = pyNsPolydim_NsPDETools_NsMesh.def_submodule("pde_mesh_utilities", "namespace PDE_Mesh_Utilities");
+                    auto pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_1D =
+                        py::class_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_1D>
+                            (pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "PDE_Domain_1D", py::is_final(), "\n(final class)")
+                        .def(py::init<>([](
+                        Eigen::MatrixXd vertices = Eigen::MatrixXd(), double length = double())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_1D>();
+                            r_ctor_->vertices = vertices;
+                            r_ctor_->length = length;
+                            return r_ctor_;
+                        })
+                        , py::arg("vertices") = Eigen::MatrixXd(), py::arg("length") = double()
+                        )
+                        .def_readwrite("vertices", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_1D::vertices, "")
+                        .def_readwrite("length", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_1D::length, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_2D =
+                        py::class_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D>
+                            (pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "PDE_Domain_2D", py::is_final(), "\n(final class)");
+
+                    { // inner classes & enums of PDE_Domain_2D
+                        auto pyEnumDomain_Shape_Types =
+                            py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_2D, "Domain_Shape_Types", py::arithmetic(), "")
+                                .value("parallelogram", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Parallelogram, "")
+                                .value("polygon", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Polygon, "");
+                    } // end of inner classes & enums of PDE_Domain_2D
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_2D
+                        .def(py::init<>([](
+                        Eigen::MatrixXd vertices = Eigen::MatrixXd(), double area = double(), Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types shape_type = Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D>();
+                            r_ctor_->vertices = vertices;
+                            r_ctor_->area = area;
+                            r_ctor_->shape_type = shape_type;
+                            return r_ctor_;
+                        })
+                        , py::arg("vertices") = Eigen::MatrixXd(), py::arg("area") = double(), py::arg("shape_type") = Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types()
+                        )
+                        .def_readwrite("vertices", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::vertices, "")
+                        .def_readwrite("area", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::area, "")
+                        .def_readwrite("shape_type", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::shape_type, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_3D =
+                        py::class_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D>
+                            (pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "PDE_Domain_3D", py::is_final(), "\n(final class)");
+
+                    { // inner classes & enums of PDE_Domain_3D
+                        auto pyEnumDomain_Shape_Types =
+                            py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_3D, "Domain_Shape_Types", py::arithmetic(), "")
+                                .value("parallelepiped", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types::Parallelepiped, "")
+                                .value("polygon", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types::Polygon, "");
+                    } // end of inner classes & enums of PDE_Domain_3D
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_3D
+                        .def(py::init<>([](
+                        Eigen::MatrixXd vertices = Eigen::MatrixXd(), Eigen::MatrixXi edges = Eigen::MatrixXi(), std::vector<Eigen::MatrixXi> faces = std::vector<Eigen::MatrixXi>(), double volume = double(), Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types shape_type = Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D>();
+                            r_ctor_->vertices = vertices;
+                            r_ctor_->edges = edges;
+                            r_ctor_->faces = faces;
+                            r_ctor_->volume = volume;
+                            r_ctor_->shape_type = shape_type;
+                            return r_ctor_;
+                        })
+                        , py::arg("vertices") = Eigen::MatrixXd(), py::arg("edges") = Eigen::MatrixXi(), py::arg("faces") = std::vector<Eigen::MatrixXi>(), py::arg("volume") = double(), py::arg("shape_type") = Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types()
+                        )
+                        .def_readwrite("vertices", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::vertices, "")
+                        .def_readwrite("edges", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::edges, "")
+                        .def_readwrite("faces", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::faces, "")
+                        .def_readwrite("volume", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::volume, "")
+                        .def_readwrite("shape_type", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::shape_type, "")
+                        ;
+
+
+                    auto pyEnumMeshGenerator_Types_1D =
+                        py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_1D>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "MeshGenerator_Types_1D", py::arithmetic(), "")
+                            .value("equispaced", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_1D::Equispaced, "/< equispaced mesh")
+                            .value("minimal", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_1D::Minimal, "/< minimal mesh")
+                            .value("csv_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_1D::CsvImporter, "/< imported csv mesh");
+
+
+                    auto pyEnumMeshGenerator_Types_2D =
+                        py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "MeshGenerator_Types_2D", py::arithmetic(), "")
+                            .value("triangular", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Triangular, "/< generated triangular mesh")
+                            .value("minimal", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Minimal, "/< generated minimal mesh")
+                            .value("polygonal", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Polygonal, "/< generated voronoi polygonal mesh")
+                            .value("off_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::OFFImporter, "/< imported off mesh")
+                            .value("csv_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::CsvImporter, "/< imported csv mesh")
+                            .value("squared", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Squared, "/< squared mesh")
+                            .value("random_distorted", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::RandomDistorted, "");
+
+
+                    auto pyEnumMeshGenerator_Types_3D =
+                        py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "MeshGenerator_Types_3D", py::arithmetic(), "")
+                            .value("tetrahedral", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::Tetrahedral, "/< generated tetrahedral mesh")
+                            .value("minimal", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::Minimal, "/< generated minimal mesh")
+                            .value("polyhedral", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::Polyhedral, "/< generated voronoi polyhedral mesh")
+                            .value("ovm_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::OVMImporter, "/< imported ovm mesh")
+                            .value("vtk_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::VtkImporter, "/< imported vtk mesh")
+                            .value("csv_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::CsvImporter, "/< imported csv mesh")
+                            .value("cubic", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::Cubic, "/< cubic mesh");
+
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("create_mesh_1_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::create_mesh_1D, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("pde_domain"), py::arg("max_relative_length"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("create_mesh_2_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::create_mesh_2D, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("pde_domain"), py::arg("max_relative_area"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("create_mesh_3_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::create_mesh_3D, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("pde_domain"), py::arg("max_relative_volume"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("import_mesh_1_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::import_mesh_1D, py::arg("mesh_type"), py::arg("file_path"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("import_mesh_2_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::import_mesh_2D, py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("file_path"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("import_mesh_3_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::import_mesh_3D, py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("file_path"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("compute_mesh_1_d_geometry_data",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::compute_mesh_1D_geometry_data, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("compute_mesh_2_d_geometry_data",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::compute_mesh_2D_geometry_data, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("compute_mesh_3_d_geometry_data",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::compute_mesh_3D_geometry_data, py::arg("geometry_utilities"), py::arg("mesh"));
+                } // </namespace PDE_Mesh_Utilities>
+
+            } // </namespace Mesh>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:PDE_Mesh_Utilities.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:EllipticEquation.hpp>    ////////////////////
+    // #ifndef __PDETOOLS_EQUATION_EllipticEquation_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace Equations>
+                py::module_ pyNsPolydim_NsPDETools_NsEquations = pyNsPolydim_NsPDETools.def_submodule("equations", "namespace Equations");
+                auto pyNsPolydim_NsPDETools_NsEquations_ClassEllipticEquation =
+                    py::class_<Polydim::PDETools::Equations::EllipticEquation>
+                        (pyNsPolydim_NsPDETools_NsEquations, "EllipticEquation", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("compute_cell_diffusion_matrix",
+                        py::overload_cast<const Eigen::VectorXd &, const std::vector<Eigen::MatrixXd> &, const Eigen::VectorXd &>(&Polydim::PDETools::Equations::EllipticEquation::ComputeCellDiffusionMatrix, py::const_), py::arg("diffusion_term_values"), py::arg("basis_functions_derivative_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_diffusion_matrix",
+                        py::overload_cast<const std::array<Eigen::VectorXd, 9> &, const std::vector<Eigen::MatrixXd> &, const Eigen::VectorXd &>(&Polydim::PDETools::Equations::EllipticEquation::ComputeCellDiffusionMatrix, py::const_), py::arg("diffusion_term_values"), py::arg("basis_functions_derivative_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_reaction_matrix",
+                        &Polydim::PDETools::Equations::EllipticEquation::ComputeCellReactionMatrix, py::arg("reaction_term_values"), py::arg("basis_functions_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_advection_matrix",
+                        &Polydim::PDETools::Equations::EllipticEquation::ComputeCellAdvectionMatrix, py::arg("advection_term_values"), py::arg("basis_functions_values"), py::arg("basis_functions_derivative_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_forcing_term",
+                        py::overload_cast<const Eigen::VectorXd &, const Eigen::MatrixXd &, const Eigen::VectorXd &>(&Polydim::PDETools::Equations::EllipticEquation::ComputeCellForcingTerm, py::const_), py::arg("forcing_term_values"), py::arg("basis_functions_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_forcing_term",
+                        py::overload_cast<const std::array<Eigen::VectorXd, 3> &, const std::vector<Eigen::MatrixXd> &, const Eigen::VectorXd &>(&Polydim::PDETools::Equations::EllipticEquation::ComputeCellForcingTerm, py::const_), py::arg("forcing_term_values"), py::arg("basis_functions_values"), py::arg("quadrature_weights"))
+                    ;
+            } // </namespace Equations>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:EllipticEquation.hpp>    ////////////////////
+
     // </litgen_pydef> // Autogenerated code end
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  AUTOGENERATED CODE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // <litgen_glue_code>  // Autogenerated code below! Do not edit!

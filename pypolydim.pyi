@@ -16207,4 +16207,318 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 # </submodule polydim>
 ####################    </generated_from:FEM_PCC_3D_LocalSpace.hpp>    ####################
 
+
+####################    <generated_from:PDE_Mesh_Utilities.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __PDETOOLS_MESH_PDE_Mesh_Utilities_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule pde_tools>
+    class pde_tools:  # Proxy class that introduces typings for the *submodule* pde_tools
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace PDETools"""
+
+        # <submodule mesh>
+        class mesh:  # Proxy class that introduces typings for the *submodule* mesh
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace Mesh"""
+
+            # <submodule pde_mesh_utilities>
+            class pde_mesh_utilities:  # Proxy class that introduces typings for the *submodule* pde_mesh_utilities
+                pass  # (This corresponds to a C++ namespace. All method are static!)
+                """ namespace PDE_Mesh_Utilities"""
+                class PDE_Domain_1D:
+                    """
+                    (final class)
+                    """
+                    vertices: Eigen.MatrixXd
+                    length: float
+                    def __init__(
+                        self,
+                        vertices: Eigen.MatrixXd = Eigen.MatrixXd(),
+                        length: float = float()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+
+                class PDE_Domain_2D:
+                    """
+                    (final class)
+                    """
+                    class Domain_Shape_Types(enum.IntEnum):
+                        parallelogram = enum.auto() # (= 0)
+                        polygon = enum.auto()       # (= 1)
+
+                    vertices: Eigen.MatrixXd
+                    area: float
+                    shape_type: Polydim.PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_2D.Domain_Shape_Types
+                    def __init__(
+                        self,
+                        vertices: Eigen.MatrixXd = Eigen.MatrixXd(),
+                        area: float = float(),
+                        shape_type: PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_2D.Domain_Shape_Types = PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_2.Domain_Shape_Types()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+
+                class PDE_Domain_3D:
+                    """
+                    (final class)
+                    """
+                    class Domain_Shape_Types(enum.IntEnum):
+                        parallelepiped = enum.auto() # (= 0)
+                        polygon = enum.auto()        # (= 1)
+
+                    vertices: Eigen.MatrixXd
+                    edges: Eigen.MatrixXi
+                    faces: List[Eigen.MatrixXi]
+                    volume: float
+                    shape_type: Polydim.PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_3D.Domain_Shape_Types
+                    def __init__(
+                        self,
+                        vertices: Eigen.MatrixXd = Eigen.MatrixXd(),
+                        edges: Eigen.MatrixXi = Eigen.MatrixXi(),
+                        faces: List[Eigen.MatrixXi] = List[Eigen.MatrixXi](),
+                        volume: float = float(),
+                        shape_type: PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_3D.Domain_Shape_Types = PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_3.Domain_Shape_Types()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+
+                class MeshGenerator_Types_1D(enum.IntEnum):
+                    equispaced = enum.auto()   # (= 0)  #/< equispaced mesh
+                    minimal = enum.auto()      # (= 2)  #/< minimal mesh
+                    csv_importer = enum.auto() # (= 1)  #/< imported csv mesh
+
+                class MeshGenerator_Types_2D(enum.IntEnum):
+                    triangular = enum.auto()       # (= 0)  #/< generated triangular mesh
+                    minimal = enum.auto()          # (= 1)  #/< generated minimal mesh
+                    polygonal = enum.auto()        # (= 2)  #/< generated voronoi polygonal mesh
+                    off_importer = enum.auto()     # (= 3)  #/< imported off mesh
+                    csv_importer = enum.auto()     # (= 4)  #/< imported csv mesh
+                    squared = enum.auto()          # (= 5)  #/< squared mesh
+                    random_distorted = enum.auto() # (= 6)
+
+                class MeshGenerator_Types_3D(enum.IntEnum):
+                    tetrahedral = enum.auto()  # (= 0)  #/< generated tetrahedral mesh
+                    minimal = enum.auto()      # (= 1)  #/< generated minimal mesh
+                    polyhedral = enum.auto()   # (= 2)  #/< generated voronoi polyhedral mesh
+                    ovm_importer = enum.auto() # (= 3)  #/< imported ovm mesh
+                    vtk_importer = enum.auto() # (= 4)  #/< imported vtk mesh
+                    csv_importer = enum.auto() # (= 5)  #/< imported csv mesh
+                    cubic = enum.auto()        # (= 6)  #/< cubic mesh
+
+                @staticmethod
+                def create_mesh_1_d(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh_utilities: Gedim.MeshUtilities,
+                    mesh_type: MeshGenerator_Types_1D,
+                    pde_domain: PDE_Domain_1D,
+                    max_relative_length: float,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> None:
+                    pass
+
+                @staticmethod
+                def create_mesh_2_d(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh_utilities: Gedim.MeshUtilities,
+                    mesh_type: MeshGenerator_Types_2D,
+                    pde_domain: PDE_Domain_2D,
+                    max_relative_area: float,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> None:
+                    pass
+
+                @staticmethod
+                def create_mesh_3_d(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh_utilities: Gedim.MeshUtilities,
+                    mesh_type: MeshGenerator_Types_3D,
+                    pde_domain: PDE_Domain_3D,
+                    max_relative_volume: float,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> None:
+                    pass
+
+                @staticmethod
+                def import_mesh_1_d(
+                    mesh_type: MeshGenerator_Types_1D,
+                    file_path: str,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> None:
+                    pass
+
+                @staticmethod
+                def import_mesh_2_d(
+                    mesh_utilities: Gedim.MeshUtilities,
+                    mesh_type: MeshGenerator_Types_2D,
+                    file_path: str,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> None:
+                    pass
+
+                @staticmethod
+                def import_mesh_3_d(
+                    mesh_utilities: Gedim.MeshUtilities,
+                    mesh_type: MeshGenerator_Types_3D,
+                    file_path: str,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> None:
+                    pass
+
+                @staticmethod
+                def compute_mesh_1_d_geometry_data(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh_utilities: Gedim.MeshUtilities,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> Gedim.MeshUtilities.MeshGeometricData1D:
+                    pass
+
+                @staticmethod
+                def compute_mesh_2_d_geometry_data(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh_utilities: Gedim.MeshUtilities,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> Gedim.MeshUtilities.MeshGeometricData2D:
+                    pass
+
+                @staticmethod
+                def compute_mesh_3_d_geometry_data(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO
+                    ) -> Gedim.MeshUtilities.MeshGeometricData3D:
+                    pass
+
+            # </submodule pde_mesh_utilities>
+
+        # </submodule mesh>
+
+    # </submodule pde_tools>
+
+# </submodule polydim>
+####################    </generated_from:PDE_Mesh_Utilities.hpp>    ####################
+
+
+####################    <generated_from:EllipticEquation.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __PDETOOLS_EQUATION_EllipticEquation_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule pde_tools>
+    class pde_tools:  # Proxy class that introduces typings for the *submodule* pde_tools
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace PDETools"""
+
+        # <submodule equations>
+        class equations:  # Proxy class that introduces typings for the *submodule* equations
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace Equations"""
+            class EllipticEquation:
+                """
+                (final class)
+                """
+                @overload
+                def compute_cell_diffusion_matrix(
+                    self,
+                    diffusion_term_values: Eigen.VectorXd,
+                    basis_functions_derivative_values: List[Eigen.MatrixXd],
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_cell_diffusion_matrix(
+                    self,
+                    diffusion_term_values: List[Eigen.VectorXd],
+                    basis_functions_derivative_values: List[Eigen.MatrixXd],
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def compute_cell_reaction_matrix(
+                    self,
+                    reaction_term_values: Eigen.VectorXd,
+                    basis_functions_values: Eigen.MatrixXd,
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def compute_cell_advection_matrix(
+                    self,
+                    advection_term_values: List[Eigen.VectorXd],
+                    basis_functions_values: Eigen.MatrixXd,
+                    basis_functions_derivative_values: List[Eigen.MatrixXd],
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_cell_forcing_term(
+                    self,
+                    forcing_term_values: Eigen.VectorXd,
+                    basis_functions_values: Eigen.MatrixXd,
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.VectorXd:
+                    pass
+
+                @overload
+                def compute_cell_forcing_term(
+                    self,
+                    forcing_term_values: List[Eigen.VectorXd],
+                    basis_functions_values: List[Eigen.MatrixXd],
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.VectorXd:
+                    pass
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+        # </submodule equations>
+
+    # </submodule pde_tools>
+
+# </submodule polydim>
+####################    </generated_from:EllipticEquation.hpp>    ####################
+
 # </litgen_stub> // Autogenerated code end! `
