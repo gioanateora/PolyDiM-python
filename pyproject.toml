@@ -11,9 +11,13 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pypolydim"
-version = "0.0.3"
+version = "0.0.5"
 description = "Bindings Python for PolyDiM&GeDiM based on pybind11"
 authors = [
+    { name = "Gioana Teora", email = "gioana.teora@polito.it" },
+    { name = "Fabio Vicini", email = "fabio.vicini@polito.it" }
+]
+maintainers = [
     { name = "Gioana Teora", email = "gioana.teora@polito.it" }
 ]
 requires-python = ">=3.12"
@@ -25,6 +29,13 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent"
 ]
+keywords = ["vem", "fem", "mesh", "dfn", "adaptativity", "geometry", "voronoi", "tetgen", "triangle"]
+
+[project.urls]
+Homepage = "https://www.polydim.it/"
+Repository = "https://github.com/AURION-Polito/PolyDiM/"
+Documentation = "https://docs.polydim.it/"
+Issues = "https://github.com/AURION-Polito/PolyDiM/issues"
 
 [tool.scikit-build]
 wheel.expand-macos-universal-tags = true

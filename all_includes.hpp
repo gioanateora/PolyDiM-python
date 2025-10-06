@@ -93,6 +93,8 @@
 #include "./PolyDiM/PolyDiM/src/Utilities/Monomials_Utilities.hpp"
 #include "./PolyDiM/PolyDiM/src/Utilities/Inertia_Utilities.hpp"
 
+#include "./PolyDiM/PolyDiM/src/VEM/PCC/VEM_PCC_Utilities.hpp"
+
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_Creator.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_LocalSpace.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_Inertia_LocalSpace.hpp"
@@ -106,6 +108,8 @@
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_Ortho_LocalSpace.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_ReferenceElement.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_LocalSpace_Data.hpp"
+
+#include "./PolyDiM/PolyDiM/src/VEM/MCC/VEM_MCC_Utilities.hpp"
 
 #include "./PolyDiM/PolyDiM/src/VEM/MCC/2D/VEM_MCC_2D_Creator.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/MCC/2D/VEM_MCC_2D_EdgeOrtho_ReferenceElement.hpp"
@@ -123,6 +127,8 @@
 #include "./PolyDiM/PolyDiM/src/VEM/MCC/3D/VEM_MCC_3D_Pressure_LocalSpace.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/MCC/3D/VEM_MCC_3D_ReferenceElement.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/MCC/3D/VEM_MCC_3D_Velocity_LocalSpace.hpp"
+
+#include "./PolyDiM/PolyDiM/src/VEM/DF_PCC/VEM_DF_PCC_Utilities.hpp"
 
 #include "./PolyDiM/PolyDiM/src/VEM/DF_PCC/2D/VEM_DF_PCC_2D_Creator.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/DF_PCC/2D/VEM_DF_PCC_2D_LocalSpace_Data.hpp"

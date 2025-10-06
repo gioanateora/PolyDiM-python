@@ -1,4 +1,6 @@
-# <img src="./polydim_logo.png" alt="drawing" width="15%"/> Python Bindings for PolyDiM&GeDiM 
+<p align="center">
+  <img src="https://www.polydim.it/images/logo2.png" width="200" alt="Project Logo">
+</p>
 
 **PolyDiM** (POLYtopal DIscretization Methods ) is a numerical computational library designed for solving partial differential equations (PDEs) using discretization methods that operate on generic polytopal (polygonal/polyhedral) meshes.
 
