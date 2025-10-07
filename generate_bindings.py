@@ -1,19 +1,100 @@
 import litgen
+import re
+
+
+definitions: dict[str, bool] = {"pybind": True}
+
+
+def preprocess_cpp(code: str) -> str:
+    """
+    Rimuove:
+    - la riga '#if pybind == 1'
+    - la riga '#else'
+    - la riga '#endif'
+    - tutto ciò che è tra #else e #endif
+    lasciando solo il blocco di codice valido sotto #if PYBIND == 1.
+    """
+    lines = code.splitlines(keepends=True)
+    output_lines = []
+
+    inside_if_block = False
+    inside_else_block = False
+    nesting_level = 0
+
+    for line in lines:
+        stripped = line.strip()
+
+        if definitions["pybind"]:
+            # Inizio blocco condizionale specifico
+            if re.match(r"#\s*if\s+PYBIND\s*==\s*1", stripped):
+                inside_if_block = True
+                nesting_level += 1
+                continue  # rimuove la riga #if pybind == 1
+
+            # Rileva #else nel blocco che ci interessa
+            if re.match(r"#\s*else\b", stripped) and inside_if_block and nesting_level == 1:
+                inside_else_block = True
+                continue  # rimuove la riga #else
+
+            # Rileva #endif
+            if re.match(r"#\s*endif\b", stripped) and inside_else_block:
+                if inside_if_block and nesting_level == 1:
+                    inside_if_block = False
+                    inside_else_block = False
+                nesting_level -= 1
+                continue  # rimuove la riga #endif
+
+            # Se siamo dentro il blocco else, salta le righe
+            if inside_else_block:
+                continue
+        else:
+
+            if re.match(r"#\s*if\s+PYBIND\s*==\s*1", stripped):
+                inside_if_block = True
+                continue  # rimuove la riga #if pybind == 1
+
+            if inside_if_block and not re.match(r"#\s*else\b", stripped):
+                continue
+
+            # Rileva #else
+            if re.match(r"#\s*else\b", stripped) and inside_if_block:
+                inside_if_block = False
+                inside_else_block = True
+                continue  # rimuove la riga #endif
+
+            # Rileva #else nel blocco che ci interessa
+            if re.match(r"#\s*endif\b", stripped) and inside_else_block:
+                inside_else_block = False
+                continue  # rimuove la riga #else
+
+        output_lines.append(line)
+
+    return "".join(output_lines)
 
 opts = litgen.LitgenOptions()
-# opts.python_expose_enum_class = True
-# opts.classes_expose_nested = True
-# opts.enum_remove_scope = False
-# opts.class_remove_scope = False
-
 
 opts.srcmlcpp_options.header_filter_preprocessor_regions = True
-
-opts.fn_template_options.add_specialization("Parse", ["std::vector<unsigned int>", "std::vector<double>", "std::set<unsigned int>", "std::vector<int>", "bool", "std::string", "double", "float", "char", "int"], add_suffix_to_function_name=True)
-
 opts.type_replacements.add_replacement("Gedim::IMeshDAO", "Gedim::MeshMatricesDAO")
 
-# opts.fn_template_options.add_specialization("Timer", ["std::chrono::milliseconds"], add_suffix_to_function_name=True)
+opts.fn_template_options.add_specialization("ComputePolynomialsValues", ["Polydim::Utilities::Monomials_2D", "Polydim::Utilities::Monomials_3D"], add_suffix_to_function_name=False)
+opts.fn_template_options.add_specialization("ComputePolynomialsDerivativeValues", ["Polydim::Utilities::Monomials_2D", "Polydim::Utilities::Monomials_3D"], add_suffix_to_function_name=False)
+opts.fn_template_options.add_specialization("ComputePolynomialsLaplacianValues", ["Polydim::Utilities::Monomials_2D", "Polydim::Utilities::Monomials_3D"], add_suffix_to_function_name=False)
+
+opts.fn_template_options.add_specialization("Create_Constant_DOFsInfo_0D", ["Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data"], add_suffix_to_function_name=False)
+opts.fn_template_options.add_specialization("Create_Constant_DOFsInfo_1D", ["Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data"], add_suffix_to_function_name=False)
+opts.fn_template_options.add_specialization("Create_Constant_DOFsInfo_2D", ["Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data"], add_suffix_to_function_name=False)
+opts.fn_template_options.add_specialization("Create_Constant_DOFsInfo_3D", ["Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data"], add_suffix_to_function_name=False)
+
+opts.fn_template_options.add_specialization("CreateDOFs_1D", ["Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data"], add_suffix_to_function_name=False)
+opts.fn_template_options.add_specialization("CreateDOFs_2D", ["Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data"], add_suffix_to_function_name=False)
+opts.fn_template_options.add_specialization("CreateDOFs_3D", ["Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data"], add_suffix_to_function_name=False)
+
+opts.srcmlcpp_options.ignored_warning_parts.append("Ignoring template function")
+
+opts.srcmlcpp_options.code_preprocess_function = preprocess_cpp
+gen = litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/VEM/PCC/VEM_PCC_Utilities.hpp")
+gen = litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/VEM/DF_PCC/VEM_DF_PCC_Utilities.hpp")
+gen = litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp")
 
 headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
            "PolyDiM/gedim/GeDiM/src/Geometry/GeometryUtilities.hpp",
@@ -64,10 +145,11 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/Utilities/Monomials_2D.hpp",
             "PolyDiM/PolyDiM/src/Utilities/Monomials_3D.hpp",
             "PolyDiM/PolyDiM/src/Utilities/Inertia_Utilities.hpp",
-            #"PolyDiM/PolyDiM/src/VEM/PCC/VEM_PCC_Utilities.hpp",
+            "PolyDiM/PolyDiM/src/VEM/PCC/VEM_PCC_Utilities.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_ReferenceElement.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_LocalSpace_Data.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_ReferenceElement.hpp",
+            "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_LocalSpace_Data.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/3D/VEM_MCC_3D_LocalSpace_Data.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/2D/VEM_MCC_2D_EdgeOrtho_ReferenceElement.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_Creator.hpp",
@@ -78,7 +160,6 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_LocalSpace.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_Inertia_LocalSpace.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_Ortho_LocalSpace.hpp",
-            "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_LocalSpace_Data.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/VEM_MCC_Utilities.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/2D/VEM_MCC_2D_Creator.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/2D/VEM_MCC_2D_EdgeOrtho_Velocity_LocalSpace.hpp",
@@ -93,7 +174,7 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/3D/VEM_MCC_3D_Pressure_LocalSpace.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/3D/VEM_MCC_3D_ReferenceElement.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/3D/VEM_MCC_3D_Velocity_LocalSpace.hpp",
-            #"PolyDiM/PolyDiM/src/VEM/DF_PCC/VEM_DF_PCC_Utilities.hpp",
+            "PolyDiM/PolyDiM/src/VEM/DF_PCC/VEM_DF_PCC_Utilities.hpp",
             "PolyDiM/PolyDiM/src/VEM/DF_PCC/2D/VEM_DF_PCC_2D_Creator.hpp",
             "PolyDiM/PolyDiM/src/VEM/DF_PCC/2D/VEM_DF_PCC_2D_LocalSpace_Data.hpp",
             "PolyDiM/PolyDiM/src/VEM/DF_PCC/2D/VEM_DF_PCC_2D_Pressure_LocalSpace.hpp",
@@ -130,11 +211,12 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/PDETools/Equations/EllipticEquation.hpp",
             "PolyDiM/PolyDiM/src/PDETools/Mesh/MeshMatricesDAO_mesh_connectivity_data.hpp",
             #"PolyDiM/PolyDiM/src/PDETools/Assembler/Assembler_Utilities.hpp",
-            #"PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp",
-            #"PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_2D.hpp",
+            "PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp",
+            "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_2D.hpp",
             #"PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_MCC_2D.hpp",
             ]
+
 
 # Stampa a console:
 litgen.write_generated_code_for_files(

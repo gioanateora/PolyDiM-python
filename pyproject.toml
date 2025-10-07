@@ -4,14 +4,13 @@ requires = [
     "pybind11",
     "setuptools>=42",
     "wheel",
-   # "cmake",
     "litgen"
 ]
 build-backend = "scikit_build_core.build"
 
 [project]
 name = "pypolydim"
-version = "0.0.5"
+version = "0.0.7"
 description = "Bindings Python for PolyDiM&GeDiM based on pybind11"
 authors = [
     { name = "Gioana Teora", email = "gioana.teora@polito.it" },
@@ -46,7 +45,8 @@ args = [
     "-DENABLE_TRIANGLE=ON",
     "-DENABLE_TETGEN=ON",
     "-DENABLE_VORO=ON",
-    "-DCMAKE_PREFIX_PATH=./.venv/share/cmake/pybind11;./external/Main_Install/triangle;./external/Main_Install/tetgen;./external/Main_Install/voro"
+    "-DPYBIND=ON",
+    "-DCMAKE_PREFIX_PATH=./.venv/lib/python3.12/site-packages/pybind11/share/cmake/pybind11;./external/Main_Install/triangle;./external/Main_Install/tetgen;./external/Main_Install/voro"
 ]
 
 [tool.scikit-build.build]
