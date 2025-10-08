@@ -10,7 +10,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pypolydim"
-version = "0.0.7"
+version = "0.0.12"
 description = "Bindings Python for PolyDiM&GeDiM based on pybind11"
 authors = [
     { name = "Gioana Teora", email = "gioana.teora@polito.it" },
