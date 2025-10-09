@@ -46,7 +46,7 @@ args = [
     "-DENABLE_TETGEN=ON",
     "-DENABLE_VORO=ON",
     "-DPYBIND=ON",
-    "-DCMAKE_PREFIX_PATH=./.venv/lib/python3.12/site-packages/pybind11/share/cmake/pybind11;./external/Main_Install/triangle;./external/Main_Install/tetgen;./external/Main_Install/voro"
+    "-DCMAKE_PREFIX_PATH=./.venv/lib/python3.12/site-packages/pybind11/share/cmake/pybind11;/opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/pybind11/share/cmake/pybind11;./external/Main_Install/triangle;./external/Main_Install/tetgen;./external/Main_Install/voro"
 ]
 
 [tool.scikit-build.build]

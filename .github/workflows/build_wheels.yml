@@ -13,18 +13,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
+#        with:
+#          submodules: recursive
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install build dependencies
-        run: |
-          pip install cibuildwheel==3.2.0 pybind11
-          python -m pybind11 --cmakedir
+#      - name: Set up Python
+#        uses: actions/setup-python@v5
+#        with:
+#          python-version: "3.12"
+#
+#      - name: Install build dependencies
+#        run: |
+#          pip install cibuildwheel==3.2.0 pybind11
 
       - name: Update git submodules
         run: |
