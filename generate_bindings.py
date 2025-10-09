@@ -210,10 +210,9 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/PDETools/Mesh/PDE_Mesh_Utilities.hpp",
             "PolyDiM/PolyDiM/src/PDETools/Equations/EllipticEquation.hpp",
             "PolyDiM/PolyDiM/src/PDETools/Mesh/MeshMatricesDAO_mesh_connectivity_data.hpp",
-            #"PolyDiM/PolyDiM/src/PDETools/Assembler/Assembler_Utilities.hpp",
             "PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_2D.hpp",
-            #"PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp",
+            "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_MCC_2D.hpp",
             ]
 

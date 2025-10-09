@@ -118,6 +118,47 @@ class VTKUtilities:
                               cell_types=cell_type, cellData=cell_data, pointData=point_data)
 
 
+    @staticmethod
+    def export_cells3_d(path_file: str, mesh: gedim.MeshMatricesDAO,
+                       point_data: Optional[Dict[str, np.ndarray]] = None,
+                       cell_data: Optional[Dict[str, np.ndarray]] = None) -> None:
+
+        coordinates = mesh.cell0_ds_coordinates()
+        x = np.ascontiguousarray(coordinates[0, :])
+        y = np.ascontiguousarray(coordinates[1, :])
+        z = np.ascontiguousarray(coordinates[2, :])
+
+        # number of 3D cells
+        num_cells_3: int = mesh.cell3_d_total_number()
+
+        # Define connectivity or vertices that belongs to each element
+        connectivity: List[int] = []
+
+        # Define offset of last vertex of each element
+        offset = np.zeros(num_cells_3)
+
+        # Define cell types
+        cell_type = np.zeros(num_cells_3)
+
+        count: int = 0
+        for c in range(num_cells_3):
+            conn: List[int] = []
+            faces = mesh.cell3_d_faces(c)
+            num_faces = len(faces)
+            conn.append(num_faces)
+            for f in range(num_faces):
+                face_vertices = mesh.cell2_d_vertices(faces[f])
+                conn.append(len(face_vertices))
+                [conn.append(v) for v in face_vertices]
+
+            [connectivity.append(e) for e in conn]
+            count += len(conn)
+            offset[c] = count
+            cell_type[c] = 42
+
+        unstructuredGridToVTK(path_file, x, y, z, connectivity=np.array(connectivity), offsets=offset,
+                              cell_types=cell_type, cellData=cell_data, pointData=point_data)
+
     def export_mesh(self, path_file: str,
                     mesh: gedim.MeshMatricesDAO) -> None:
 
@@ -125,26 +166,38 @@ class VTKUtilities:
 
 
         pt = np.arange(mesh.cell0_d_total_number(), dtype=np.int64)
-        mt = np.array(mesh.cell0_ds_marker())
-        point_data = {"Id": pt, "Marker": mt}
+        mt = np.array(mesh.cell0_ds_marker(), dtype=np.int64)
+        act = np.array(mesh.cell0_ds_state(), dtype=np.int64)
+        point_data = {"Id": pt, "Marker": mt, "Active": act}
 
         self.export_cells0_d(path_file + "/Cells0D", mesh, point_data)
 
         if dimension >= 1:
 
             pt = np.arange(mesh.cell1_d_total_number(), dtype=np.int64)
-            mt = np.array(mesh.cell1_ds_marker())
-            edge_data = {"Id": pt, "Marker": mt}
+            mt = np.array(mesh.cell1_ds_marker(), dtype=np.int64)
+            act = np.array(mesh.cell1_ds_state(), dtype=np.int64)
+            edge_data = {"Id": pt, "Marker": mt, "Active": act}
             self.export_cells1_d(path_file + "/Cells1D", mesh, point_data, edge_data)
 
         if dimension >= 2:
             pt = np.arange(mesh.cell2_d_total_number(), dtype=np.int64)
-            mt = np.array(mesh.cell2_ds_marker())
-            cell_data = {"Id": pt, "Marker": mt}
+            mt = np.array(mesh.cell2_ds_marker(), dtype=np.int64)
+            act = np.array(mesh.cell2_ds_state(), dtype=np.int64)
+            cell_data = {"Id": pt, "Marker": mt, "Active": act}
             self.export_cells2_d(path_file + "/Cells2D", mesh, point_data, cell_data)
 
-        if dimension >= 3:
+        if dimension == 3:
+            pt = np.arange(mesh.cell3_d_total_number(), dtype=np.int64)
+            mt = np.array(mesh.cell3_ds_marker(), dtype=np.int64)
+            act = np.array(mesh.cell3_ds_state(), dtype=np.int64)
+            cell_data = {"Id": pt, "Marker": mt, "Active": act}
+            self.export_cells2_d(path_file + "/Cells3D", mesh, point_data, cell_data)
+
+        if dimension > 3:
             raise ValueError("not valid dimension")
+
+
 
 
 
