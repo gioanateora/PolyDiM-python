@@ -35,7 +35,8 @@ jobs:
         uses: pypa/cibuildwheel@v3.2.0
         env:
           # pybind11 CMake path (shared to the cibuildwheel build env)
-          CMAKE_PREFIX_PATH: "$(python -m pybind11 --cmakedir)"
+          CIBW_ENVIRONMENT: >
+            CMAKE_PREFIX_PATH=$(python -m pybind11 --cmakedir):$CMAKE_PREFIX_PATH
         with:
           output-dir: wheelhouse
 
