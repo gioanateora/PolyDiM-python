@@ -24,7 +24,7 @@ jobs:
       - name: Install build dependencies
         run: |
           pip install cibuildwheel==3.2.0 pybind11
-          export CMAKE_PREFIX_PATH="$(python -m pybind11 --cmakedir):$CMAKE_PREFIX_PATH"
+          python -m pybind11 --cmakedir
 
       - name: Update git submodules
         run: |
