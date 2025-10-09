@@ -37,6 +37,7 @@ jobs:
           # pybind11 CMake path (shared to the cibuildwheel build env)
           CIBW_ENVIRONMENT: >
             CMAKE_PREFIX_PATH=$(python -m pybind11 --cmakedir):$CMAKE_PREFIX_PATH
+          CIBW_BEFORE_ALL: pip install pybind11
         with:
           output-dir: wheelhouse
 
