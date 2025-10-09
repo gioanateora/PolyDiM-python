@@ -5796,6 +5796,8 @@ void py_init_module_polydim(py::module &m)
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data &, const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &, const Polydim::VEM::PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace::ComputeBasisFunctionsLaplacianValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
                     .def("compute_polynomials_values",
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &>(&Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_scaled_polynomials_values",
+                        &Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace::ComputeScaledPolynomialsValues, py::arg("local_space"))
                     .def("compute_polynomials_values",
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data &, const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
                     .def("compute_polynomials_derivative_values",
@@ -5847,6 +5849,8 @@ void py_init_module_polydim(py::module &m)
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data &, const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &, const Polydim::VEM::PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::PCC::VEM_PCC_2D_Inertia_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
                     .def("compute_polynomials_values",
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &>(&Polydim::VEM::PCC::VEM_PCC_2D_Inertia_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_scaled_polynomials_values",
+                        &Polydim::VEM::PCC::VEM_PCC_2D_Inertia_LocalSpace::ComputeScaledPolynomialsValues, py::arg("local_space"))
                     .def("compute_polynomials_values",
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data &, const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::PCC::VEM_PCC_2D_Inertia_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
                     .def("compute_polynomials_derivative_values",
@@ -5906,6 +5910,8 @@ void py_init_module_polydim(py::module &m)
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &>(&Polydim::VEM::PCC::VEM_PCC_2D_Ortho_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
                     .def("compute_polynomials_values",
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data &, const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::PCC::VEM_PCC_2D_Ortho_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_scaled_polynomials_values",
+                        &Polydim::VEM::PCC::VEM_PCC_2D_Ortho_LocalSpace::ComputeScaledPolynomialsValues, py::arg("local_space"))
                     .def("compute_polynomials_derivative_values",
                         py::overload_cast<const Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data &>(&Polydim::VEM::PCC::VEM_PCC_2D_Ortho_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("local_space"))
                     .def("compute_polynomials_derivative_values",
@@ -8161,6 +8167,8 @@ void py_init_module_polydim(py::module &m)
                         py::overload_cast<const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
                     .def("edge_do_fs_coordinates",
                         &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("internal_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::InternalDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"))
                     .def("compute_basis_functions_values_on_edge",
                         py::overload_cast<const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data &>(&Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::const_), py::arg("reference_element_data"))
                     .def("compute_basis_functions_values_on_edge",
@@ -8347,6 +8355,8 @@ void py_init_module_polydim(py::module &m)
                         py::overload_cast<const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
                     .def("edge_do_fs_coordinates",
                         &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("internal_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::InternalDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"))
                     .def("compute_basis_functions_laplacian_values",
                         &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsLaplacianValues, py::arg("reference_element_data"), py::arg("local_space"))
                     .def("compute_basis_functions_derivative_values",
@@ -8451,6 +8461,8 @@ void py_init_module_polydim(py::module &m)
                         py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data &, const Eigen::VectorXd &>(&Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points_curvilinear_coordinates"))
                     .def("edge_do_fs_coordinates",
                         &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("internal_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::InternalDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"))
                     ;
             } // </namespace PCC>
 
@@ -9427,6 +9439,12 @@ void py_init_module_polydim(py::module &m)
 
                 pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("edge_dofs_coordinates",
                     Polydim::PDETools::LocalSpace_PCC_2D::EdgeDofsCoordinates, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("edge_local_index"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("internal_dofs_coordinates",
+                    Polydim::PDETools::LocalSpace_PCC_2D::InternalDofsCoordinates, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("internal_dofs",
+                    Polydim::PDETools::LocalSpace_PCC_2D::InternalDofs, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("values_at_dofs"), py::arg("internal_dofs_coordinates"));
 
                 pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("internal_quadrature",
                     Polydim::PDETools::LocalSpace_PCC_2D::InternalQuadrature, py::arg("reference_element_data"), py::arg("local_space_data"));

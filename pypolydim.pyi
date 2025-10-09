@@ -10312,6 +10312,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     ) -> Eigen.MatrixXd:
                     pass
 
+                def compute_scaled_polynomials_values(
+                    self,
+                    local_space: VEM_PCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
                 @overload
                 def compute_polynomials_values(
                     self,
@@ -10460,6 +10466,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
                 @overload
                 def compute_polynomials_values(
+                    self,
+                    local_space: VEM_PCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def compute_scaled_polynomials_values(
                     self,
                     local_space: VEM_PCC_2D_LocalSpace_Data
                     ) -> Eigen.MatrixXd:
@@ -10649,6 +10661,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     reference_element_data: VEM_PCC_2D_ReferenceElement_Data,
                     local_space: VEM_PCC_2D_LocalSpace_Data,
                     points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def compute_scaled_polynomials_values(
+                    self,
+                    local_space: VEM_PCC_2D_LocalSpace_Data
                     ) -> Eigen.MatrixXd:
                     pass
 
@@ -15234,6 +15252,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     ) -> Eigen.MatrixXd:
                     pass
 
+                def internal_do_fs_coordinates(
+                    self,
+                    reference_element_data: FEM_Quadrilateral_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Quadrilateral_PCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
                 @overload
                 def compute_basis_functions_values_on_edge(
                     self,
@@ -15546,6 +15571,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     ) -> Eigen.MatrixXd:
                     pass
 
+                def internal_do_fs_coordinates(
+                    self,
+                    reference_element_data: FEM_Triangle_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_PCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
                 def compute_basis_functions_laplacian_values(
                     self,
                     reference_element_data: FEM_Triangle_PCC_2D_ReferenceElement_Data,
@@ -15785,6 +15817,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
                     local_space: FEM_PCC_2D_LocalSpace_Data,
                     edge_local_index: int
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def internal_do_fs_coordinates(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data
                     ) -> Eigen.MatrixXd:
                     pass
                 def __init__(self) -> None:
@@ -17268,7 +17307,6 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 #      </template specializations for function CreateDOFs_3D>
                 #  ------------------------------------------------------------------------
 
-
                 def compute_cells_do_fs_indices(
                     self,
                     dofs: DOFsManager.DOFsData,
@@ -17451,6 +17489,22 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 edge_local_index: int
                 ) -> Eigen.MatrixXd:
+                pass
+
+            @staticmethod
+            def internal_dofs_coordinates(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Gedim.Quadrature.QuadratureData:
+                pass
+
+            @staticmethod
+            def internal_dofs(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                values_at_dofs: Eigen.VectorXd,
+                internal_dofs_coordinates: Gedim.Quadrature.QuadratureData
+                ) -> Eigen.VectorXd:
                 pass
 
             @staticmethod
