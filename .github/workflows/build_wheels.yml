@@ -24,6 +24,7 @@ jobs:
       - name: Install build dependencies
         run: |
           pip install cibuildwheel==3.2.0 pybind11
+          export CMAKE_PREFIX_PATH="$(python -m pybind11 --cmakedir):$CMAKE_PREFIX_PATH"
 
       - name: Update git submodules
         run: |
@@ -33,11 +34,6 @@ jobs:
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v3.2.0
-        env:
-          # pybind11 CMake path (shared to the cibuildwheel build env)
-          CIBW_ENVIRONMENT: >
-            CMAKE_PREFIX_PATH=$(python -m pybind11 --cmakedir):$CMAKE_PREFIX_PATH
-          CIBW_BEFORE_ALL: pip install pybind11
         with:
           output-dir: wheelhouse
 
