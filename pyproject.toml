@@ -59,7 +59,7 @@ skip = [
     "*musllinux*"
 ]
 before-build = [
-    "yum install -y blas-devel lapack-devel eigen3-devel openssh",
+    "yum install -y blas-devel lapack-devel eigen3-devel openssh-clients",
     "git submodule init",
     "git submodule update",
     "cd PolyDiM",
