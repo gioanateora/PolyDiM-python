@@ -4,17 +4,16 @@ on: [push, pull_request]
 
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os }}
+    name: Build wheels on ${{ matrix.os }} - ${{ matrix.cib }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        #os: [ubuntu-latest, ubuntu-24.04-arm, macos-15-intel, macos-14]
-        os: [ubuntu-latest]
-        cib: [cp311-*, cp312-*, cp313-*]
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-15-intel, macos-14]
+        cib: [cp312-*, cp313-*]
     #strategy:
     #  matrix:
-        # macos-15-intel is an Intel runner, macos-14 is Apple silicon
+    # macos-15-intel is an Intel runner, macos-14 is Apple silicon
     #    os: [ubuntu-latest, ubuntu-24.04-arm, windows-latest, windows-11-arm, macos-15-intel, macos-14]
 
     steps:
@@ -23,14 +22,14 @@ jobs:
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-#      - name: Set up Python
-#        uses: actions/setup-python@v5
-#        with:
-#          python-version: "3.12"
-#
-#      - name: Install build dependencies
-#        run: |
-#          pip install cibuildwheel==3.2.0 pybind11
+      #      - name: Set up Python
+      #        uses: actions/setup-python@v5
+      #        with:
+      #          python-version: "3.12"
+      #
+      #      - name: Install build dependencies
+      #        run: |
+      #          pip install cibuildwheel==3.2.0 pybind11
 
       - name: Update git submodules
         run: |
@@ -46,11 +45,19 @@ jobs:
           CIBW_BUILD: ${{ matrix.cib }}
         with:
           output-dir: wheelhouse
-        
+
+      - name: Set Python version without wildcard
+        id: pyversion
+        shell: bash
+        run: |
+          # Extract Python version without wildcard
+          PY_VERSION=$(echo ${{ matrix.cib }} | sed 's/-\*//')
+          echo "py_version=${PY_VERSION}" >> $GITHUB_OUTPUT
+
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.os }}
+          name: cibw-wheels-${{ matrix.os }}-${{ steps.pyversion.outputs.py_version }}
           path: wheelhouse/*.whl
 
       #- name: Upload to TestPyPI
@@ -65,23 +72,23 @@ jobs:
     name: Upload if release
     needs: [build_wheels]
     runs-on: ubuntu-latest
-    if: github.event_name == 'release' && github.event.action == 'published'
+    # if: github.event_name == 'release' && github.event.action == 'published'
 
     steps:
-    - uses: actions/setup-python@v5
-      with:
-        python-version: "3.x"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
 
-    - uses: actions/download-artifact@v4
-      with:
-        pattern: cibw-*
-        path: wheelhouse
-        merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: cibw-*
+          path: wheelhouse
+          merge-multiple: true
 
-    - name: Upload to TestPyPI
-      env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-      run: |
-        pip install twine
-        twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/*
+      - name: Upload to TestPyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          pip install twine
+          twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/*
