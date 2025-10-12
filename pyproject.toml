@@ -10,7 +10,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pypolydim"
-version = "0.0.18"
+version = "0.0.19"
 description = "Bindings Python for PolyDiM&GeDiM based on pybind11"
 authors = [
     { name = "Gioana Teora", email = "gioana.teora@polito.it" },
@@ -54,12 +54,9 @@ tool-args = ["-j", "6"]
 
 # Install system library
 [tool.cibuildwheel]
-build = "cp312-*"
-skip = [
-    "*musllinux*"
-]
+#build = "cp312-*"
+skip = [ "*musllinux*" ]
 before-build = [
-    "yum install -y blas-devel lapack-devel eigen3-devel",
     "cd PolyDiM",
     "git checkout fem_on_cube",
     "cd gedim",

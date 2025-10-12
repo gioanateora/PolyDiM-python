@@ -6,6 +6,9 @@ jobs:
   build_wheels:
     name: Build wheels on ubuntu-latest #${{ matrix.os }}
     runs-on: ubuntu-latest #${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-15-intel, macos-14]
     #strategy:
     #  matrix:
         # macos-15-intel is an Intel runner, macos-14 is Apple silicon
@@ -34,10 +37,13 @@ jobs:
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v3.2.0
+        env:
+          CIBW_BEFORE_ALL_LINUX: yum install -y blas-devel lapack-devel eigen3-devel
+          CIBW_BEFORE_ALL_MACOS: brew install openblas lapack eigen
         with:
           output-dir: wheelhouse
 
-      - name: Upload to PyPI
+      - name: Upload to TestPyPI
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
