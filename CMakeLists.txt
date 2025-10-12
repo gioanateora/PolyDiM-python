@@ -24,7 +24,8 @@ endif()
 
 # Find required packages
 find_package(Python3 3.12 REQUIRED COMPONENTS Interpreter Development.Module)
-find_package(pybind11 REQUIRED)
+#find_package(pybind11 REQUIRED)
+add_subdirectory(pybind11)
 
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
 
