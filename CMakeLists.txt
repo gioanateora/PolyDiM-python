@@ -189,6 +189,7 @@ install(FILES __init__.py DESTINATION pypolydim)
 install(FILES pypolydim.pyi DESTINATION pypolydim)
 install(FILES assembler_utilities.py DESTINATION pypolydim)
 install(FILES vtk_utilities.py DESTINATION pypolydim)
+install(FILES export_vtk_utilities.py DESTINATION pypolydim)
 
 
 

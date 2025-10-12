@@ -134,7 +134,7 @@ class assembler_utilities:
                 local_dof_i = np.array(test_do_fs_data.cells_do_fs_local_index[cell_index], dtype=np.int64) + test_local_offset
 
                 if local_rhs is not None and global_rhs is not None:
-                    global_rhs[global_dof_i] = local_rhs[local_dof_i]
+                    global_rhs[global_dof_i] += local_rhs[local_dof_i]
 
                 # Trial slicing indices
                 global_dof_j = np.array(trial_do_fs_data.cells_do_fs_global_index[cell_index], dtype=np.int64) + trial_global_offset_do_fs
