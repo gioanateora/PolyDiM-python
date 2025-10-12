@@ -7,9 +7,11 @@ jobs:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         #os: [ubuntu-latest, ubuntu-24.04-arm, macos-15-intel, macos-14]
         os: [ubuntu-latest]
+        cib: [cp311-*, cp312-*, cp313-*]
     #strategy:
     #  matrix:
         # macos-15-intel is an Intel runner, macos-14 is Apple silicon
@@ -41,13 +43,45 @@ jobs:
         env:
           CIBW_BEFORE_ALL_LINUX: yum install -y blas-devel lapack-devel eigen3-devel
           CIBW_BEFORE_ALL_MACOS: brew install openblas lapack eigen
+          CIBW_BUILD: ${{ matrix.cib }}
         with:
           output-dir: wheelhouse
+        
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-${{ matrix.os }}
+          path: wheelhouse/*.whl
 
-      - name: Upload to TestPyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: |
-          pip install twine
-          twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/*
+      #- name: Upload to TestPyPI
+      #  env:
+      #    TWINE_USERNAME: __token__
+      #    TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      #  run: |
+      #    pip install twine
+      #    twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/*
+
+  upload_all:
+    name: Upload if release
+    needs: [build_wheels]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'published'
+
+    steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: cibw-*
+        path: wheelhouse
+        merge-multiple: true
+
+    - name: Upload to TestPyPI
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: |
+        pip install twine
+        twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/*
