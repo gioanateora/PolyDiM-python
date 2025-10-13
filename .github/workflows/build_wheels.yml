@@ -46,10 +46,18 @@ jobs:
         with:
           output-dir: wheelhouse
 
+      - name: Set Python version without wildcard
+        id: pyversion
+        shell: bash
+        run: |
+          # Extract Python version without wildcard
+          PY_VERSION=$(echo ${{ matrix.cib }} | sed 's/-\*//')
+          echo "py_version=${PY_VERSION}" >> $GITHUB_OUTPUT
+
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.os }}
+          name: cibw-wheels-${{ matrix.os }}-${{ steps.pyversion.outputs.py_version }}
           path: wheelhouse/*.whl
 
       #- name: Upload to TestPyPI
