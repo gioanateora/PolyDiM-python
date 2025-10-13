@@ -4,7 +4,7 @@ requires = [
     "pybind11",
     "setuptools>=42",
     "wheel",
-    "litgen"
+    #"litgen"
 ]
 build-backend = "scikit_build_core.build"
 
