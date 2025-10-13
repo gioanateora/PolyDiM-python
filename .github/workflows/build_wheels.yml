@@ -43,11 +43,18 @@ jobs:
         with:
           xcode-version: latest-stable
 
+      - name: Install Xcode Command Line Tools
+        if: contains(matrix.os, 'macos')
+        run: |
+          sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+          sudo xcode-select --install 2>/dev/null || true
+          xcodebuild -version
+
       - name: Build wheels
         uses: pypa/cibuildwheel@v3.2.0
         env:
           CIBW_BEFORE_ALL_LINUX: yum install -y blas-devel lapack-devel eigen3-devel
-          CIBW_BEFORE_ALL_MACOS: brew install openblas lapack eigen
+          CIBW_BEFORE_ALL_MACOS: brew install openblas lapack eigen cmake ninja
           CIBW_BUILD: ${{ matrix.cib }}
         with:
           output-dir: wheelhouse

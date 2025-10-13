@@ -23,7 +23,7 @@ if(DEFINED ENV{VIRTUAL_ENV})
 endif()
 
 # Find required packages
-find_package(Python3 3.12 REQUIRED COMPONENTS Interpreter Development.Module)
+find_package(Python3 3.11 REQUIRED COMPONENTS Interpreter Development.Module)
 #find_package(pybind11 REQUIRED)
 add_subdirectory(pybind11)
 
