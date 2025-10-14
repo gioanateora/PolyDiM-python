@@ -34,6 +34,8 @@ jobs:
   update_version:
     name: Update pyproject.toml version
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.extract_version.outputs.version }}
     steps:
       - uses: actions/checkout@v4
 
@@ -86,7 +88,7 @@ jobs:
           cd PolyDiM && git checkout "v$VERSION"
           cd gedim && git checkout "v$VERSION"
         env:
-          VERSION: ${{ steps.extract_version.outputs.version }}
+          VERSION: ${{ needs.update_version.outputs.version }}
 
       - name: Download generated bindings
         uses: actions/download-artifact@v4
