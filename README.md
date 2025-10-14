@@ -13,12 +13,15 @@ See the official [documentation](https://polydim.it/).
 
 This file can be used by citing references in CITATION.cff file in the GitHub repository.
 
-The main contributors are: **Gioana Teora** and **Fabio Vicini**.
-
-Further features can be added to the library upon request.
+The main contributors are: [**Gioana Teora**](https://orcid.org/0000-0002-8540-3639) and [**Fabio Vicini**](https://orcid.org/0000-0001-7123-9199).
 
 <p align="center">
   <img src="https://media.licdn.com/dms/image/v2/C4E03AQE9z6jfEP4J4g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1633956120322?e=1762992000&v=beta&t=r0zMY5qByRy83xAcLHHZ6FNnWQCWC5jWizd6jHxY4ng" width="200" alt="Gioana Teora">
   <img src="https://mypoli.polito.it/_library/image_pub.asp?matricola=034851" width="195" alt="Fabio Vicini">
 </p>
+
+
+Further features can be added to the library upon request.
+
+We would like to express our sincere gratitude to [Simone Masoero](https://github.com/smsimone) for helping us make this library available for all platforms and users.
 
