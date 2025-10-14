@@ -81,7 +81,7 @@ jobs:
       - name: Update git submodules
         run: |
           git submodule update --init --recursive
-          git submodule update --remote --recursive
+          git submodule foreach --recursive 'git fetch --tags'
 
       - name: Pin correct tag
         run: |
