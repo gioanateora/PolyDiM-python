@@ -81,12 +81,12 @@ jobs:
       - name: Update git submodules
         run: |
           git submodule update --init --recursive
-          git submodule foreach --recursive 'git fetch --tags'
+          git submodule foreach --recursive 'git fetch --tags || true'
 
       - name: Pin correct tag
         run: |
-          cd PolyDiM && git checkout "v$VERSION"
-          cd gedim && git checkout "v$VERSION"
+          cd PolyDiM && git fetch --all --tags && git checkout "v$VERSION"
+          cd gedim && git fetch --all --tags && git checkout "v$VERSION"
         env:
           VERSION: ${{ needs.update_version.outputs.version }}
 
