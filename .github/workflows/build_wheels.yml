@@ -1,6 +1,8 @@
 name: Build
 
-on: [push, pull_request]
+on:
+  release:
+    types: [published, released]
 
 jobs:
   generate_bindings:
@@ -29,10 +31,35 @@ jobs:
             bindings.cpp
             pypolydim.pyi
 
+  update_version:
+    name: Update pyproject.toml version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract version
+        id: extract_version
+        run: |
+          VERSION=$(echo "$REF" | awk -F '/' '{print $NF}' | tr -d 'v')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+        env:
+          REF: ${{ github.ref }}
+
+      - name: update_version
+        run: sed -i "s/version.*/version = \"$VERSION\"/" pyproject.toml
+        env:
+          VERSION: ${{ steps.extract_version.outputs.version }}
+
+      - name: Upload pyproject
+        uses: actions/upload-artifact/@v4
+        with:
+          name: pyproject
+          path: pyproject.toml
+
   build_wheels:
     name: Build wheels on ${{ matrix.os }} - ${{ matrix.cib }}
     runs-on: ${{ matrix.os }}
-    needs: [generate_bindings]
+    needs: [generate_bindings, update_version]
     strategy:
       fail-fast: false
       matrix:
@@ -52,10 +79,23 @@ jobs:
           git submodule update --init --recursive
           git submodule update --remote --recursive
 
+      - name: Pin correct tag
+        run: |
+          cd PolyDiM && git checkout "v$VERSION"
+          cd gedim && git checkout "v$VERSION"
+        env:
+          VERSION: ${{ steps.extract_version.outputs.version }}
+
       - name: Download generated bindings
         uses: actions/download-artifact@v4
         with:
           name: generated-bindings
+          path: .
+
+      - name: Download updated pyproject.toml
+        uses: actions/download-artifact@v4
+        with:
+          name: pyproject
           path: .
 
       - name: Build wheels
@@ -81,11 +121,32 @@ jobs:
           name: cibw-wheels-${{ matrix.os }}-${{ steps.pyversion.outputs.py_version }}
           path: wheelhouse/*.whl
 
-  upload_all:
-    name: Upload if release
+  upload_test_pypi:
     needs: [build_wheels]
     runs-on: ubuntu-latest
+    if: ${{ github.event.release.prerelease }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
 
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: cibw-*
+          path: wheelhouse
+          merge-multiple: true
+
+      - name: Upload to TestPyPI
+        env:
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          pip install twine
+          twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/* --verbose
+
+  upload_pypi:
+    needs: [build_wheels]
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.release.prerelease }}
     steps:
       - uses: actions/setup-python@v5
         with:
@@ -102,4 +163,4 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
         run: |
           pip install twine
-          twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/* --verbose
+          twine upload wheelhouse/* --verbose
