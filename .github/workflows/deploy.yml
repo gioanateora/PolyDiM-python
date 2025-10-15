@@ -1,0 +1,111 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  generate_bindings:
+    name: Generate cpp bindings
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install litgen
+        run: pip install litgen
+
+      - name: Generate bindings
+        run: python3 generate_bindings.py
+
+      - name: Upload generated bindings
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-bindings
+          path: |
+            bindings.cpp
+            pypolydim.pyi
+
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }} - ${{ matrix.cib }}
+    runs-on: ${{ matrix.os }}
+    needs: [generate_bindings]
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-15-intel, macos-15]
+        cib: [cp311-*, cp312-*, cp313-*]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          ref: ${{ github.ref }}
+
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Update git submodules
+        run: |
+          git submodule update --init --recursive
+          git submodule foreach --recursive '(git checkout main || git checkout master) && git pull || true'
+
+      - name: Download generated bindings
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-bindings
+          path: .
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v3.2.0
+        env:
+          CIBW_BEFORE_ALL_LINUX: yum install -y blas-devel lapack-devel eigen3-devel
+          CIBW_BEFORE_ALL_MACOS: brew install openblas lapack eigen cmake ninja
+          CIBW_BUILD: ${{ matrix.cib }}
+        with:
+          output-dir: wheelhouse
+
+      - name: Set Python version without wildcard
+        id: pyversion
+        shell: bash
+        run: |
+          # Extract Python version without wildcard
+          PY_VERSION=$(echo ${{ matrix.cib }} | sed 's/-\*//')
+          echo "py_version=${PY_VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Upload wheels
+        uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-${{ matrix.os }}-${{ steps.pyversion.outputs.py_version }}
+          path: wheelhouse/*.whl
+
+  upload_test_pypi:
+    needs: [build_wheels]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: cibw-*
+          path: wheelhouse
+          merge-multiple: true
+
+      - name: Upload to TestPyPI
+        env:
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          pip install twine
+          twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/* --verbose
