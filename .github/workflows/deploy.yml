@@ -105,7 +105,7 @@ jobs:
 
       - name: Upload to TestPyPI
         env:
-          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
         run: |
           pip install twine
-          twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/* --verbose
+          twine upload wheelhouse/* --verbose
