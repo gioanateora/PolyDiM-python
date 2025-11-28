@@ -7918,6 +7918,749 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 ####################    </generated_from:PlatonicSolid.hpp>    ####################
 
 
+####################    <generated_from:RefinementUtilities.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __RefinementUtilities_H
+#
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class RefinementUtilities:
+        """/ \brief RefinementUtilities
+        / \copyright See top level LICENSE file for details.
+        (final class)
+        """
+        class TriangleMaxEdgeDirection:
+            """
+            (final class)
+            """
+            max_edge_index: int = 0
+            opposite_vertex_index: int = 0
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class TetrahedronMaxEdgeDirection:
+            """
+            (final class)
+            """
+            max_edge_index: int = 0
+            opposite_vertices_index: List[int] = List[int]()
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class PolygonDirection:
+            """
+            (final class)
+            """
+            line_origin: Eigen.Vector3d
+            line_tangent: Eigen.Vector3d
+            def __init__(
+                self,
+                line_origin: Eigen.Vector3d = Eigen.Vector3d(),
+                line_tangent: Eigen.Vector3d = Eigen.Vector3d()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class MeshQuality:
+            """
+            (final class)
+            """
+            cell2_ds_quality: List[float]
+            cell1_ds_quality: List[float]
+            def __init__(
+                self,
+                cell2_ds_quality: List[float] = List[float](),
+                cell1_ds_quality: List[float] = List[float]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class SplitCell1D_Result:
+            """
+            (final class)
+            """
+            new_cell0_d_index: int = 0
+            new_cell1_ds_index: List[int] = List[int]()
+            def __init__(self) -> None:
+                """Auto-generated default constructor"""
+                pass
+
+        class SplitPolygon_Result:
+            """
+            (final class)
+            """
+            class Types(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                split = enum.auto()                              # (= 1)
+                no_split = enum.auto()                           # (= 2)
+
+            type: Gedim.RefinementUtilities.SplitPolygon_Result.Types = Gedim.RefinementUtilities.SplitPolygon_Result.Types.unknown
+            new_cell1_d_index: int = 0
+            new_cell2_ds_index: List[int] = List[int]()
+            def __init__(
+                self,
+                type: RefinementUtilities.SplitPolygon_Result.Types = RefinementUtilities.SplitPolygon_Result.Types.unknown
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolygon_CheckResult:
+            """
+            (final class)
+            """
+            class ResultTypes(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                cell2_d_to_be_splitted = enum.auto()             # (= 1)
+                cell2_d_already_splitted = enum.auto()           # (= 2)
+                cell2_d_split_under_tolerance = enum.auto()      # (= 3)
+                split_direction_not_inside_cell2_d = enum.auto() # (= 4)
+
+            class Cell1DToSplit:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                        # (= 0)
+                    not_inside = enum.auto()                     # (= 1)
+                    edge_length_not_enough = enum.auto()         # (= 2)
+                    only_local_quality_not_enough = enum.auto()  # (= 3)
+                    only_neigh_quality_not_enough = enum.auto()  # (= 4)
+                    both_quality_not_enough = enum.auto()        # (= 5)
+                    only_local_aligned_not_respect = enum.auto() # (= 6)
+                    only_neigh_aligned_not_respect = enum.auto() # (= 7)
+                    both_aligned_not_respect = enum.auto()       # (= 8)
+                    to_split = enum.auto()                       # (= 9)
+
+                is_intersection_inside: bool = False
+                is_edge_length_enough: bool = False
+                is_local_quality_enough: bool = False
+                is_quality_enough: bool = False
+                is_neigh_quality_enough: List[bool] = List[bool]()
+                is_local_aligned_respect: bool = False
+                is_aligned_respect: bool = False
+                is_neigh_aligned_respect: List[bool] = List[bool]()
+                is_to_split: bool = False
+                cell2_d_edge_index: int = 0
+                type: Gedim.RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit.Types = Gedim.RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit.Types.unknown
+                def __init__(
+                    self,
+                    is_intersection_inside: bool = False,
+                    is_edge_length_enough: bool = False,
+                    is_local_quality_enough: bool = False,
+                    is_quality_enough: bool = False,
+                    is_neigh_quality_enough: List[bool] = List[bool](),
+                    is_local_aligned_respect: bool = False,
+                    is_aligned_respect: bool = False,
+                    is_neigh_aligned_respect: List[bool] = List[bool](),
+                    is_to_split: bool = False,
+                    type: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit.Types = RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit.Types.unknown
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            cell1_ds_index: List[int] = List[int]()
+            cell1_ds_intersection: List[Gedim.GeometryUtilities.LinePolygonPositionResult.EdgeIntersection] = List[Gedim.GeometryUtilities.LinePolygonPositionResult.EdgeIntersection]()
+            cell1_ds_to_split: List[Gedim.RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit] = List[Gedim.RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit]()
+            result_type: Gedim.RefinementUtilities.RefinePolygon_CheckResult.ResultTypes = Gedim.RefinementUtilities.RefinePolygon_CheckResult.ResultTypes.unknown
+            def __init__(
+                self,
+                cell1_ds_intersection: List[GeometryUtilities.LinePolygonPositionResult.EdgeIntersection] = List[GeometryUtilities.LinePolygonPositionResult.EdgeIntersection](),
+                cell1_ds_to_split: List[RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit] = List[RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit](),
+                result_type: RefinementUtilities.RefinePolygon_CheckResult.ResultTypes = RefinementUtilities.RefinePolygon_CheckResult.ResultTypes.unknown
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class CheckSplitType_Result:
+            """
+            (final class)
+            """
+            class SplitTypes(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                no_split = enum.auto()                           # (= 1)
+                no_new_vertices = enum.auto()                    # (= 2)
+                new_vertex_from = enum.auto()                    # (= 3)
+                new_vertex_to = enum.auto()                      # (= 4)
+                new_vertices = enum.auto()                       # (= 5)
+
+            no_new_vertices_index: List[int] = List[int]()       #/< valid only for NoNewVertices type
+            type: Gedim.RefinementUtilities.CheckSplitType_Result.SplitTypes = Gedim.RefinementUtilities.CheckSplitType_Result.SplitTypes.unknown
+            def __init__(
+                self,
+                type: RefinementUtilities.CheckSplitType_Result.SplitTypes = RefinementUtilities.CheckSplitType_Result.SplitTypes.unknown
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolyhedron_Result:
+            """
+            (final class)
+            """
+            class ResultTypes(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                successfull = enum.auto()                        # (= 1)
+                cell3_d_already_splitted = enum.auto()           # (= 2)
+                cell3_d_split_under_tolerance = enum.auto()      # (= 3)
+                cell3_d_split_none = enum.auto()                 # (= 4)
+
+            class RefinedCell1D:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                        # (= 0)
+                    updated = enum.auto()                        # (= 1)
+                    new = enum.auto()                            # (= 2)
+
+                type: Gedim.RefinementUtilities.RefinePolyhedron_Result.RefinedCell1D.Types = Gedim.RefinementUtilities.RefinePolyhedron_Result.RefinedCell1D.Types.unknown
+                new_cell1_ds_index: List[int] = List[int]()
+                original_cell1_d_index: int = 0
+                new_cell0_d_index: int = 0
+                original_cell3_d_edge_index: int = 0
+                def __init__(
+                    self,
+                    type: RefinementUtilities.RefinePolyhedron_Result.RefinedCell1D.Types = RefinementUtilities.RefinePolyhedron_Result.RefinedCell1D.Types.unknown
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class RefinedCell2D:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                        # (= 0)
+                    updated = enum.auto()                        # (= 1)
+                    new = enum.auto()                            # (= 2)
+
+                type: Gedim.RefinementUtilities.RefinePolyhedron_Result.RefinedCell2D.Types = Gedim.RefinementUtilities.RefinePolyhedron_Result.RefinedCell2D.Types.unknown
+                new_cell2_ds_index: List[int] = List[int]()
+                original_cell2_d_index: int = 0
+                new_cell1_d_index: int = 0
+                new_cell1_ds_position: List[int] = List[int]()   #/< Position in NewCell1DsIndex array
+                original_cell3_d_face_index: int = 0
+                def __init__(
+                    self,
+                    type: RefinementUtilities.RefinePolyhedron_Result.RefinedCell2D.Types = RefinementUtilities.RefinePolyhedron_Result.RefinedCell2D.Types.unknown
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            result_type: Gedim.RefinementUtilities.RefinePolyhedron_Result.ResultTypes = Gedim.RefinementUtilities.RefinePolyhedron_Result.ResultTypes.unknown
+            new_cell0_ds_index: List[int] = List[int]()
+            new_cell1_ds_index: List[Gedim.RefinementUtilities.RefinePolyhedron_Result.RefinedCell1D] = List[Gedim.RefinementUtilities.RefinePolyhedron_Result.RefinedCell1D]()
+            new_cell2_ds_index: List[Gedim.RefinementUtilities.RefinePolyhedron_Result.RefinedCell2D] = List[Gedim.RefinementUtilities.RefinePolyhedron_Result.RefinedCell2D]()
+            new_cell3_ds_index: List[int] = List[int]()
+            def __init__(
+                self,
+                result_type: RefinementUtilities.RefinePolyhedron_Result.ResultTypes = RefinementUtilities.RefinePolyhedron_Result.ResultTypes.unknown,
+                new_cell1_ds_index: List[RefinementUtilities.RefinePolyhedron_Result.RefinedCell1D] = List[RefinementUtilities.RefinePolyhedron_Result.RefinedCell1D](),
+                new_cell2_ds_index: List[RefinementUtilities.RefinePolyhedron_Result.RefinedCell2D] = List[RefinementUtilities.RefinePolyhedron_Result.RefinedCell2D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolygon_Result:
+            """
+            (final class)
+            """
+            class ResultTypes(enum.IntEnum):
+                unknown = enum.auto()                            # (= 0)
+                successfull = enum.auto()                        # (= 1)
+                cell2_d_already_splitted = enum.auto()           # (= 2)
+                cell2_d_split_under_tolerance = enum.auto()      # (= 3)
+                split_direction_not_inside_cell2_d = enum.auto() # (= 4)
+                split_quality_check_cell2_d_failed = enum.auto() # (= 5)
+
+            class RefinedCell1D:
+                """
+                (final class)
+                """
+                class Types(enum.IntEnum):
+                    unknown = enum.auto()                        # (= 0)
+                    updated = enum.auto()                        # (= 1)
+                    new = enum.auto()                            # (= 2)
+
+                type: Gedim.RefinementUtilities.RefinePolygon_Result.RefinedCell1D.Types = Gedim.RefinementUtilities.RefinePolygon_Result.RefinedCell1D.Types.unknown
+                new_cell1_ds_index: List[int] = List[int]()
+                original_cell1_d_index: int = 0
+                new_cell0_d_index: int = 0
+                original_cell2_d_edge_index: int = 0
+                def __init__(
+                    self,
+                    type: RefinementUtilities.RefinePolygon_Result.RefinedCell1D.Types = RefinementUtilities.RefinePolygon_Result.RefinedCell1D.Types.unknown
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            new_cell0_ds_index: List[int] = List[int]()
+            new_cell1_ds_index: List[Gedim.RefinementUtilities.RefinePolygon_Result.RefinedCell1D] = List[Gedim.RefinementUtilities.RefinePolygon_Result.RefinedCell1D]()
+            new_cell2_ds_index: List[int] = List[int]()
+
+            split_type: Gedim.RefinementUtilities.CheckSplitType_Result.SplitTypes = Gedim.RefinementUtilities.CheckSplitType_Result.SplitTypes.unknown
+            result_type: Gedim.RefinementUtilities.RefinePolygon_Result.ResultTypes = Gedim.RefinementUtilities.RefinePolygon_Result.ResultTypes.unknown
+            def __init__(
+                self,
+                new_cell1_ds_index: List[RefinementUtilities.RefinePolygon_Result.RefinedCell1D] = List[RefinementUtilities.RefinePolygon_Result.RefinedCell1D](),
+                split_type: RefinementUtilities.CheckSplitType_Result.SplitTypes = RefinementUtilities.CheckSplitType_Result.SplitTypes.unknown,
+                result_type: RefinementUtilities.RefinePolygon_Result.ResultTypes = RefinementUtilities.RefinePolygon_Result.ResultTypes.unknown
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolygon_UpdateNeighbour_Result:
+            """
+            (final class)
+            """
+            class UpdatedCell2D:
+                """
+                (final class)
+                """
+                original_cell2_d_index: int = 0
+                new_cell2_d_index: int = 0
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            updated_cell2_ds: List[Gedim.RefinementUtilities.RefinePolygon_UpdateNeighbour_Result.UpdatedCell2D] = List[Gedim.RefinementUtilities.RefinePolygon_UpdateNeighbour_Result.UpdatedCell2D]()
+            def __init__(
+                self,
+                updated_cell2_ds: List[RefinementUtilities.RefinePolygon_UpdateNeighbour_Result.UpdatedCell2D] = List[RefinementUtilities.RefinePolygon_UpdateNeighbour_Result.UpdatedCell2D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class RefinePolyhedron_UpdateNeighbour_Result:
+            """
+            (final class)
+            """
+            class UpdatedCell3D:
+                """
+                (final class)
+                """
+                original_cell3_d_index: int = 0
+                new_cell3_d_index: int = 0
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            updated_cell3_ds: List[Gedim.RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result.UpdatedCell3D] = List[Gedim.RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result.UpdatedCell3D]()
+            def __init__(
+                self,
+                updated_cell3_ds: List[RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result.UpdatedCell3D] = List[RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result.UpdatedCell3D]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Cell2Ds_GeometricData:
+            """
+            (final class)
+            """
+            class Cell2D_GeometricData:
+                """
+                (final class)
+                """
+                unaligned_vertices_index: List[List[int]] = List[List[int]]()
+                vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd]()
+                area: List[float] = List[float]()
+                centroid: List[Eigen.Vector3d] = List[Eigen.Vector3d]()
+                edges_direction: List[List[bool]] = List[List[bool]]()
+                edges_normal: List[Eigen.MatrixXd] = List[Eigen.MatrixXd]()
+                edges_length: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                triangulations: List[List[Eigen.Matrix3d]] = List[List[Eigen.Matrix3d]]()
+                inertia: List[Eigen.Matrix3d] = List[Eigen.Matrix3d]()
+                unaligned_vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd]()
+                unaligned_edges_length: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                centroid_edges_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                centroid_vertices_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
+                in_radius: List[float] = List[float]()
+                quality: List[float] = List[float]()
+                def __init__(
+                    self,
+                    vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                    area: List[float] = List[float](),
+                    centroid: List[Eigen.Vector3d] = List[Eigen.Vector3d](),
+                    edges_direction: List[List[bool]] = List[List[bool]](),
+                    edges_normal: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                    edges_length: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                    triangulations: List[List[Eigen.Matrix3d]] = List[List[Eigen.Matrix3d]](),
+                    inertia: List[Eigen.Matrix3d] = List[Eigen.Matrix3d](),
+                    unaligned_vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                    unaligned_edges_length: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                    centroid_edges_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                    centroid_vertices_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
+                    in_radius: List[float] = List[float](),
+                    quality: List[float] = List[float]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class Cell1D_GeometricData:
+                """
+                (final class)
+                """
+                max_aligned: int = 0
+                aligned: List[int] = List[int]()
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            cell1_ds: Gedim.RefinementUtilities.Cell2Ds_GeometricData.Cell1D_GeometricData
+            cell2_ds: Gedim.RefinementUtilities.Cell2Ds_GeometricData.Cell2D_GeometricData
+            def __init__(
+                self,
+                cell1_ds: RefinementUtilities.Cell2Ds_GeometricData.Cell1D_GeometricData = RefinementUtilities.Cell2Ds_GeometricData.Cell1D_GeometricData(),
+                cell2_ds: RefinementUtilities.Cell2Ds_GeometricData.Cell2D_GeometricData = RefinementUtilities.Cell2Ds_GeometricData.Cell2D_GeometricData()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh_utilities: MeshUtilities
+            ) -> None:
+            pass
+
+        def split_cell1_d(
+            self,
+            cell1_d_index: int,
+            new_vertex_coordinate: Eigen.Vector3d,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.SplitCell1D_Result:
+            pass
+        def update_cell2_d_new_vertex(
+            self,
+            cell2_d_index: int,
+            cell2_d_edge_direction: bool,
+            cell2_d_edge_position: int,
+            new_cell1_ds_index: List[int],
+            new_cell0_d_index: int,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> int:
+            """/ \brief update cell2DIndex with a new splitted edge cell1DIndex by newCell0DIndex"""
+            pass
+
+        def split_cell1_d_middle_point(
+            self,
+            cell1_d_index: int,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.SplitCell1D_Result:
+            pass
+
+        def are_vertices_aligned(
+            self,
+            cell2_d_vertices: Eigen.MatrixXd,
+            from_vertex: int,
+            to_vertex: int
+            ) -> bool:
+            pass
+
+        def split_polygon_check_split_type(
+            self,
+            cell2_d_polygon_type: GeometryUtilities.PolygonTypes,
+            cell2_d_unaligned_polygon_type: GeometryUtilities.PolygonTypes,
+            cell2_d_vertices: Eigen.MatrixXd,
+            cell2_d_check_to_refine: RefinementUtilities.RefinePolygon_CheckResult
+            ) -> RefinementUtilities.CheckSplitType_Result:
+            pass
+
+        def split_polygon_check_is_not_to_extend(
+            self,
+            cell1_d_split_one: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit,
+            cell1_d_split_two: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit
+            ) -> bool:
+            pass
+        def split_polygon_check_is_to_split_relaxed(
+            self,
+            cell1_d_split_one: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit,
+            cell1_d_split_two: RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit
+            ) -> bool:
+            pass
+
+        def split_polygon_is_area_positive(
+            self,
+            new_cell2_d_indices: Eigen.VectorXi,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> bool:
+            pass
+
+        def split_polygon_no_new_vertices(
+            self,
+            cell2_d_index: int,
+            cell2_d_num_vertices: int,
+            from_vertex: int,
+            to_vertex: int,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.SplitPolygon_Result:
+            pass
+        def split_polygon_new_vertex_from(
+            self,
+            cell2_d_index: int,
+            cell2_d_num_vertices: int,
+            from_edge: int,
+            to_vertex: int,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            from_new_cell0_d_index: int,
+            from_split_cell1_ds_index: List[int],
+            from_edge_direction: bool,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.SplitPolygon_Result:
+            pass
+        def split_polygon_new_vertex_to(
+            self,
+            cell2_d_index: int,
+            cell2_d_num_vertices: int,
+            from_vertex: int,
+            to_edge: int,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            to_new_cell0_d_index: int,
+            to_split_cell1_ds_index: List[int],
+            to_edge_direction: bool,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.SplitPolygon_Result:
+            pass
+        def split_polygon_new_vertices(
+            self,
+            cell2_d_index: int,
+            cell2_d_num_vertices: int,
+            from_edge: int,
+            to_edge: int,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            from_new_cell0_d_index: int,
+            to_new_cell0_d_index: int,
+            from_split_cell1_ds_index: List[int],
+            to_split_cell1_ds_index: List[int],
+            from_edge_direction: bool,
+            to_edge_direction: bool,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.SplitPolygon_Result:
+            pass
+
+        def compute_triangle_max_edge_direction(
+            self,
+            edges_length: Eigen.VectorXd
+            ) -> RefinementUtilities.TriangleMaxEdgeDirection:
+            pass
+
+        def compute_polygon_max_diameter_direction(
+            self,
+            unaligned_vertices: Eigen.MatrixXd,
+            centroid: Eigen.Vector3d
+            ) -> RefinementUtilities.PolygonDirection:
+            pass
+        def compute_polygon_max_inertia_direction(
+            self,
+            unaligned_vertices: Eigen.MatrixXd,
+            unaligned_edges_length: Eigen.VectorXd,
+            centroid: Eigen.Vector3d,
+            inertia: Eigen.Matrix3d
+            ) -> RefinementUtilities. RefinementUtilities.PolygonDirection:
+            pass
+
+        def compute_tetrahedron_max_edge_direction(
+            self,
+            polyhedron_edges: Eigen.MatrixXi,
+            edges_length: Eigen.VectorXd
+            ) -> RefinementUtilities.TetrahedronMaxEdgeDirection:
+            pass
+
+        def refine_triangle_cell_by_edge(
+            self,
+            cell2_d_index: int,
+            edge_index: int,
+            opposite_vertex_index: int,
+            cell2_d_edges_direction: List[bool],
+            cell2_d_area: float,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            cell2_d_edges_length: Eigen.VectorXd,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.RefinePolygon_Result:
+            """/ \brief Refine Triangle Cell2D By Edge
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param cell2DVertices the cell2D 2D vertices
+            / \param edgeIndex the edge local index to split
+            / \param oppositeVertexIndex the vertex opposite to edge local index
+            / \param mesh the mesh to be updated
+            """
+            pass
+
+        def refine_polyhedron_cell_by_plane(
+            self,
+            cell3_d_index: int,
+            cell3_d_vertices: Eigen.MatrixXd,
+            cell3_d_edges: Eigen.MatrixXi,
+            cell3_d_edges_length: Eigen.VectorXd,
+            cell3_d_faces: List[Eigen.MatrixXi],
+            cell3_d_faces3_d_vertices: List[Eigen.MatrixXd],
+            cell3_d_faces_edges3_d_tangent: List[Eigen.MatrixXd],
+            cell3_d_faces_translation: List[Eigen.Vector3d],
+            cell3_d_faces_rotation_matrix: List[Eigen.Matrix3d],
+            cell3_d_volume: float,
+            plane_normal: Eigen.Vector3d,
+            plane_origin: Eigen.Vector3d,
+            plane_rotation_matrix: Eigen.Matrix3d,
+            plane_translation: Eigen.Vector3d,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.RefinePolyhedron_Result:
+            """/ \brief Refine Polyhedral Cell3D By Plane"""
+            pass
+
+        def refine_polyhedron_cell_update_face_neighbours(
+            self,
+            cell3_d_index: int,
+            cell2_d_index: int,
+            new_cell1_d_index: int,
+            split_cell1_ds_original_index: List[int],
+            split_cell1_ds_new_cell0_d_index: List[int],
+            split_cell1_ds_updated_indices: List[List[int]],
+            split_cell2_ds_index: List[int],
+            cell3_ds_faces_edges_direction: List[List[List[bool]]],
+            updated_cell2_ds: Dict[int, int],
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result:
+            pass
+
+        def refine_polyhedron_cell_update_edge_neighbours(
+            self,
+            cell3_d_index: int,
+            cell1_d_index: int,
+            new_cell1_ds_index: List[int],
+            new_cell0_d_index: int,
+            cell3_ds_faces_edges_direction: List[List[List[bool]]],
+            updated_cell2_ds: Dict[int, int],
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result:
+            pass
+
+        def refine_triangle_cell_update_neighbours(
+            self,
+            cell2_d_index: int,
+            cell1_d_index: int,
+            new_cell0_d_index: int,
+            split_cell1_ds_index: List[int],
+            cell2_d_edge_direction: bool,
+            cell2_ds_rotation: List[Eigen.Matrix3d],
+            cell2_ds_translation: List[Eigen.Vector3d],
+            mesh: Gedim.MeshMatricesDAO
+            ) -> None:
+            """/ \brief Update Cell1D neighbours of refined triangle by edge with refine by edge
+            / \param cell2DIndex the index of Cell2D refined, from 0 to Cell2DTotalNumber()
+            / \param cell1DIndex the index of Cell1D splitted by the refinement, from 0 to Cell1DTotalNumber()
+            / \param newCell0DIndex the index of Cell0D created by the cell1D splitting process, from 0 to Cell0DTotalNumber()
+            / \param splitCell1DsIndex the indices of the new Cell1Ds created by the splitting process, from 0 to
+            / Cell1DTotalNumber() \param cell2DEdgeDirection the direction of the Cell1D splitted in the Cell2D \param mesh
+            / the mesh to be updated
+            """
+            pass
+
+        def refine_polygon_cell_check_refinement(
+            self,
+            cell2_d_index: int,
+            cell2_d_vertices: Eigen.MatrixXd,
+            line_tangent: Eigen.Vector3d,
+            line_origin: Eigen.Vector3d,
+            cell2_ds_quality: List[float],
+            cell1_ds_aligned: List[int],
+            cell1_ds_quality_weight: float,
+            cell1_ds_aligned_weight: float,
+            cell2_d_area: float,
+            cell2_ds_edges_length: List[Eigen.VectorXd],
+            cell2_d_edges_direction: List[bool],
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.RefinePolygon_CheckResult:
+            """/ \brief Refine Polygon Cell2D By Direction"""
+            pass
+
+        def refine_polygon_cell_by_direction(
+            self,
+            cell2_d_index: int,
+            cell2_d_polygon_type: GeometryUtilities.PolygonTypes,
+            cell2_d_unaligned_polygon_type: GeometryUtilities.PolygonTypes,
+            cell2_d_vertices: Eigen.MatrixXd,
+            cell2_d_check_to_refine: RefinementUtilities.RefinePolygon_CheckResult,
+            cell2_d_rotation: Eigen.Matrix3d,
+            cell2_d_translation: Eigen.Vector3d,
+            cell2_d_edges_direction: List[bool],
+            extend_to_neighbours: bool,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.RefinePolygon_Result:
+            """/ \brief Refine Polygon Cell2D By Direction"""
+            pass
+
+        def refine_polygon_cell_update_neighbours(
+            self,
+            cell2_d_index: int,
+            cell1_d_index: int,
+            new_cell0_d_index: int,
+            split_cell1_ds_index: List[int],
+            cell2_ds_edges_direction: List[List[bool]],
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.RefinePolygon_UpdateNeighbour_Result:
+            pass
+
+        def refine_polygon_cell_initialize_geometric_data(
+            self,
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.Cell2Ds_GeometricData:
+            """/ Compute the geometric data for all the mesh"""
+            pass
+
+        def refine_polygon_cell_update_geometric_data(
+            self,
+            mesh: Gedim.MeshMatricesDAO,
+            cell2_ds_index: List[int],
+            geometric_data: RefinementUtilities.Cell2Ds_GeometricData
+            ) -> None:
+            """/ \brief Update the geometric data for only cell2Ds"""
+            pass
+
+        def refine_polygon_cell_is_cell1_d_to_split(
+            self,
+            cell1_d_index: int,
+            cell2_d_index: int,
+            edge_intersection: GeometryUtilities.LinePolygonPositionResult.EdgeIntersection,
+            cell2_ds_edges_length: List[Eigen.VectorXd],
+            cell1_ds_quality_weight: float,
+            cell1_ds_aligned_weight: float,
+            cell2_ds_quality: List[float],
+            cell1_ds_aligned: List[int],
+            mesh: Gedim.MeshMatricesDAO
+            ) -> RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit:
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:RefinementUtilities.hpp>    ####################
+
+
 ####################    <generated_from:SphereMeshUtilities.hpp>    ####################
 # _LICENSE_HEADER_
 #
@@ -16842,9 +17585,17 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     class Domain_Shape_Types(enum.IntEnum):
                         parallelogram = enum.auto() # (= 0)
                         polygon = enum.auto()       # (= 1)
+                        ellipse = enum.auto()       # (= 2)
 
                     vertices: Eigen.MatrixXd
                     area: float
+
+                    # Ellipse type
+                    radius_1: float
+                    radius_2: float
+                    center: Eigen.Vector3d
+                    rotation_angle: Eigen.Vector3d
+
                     shape_type: Polydim.PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_2D.Domain_Shape_Types
                     def __init__(self) -> None:
                         """Autogenerated default constructor"""
@@ -17232,6 +17983,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                             unknwon = enum.auto() # (= 0)
                             strong = enum.auto()  # (= 1)
                             weak = enum.auto()    # (= 2)
+                            robin = enum.auto()   # (= 4)
                             none = enum.auto()    # (= 3)
 
                         type: Polydim.PDETools.DOFs.DOFsManager.MeshDOFsInfo.BoundaryInfo.BoundaryTypes
@@ -17272,6 +18024,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                             unknwon = enum.auto() # (= 0)
                             strong = enum.auto()  # (= 1)
                             dof = enum.auto()     # (= 2)
+                            robin = enum.auto()   # (= 3)
 
                         type: Polydim.PDETools.DOFs.DOFsManager.DOFsData.DOF.Types
                         global_index: int
@@ -17294,6 +18047,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     number_internal_do_fs: int
                     number_boundary_do_fs: int
                     number_strongs: int
+                    number_robin: int
                     cells_do_fs: List[List[List[Polydim.PDETools.DOFs.DOFsManager.DOFsData.DOF]]]
                     cells_global_do_fs: List[List[List[Polydim.PDETools.DOFs.DOFsManager.DOFsData.GlobalCell_DOF]]]
                     def __init__(self) -> None:
@@ -17306,8 +18060,10 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     """
                     cells_do_fs_local_index: List[List[int]]
                     cells_strongs_local_index: List[List[int]]
+                    cells_robin_local_index: List[List[int]]
                     cells_do_fs_global_index: List[List[int]]
                     cells_strongs_global_index: List[List[int]]
+                    cells_robin_global_index: List[List[int]]
                     def __init__(self) -> None:
                         """Auto-generated default constructor"""
                         pass

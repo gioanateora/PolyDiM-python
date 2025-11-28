@@ -1811,6 +1811,10 @@ void py_init_module_polydim(py::module &m)
                 &Gedim::GeometryUtilities::PointIsOnLine,
                 py::arg("point"), py::arg("line_origin"), py::arg("line_tangent"),
                 "/ \\brief Check if a point is on a line\n/ \\param point the point\n/ \\param lineTangent the line tangent\n/ \\param lineOrigin the line origin\n/ \\return True if the point is aligned")
+            .def("point_to_barycentric_coordinates2_d",
+                &Gedim::GeometryUtilities::PointToBarycentricCoordinates2D, py::arg("triangle"), py::arg("point"))
+            .def("barycentric_coordinates_to_point2_d",
+                &Gedim::GeometryUtilities::BarycentricCoordinatesToPoint2D, py::arg("triangle"), py::arg("barycentric_coordinates"))
             .def("unaligned_points",
                 &Gedim::GeometryUtilities::UnalignedPoints,
                 py::arg("points"), py::arg("num_desired_unaligned_points") = 0,
@@ -2945,6 +2949,10 @@ void py_init_module_polydim(py::module &m)
                 (pyNsGedim, "MeshMatricesDAO", py::is_final(), "\n(final class)")
             .def(py::init<Gedim::MeshMatrices &>(),
                 py::arg("mesh"))
+            .def("mesh_data",
+                [](Gedim::MeshMatricesDAO & self) { return self.MeshData(); })
+            .def("mesh_data",
+                [](Gedim::MeshMatricesDAO & self) { return self.MeshData(); })
             .def("initialize_dimension",
                 &Gedim::MeshMatricesDAO::InitializeDimension, py::arg("dimension"))
             .def("dimension",
@@ -4413,6 +4421,8 @@ void py_init_module_polydim(py::module &m)
                 &Gedim::MeshUtilities::SetPolygonMeshMarkers, py::arg("geometry_utilities"), py::arg("polygon_vertices"), py::arg("cell0_d_markers"), py::arg("cell1_d_markers"), py::arg("mesh"))
             .def("check_mesh_geometric_data2_d",
                 &Gedim::MeshUtilities::CheckMeshGeometricData2D, py::arg("configuration"), py::arg("geometry_utilities"), py::arg("mesh"), py::arg("geometric_data"))
+            .def("create_polygon_intersection_mesh",
+                &Gedim::MeshUtilities::CreatePolygonIntersectionMesh, py::arg("geometry_utilities"), py::arg("interface_vertices"), py::arg("mesh"))
             ;
     } // </namespace Gedim>
     ////////////////////    </generated_from:MeshUtilities.hpp>    ////////////////////
@@ -4461,6 +4471,557 @@ void py_init_module_polydim(py::module &m)
     ////////////////////    </generated_from:PlatonicSolid.hpp>    ////////////////////
 
 
+    ////////////////////    <generated_from:RefinementUtilities.hpp>    ////////////////////
+    // #ifndef __RefinementUtilities_H
+    //
+    // #endif
+
+    { // <namespace Gedim>
+        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
+        auto pyNsGedim_ClassRefinementUtilities =
+            py::class_<Gedim::RefinementUtilities>
+                (pyNsGedim, "RefinementUtilities", py::is_final(), "/ \\brief RefinementUtilities\n/ \\copyright See top level LICENSE file for details.\n(final class)");
+
+        { // inner classes & enums of RefinementUtilities
+            auto pyNsGedim_ClassRefinementUtilities_ClassTriangleMaxEdgeDirection =
+                py::class_<Gedim::RefinementUtilities::TriangleMaxEdgeDirection>
+                    (pyNsGedim_ClassRefinementUtilities, "TriangleMaxEdgeDirection", py::is_final(), "\n(final class)")
+                .def(py::init<>()) // implicit default constructor
+                .def_readwrite("max_edge_index", &Gedim::RefinementUtilities::TriangleMaxEdgeDirection::MaxEdgeIndex, "")
+                .def_readwrite("opposite_vertex_index", &Gedim::RefinementUtilities::TriangleMaxEdgeDirection::OppositeVertexIndex, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassTetrahedronMaxEdgeDirection =
+                py::class_<Gedim::RefinementUtilities::TetrahedronMaxEdgeDirection>
+                    (pyNsGedim_ClassRefinementUtilities, "TetrahedronMaxEdgeDirection", py::is_final(), "\n(final class)")
+                .def(py::init<>()) // implicit default constructor
+                .def_readwrite("max_edge_index", &Gedim::RefinementUtilities::TetrahedronMaxEdgeDirection::MaxEdgeIndex, "")
+                .def_readwrite("opposite_vertices_index", &Gedim::RefinementUtilities::TetrahedronMaxEdgeDirection::OppositeVerticesIndex, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassPolygonDirection =
+                py::class_<Gedim::RefinementUtilities::PolygonDirection>
+                    (pyNsGedim_ClassRefinementUtilities, "PolygonDirection", py::is_final(), "\n(final class)")
+                .def(py::init<>([](
+                Eigen::Vector3d LineOrigin = Eigen::Vector3d(), Eigen::Vector3d LineTangent = Eigen::Vector3d())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::PolygonDirection>();
+                    r_ctor_->LineOrigin = LineOrigin;
+                    r_ctor_->LineTangent = LineTangent;
+                    return r_ctor_;
+                })
+                , py::arg("line_origin") = Eigen::Vector3d(), py::arg("line_tangent") = Eigen::Vector3d()
+                )
+                .def_readwrite("line_origin", &Gedim::RefinementUtilities::PolygonDirection::LineOrigin, "")
+                .def_readwrite("line_tangent", &Gedim::RefinementUtilities::PolygonDirection::LineTangent, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassMeshQuality =
+                py::class_<Gedim::RefinementUtilities::MeshQuality>
+                    (pyNsGedim_ClassRefinementUtilities, "MeshQuality", py::is_final(), "\n(final class)")
+                .def(py::init<>([](
+                std::vector<double> Cell2DsQuality = std::vector<double>(), std::vector<double> Cell1DsQuality = std::vector<double>())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::MeshQuality>();
+                    r_ctor_->Cell2DsQuality = Cell2DsQuality;
+                    r_ctor_->Cell1DsQuality = Cell1DsQuality;
+                    return r_ctor_;
+                })
+                , py::arg("cell2_ds_quality") = std::vector<double>(), py::arg("cell1_ds_quality") = std::vector<double>()
+                )
+                .def_readwrite("cell2_ds_quality", &Gedim::RefinementUtilities::MeshQuality::Cell2DsQuality, "")
+                .def_readwrite("cell1_ds_quality", &Gedim::RefinementUtilities::MeshQuality::Cell1DsQuality, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassSplitCell1D_Result =
+                py::class_<Gedim::RefinementUtilities::SplitCell1D_Result>
+                    (pyNsGedim_ClassRefinementUtilities, "SplitCell1D_Result", py::is_final(), "\n(final class)")
+                .def(py::init<>()) // implicit default constructor
+                .def_readwrite("new_cell0_d_index", &Gedim::RefinementUtilities::SplitCell1D_Result::NewCell0DIndex, "")
+                .def_readwrite("new_cell1_ds_index", &Gedim::RefinementUtilities::SplitCell1D_Result::NewCell1DsIndex, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassSplitPolygon_Result =
+                py::class_<Gedim::RefinementUtilities::SplitPolygon_Result>
+                    (pyNsGedim_ClassRefinementUtilities, "SplitPolygon_Result", py::is_final(), "\n(final class)");
+
+            { // inner classes & enums of SplitPolygon_Result
+                auto pyEnumTypes =
+                    py::enum_<Gedim::RefinementUtilities::SplitPolygon_Result::Types>(pyNsGedim_ClassRefinementUtilities_ClassSplitPolygon_Result, "Types", py::arithmetic(), "")
+                        .value("unknown", Gedim::RefinementUtilities::SplitPolygon_Result::Types::Unknown, "")
+                        .value("split", Gedim::RefinementUtilities::SplitPolygon_Result::Types::Split, "")
+                        .value("no_split", Gedim::RefinementUtilities::SplitPolygon_Result::Types::NoSplit, "");
+            } // end of inner classes & enums of SplitPolygon_Result
+
+            pyNsGedim_ClassRefinementUtilities_ClassSplitPolygon_Result
+                .def(py::init<>([](
+                Gedim::RefinementUtilities::SplitPolygon_Result::Types Type = Gedim::RefinementUtilities::SplitPolygon_Result::Types::Unknown)
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::SplitPolygon_Result>();
+                    r_ctor_->Type = Type;
+                    return r_ctor_;
+                })
+                , py::arg("type") = Gedim::RefinementUtilities::SplitPolygon_Result::Types::Unknown
+                )
+                .def_readwrite("type", &Gedim::RefinementUtilities::SplitPolygon_Result::Type, "")
+                .def_readwrite("new_cell1_d_index", &Gedim::RefinementUtilities::SplitPolygon_Result::NewCell1DIndex, "")
+                .def_readwrite("new_cell2_ds_index", &Gedim::RefinementUtilities::SplitPolygon_Result::NewCell2DsIndex, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_CheckResult =
+                py::class_<Gedim::RefinementUtilities::RefinePolygon_CheckResult>
+                    (pyNsGedim_ClassRefinementUtilities, "RefinePolygon_CheckResult", py::is_final(), "\n(final class)");
+
+            { // inner classes & enums of RefinePolygon_CheckResult
+                auto pyEnumResultTypes =
+                    py::enum_<Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes>(pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_CheckResult, "ResultTypes", py::arithmetic(), "")
+                        .value("unknown", Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes::Unknown, "")
+                        .value("cell2_d_to_be_splitted", Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes::Cell2DToBeSplitted, "")
+                        .value("cell2_d_already_splitted", Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes::Cell2DAlreadySplitted, "")
+                        .value("cell2_d_split_under_tolerance", Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes::Cell2DSplitUnderTolerance, "")
+                        .value("split_direction_not_inside_cell2_d", Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes::SplitDirectionNotInsideCell2D, "");
+                auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_CheckResult_ClassCell1DToSplit =
+                    py::class_<Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit>
+                        (pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_CheckResult, "Cell1DToSplit", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of Cell1DToSplit
+                    auto pyEnumTypes =
+                        py::enum_<Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types>(pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_CheckResult_ClassCell1DToSplit, "Types", py::arithmetic(), "")
+                            .value("unknown", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::Unknown, "")
+                            .value("not_inside", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::NotInside, "")
+                            .value("edge_length_not_enough", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::EdgeLengthNotEnough, "")
+                            .value("only_local_quality_not_enough", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::OnlyLocalQualityNotEnough, "")
+                            .value("only_neigh_quality_not_enough", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::OnlyNeighQualityNotEnough, "")
+                            .value("both_quality_not_enough", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::BothQualityNotEnough, "")
+                            .value("only_local_aligned_not_respect", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::OnlyLocalAlignedNotRespect, "")
+                            .value("only_neigh_aligned_not_respect", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::OnlyNeighAlignedNotRespect, "")
+                            .value("both_aligned_not_respect", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::BothAlignedNotRespect, "")
+                            .value("to_split", Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::ToSplit, "");
+                } // end of inner classes & enums of Cell1DToSplit
+
+                pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_CheckResult_ClassCell1DToSplit
+                    .def(py::init<>([](
+                    bool IsIntersectionInside = false, bool IsEdgeLengthEnough = false, bool IsLocalQualityEnough = false, bool IsQualityEnough = false, std::vector<bool> IsNeighQualityEnough = {}, bool IsLocalAlignedRespect = false, bool IsAlignedRespect = false, std::vector<bool> IsNeighAlignedRespect = {}, bool IsToSplit = false, Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types Type = Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::Unknown)
+                    {
+                        auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit>();
+                        r_ctor_->IsIntersectionInside = IsIntersectionInside;
+                        r_ctor_->IsEdgeLengthEnough = IsEdgeLengthEnough;
+                        r_ctor_->IsLocalQualityEnough = IsLocalQualityEnough;
+                        r_ctor_->IsQualityEnough = IsQualityEnough;
+                        r_ctor_->IsNeighQualityEnough = IsNeighQualityEnough;
+                        r_ctor_->IsLocalAlignedRespect = IsLocalAlignedRespect;
+                        r_ctor_->IsAlignedRespect = IsAlignedRespect;
+                        r_ctor_->IsNeighAlignedRespect = IsNeighAlignedRespect;
+                        r_ctor_->IsToSplit = IsToSplit;
+                        r_ctor_->Type = Type;
+                        return r_ctor_;
+                    })
+                    , py::arg("is_intersection_inside") = false, py::arg("is_edge_length_enough") = false, py::arg("is_local_quality_enough") = false, py::arg("is_quality_enough") = false, py::arg("is_neigh_quality_enough") = std::vector<bool>{}, py::arg("is_local_aligned_respect") = false, py::arg("is_aligned_respect") = false, py::arg("is_neigh_aligned_respect") = std::vector<bool>{}, py::arg("is_to_split") = false, py::arg("type") = Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Types::Unknown
+                    )
+                    .def_readwrite("is_intersection_inside", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsIntersectionInside, "")
+                    .def_readwrite("is_edge_length_enough", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsEdgeLengthEnough, "")
+                    .def_readwrite("is_local_quality_enough", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsLocalQualityEnough, "")
+                    .def_readwrite("is_quality_enough", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsQualityEnough, "")
+                    .def_readwrite("is_neigh_quality_enough", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsNeighQualityEnough, "")
+                    .def_readwrite("is_local_aligned_respect", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsLocalAlignedRespect, "")
+                    .def_readwrite("is_aligned_respect", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsAlignedRespect, "")
+                    .def_readwrite("is_neigh_aligned_respect", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsNeighAlignedRespect, "")
+                    .def_readwrite("is_to_split", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::IsToSplit, "")
+                    .def_readwrite("cell2_d_edge_index", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Cell2DEdgeIndex, "")
+                    .def_readwrite("type", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit::Type, "")
+                    ;
+            } // end of inner classes & enums of RefinePolygon_CheckResult
+
+            pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_CheckResult
+                .def(py::init<>([](
+                std::vector<Gedim::GeometryUtilities::LinePolygonPositionResult::EdgeIntersection> Cell1DsIntersection = {}, std::vector<Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit> Cell1DsToSplit = {}, Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes ResultType = Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes::Unknown)
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolygon_CheckResult>();
+                    r_ctor_->Cell1DsIntersection = Cell1DsIntersection;
+                    r_ctor_->Cell1DsToSplit = Cell1DsToSplit;
+                    r_ctor_->ResultType = ResultType;
+                    return r_ctor_;
+                })
+                , py::arg("cell1_ds_intersection") = std::vector<Gedim::GeometryUtilities::LinePolygonPositionResult::EdgeIntersection>{}, py::arg("cell1_ds_to_split") = std::vector<Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DToSplit>{}, py::arg("result_type") = Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultTypes::Unknown
+                )
+                .def_readwrite("cell1_ds_index", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DsIndex, "")
+                .def_readwrite("cell1_ds_intersection", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DsIntersection, "")
+                .def_readwrite("cell1_ds_to_split", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::Cell1DsToSplit, "")
+                .def_readwrite("result_type", &Gedim::RefinementUtilities::RefinePolygon_CheckResult::ResultType, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassCheckSplitType_Result =
+                py::class_<Gedim::RefinementUtilities::CheckSplitType_Result>
+                    (pyNsGedim_ClassRefinementUtilities, "CheckSplitType_Result", py::is_final(), "\n(final class)");
+
+            { // inner classes & enums of CheckSplitType_Result
+                auto pyEnumSplitTypes =
+                    py::enum_<Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes>(pyNsGedim_ClassRefinementUtilities_ClassCheckSplitType_Result, "SplitTypes", py::arithmetic(), "")
+                        .value("unknown", Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::Unknown, "")
+                        .value("no_split", Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::NoSplit, "")
+                        .value("no_new_vertices", Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::NoNewVertices, "")
+                        .value("new_vertex_from", Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::NewVertexFrom, "")
+                        .value("new_vertex_to", Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::NewVertexTo, "")
+                        .value("new_vertices", Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::NewVertices, "");
+            } // end of inner classes & enums of CheckSplitType_Result
+
+            pyNsGedim_ClassRefinementUtilities_ClassCheckSplitType_Result
+                .def(py::init<>([](
+                Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes Type = Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::Unknown)
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::CheckSplitType_Result>();
+                    r_ctor_->Type = Type;
+                    return r_ctor_;
+                })
+                , py::arg("type") = Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::Unknown
+                )
+                .def_readwrite("no_new_vertices_index", &Gedim::RefinementUtilities::CheckSplitType_Result::NoNewVerticesIndex, "/< valid only for NoNewVertices type")
+                .def_readwrite("type", &Gedim::RefinementUtilities::CheckSplitType_Result::Type, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result =
+                py::class_<Gedim::RefinementUtilities::RefinePolyhedron_Result>
+                    (pyNsGedim_ClassRefinementUtilities, "RefinePolyhedron_Result", py::is_final(), "\n(final class)");
+
+            { // inner classes & enums of RefinePolyhedron_Result
+                auto pyEnumResultTypes =
+                    py::enum_<Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes>(pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result, "ResultTypes", py::arithmetic(), "")
+                        .value("unknown", Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes::Unknown, "")
+                        .value("successfull", Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes::Successfull, "")
+                        .value("cell3_d_already_splitted", Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes::Cell3DAlreadySplitted, "")
+                        .value("cell3_d_split_under_tolerance", Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes::Cell3DSplitUnderTolerance, "")
+                        .value("cell3_d_split_none", Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes::Cell3DSplitNone, "");
+                auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result_ClassRefinedCell1D =
+                    py::class_<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D>
+                        (pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result, "RefinedCell1D", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of RefinedCell1D
+                    auto pyEnumTypes =
+                        py::enum_<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::Types>(pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result_ClassRefinedCell1D, "Types", py::arithmetic(), "")
+                            .value("unknown", Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::Types::Unknown, "")
+                            .value("updated", Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::Types::Updated, "")
+                            .value("new", Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::Types::New, "");
+                } // end of inner classes & enums of RefinedCell1D
+
+                pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result_ClassRefinedCell1D
+                    .def(py::init<>([](
+                    Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::Types Type = Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::Types::Unknown)
+                    {
+                        auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D>();
+                        r_ctor_->Type = Type;
+                        return r_ctor_;
+                    })
+                    , py::arg("type") = Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::Types::Unknown
+                    )
+                    .def_readwrite("type", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::Type, "")
+                    .def_readwrite("new_cell1_ds_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::NewCell1DsIndex, "")
+                    .def_readwrite("original_cell1_d_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::OriginalCell1DIndex, "")
+                    .def_readwrite("new_cell0_d_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::NewCell0DIndex, "")
+                    .def_readwrite("original_cell3_d_edge_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D::OriginalCell3DEdgeIndex, "")
+                    ;
+                auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result_ClassRefinedCell2D =
+                    py::class_<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D>
+                        (pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result, "RefinedCell2D", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of RefinedCell2D
+                    auto pyEnumTypes =
+                        py::enum_<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::Types>(pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result_ClassRefinedCell2D, "Types", py::arithmetic(), "")
+                            .value("unknown", Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::Types::Unknown, "")
+                            .value("updated", Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::Types::Updated, "")
+                            .value("new", Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::Types::New, "");
+                } // end of inner classes & enums of RefinedCell2D
+
+                pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result_ClassRefinedCell2D
+                    .def(py::init<>([](
+                    Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::Types Type = Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::Types::Unknown)
+                    {
+                        auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D>();
+                        r_ctor_->Type = Type;
+                        return r_ctor_;
+                    })
+                    , py::arg("type") = Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::Types::Unknown
+                    )
+                    .def_readwrite("type", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::Type, "")
+                    .def_readwrite("new_cell2_ds_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::NewCell2DsIndex, "")
+                    .def_readwrite("original_cell2_d_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::OriginalCell2DIndex, "")
+                    .def_readwrite("new_cell1_d_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::NewCell1DIndex, "")
+                    .def_readwrite("new_cell1_ds_position", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::NewCell1DsPosition, "/< Position in NewCell1DsIndex array")
+                    .def_readwrite("original_cell3_d_face_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D::OriginalCell3DFaceIndex, "")
+                    ;
+            } // end of inner classes & enums of RefinePolyhedron_Result
+
+            pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_Result
+                .def(py::init<>([](
+                Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes ResultType = Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes::Unknown, std::vector<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D> NewCell1DsIndex = {}, std::vector<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D> NewCell2DsIndex = {})
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolyhedron_Result>();
+                    r_ctor_->ResultType = ResultType;
+                    r_ctor_->NewCell1DsIndex = NewCell1DsIndex;
+                    r_ctor_->NewCell2DsIndex = NewCell2DsIndex;
+                    return r_ctor_;
+                })
+                , py::arg("result_type") = Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultTypes::Unknown, py::arg("new_cell1_ds_index") = std::vector<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell1D>{}, py::arg("new_cell2_ds_index") = std::vector<Gedim::RefinementUtilities::RefinePolyhedron_Result::RefinedCell2D>{}
+                )
+                .def_readwrite("result_type", &Gedim::RefinementUtilities::RefinePolyhedron_Result::ResultType, "")
+                .def_readwrite("new_cell0_ds_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::NewCell0DsIndex, "")
+                .def_readwrite("new_cell1_ds_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::NewCell1DsIndex, "")
+                .def_readwrite("new_cell2_ds_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::NewCell2DsIndex, "")
+                .def_readwrite("new_cell3_ds_index", &Gedim::RefinementUtilities::RefinePolyhedron_Result::NewCell3DsIndex, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_Result =
+                py::class_<Gedim::RefinementUtilities::RefinePolygon_Result>
+                    (pyNsGedim_ClassRefinementUtilities, "RefinePolygon_Result", py::is_final(), "\n(final class)");
+
+            { // inner classes & enums of RefinePolygon_Result
+                auto pyEnumResultTypes =
+                    py::enum_<Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes>(pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_Result, "ResultTypes", py::arithmetic(), "")
+                        .value("unknown", Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes::Unknown, "")
+                        .value("successfull", Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes::Successfull, "")
+                        .value("cell2_d_already_splitted", Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes::Cell2DAlreadySplitted, "")
+                        .value("cell2_d_split_under_tolerance", Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes::Cell2DSplitUnderTolerance, "")
+                        .value("split_direction_not_inside_cell2_d", Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes::SplitDirectionNotInsideCell2D, "")
+                        .value("split_quality_check_cell2_d_failed", Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes::SplitQualityCheckCell2DFailed, "");
+                auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_Result_ClassRefinedCell1D =
+                    py::class_<Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D>
+                        (pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_Result, "RefinedCell1D", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of RefinedCell1D
+                    auto pyEnumTypes =
+                        py::enum_<Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::Types>(pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_Result_ClassRefinedCell1D, "Types", py::arithmetic(), "")
+                            .value("unknown", Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::Types::Unknown, "")
+                            .value("updated", Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::Types::Updated, "")
+                            .value("new", Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::Types::New, "");
+                } // end of inner classes & enums of RefinedCell1D
+
+                pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_Result_ClassRefinedCell1D
+                    .def(py::init<>([](
+                    Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::Types Type = Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::Types::Unknown)
+                    {
+                        auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D>();
+                        r_ctor_->Type = Type;
+                        return r_ctor_;
+                    })
+                    , py::arg("type") = Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::Types::Unknown
+                    )
+                    .def_readwrite("type", &Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::Type, "")
+                    .def_readwrite("new_cell1_ds_index", &Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::NewCell1DsIndex, "")
+                    .def_readwrite("original_cell1_d_index", &Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::OriginalCell1DIndex, "")
+                    .def_readwrite("new_cell0_d_index", &Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::NewCell0DIndex, "")
+                    .def_readwrite("original_cell2_d_edge_index", &Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D::OriginalCell2DEdgeIndex, "")
+                    ;
+            } // end of inner classes & enums of RefinePolygon_Result
+
+            pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_Result
+                .def(py::init<>([](
+                std::vector<Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D> NewCell1DsIndex = {}, Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes SplitType = Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::Unknown, Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes ResultType = Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes::Unknown)
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolygon_Result>();
+                    r_ctor_->NewCell1DsIndex = NewCell1DsIndex;
+                    r_ctor_->SplitType = SplitType;
+                    r_ctor_->ResultType = ResultType;
+                    return r_ctor_;
+                })
+                , py::arg("new_cell1_ds_index") = std::vector<Gedim::RefinementUtilities::RefinePolygon_Result::RefinedCell1D>{}, py::arg("split_type") = Gedim::RefinementUtilities::CheckSplitType_Result::SplitTypes::Unknown, py::arg("result_type") = Gedim::RefinementUtilities::RefinePolygon_Result::ResultTypes::Unknown
+                )
+                .def_readwrite("new_cell0_ds_index", &Gedim::RefinementUtilities::RefinePolygon_Result::NewCell0DsIndex, "")
+                .def_readwrite("new_cell1_ds_index", &Gedim::RefinementUtilities::RefinePolygon_Result::NewCell1DsIndex, "")
+                .def_readwrite("new_cell2_ds_index", &Gedim::RefinementUtilities::RefinePolygon_Result::NewCell2DsIndex, "")
+                .def_readwrite("split_type", &Gedim::RefinementUtilities::RefinePolygon_Result::SplitType, "")
+                .def_readwrite("result_type", &Gedim::RefinementUtilities::RefinePolygon_Result::ResultType, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_UpdateNeighbour_Result =
+                py::class_<Gedim::RefinementUtilities::RefinePolygon_UpdateNeighbour_Result>
+                    (pyNsGedim_ClassRefinementUtilities, "RefinePolygon_UpdateNeighbour_Result", py::is_final(), "\n(final class)");
+
+            { // inner classes & enums of RefinePolygon_UpdateNeighbour_Result
+                auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_UpdateNeighbour_Result_ClassUpdatedCell2D =
+                    py::class_<Gedim::RefinementUtilities::RefinePolygon_UpdateNeighbour_Result::UpdatedCell2D>
+                        (pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_UpdateNeighbour_Result, "UpdatedCell2D", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("original_cell2_d_index", &Gedim::RefinementUtilities::RefinePolygon_UpdateNeighbour_Result::UpdatedCell2D::OriginalCell2DIndex, "")
+                    .def_readwrite("new_cell2_d_index", &Gedim::RefinementUtilities::RefinePolygon_UpdateNeighbour_Result::UpdatedCell2D::NewCell2DIndex, "")
+                    ;
+            } // end of inner classes & enums of RefinePolygon_UpdateNeighbour_Result
+
+            pyNsGedim_ClassRefinementUtilities_ClassRefinePolygon_UpdateNeighbour_Result
+                .def(py::init<>([](
+                std::vector<Gedim::RefinementUtilities::RefinePolygon_UpdateNeighbour_Result::UpdatedCell2D> UpdatedCell2Ds = {})
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolygon_UpdateNeighbour_Result>();
+                    r_ctor_->UpdatedCell2Ds = UpdatedCell2Ds;
+                    return r_ctor_;
+                })
+                , py::arg("updated_cell2_ds") = std::vector<Gedim::RefinementUtilities::RefinePolygon_UpdateNeighbour_Result::UpdatedCell2D>{}
+                )
+                .def_readwrite("updated_cell2_ds", &Gedim::RefinementUtilities::RefinePolygon_UpdateNeighbour_Result::UpdatedCell2Ds, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_UpdateNeighbour_Result =
+                py::class_<Gedim::RefinementUtilities::RefinePolyhedron_UpdateNeighbour_Result>
+                    (pyNsGedim_ClassRefinementUtilities, "RefinePolyhedron_UpdateNeighbour_Result", py::is_final(), "\n(final class)");
+
+            { // inner classes & enums of RefinePolyhedron_UpdateNeighbour_Result
+                auto pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_UpdateNeighbour_Result_ClassUpdatedCell3D =
+                    py::class_<Gedim::RefinementUtilities::RefinePolyhedron_UpdateNeighbour_Result::UpdatedCell3D>
+                        (pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_UpdateNeighbour_Result, "UpdatedCell3D", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("original_cell3_d_index", &Gedim::RefinementUtilities::RefinePolyhedron_UpdateNeighbour_Result::UpdatedCell3D::OriginalCell3DIndex, "")
+                    .def_readwrite("new_cell3_d_index", &Gedim::RefinementUtilities::RefinePolyhedron_UpdateNeighbour_Result::UpdatedCell3D::NewCell3DIndex, "")
+                    ;
+            } // end of inner classes & enums of RefinePolyhedron_UpdateNeighbour_Result
+
+            pyNsGedim_ClassRefinementUtilities_ClassRefinePolyhedron_UpdateNeighbour_Result
+                .def(py::init<>([](
+                std::vector<Gedim::RefinementUtilities::RefinePolyhedron_UpdateNeighbour_Result::UpdatedCell3D> UpdatedCell3Ds = {})
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::RefinePolyhedron_UpdateNeighbour_Result>();
+                    r_ctor_->UpdatedCell3Ds = UpdatedCell3Ds;
+                    return r_ctor_;
+                })
+                , py::arg("updated_cell3_ds") = std::vector<Gedim::RefinementUtilities::RefinePolyhedron_UpdateNeighbour_Result::UpdatedCell3D>{}
+                )
+                .def_readwrite("updated_cell3_ds", &Gedim::RefinementUtilities::RefinePolyhedron_UpdateNeighbour_Result::UpdatedCell3Ds, "")
+                ;
+            auto pyNsGedim_ClassRefinementUtilities_ClassCell2Ds_GeometricData =
+                py::class_<Gedim::RefinementUtilities::Cell2Ds_GeometricData>
+                    (pyNsGedim_ClassRefinementUtilities, "Cell2Ds_GeometricData", py::is_final(), "\n(final class)");
+
+            { // inner classes & enums of Cell2Ds_GeometricData
+                auto pyNsGedim_ClassRefinementUtilities_ClassCell2Ds_GeometricData_ClassCell2D_GeometricData =
+                    py::class_<Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData>
+                        (pyNsGedim_ClassRefinementUtilities_ClassCell2Ds_GeometricData, "Cell2D_GeometricData", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    std::vector<Eigen::MatrixXd> Vertices = {}, std::vector<double> Area = {}, std::vector<Eigen::Vector3d> Centroid = {}, std::vector<std::vector<bool>> EdgesDirection = {}, std::vector<Eigen::MatrixXd> EdgesNormal = {}, std::vector<Eigen::VectorXd> EdgesLength = {}, std::vector<std::vector<Eigen::Matrix3d>> Triangulations = {}, std::vector<Eigen::Matrix3d> Inertia = {}, std::vector<Eigen::MatrixXd> UnalignedVertices = {}, std::vector<Eigen::VectorXd> UnalignedEdgesLength = {}, std::vector<Eigen::VectorXd> CentroidEdgesDistance = {}, std::vector<Eigen::VectorXd> CentroidVerticesDistance = {}, std::vector<double> InRadius = {}, std::vector<double> Quality = {})
+                    {
+                        auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData>();
+                        r_ctor_->Vertices = Vertices;
+                        r_ctor_->Area = Area;
+                        r_ctor_->Centroid = Centroid;
+                        r_ctor_->EdgesDirection = EdgesDirection;
+                        r_ctor_->EdgesNormal = EdgesNormal;
+                        r_ctor_->EdgesLength = EdgesLength;
+                        r_ctor_->Triangulations = Triangulations;
+                        r_ctor_->Inertia = Inertia;
+                        r_ctor_->UnalignedVertices = UnalignedVertices;
+                        r_ctor_->UnalignedEdgesLength = UnalignedEdgesLength;
+                        r_ctor_->CentroidEdgesDistance = CentroidEdgesDistance;
+                        r_ctor_->CentroidVerticesDistance = CentroidVerticesDistance;
+                        r_ctor_->InRadius = InRadius;
+                        r_ctor_->Quality = Quality;
+                        return r_ctor_;
+                    })
+                    , py::arg("vertices") = std::vector<Eigen::MatrixXd>{}, py::arg("area") = std::vector<double>{}, py::arg("centroid") = std::vector<Eigen::Vector3d>{}, py::arg("edges_direction") = std::vector<std::vector<bool>>{}, py::arg("edges_normal") = std::vector<Eigen::MatrixXd>{}, py::arg("edges_length") = std::vector<Eigen::VectorXd>{}, py::arg("triangulations") = std::vector<std::vector<Eigen::Matrix3d>>{}, py::arg("inertia") = std::vector<Eigen::Matrix3d>{}, py::arg("unaligned_vertices") = std::vector<Eigen::MatrixXd>{}, py::arg("unaligned_edges_length") = std::vector<Eigen::VectorXd>{}, py::arg("centroid_edges_distance") = std::vector<Eigen::VectorXd>{}, py::arg("centroid_vertices_distance") = std::vector<Eigen::VectorXd>{}, py::arg("in_radius") = std::vector<double>{}, py::arg("quality") = std::vector<double>{}
+                    )
+                    .def_readwrite("unaligned_vertices_index", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::UnalignedVerticesIndex, "")
+                    .def_readwrite("vertices", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::Vertices, "")
+                    .def_readwrite("area", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::Area, "")
+                    .def_readwrite("centroid", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::Centroid, "")
+                    .def_readwrite("edges_direction", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::EdgesDirection, "")
+                    .def_readwrite("edges_normal", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::EdgesNormal, "")
+                    .def_readwrite("edges_length", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::EdgesLength, "")
+                    .def_readwrite("triangulations", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::Triangulations, "")
+                    .def_readwrite("inertia", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::Inertia, "")
+                    .def_readwrite("unaligned_vertices", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::UnalignedVertices, "")
+                    .def_readwrite("unaligned_edges_length", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::UnalignedEdgesLength, "")
+                    .def_readwrite("centroid_edges_distance", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::CentroidEdgesDistance, "")
+                    .def_readwrite("centroid_vertices_distance", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::CentroidVerticesDistance, "")
+                    .def_readwrite("in_radius", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::InRadius, "")
+                    .def_readwrite("quality", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData::Quality, "")
+                    ;
+                auto pyNsGedim_ClassRefinementUtilities_ClassCell2Ds_GeometricData_ClassCell1D_GeometricData =
+                    py::class_<Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell1D_GeometricData>
+                        (pyNsGedim_ClassRefinementUtilities_ClassCell2Ds_GeometricData, "Cell1D_GeometricData", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("max_aligned", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell1D_GeometricData::MaxAligned, "")
+                    .def_readwrite("aligned", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell1D_GeometricData::Aligned, "")
+                    ;
+            } // end of inner classes & enums of Cell2Ds_GeometricData
+
+            pyNsGedim_ClassRefinementUtilities_ClassCell2Ds_GeometricData
+                .def(py::init<>([](
+                Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell1D_GeometricData Cell1Ds = Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell1D_GeometricData(), Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData Cell2Ds = Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::RefinementUtilities::Cell2Ds_GeometricData>();
+                    r_ctor_->Cell1Ds = Cell1Ds;
+                    r_ctor_->Cell2Ds = Cell2Ds;
+                    return r_ctor_;
+                })
+                , py::arg("cell1_ds") = Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell1D_GeometricData(), py::arg("cell2_ds") = Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2D_GeometricData()
+                )
+                .def_readwrite("cell1_ds", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell1Ds, "")
+                .def_readwrite("cell2_ds", &Gedim::RefinementUtilities::Cell2Ds_GeometricData::Cell2Ds, "")
+                ;
+        } // end of inner classes & enums of RefinementUtilities
+
+        pyNsGedim_ClassRefinementUtilities
+            .def(py::init<const Gedim::GeometryUtilities &, const Gedim::MeshUtilities &>(),
+                py::arg("geometry_utilities"), py::arg("mesh_utilities"))
+            .def("split_cell1_d",
+                &Gedim::RefinementUtilities::SplitCell1D, py::arg("cell1_d_index"), py::arg("new_vertex_coordinate"), py::arg("mesh"))
+            .def("update_cell2_d_new_vertex",
+                &Gedim::RefinementUtilities::UpdateCell2D_NewVertex,
+                py::arg("cell2_d_index"), py::arg("cell2_d_edge_direction"), py::arg("cell2_d_edge_position"), py::arg("new_cell1_ds_index"), py::arg("new_cell0_d_index"), py::arg("mesh"),
+                "/ \\brief update cell2DIndex with a new splitted edge cell1DIndex by newCell0DIndex")
+            .def("split_cell1_d_middle_point",
+                &Gedim::RefinementUtilities::SplitCell1D_MiddlePoint, py::arg("cell1_d_index"), py::arg("mesh"))
+            .def("are_vertices_aligned",
+                &Gedim::RefinementUtilities::AreVerticesAligned, py::arg("cell2_d_vertices"), py::arg("from_vertex"), py::arg("to_vertex"))
+            .def("split_polygon_check_split_type",
+                &Gedim::RefinementUtilities::SplitPolygon_CheckSplitType, py::arg("cell2_d_polygon_type"), py::arg("cell2_d_unaligned_polygon_type"), py::arg("cell2_d_vertices"), py::arg("cell2_d_check_to_refine"))
+            .def("split_polygon_check_is_not_to_extend",
+                &Gedim::RefinementUtilities::SplitPolygon_CheckIsNotToExtend, py::arg("cell1_d_split_one"), py::arg("cell1_d_split_two"))
+            .def("split_polygon_check_is_to_split_relaxed",
+                &Gedim::RefinementUtilities::SplitPolygon_CheckIsToSplit_Relaxed, py::arg("cell1_d_split_one"), py::arg("cell1_d_split_two"))
+            .def("split_polygon_is_area_positive",
+                &Gedim::RefinementUtilities::SplitPolygon_IsAreaPositive, py::arg("new_cell2_d_indices"), py::arg("cell2_d_rotation"), py::arg("cell2_d_translation"), py::arg("mesh"))
+            .def("split_polygon_no_new_vertices",
+                &Gedim::RefinementUtilities::SplitPolygon_NoNewVertices, py::arg("cell2_d_index"), py::arg("cell2_d_num_vertices"), py::arg("from_vertex"), py::arg("to_vertex"), py::arg("cell2_d_rotation"), py::arg("cell2_d_translation"), py::arg("mesh"))
+            .def("split_polygon_new_vertex_from",
+                &Gedim::RefinementUtilities::SplitPolygon_NewVertexFrom, py::arg("cell2_d_index"), py::arg("cell2_d_num_vertices"), py::arg("from_edge"), py::arg("to_vertex"), py::arg("cell2_d_rotation"), py::arg("cell2_d_translation"), py::arg("from_new_cell0_d_index"), py::arg("from_split_cell1_ds_index"), py::arg("from_edge_direction"), py::arg("mesh"))
+            .def("split_polygon_new_vertex_to",
+                &Gedim::RefinementUtilities::SplitPolygon_NewVertexTo, py::arg("cell2_d_index"), py::arg("cell2_d_num_vertices"), py::arg("from_vertex"), py::arg("to_edge"), py::arg("cell2_d_rotation"), py::arg("cell2_d_translation"), py::arg("to_new_cell0_d_index"), py::arg("to_split_cell1_ds_index"), py::arg("to_edge_direction"), py::arg("mesh"))
+            .def("split_polygon_new_vertices",
+                &Gedim::RefinementUtilities::SplitPolygon_NewVertices, py::arg("cell2_d_index"), py::arg("cell2_d_num_vertices"), py::arg("from_edge"), py::arg("to_edge"), py::arg("cell2_d_rotation"), py::arg("cell2_d_translation"), py::arg("from_new_cell0_d_index"), py::arg("to_new_cell0_d_index"), py::arg("from_split_cell1_ds_index"), py::arg("to_split_cell1_ds_index"), py::arg("from_edge_direction"), py::arg("to_edge_direction"), py::arg("mesh"))
+            .def("compute_triangle_max_edge_direction",
+                &Gedim::RefinementUtilities::ComputeTriangleMaxEdgeDirection, py::arg("edges_length"))
+            .def("compute_polygon_max_diameter_direction",
+                &Gedim::RefinementUtilities::ComputePolygonMaxDiameterDirection, py::arg("unaligned_vertices"), py::arg("centroid"))
+            .def("compute_polygon_max_inertia_direction",
+                &Gedim::RefinementUtilities::ComputePolygonMaxInertiaDirection, py::arg("unaligned_vertices"), py::arg("unaligned_edges_length"), py::arg("centroid"), py::arg("inertia"))
+            .def("compute_tetrahedron_max_edge_direction",
+                &Gedim::RefinementUtilities::ComputeTetrahedronMaxEdgeDirection, py::arg("polyhedron_edges"), py::arg("edges_length"))
+            .def("refine_triangle_cell_by_edge",
+                &Gedim::RefinementUtilities::RefineTriangleCell_ByEdge,
+                py::arg("cell2_d_index"), py::arg("edge_index"), py::arg("opposite_vertex_index"), py::arg("cell2_d_edges_direction"), py::arg("cell2_d_area"), py::arg("cell2_d_rotation"), py::arg("cell2_d_translation"), py::arg("cell2_d_edges_length"), py::arg("mesh"),
+                "/ \\brief Refine Triangle Cell2D By Edge\n/ \\param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()\n/ \\param cell2DVertices the cell2D 2D vertices\n/ \\param edgeIndex the edge local index to split\n/ \\param oppositeVertexIndex the vertex opposite to edge local index\n/ \\param mesh the mesh to be updated")
+            .def("refine_polyhedron_cell_by_plane",
+                &Gedim::RefinementUtilities::RefinePolyhedronCell_ByPlane,
+                py::arg("cell3_d_index"), py::arg("cell3_d_vertices"), py::arg("cell3_d_edges"), py::arg("cell3_d_edges_length"), py::arg("cell3_d_faces"), py::arg("cell3_d_faces3_d_vertices"), py::arg("cell3_d_faces_edges3_d_tangent"), py::arg("cell3_d_faces_translation"), py::arg("cell3_d_faces_rotation_matrix"), py::arg("cell3_d_volume"), py::arg("plane_normal"), py::arg("plane_origin"), py::arg("plane_rotation_matrix"), py::arg("plane_translation"), py::arg("mesh"),
+                "/ \\brief Refine Polyhedral Cell3D By Plane")
+            .def("refine_polyhedron_cell_update_face_neighbours",
+                &Gedim::RefinementUtilities::RefinePolyhedronCell_UpdateFaceNeighbours, py::arg("cell3_d_index"), py::arg("cell2_d_index"), py::arg("new_cell1_d_index"), py::arg("split_cell1_ds_original_index"), py::arg("split_cell1_ds_new_cell0_d_index"), py::arg("split_cell1_ds_updated_indices"), py::arg("split_cell2_ds_index"), py::arg("cell3_ds_faces_edges_direction"), py::arg("updated_cell2_ds"), py::arg("mesh"))
+            .def("refine_polyhedron_cell_update_edge_neighbours",
+                &Gedim::RefinementUtilities::RefinePolyhedronCell_UpdateEdgeNeighbours, py::arg("cell3_d_index"), py::arg("cell1_d_index"), py::arg("new_cell1_ds_index"), py::arg("new_cell0_d_index"), py::arg("cell3_ds_faces_edges_direction"), py::arg("updated_cell2_ds"), py::arg("mesh"))
+            .def("refine_triangle_cell_update_neighbours",
+                &Gedim::RefinementUtilities::RefineTriangleCell_UpdateNeighbours,
+                py::arg("cell2_d_index"), py::arg("cell1_d_index"), py::arg("new_cell0_d_index"), py::arg("split_cell1_ds_index"), py::arg("cell2_d_edge_direction"), py::arg("cell2_ds_rotation"), py::arg("cell2_ds_translation"), py::arg("mesh"),
+                "/ \\brief Update Cell1D neighbours of refined triangle by edge with refine by edge\n/ \\param cell2DIndex the index of Cell2D refined, from 0 to Cell2DTotalNumber()\n/ \\param cell1DIndex the index of Cell1D splitted by the refinement, from 0 to Cell1DTotalNumber()\n/ \\param newCell0DIndex the index of Cell0D created by the cell1D splitting process, from 0 to Cell0DTotalNumber()\n/ \\param splitCell1DsIndex the indices of the new Cell1Ds created by the splitting process, from 0 to\n/ Cell1DTotalNumber() \\param cell2DEdgeDirection the direction of the Cell1D splitted in the Cell2D \\param mesh\n/ the mesh to be updated")
+            .def("refine_polygon_cell_check_refinement",
+                &Gedim::RefinementUtilities::RefinePolygonCell_CheckRefinement,
+                py::arg("cell2_d_index"), py::arg("cell2_d_vertices"), py::arg("line_tangent"), py::arg("line_origin"), py::arg("cell2_ds_quality"), py::arg("cell1_ds_aligned"), py::arg("cell1_ds_quality_weight"), py::arg("cell1_ds_aligned_weight"), py::arg("cell2_d_area"), py::arg("cell2_ds_edges_length"), py::arg("cell2_d_edges_direction"), py::arg("mesh"),
+                "/ \\brief Refine Polygon Cell2D By Direction")
+            .def("refine_polygon_cell_by_direction",
+                &Gedim::RefinementUtilities::RefinePolygonCell_ByDirection,
+                py::arg("cell2_d_index"), py::arg("cell2_d_polygon_type"), py::arg("cell2_d_unaligned_polygon_type"), py::arg("cell2_d_vertices"), py::arg("cell2_d_check_to_refine"), py::arg("cell2_d_rotation"), py::arg("cell2_d_translation"), py::arg("cell2_d_edges_direction"), py::arg("extend_to_neighbours"), py::arg("mesh"),
+                "/ \\brief Refine Polygon Cell2D By Direction")
+            .def("refine_polygon_cell_update_neighbours",
+                &Gedim::RefinementUtilities::RefinePolygonCell_UpdateNeighbours, py::arg("cell2_d_index"), py::arg("cell1_d_index"), py::arg("new_cell0_d_index"), py::arg("split_cell1_ds_index"), py::arg("cell2_ds_edges_direction"), py::arg("mesh"))
+            .def("refine_polygon_cell_initialize_geometric_data",
+                &Gedim::RefinementUtilities::RefinePolygonCell_InitializeGeometricData,
+                py::arg("mesh"),
+                "/ Compute the geometric data for all the mesh")
+            .def("refine_polygon_cell_update_geometric_data",
+                &Gedim::RefinementUtilities::RefinePolygonCell_UpdateGeometricData,
+                py::arg("mesh"), py::arg("cell2_ds_index"), py::arg("geometric_data"),
+                "/ \\brief Update the geometric data for only cell2Ds")
+            .def("refine_polygon_cell_is_cell1_d_to_split",
+                &Gedim::RefinementUtilities::RefinePolygonCell_IsCell1DToSplit, py::arg("cell1_d_index"), py::arg("cell2_d_index"), py::arg("edge_intersection"), py::arg("cell2_ds_edges_length"), py::arg("cell1_ds_quality_weight"), py::arg("cell1_ds_aligned_weight"), py::arg("cell2_ds_quality"), py::arg("cell1_ds_aligned"), py::arg("mesh"))
+            ;
+    } // </namespace Gedim>
+    ////////////////////    </generated_from:RefinementUtilities.hpp>    ////////////////////
+
+
     ////////////////////    <generated_from:SphereMeshUtilities.hpp>    ////////////////////
     // #ifndef __SphereMeshUtilities_H
     //
@@ -4473,6 +5034,10 @@ void py_init_module_polydim(py::module &m)
                 (pyNsGedim, "SphereMeshUtilities", py::is_final(), "/ \\brief MeshUtilities\n/ \\copyright See top level LICENSE file for details.\n/\n/ https://danielsieger.com/blog/2021/03/27/generating-spheres.html\n(final class)")
             .def(py::init<const Gedim::GeometryUtilities &, const Gedim::MeshUtilities &>(),
                 py::arg("geometry_utilities"), py::arg("mesh_utilities"))
+            .def("circle",
+                &Gedim::SphereMeshUtilities::circle, py::arg("center"), py::arg("radius"), py::arg("num_points"))
+            .def("ellipse",
+                &Gedim::SphereMeshUtilities::ellipse, py::arg("center"), py::arg("radius_1"), py::arg("radius_2"), py::arg("rotation_angle"), py::arg("num_points"))
             .def("uv_sphere",
                 &Gedim::SphereMeshUtilities::uv_sphere, py::arg("meridians"), py::arg("parallels"))
             ;
@@ -7905,6 +8470,8 @@ void py_init_module_polydim(py::module &m)
                         py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
                     .def("compute_basis_functions_derivative_values",
                         py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("internal_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::InternalDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"))
                     ;
             } // </namespace PCC>
 
@@ -8062,6 +8629,8 @@ void py_init_module_polydim(py::module &m)
                     .def_readwrite("b_lap", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::B_lap, "")
                     .def_readwrite("order", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::Order, "")
                     .def_readwrite("number_of_basis_functions", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::NumberOfBasisFunctions, "")
+                    .def_readwrite("num_boundary_basis_functions", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::NumBoundaryBasisFunctions, "")
+                    .def_readwrite("num_internal_basis_functions", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::NumInternalBasisFunctions, "")
                     .def_readwrite("dofs", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::Dofs, "")
                     .def_readwrite("dofs_mesh_order", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::DofsMeshOrder, "")
                     .def_readwrite("dof0_ds_index", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::Dof0DsIndex, "")
@@ -9004,14 +9573,36 @@ void py_init_module_polydim(py::module &m)
                         auto pyEnumDomain_Shape_Types =
                             py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_2D, "Domain_Shape_Types", py::arithmetic(), "")
                                 .value("parallelogram", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Parallelogram, "")
-                                .value("polygon", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Polygon, "");
+                                .value("polygon", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Polygon, "")
+                                .value("ellipse", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Ellipse, "");
                     } // end of inner classes & enums of PDE_Domain_2D
 
                     pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_2D
                         .def(py::init<>()) // implicit default constructor
                         .def_readwrite("vertices", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::vertices, "")
                         .def_readwrite("area", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::area, "")
+                        .def_readwrite("radius_1", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::radius_1, "")
+                        .def_readwrite("radius_2", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::radius_2, "")
+                        .def_readwrite("center", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::center, "")
+                        .def_readwrite("rotation_angle", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::rotation_angle, "")
                         .def_readwrite("shape_type", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::shape_type, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Time_Domain_2D =
+                        py::class_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Time_Domain_2D>
+                            (pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "PDE_Time_Domain_2D", py::is_final(), "\n(final class)")
+                        .def(py::init<>([](
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D spatial_domain = Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Time_Domain_2D>();
+                            r_ctor_->spatial_domain = spatial_domain;
+                            return r_ctor_;
+                        })
+                        , py::arg("spatial_domain") = Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D()
+                        )
+                        .def_readwrite("time_domain", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Time_Domain_2D::time_domain, "")
+                        .def_readwrite("spatial_domain", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Time_Domain_2D::spatial_domain, "")
                         ;
 
 
@@ -9226,6 +9817,7 @@ void py_init_module_polydim(py::module &m)
                                     .value("unknwon", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::Unknwon, "")
                                     .value("strong", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::Strong, "")
                                     .value("weak", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::Weak, "")
+                                    .value("robin", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::Robin, "")
                                     .value("none", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::None, "");
                         } // end of inner classes & enums of BoundaryInfo
 
@@ -9270,7 +9862,8 @@ void py_init_module_polydim(py::module &m)
                                 py::enum_<Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types>(pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData_ClassDOF, "Types", py::arithmetic(), "")
                                     .value("unknwon", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::Unknwon, "")
                                     .value("strong", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::Strong, "")
-                                    .value("dof", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::DOF, "");
+                                    .value("dof", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::DOF, "")
+                                    .value("robin", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::Robin, "");
                         } // end of inner classes & enums of DOF
 
                         pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData_ClassDOF
@@ -9302,6 +9895,7 @@ void py_init_module_polydim(py::module &m)
                         .def_readwrite("number_internal_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberInternalDOFs, "")
                         .def_readwrite("number_boundary_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberBoundaryDOFs, "")
                         .def_readwrite("number_strongs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberStrongs, "")
+                        .def_readwrite("number_robin", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberRobin, "")
                         .def_readwrite("cells_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::CellsDOFs, "")
                         .def_readwrite("cells_global_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::CellsGlobalDOFs, "")
                         ;
@@ -9311,8 +9905,10 @@ void py_init_module_polydim(py::module &m)
                         .def(py::init<>()) // implicit default constructor
                         .def_readwrite("cells_do_fs_local_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_DOFs_LocalIndex, "")
                         .def_readwrite("cells_strongs_local_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_Strongs_LocalIndex, "")
+                        .def_readwrite("cells_robin_local_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_Robin_LocalIndex, "")
                         .def_readwrite("cells_do_fs_global_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_DOFs_GlobalIndex, "")
                         .def_readwrite("cells_strongs_global_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_Strongs_GlobalIndex, "")
+                        .def_readwrite("cells_robin_global_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_Robin_GlobalIndex, "")
                         ;
                 } // end of inner classes & enums of DOFsManager
 
