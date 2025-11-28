@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Install litgen dependencies
+        run: apt update && apt install -y git build-essential cmake ninja-build libxml2-dev default-jdk libxslt1-dev
+
       - name: Install litgen
         run: pip install litgen
 
