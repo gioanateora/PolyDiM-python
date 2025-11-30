@@ -4004,7 +4004,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def export(
             self,
             configuration: MeshFromCsvUtilities.Configuration,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export the mesh in all parts
             / \param configuration the configuration for export
@@ -4052,14 +4052,14 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def import_(
             self,
             configuration: MeshFromCsvUtilities.Configuration,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
         def import_mesh2_d(
             self,
             configuration: MeshFromCsvUtilities.Configuration,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -4256,7 +4256,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell0_ds: List[MeshFromCsvUtilities.Cell0D],
             cell1_ds: List[MeshFromCsvUtilities.Cell1D],
             cell2_ds: List[MeshFromCsvUtilities.Cell2D],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert a 2D Mesh
             / \param cell0Ds the container of cell0Ds
@@ -4269,7 +4269,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell0_ds(
             self,
             cell0_ds: List[MeshFromCsvUtilities.Cell0D],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell0Ds to mesh
             / \param cell0Ds the container of cell0Ds
@@ -4279,7 +4279,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell1_ds(
             self,
             cell1_ds: List[MeshFromCsvUtilities.Cell1D],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell1Ds to mesh
             / \param cell1Ds the container of cell1Ds
@@ -4289,7 +4289,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell2_ds(
             self,
             cell2_ds: List[MeshFromCsvUtilities.Cell2D],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell2Ds to mesh
             / \param cell2Ds the container of cell2Ds
@@ -4299,7 +4299,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell3_ds(
             self,
             cell3_ds: List[MeshFromCsvUtilities.Cell3D],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell3Ds to mesh
             / \param cell3Ds the container of cell3Ds
@@ -4310,7 +4310,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell0_d_neighbours(
             self,
             cell0_d_neighbours: List[MeshFromCsvUtilities.Cell0DNeighbours],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell0D neighbours to mesh
             / \param cell0DNeighbours the container of cell0D neighbours
@@ -4320,7 +4320,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell1_d_neighbours(
             self,
             cell1_d_neighbours: List[MeshFromCsvUtilities.Cell1DNeighbours],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell1D neighbours to mesh
             / \param cell1DNeighbours the container of cell1D neighbours
@@ -4330,7 +4330,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell2_d_neighbours(
             self,
             cell2_d_neighbours: List[MeshFromCsvUtilities.Cell2DNeighbours],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell2D neighbours to mesh
             / \param cell2DNeighbours the container of cell2D neighbours
@@ -4341,7 +4341,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell2_d_sub_divisions(
             self,
             cell2_d_sub_divisions: List[MeshFromCsvUtilities.Cell2DSubDivision],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell2D subdivision to mesh
             / \param cell2DSubDivisions the container of cell2D neighbours
@@ -4352,7 +4352,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell0_d_double_properties(
             self,
             cell0_d_double_properties: List[MeshFromCsvUtilities.CellDoubleProperty],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell0D double properties to mesh
             / \param cell0DDoubleProperties the container of cell0D double properties
@@ -4362,7 +4362,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell1_d_double_properties(
             self,
             cell1_d_double_properties: List[MeshFromCsvUtilities.CellDoubleProperty],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell1D double properties to mesh
             / \param cell1DDoubleProperties the container of cell1D double properties
@@ -4372,7 +4372,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell2_d_double_properties(
             self,
             cell2_d_double_properties: List[MeshFromCsvUtilities.CellDoubleProperty],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell2D double properties to mesh
             / \param cell2DDoubleProperties the container of cell2D double properties
@@ -4382,7 +4382,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell3_d_double_properties(
             self,
             cell3_d_double_properties: List[MeshFromCsvUtilities.CellDoubleProperty],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell3D double properties to mesh
             / \param cell3DDoubleProperties the container of cell3D double properties
@@ -4393,7 +4393,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell0_d_updated_cells(
             self,
             cell0_d_updated_cells: List[MeshFromCsvUtilities.CellUpdatedCells],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell0D updated cells to mesh
             / \param cell0DUpdatedCells the container of cell0D updated cells
@@ -4403,7 +4403,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell1_d_updated_cells(
             self,
             cell1_d_updated_cells: List[MeshFromCsvUtilities.CellUpdatedCells],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell1D updated cells to mesh
             / \param cell1DUpdatedCells the container of cell1D updated cells
@@ -4413,7 +4413,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell2_d_updated_cells(
             self,
             cell2_d_updated_cells: List[MeshFromCsvUtilities.CellUpdatedCells],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell2D updated cells to mesh
             / \param cell2DUpdatedCells the container of cell2D updated cells
@@ -4423,7 +4423,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def convert_cell3_d_updated_cells(
             self,
             cell3_d_updated_cells: List[MeshFromCsvUtilities.CellUpdatedCells],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Convert the imported Cell3D updated cells to mesh
             / \param cell3DUpdatedCells the container of cell3D updated cells
@@ -4537,48 +4537,28 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """
             pass
 
-        def export_cell0_ds(
-            self,
-            file_path: str,
-            separator: str,
-            mesh: Gedim.MeshMatricesDAO
-            ) -> None:
+        def export_cell0_ds(self, file_path: str, separator: str, mesh: IMeshDAO) -> None:
             """/ \brief Export Cell0Ds; format: Id, Marker, Active, X, Y, Z
             / \param filePath the path of the file
             / \param separator the file separator
             / \param mesh the mesh to be exported
             """
             pass
-        def export_cell1_ds(
-            self,
-            file_path: str,
-            separator: str,
-            mesh: Gedim.MeshMatricesDAO
-            ) -> None:
+        def export_cell1_ds(self, file_path: str, separator: str, mesh: IMeshDAO) -> None:
             """/ \brief Export Cell1Ds; format: Id, Marker, Active, Origin, End
             / \param filePath the path of the file
             / \param separator the file separator
             / \param mesh the mesh to be exported
             """
             pass
-        def export_cell2_ds(
-            self,
-            file_path: str,
-            separator: str,
-            mesh: Gedim.MeshMatricesDAO
-            ) -> None:
+        def export_cell2_ds(self, file_path: str, separator: str, mesh: IMeshDAO) -> None:
             """/ \brief Export Cell2Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges
             / \param filePath the path of the file
             / \param separator the file separator
             / \param mesh the mesh to be exported
             """
             pass
-        def export_cell3_ds(
-            self,
-            file_path: str,
-            separator: str,
-            mesh: Gedim.MeshMatricesDAO
-            ) -> None:
+        def export_cell3_ds(self, file_path: str, separator: str, mesh: IMeshDAO) -> None:
             """/ \brief Export Cell3Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges, NumFaces, Faces
             / \param filePath the path of the file
             / \param separator the file separator
@@ -4592,7 +4572,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             property_file_name: str,
             property_file_extension: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell0DProperties; format: Id, FilePath
             / \param exportFolder the folder where to export the files
@@ -4608,7 +4588,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             property_index: int,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell0DProperty identified by index; format: Id, PropertySize, PropertyValues
             / \param propertyIndex the property index
@@ -4624,7 +4604,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             property_file_name: str,
             property_file_extension: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell1DProperties; format: Id, FilePath
             / \param exportFolder the folder where to export the files
@@ -4640,7 +4620,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             property_index: int,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell1DProperty identified by index; format: Id, PropertySize, PropertyValues
             / \param propertyIndex the property index
@@ -4656,7 +4636,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             property_file_name: str,
             property_file_extension: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell2DProperties; format: Id, FilePath
             / \param exportFolder the folder where to export the files
@@ -4672,7 +4652,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             property_index: int,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell2DProperty identified by index; format: Id, PropertySize, PropertyValues
             / \param propertyIndex the property index
@@ -4688,7 +4668,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             property_file_name: str,
             property_file_extension: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell3DProperties; format: Id, FilePath
             / \param exportFolder the folder where to export the files
@@ -4704,7 +4684,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             property_index: int,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell3DProperty identified by index; format: Id, PropertySize, PropertyValues
             / \param propertyIndex the property index
@@ -4718,7 +4698,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell0DNeighbours; format: Id, Num1DNeighbours, 1DNeighbours, Num2DNeighbours, 2DNeighbours,
             / Num3DNeighbours, 3DNeighbours \param filePath the path of the file \param separator the file separator \param
@@ -4729,7 +4709,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell1DNeighbours; format: Id, Num2DNeighbours, 2DNeighbours, Num3DNeighbours, 3DNeighbours
             / \param filePath the path of the file
@@ -4741,7 +4721,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell2DNeighbours; format: Id, Num3DNeighbours, 3DNeighbours
             / \param filePath the path of the file
@@ -4753,7 +4733,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell2DSubDivisions; format: Id, NumSubDivision, SubDivisions
             / \param filePath the path of the file
@@ -4766,7 +4746,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell0DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
             / \param filePath the path of the file
@@ -4778,7 +4758,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell1DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
             / \param filePath the path of the file
@@ -4790,7 +4770,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell2DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
             / \param filePath the path of the file
@@ -4802,7 +4782,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             file_path: str,
             separator: str,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Export Cell3DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells
             / \param filePath the path of the file
@@ -6598,7 +6578,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         def extract_active_mesh(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             extraction_data: MeshUtilities.ExtractActiveMeshData
             ) -> None:
             """/ \brief Extract Active Cells from mesh
@@ -6606,16 +6586,13 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """
             pass
 
-        def filter_active_mesh(
-            self,
-            mesh: Gedim.MeshMatricesDAO
-            ) -> MeshUtilities.FilterMeshData:
+        def filter_active_mesh(self, mesh: IMeshDAO) -> MeshUtilities.FilterMeshData:
             pass
 
         def filter_mesh1_d(
             self,
             cell1_ds_filter: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.FilterMeshData:
             """/ \brief Extract mesh1D cells from a mesh"""
             pass
@@ -6623,7 +6600,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def filter_mesh2_d(
             self,
             cell2_ds_filter: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.FilterMeshData:
             """/ \brief Extract mesh2D cells from a mesh"""
             pass
@@ -6631,7 +6608,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def filter_mesh3_d(
             self,
             cell3_ds_filter: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.FilterMeshData:
             """/ \brief Extract mesh3D cells from a mesh"""
             pass
@@ -6640,8 +6617,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             cell0_ds_filter: List[int],
             cell1_ds_filter: List[int],
-            original_mesh: Gedim.MeshMatricesDAO,
-            mesh: Gedim.MeshMatricesDAO
+            original_mesh: IMeshDAO,
+            mesh: IMeshDAO
             ) -> MeshUtilities.ExtractMeshData:
             pass
 
@@ -6650,8 +6627,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell0_ds_filter: List[int],
             cell1_ds_filter: List[int],
             cell2_ds_filter: List[int],
-            original_mesh: Gedim.MeshMatricesDAO,
-            mesh: Gedim.MeshMatricesDAO
+            original_mesh: IMeshDAO,
+            mesh: IMeshDAO
             ) -> MeshUtilities.ExtractMeshData:
             pass
 
@@ -6661,8 +6638,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell1_ds_filter: List[int],
             cell2_ds_filter: List[int],
             cell3_ds_filter: List[int],
-            original_mesh: Gedim.MeshMatricesDAO,
-            mesh: Gedim.MeshMatricesDAO
+            original_mesh: IMeshDAO,
+            mesh: IMeshDAO
             ) -> MeshUtilities.ExtractMeshData:
             pass
 
@@ -6672,7 +6649,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             segment_origin: Eigen.Vector3d,
             segment_tangent: Eigen.Vector3d,
             coordinates: List[float],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Fill Mesh 1D From segment Coordinates
             / \param segmentOrigin the segment origin
@@ -6687,7 +6664,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell0_ds: Eigen.MatrixXd,
             cell1_ds: Eigen.MatrixXi,
             cell2_ds: List[Eigen.MatrixXi],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Fill a Mesh 2D with vertices, edges and polygons
             / \param cell0Ds the coordinates as Eigen MatrixXd of cell0Ds, size 3xCell0DTotalNumber()
@@ -6703,7 +6680,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell1_ds: Eigen.MatrixXi,
             cell2_ds: List[Eigen.MatrixXi],
             cell3_ds: List[MeshUtilities.Mesh3DPolyhedron],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -6723,7 +6700,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             configuration: MeshUtilities.CheckMesh2DConfiguration,
             geometry_utilities: GeometryUtilities,
-            convex_mesh: Gedim.MeshMatricesDAO
+            convex_mesh: IMeshDAO
             ) -> None:
             """/ \brief Check Mesh2D correctness
             / \param Gedim::GeometryUtilities the geometry utilities
@@ -6735,7 +6712,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             configuration: MeshUtilities.CheckMesh3DConfiguration,
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Check Mesh3D correctness
             / \param Gedim::GeometryUtilities the geometry utilities
@@ -6747,7 +6724,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             cell3_ds_aligned_edges_vertices: List[List[List[int]]],
             cell3_ds_aligned_edges_edges: List[List[List[int]]],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.ComputeMesh3DAlignedCell1DsResult:
             """/ \brief Compute edges in a Mesh 2D with vertices and polygons
             / \param cell0Ds the coordinates as Eigen MatrixXd of cell0Ds, size 3xCell0DTotalNumber()
@@ -6760,7 +6737,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             configuration: MeshUtilities.CheckMeshGeometricData3DConfiguration,
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             geometric_data: MeshUtilities.MeshGeometricData3D
             ) -> None:
             """/ \brief Check MeshGeometricData3D correctness
@@ -6775,7 +6752,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             geometry_utilities: GeometryUtilities,
             segment_vertices: Eigen.MatrixXd,
             vertex_markers: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Create a Mesh 1D with a segment
             / \param segmentVertices the segment coordinates, size 3x2
@@ -6788,7 +6765,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polygon_vertices: Eigen.MatrixXd,
             vertex_markers: List[int],
             edge_markers: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Create a Mesh 2D with a polygon
             / \param polygonVertices the polygon coordinates, size 3xNumPolygonVertices()
@@ -6804,7 +6781,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             line_tangent: Eigen.Vector3d,
             line_tangent_squared_length: float,
             marker: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Set the marker on all the mesh 2D elements laying on the line
             / \param Gedim::GeometryUtilities the geometry utilities
@@ -6823,7 +6800,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             segment_tangent: Eigen.Vector3d,
             segment_tangent_squared_length: float,
             marker: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -6835,7 +6812,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             vertex_markers: List[int],
             edge_markers: List[int],
             face_markers: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Create a Mesh 3D with a polyhedron
             / \param polyhedronVertices the polyhedron vertices, size 3 x numVertices
@@ -6853,7 +6830,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             plane_normal: Eigen.Vector3d,
             plane_origin: Eigen.Vector3d,
             marker: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Set the marker on all the mesh 3D elements laying on the plane
             / \param Gedim::GeometryUtilities the geometry utilities
@@ -6870,7 +6847,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             normal: Eigen.Vector3d,
             cell2_ds_normal: List[Eigen.Vector3d],
             marker: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -6884,7 +6861,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polygon_translation: Eigen.Vector3d,
             polygon_rotation_matrix: Eigen.Matrix3d,
             marker: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \warning Only for convex points"""
             pass
@@ -6901,11 +6878,11 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell1_ds_centroid: List[Eigen.Vector3d],
             cell2_ds_centroid: List[Eigen.Vector3d],
             marker: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
-        def mesh_cell2_d_roots(self, mesh: Gedim.MeshMatricesDAO) -> List[int]:
+        def mesh_cell2_d_roots(self, mesh: IMeshDAO) -> List[int]:
             """/ \brief Extract the mesh Cell2D Roots
             / \param mesh the mesh
             / \return the root cell for each cell2D, size 1xCell2DTotalNumber()
@@ -6915,7 +6892,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def fill_mesh1_d_geometric_data(
             self,
             geometry_utilities: GeometryUtilities,
-            convex_mesh: Gedim.MeshMatricesDAO
+            convex_mesh: IMeshDAO
             ) -> MeshUtilities.MeshGeometricData1D:
             """/ \brief Fill Mesh1D Geometric Data given a mesh with convex mesh cells
             / \param convexMesh the convex mesh
@@ -6939,7 +6916,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def fill_mesh2_d_geometric_data(
             self,
             geometry_utilities: GeometryUtilities,
-            convex_mesh: Gedim.MeshMatricesDAO
+            convex_mesh: IMeshDAO
             ) -> MeshUtilities.MeshGeometricData2D:
             """/ \brief Fill Mesh2D Geometric Data given a mesh with convex mesh cells
             / \param convexMesh the convex mesh
@@ -6951,7 +6928,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def fill_mesh2_d_geometric_data(
             self,
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             mesh_cell2_ds_polygon_type: List[GeometryUtilities.PolygonTypes]
             ) -> MeshUtilities.MeshGeometricData2D:
             """/ \brief Fill Mesh2D Geometric Data given a mesh with mesh cells type
@@ -6965,8 +6942,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def fill_mesh2_d_geometric_data(
             self,
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO,
-            convex_mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
+            convex_mesh: IMeshDAO,
             mesh_cell2_d_to_convex_cell2_d_indices: List[List[int]]
             ) -> MeshUtilities.MeshGeometricData2D:
             """/ \brief Fill Mesh2D Geometric Data starting given a mesh with non convex mesh cells and its convex sub-mesh cells
@@ -6993,7 +6970,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def fill_mesh3_d_geometric_data(
             self,
             geometry_utilities: GeometryUtilities,
-            convex_mesh: Gedim.MeshMatricesDAO
+            convex_mesh: IMeshDAO
             ) -> MeshUtilities.MeshGeometricData3D:
             """/ \brief Fill Mesh3D Geometric Data given a mesh with convex mesh cells
             / \param convexMesh the convex mesh
@@ -7005,8 +6982,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def fill_mesh3_d_geometric_data(
             self,
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO,
-            convex_mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
+            convex_mesh: IMeshDAO,
             mesh_cell3_d_to_convex_cell3_d_indices: List[List[int]]
             ) -> MeshUtilities.MeshGeometricData3D:
             """/ \brief Fill Mesh3D Geometric Data starting given a mesh with non convex mesh cells and its convex sub-mesh cells
@@ -7022,7 +6999,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def fill_mesh3_d_geometric_data(
             self,
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell3_ds_tetra_vertices: List[List[Eigen.MatrixXd]],
             cell2_ds_triangles_3_d_vertices: List[List[Eigen.Matrix3d]]
             ) -> MeshUtilities.MeshGeometricData3D:
@@ -7040,26 +7017,26 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             ) -> None:
             pass
 
-        def compute_cell0_d_cell1_d_neighbours(self, mesh: Gedim.MeshMatricesDAO) -> None:
+        def compute_cell0_d_cell1_d_neighbours(self, mesh: IMeshDAO) -> None:
             pass
-        def compute_cell0_d_cell2_d_neighbours(self, mesh: Gedim.MeshMatricesDAO) -> None:
+        def compute_cell0_d_cell2_d_neighbours(self, mesh: IMeshDAO) -> None:
             pass
-        def compute_cell0_d_cell3_d_neighbours(self, mesh: Gedim.MeshMatricesDAO) -> None:
+        def compute_cell0_d_cell3_d_neighbours(self, mesh: IMeshDAO) -> None:
             pass
 
-        def compute_cell1_d_cell2_d_neighbours(self, mesh: Gedim.MeshMatricesDAO) -> None:
+        def compute_cell1_d_cell2_d_neighbours(self, mesh: IMeshDAO) -> None:
             """/ \brief Compute Cell1D Cell2DNeighbours with given mesh data
             / \param mesh the resulting mesh
             """
             pass
 
-        def compute_cell1_d_cell3_d_neighbours(self, mesh: Gedim.MeshMatricesDAO) -> None:
+        def compute_cell1_d_cell3_d_neighbours(self, mesh: IMeshDAO) -> None:
             """/ \brief Compute Cell1D Cell3DNeighbours with given mesh data
             / \param mesh the resulting mesh
             """
             pass
 
-        def compute_cell2_d_cell3_d_neighbours(self, mesh: Gedim.MeshMatricesDAO) -> None:
+        def compute_cell2_d_cell3_d_neighbours(self, mesh: IMeshDAO) -> None:
             """/ \brief Compute Cell2D Cell3DNeighbours with given mesh data
             / \param mesh the resulting mesh
             """
@@ -7072,7 +7049,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             rectangle_height_tangent: Eigen.Vector3d,
             base_mesh_curvilinear_coordinates: List[float],
             height_mesh_curvilinear_coordinates: List[float],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Crete rectange Mesh on rectangle base x height
             / \param rectangleOrigin the rectangle origin point
@@ -7094,7 +7071,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             length_mesh_curvilinear_coordinates: List[float],
             height_mesh_curvilinear_coordinates: List[float],
             width_mesh_curvilinear_coordinates: List[float],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -7107,7 +7084,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             height_mesh_curvilinear_coordinates: List[float],
             number_of_added_vertices_for_each_rectangle: List[int],
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -7120,7 +7097,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             height_mesh_curvilinear_coordinates: List[float],
             number_of_added_vertices_for_each_rectangle: List[int],
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -7128,7 +7105,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             polygon_vertices: Eigen.MatrixXd,
             max_triangle_area: float,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             options: str = "-QDzpqnea"
             ) -> None:
             """/ \brief Create triangular mesh on 2D polygon
@@ -7146,7 +7123,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polygon_vertices: Eigen.MatrixXd,
             num_points: int,
             num_iterations: int,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             random_seed: int = 0
             ) -> None:
             pass
@@ -7166,7 +7143,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polyhedron_edges: Eigen.MatrixXi,
             polyhedron_faces: List[Eigen.MatrixXi],
             max_tetrahedron_volume: float,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             options: str = "Qpqfezna"
             ) -> None:
             pass
@@ -7176,7 +7153,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             points: Eigen.MatrixXd,
             facets: List[List[int]],
             max_tetrahedron_volume: float,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             options: str = "Qpqfezna"
             ) -> None:
             pass
@@ -7185,7 +7162,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             points: Eigen.MatrixXd,
             points_marker: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -7197,7 +7174,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polyhedron_faces: List[Eigen.MatrixXi],
             num_points: int,
             num_iterations: int,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             random_seed: int = 0
             ) -> None:
             pass
@@ -7205,14 +7182,14 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def make_mesh_triangular_faces(
             self,
             faces_triangulation: List[List[int]],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
         def import_open_volume_mesh(
             self,
             ovm_file_path: str,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             mesh_cell3_ds_faces_orientation: List[List[bool]]
             ) -> None:
             """/ \brief Import 3D mesh from OVM file"""
@@ -7220,28 +7197,24 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         def export_mesh_to_open_volume(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             mesh_cell3_ds_faces_orientation: List[List[bool]],
             ovm_file_path: str
             ) -> None:
             """/ \brief Export 3D mesh to OVM file"""
             pass
 
-        def import_vtk_mesh3_d(self, vtk_file_path: str, mesh: Gedim.MeshMatricesDAO) -> None:
+        def import_vtk_mesh3_d(self, vtk_file_path: str, mesh: IMeshDAO) -> None:
             """/ \brief Import 3D mesh from VTK file"""
             pass
 
-        def import_object_file_format(
-            self,
-            off_file_path: str,
-            mesh: Gedim.MeshMatricesDAO
-            ) -> None:
+        def import_object_file_format(self, off_file_path: str, mesh: IMeshDAO) -> None:
             """/ \brief Import 2D mesh from OFF file"""
             pass
 
         def export_mesh_to_object_file_format(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             off_file_path: str
             ) -> None:
             """/ \brief Export 2D mesh to OFF file"""
@@ -7252,7 +7225,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polygon_vertices: Eigen.MatrixXd,
             cell0_d_markers: List[int],
             cell1_d_markers: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Change Polygon Mesh Markers from { 1, 2, 3, 4, ..., numVertices } for cell0Ds and { 5, 6, 7, 8, ..., 2 *
             / numVertices } for cell1Ds to cell0DMarkers and cell1DMarkers \param polygonVertices the 2D polygon vertices,
@@ -7279,13 +7252,13 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polyhedron_faces_marker: List[int],
             cell1_ds_centroid: List[Eigen.Vector3d],
             cell2_ds_centroid: List[Eigen.Vector3d],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
         def export_mesh_to_vtu(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             export_folder: str,
             file_name: str,
             separate_file: bool = False
@@ -7298,7 +7271,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         def export_mesh_to_ucd(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             export_folder: str,
             file_name: str,
             separate_file: bool = False
@@ -7311,7 +7284,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         def export_cell2_d_to_vtu(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell2_d_index: int,
             cell2_d_vertices: Eigen.MatrixXd,
             cell2_d_triangulations: List[Eigen.Matrix3d],
@@ -7333,7 +7306,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def export_cell3_d_to_vtu(
             self,
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell3_d_index: int,
             cell3_d_vertices: Eigen.MatrixXd,
             cell3_d_tetrahedrons: List[Eigen.MatrixXd],
@@ -7358,7 +7331,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         def mesh_cell3_d_to_polyhedron(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell3_d_index: int
             ) -> GeometryUtilities.Polyhedron:
             """/ \brief Convert a mesh cell3D to a geometric polydheron
@@ -7370,7 +7343,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         def mesh_cell3_d_to_vtp_polyhedron(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell3_d_index: int
             ) -> MeshUtilities.VTPPolyhedron:
             """/ \brief Convert a mesh cell3D to a VTP polydheron
@@ -7384,7 +7357,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             cell1_d_index: int,
             sub_cell1_ds: Eigen.MatrixXi,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> List[int]:
             """/ \brief Split cell2D into subcells
             / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
@@ -7398,7 +7371,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             cell2_d_index: int,
             sub_cell2_ds: List[Eigen.MatrixXi],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> List[int]:
             """/ \brief Split cell2D into subcells
             / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
@@ -7414,7 +7387,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             sub_cell3_ds_vertices: List[List[int]],
             sub_cell3_ds_edges: List[List[int]],
             sub_cell3_ds_faces: List[List[int]],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> List[int]:
             """/ \brief Split cell3D into subcells
             / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
@@ -7428,7 +7401,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def agglomerate_cell1_ds(
             self,
             cell1_ds_index: std.unordered_set[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.AgglomerateCell1DInformation:
             pass
 
@@ -7437,7 +7410,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             geometry_utilities: GeometryUtilities,
             cell2_ds_index: std.unordered_set[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.AgglomerateCell2DInformation:
             pass
 
@@ -7445,7 +7418,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def agglomerate_cell3_ds(
             self,
             cell3_ds_index: std.unordered_set[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.AgglomerateCell3DInformation:
             pass
 
@@ -7455,7 +7428,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             sub_cell1_ds_index: std.unordered_set[int],
             agglomerate_cell1_d_vertices: List[int],
             sub_cell1_ds_removed_cell0_ds: List[int],
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             mesh_cell1_ds_original_cell1_ds: List[List[int]],
             mantain_neigh2_d_order: bool = False
             ) -> int:
@@ -7469,7 +7442,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             agglomerate_cell2_d_edges: List[int],
             sub_cell2_ds_removed_cell0_ds: List[int],
             sub_cell2_ds_removed_cell1_ds: List[int],
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             mesh_cell2_ds_original_cell2_ds: List[List[int]]
             ) -> int:
             pass
@@ -7484,7 +7457,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             sub_cell3_ds_removed_cell0_ds: List[int],
             sub_cell3_ds_removed_cell1_ds: List[int],
             sub_cell3_ds_removed_cell2_ds: List[int],
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             mesh_cell3_ds_original_cell3_ds: List[List[int]]
             ) -> int:
             pass
@@ -7499,7 +7472,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             num_quadrilaterals_height_tangent: int,
             max_deforming_percentage_base: float,
             max_deforming_percentage_height: float,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -7511,13 +7484,13 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             rectangle_height_tangent: Eigen.Vector3d,
             num_quadrilaterals_base_tangent: int,
             num_quadrilaterals_height_tangent: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
         def find_cell2_ds_common_vertices(
             self,
             cell2_ds_index: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> List[int]:
             """/ \brief Given a set of Cell2Ds find the common Cell0Ds
             / \param cell2DsIndex the cell2Ds index
@@ -7529,7 +7502,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def find_cell2_ds_common_edges(
             self,
             cell2_ds_index: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> List[int]:
             """/ \brief Given a set of Cell2Ds find the common Cell1Ds
             / \param cell2DsIndex the cell2Ds index
@@ -7543,8 +7516,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             geometry_utilities: GeometryUtilities,
             concave_cell3_d_index: int,
-            mesh: Gedim.MeshMatricesDAO,
-            convex_mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
+            convex_mesh: IMeshDAO,
             convex_cell3_d_indices: List[int],
             concave_cell3_d_faces3_d_vertices: List[Eigen.MatrixXd],
             concave_cell3_d_faces2_d_vertices: List[Eigen.MatrixXd],
@@ -7561,7 +7534,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             geometry_utilities: GeometryUtilities,
             concave_cell3_d_index: int,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             concave_cell3_d_tetra: List[Eigen.MatrixXd],
             concave_cell3_d_faces_2_d_triangles: List[List[Eigen.Matrix3d]],
             concave_cell3_d_faces3_d_vertices: List[Eigen.MatrixXd],
@@ -7577,7 +7550,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def find_point_mesh_position(
             self,
             find_cell2_d_result: MeshUtilities.FindPointCell2DResult,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.FindPointMeshPositionResult:
             pass
 
@@ -7585,7 +7558,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def find_point_mesh_position(
             self,
             find_cell3_d_result: MeshUtilities.FindPointCell3DResult,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> MeshUtilities.FindPointMeshPositionResult:
             pass
 
@@ -7593,7 +7566,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             geometry_utilities: GeometryUtilities,
             point: Eigen.Vector3d,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell2_ds_vertices: List[Eigen.MatrixXd],
             cell2_ds_bounding_box: List[Eigen.MatrixXd],
             find_only_first_cell2_d: bool = True,
@@ -7606,7 +7579,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             geometry_utilities: GeometryUtilities,
             point: Eigen.Vector3d,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell3_ds_faces: List[List[Eigen.MatrixXi]],
             cell3_ds_face_vertices: List[List[Eigen.MatrixXd]],
             cell3_ds_face_rotated_vertices: List[List[Eigen.MatrixXd]],
@@ -7625,7 +7598,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             geometry_utilities: GeometryUtilities,
             point: Eigen.Vector3d,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell3_ds_faces: List[List[Eigen.MatrixXi]],
             cell3_ds_face_vertices: List[List[Eigen.MatrixXd]],
             cell3_ds_face_rotated_vertices: List[List[Eigen.MatrixXd]],
@@ -7643,7 +7616,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def agglomerate_triangles(
             self,
             triangles_index_to_agglomerate: List[int],
-            triangular_mesh: Gedim.MeshMatricesDAO
+            triangular_mesh: IMeshDAO
             ) -> MeshUtilities.AgglomerateTrianglesResult:
             """/ \brief Agglomerate Triangles with one vertex in common
             / \param trianglesIndexToAgglomerate the cell2Ds triangular index in the mesh
@@ -7656,15 +7629,15 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def agglomerate_mesh_from_triangular_mesh(
             self,
             triangles_indices_to_agglomerate: List[List[int]],
-            triangular_mesh: Gedim.MeshMatricesDAO
+            triangular_mesh: IMeshDAO
             ) -> MeshUtilities.AgglomerateMeshFromTriangularMeshResult:
             pass
 
         def import_agglomeration_information_from_csv(
             self,
             geometry_utilities: GeometryUtilities,
-            original_mesh: Gedim.MeshMatricesDAO,
-            agglomerated_mesh: Gedim.MeshMatricesDAO,
+            original_mesh: IMeshDAO,
+            agglomerated_mesh: IMeshDAO,
             file_name: str,
             separator: str
             ) -> MeshUtilities.AgglomerationInformation:
@@ -7686,8 +7659,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def import_agglomeration_information_from_off(
             self,
             geometry_utilities: GeometryUtilities,
-            original_mesh: Gedim.MeshMatricesDAO,
-            agglomerated_mesh: Gedim.MeshMatricesDAO,
+            original_mesh: IMeshDAO,
+            agglomerated_mesh: IMeshDAO,
             file_name: str,
             separator: str
             ) -> MeshUtilities.AgglomerationInformation:
@@ -7708,7 +7681,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         def export_mesh_to_csv(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             separator: str,
             export_folder_path: str
             ) -> None:
@@ -7717,7 +7690,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         def export_concave_mesh2_d_to_csv(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             convex_cell2_ds_index: List[List[int]],
             separator: str,
             export_folder_path: str
@@ -7750,7 +7723,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polyhedron_faces_rotation_matrix: List[Eigen.Matrix3d],
             polyhedron_faces_bouding_box: List[Eigen.MatrixXd],
             polyhedron_bouding_box: Eigen.MatrixXd,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             mesh_cell1_ds_bouding_box: List[Eigen.MatrixXd],
             mesh_cell1_ds_vertices: List[Eigen.MatrixXd],
             mesh_cell1_ds_tangent: List[Eigen.Vector3d],
@@ -7777,7 +7750,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             polygon_vertices: Eigen.MatrixXd,
             cell0_d_markers: List[int],
             cell1_d_markers: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -7785,7 +7758,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             configuration: MeshUtilities.CheckMeshGeometricData2DConfiguration,
             geometry_utilities: GeometryUtilities,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             geometric_data: MeshUtilities.MeshGeometricData2D
             ) -> None:
             pass
@@ -7794,7 +7767,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             geometry_utilities: GeometryUtilities,
             interface_vertices: Eigen.MatrixXd,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             pass
 
@@ -8345,7 +8318,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             cell1_d_index: int,
             new_vertex_coordinate: Eigen.Vector3d,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.SplitCell1D_Result:
             pass
         def update_cell2_d_new_vertex(
@@ -8355,7 +8328,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell2_d_edge_position: int,
             new_cell1_ds_index: List[int],
             new_cell0_d_index: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> int:
             """/ \brief update cell2DIndex with a new splitted edge cell1DIndex by newCell0DIndex"""
             pass
@@ -8363,7 +8336,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
         def split_cell1_d_middle_point(
             self,
             cell1_d_index: int,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.SplitCell1D_Result:
             pass
 
@@ -8402,7 +8375,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             new_cell2_d_indices: Eigen.VectorXi,
             cell2_d_rotation: Eigen.Matrix3d,
             cell2_d_translation: Eigen.Vector3d,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> bool:
             pass
 
@@ -8414,7 +8387,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             to_vertex: int,
             cell2_d_rotation: Eigen.Matrix3d,
             cell2_d_translation: Eigen.Vector3d,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.SplitPolygon_Result:
             pass
         def split_polygon_new_vertex_from(
@@ -8428,7 +8401,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             from_new_cell0_d_index: int,
             from_split_cell1_ds_index: List[int],
             from_edge_direction: bool,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.SplitPolygon_Result:
             pass
         def split_polygon_new_vertex_to(
@@ -8442,7 +8415,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             to_new_cell0_d_index: int,
             to_split_cell1_ds_index: List[int],
             to_edge_direction: bool,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.SplitPolygon_Result:
             pass
         def split_polygon_new_vertices(
@@ -8459,7 +8432,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             to_split_cell1_ds_index: List[int],
             from_edge_direction: bool,
             to_edge_direction: bool,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.SplitPolygon_Result:
             pass
 
@@ -8501,7 +8474,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell2_d_rotation: Eigen.Matrix3d,
             cell2_d_translation: Eigen.Vector3d,
             cell2_d_edges_length: Eigen.VectorXd,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolygon_Result:
             """/ \brief Refine Triangle Cell2D By Edge
             / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
@@ -8528,7 +8501,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             plane_origin: Eigen.Vector3d,
             plane_rotation_matrix: Eigen.Matrix3d,
             plane_translation: Eigen.Vector3d,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolyhedron_Result:
             """/ \brief Refine Polyhedral Cell3D By Plane"""
             pass
@@ -8544,7 +8517,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             split_cell2_ds_index: List[int],
             cell3_ds_faces_edges_direction: List[List[List[bool]]],
             updated_cell2_ds: Dict[int, int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result:
             pass
 
@@ -8556,7 +8529,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             new_cell0_d_index: int,
             cell3_ds_faces_edges_direction: List[List[List[bool]]],
             updated_cell2_ds: Dict[int, int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolyhedron_UpdateNeighbour_Result:
             pass
 
@@ -8569,7 +8542,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell2_d_edge_direction: bool,
             cell2_ds_rotation: List[Eigen.Matrix3d],
             cell2_ds_translation: List[Eigen.Vector3d],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> None:
             """/ \brief Update Cell1D neighbours of refined triangle by edge with refine by edge
             / \param cell2DIndex the index of Cell2D refined, from 0 to Cell2DTotalNumber()
@@ -8594,7 +8567,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell2_d_area: float,
             cell2_ds_edges_length: List[Eigen.VectorXd],
             cell2_d_edges_direction: List[bool],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolygon_CheckResult:
             """/ \brief Refine Polygon Cell2D By Direction"""
             pass
@@ -8610,7 +8583,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell2_d_translation: Eigen.Vector3d,
             cell2_d_edges_direction: List[bool],
             extend_to_neighbours: bool,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolygon_Result:
             """/ \brief Refine Polygon Cell2D By Direction"""
             pass
@@ -8622,20 +8595,20 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             new_cell0_d_index: int,
             split_cell1_ds_index: List[int],
             cell2_ds_edges_direction: List[List[bool]],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolygon_UpdateNeighbour_Result:
             pass
 
         def refine_polygon_cell_initialize_geometric_data(
             self,
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.Cell2Ds_GeometricData:
             """/ Compute the geometric data for all the mesh"""
             pass
 
         def refine_polygon_cell_update_geometric_data(
             self,
-            mesh: Gedim.MeshMatricesDAO,
+            mesh: IMeshDAO,
             cell2_ds_index: List[int],
             geometric_data: RefinementUtilities.Cell2Ds_GeometricData
             ) -> None:
@@ -8652,7 +8625,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell1_ds_aligned_weight: float,
             cell2_ds_quality: List[float],
             cell1_ds_aligned: List[int],
-            mesh: Gedim.MeshMatricesDAO
+            mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit:
             pass
 
