@@ -113,16 +113,8 @@ def preprocess(code: str) -> str:
 
 opts = litgen.LitgenOptions()
 
-#opts.skip_abstract_classes = True
 opts.srcmlcpp_options.header_filter_preprocessor_regions = True
 #opts.type_replacements.add_replacement("Gedim::IMeshDAO", "Gedim::MeshMatricesDAO")
-#opts.type_replacements.add_replacement("const Gedim::IMeshDAO &", "const Gedim::MeshMatricesDAO &")
-#opts.type_replacements.add_replacement("Gedim::IMeshDAO &", "Gedim::MeshMatricesDAO &")
-
-# Escludi i metodi di IMeshDAO (così non prova a generare binding per funzioni pure virtuali)
-# opts.fn_exclude_by_class_name = ["Gedim::IMeshDAO"]
-# opts.class_force_abstract = ["Gedim::IMeshDAO"]
-
 
 opts.class_override_virtual_methods_in_python__regex = "^IMeshDAO$|^MeshMatricesDAO$"
 

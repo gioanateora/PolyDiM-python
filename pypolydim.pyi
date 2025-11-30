@@ -20476,9 +20476,20 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 pass
 
             @staticmethod
+            @overload
             def basis_functions_values(
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data,
+                projection_type: VEM.PCC.ProjectionTypes = VEM.PCC.ProjectionTypes.pi0km1
+                ) -> Eigen.MatrixXd:
+                pass
+
+            @staticmethod
+            @overload
+            def basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                points: Eigen.MatrixXd,
                 projection_type: VEM.PCC.ProjectionTypes = VEM.PCC.ProjectionTypes.pi0km1
                 ) -> Eigen.MatrixXd:
                 pass
