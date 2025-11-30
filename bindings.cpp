@@ -2383,460 +2383,6 @@ void py_init_module_polydim(py::module &m)
     ////////////////////    </generated_from:MapQuadrilateral.hpp>    ////////////////////
 
 
-    ////////////////////    <generated_from:MeshDAOExporterToCsv.hpp>    ////////////////////
-    // #ifndef __MeshDAOExporterToCsv_H
-    //
-    // #endif
-
-    { // <namespace Gedim>
-        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
-        auto pyNsGedim_ClassMeshDAOExporterToCsv =
-            py::class_<Gedim::MeshDAOExporterToCsv>
-                (pyNsGedim, "MeshDAOExporterToCsv", py::is_final(), "/ \\brief MeshDAOExporterToCsv\n/ \\copyright See top level LICENSE file for details.\n(final class)")
-            .def(py::init<const Gedim::MeshFromCsvUtilities &>(),
-                py::arg("utilities"))
-            .def("export",
-                &Gedim::MeshDAOExporterToCsv::Export,
-                py::arg("configuration"), py::arg("mesh"),
-                "/ \\brief Export the mesh in all parts\n/ \\param configuration the configuration for export\n/ \\param mesh the mesh to be exported")
-            ;
-    } // </namespace Gedim>
-    ////////////////////    </generated_from:MeshDAOExporterToCsv.hpp>    ////////////////////
-
-
-    ////////////////////    <generated_from:MeshDAOImporterFromCsv.hpp>    ////////////////////
-    // #ifndef __MeshDAOImporterFromCsv_H
-    //
-    // #endif
-
-    { // <namespace Gedim>
-        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
-        auto pyNsGedim_ClassMeshDAOImporterFromCsv =
-            py::class_<Gedim::MeshDAOImporterFromCsv>
-                (pyNsGedim, "MeshDAOImporterFromCsv", py::is_final(), "/ \\brief MeshDAOImporterFromCsv\n/ \note each file could be EmptyFileReader if not necessary\n/ \\copyright See top level LICENSE file for details\n(final class)")
-            .def(py::init<const Gedim::MeshFromCsvUtilities &>(),
-                py::arg("utilities"))
-            .def("import_",
-                &Gedim::MeshDAOImporterFromCsv::Import, py::arg("configuration"), py::arg("mesh"))
-            .def("import_mesh2_d",
-                &Gedim::MeshDAOImporterFromCsv::ImportMesh2D, py::arg("configuration"), py::arg("mesh"))
-            ;
-    } // </namespace Gedim>
-    ////////////////////    </generated_from:MeshDAOImporterFromCsv.hpp>    ////////////////////
-
-
-    ////////////////////    <generated_from:MeshFromCsvUtilities.hpp>    ////////////////////
-    // #ifndef __MeshImporterFromCsvUtilities_H
-    //
-    // #endif
-
-    { // <namespace Gedim>
-        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
-        auto pyNsGedim_ClassMeshFromCsvUtilities =
-            py::class_<Gedim::MeshFromCsvUtilities>
-                (pyNsGedim, "MeshFromCsvUtilities", py::is_final(), "/ \\brief MeshImporterFromCsvUtilities\n/ \note each file could be EmptyFileReader if not necessary\n/ \\copyright See top level LICENSE file for details\n(final class)");
-
-        { // inner classes & enums of MeshFromCsvUtilities
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassConfiguration =
-                py::class_<Gedim::MeshFromCsvUtilities::Configuration>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Configuration", "")
-                .def(py::init<>([](
-                std::string Folder = "./", std::string FileCell0DsName = "Cell0Ds", std::string FileCell1DsName = "Cell1Ds", std::string FileCell2DsName = "Cell2Ds", std::string FileCell3DsName = "Cell3Ds", std::string FileCell0DNeighboursName = "Cell0DNeighbours", std::string FileCell1DNeighboursName = "Cell1DNeighbours", std::string FileCell2DNeighboursName = "Cell2DNeighbours", std::string FileCell0DPropertiesName = "Cell0DProperties", std::string FileCell1DPropertiesName = "Cell1DProperties", std::string FileCell2DPropertiesName = "Cell2DProperties", std::string FileCell3DPropertiesName = "Cell3DProperties", std::string FileCell2DSubDivisionsName = "Cell2DSubDivisions", std::string FileCell0DUpdatedCellsName = "Cell0DUpdatedCells", std::string FileCell1DUpdatedCellsName = "Cell1DUpdatedCells", std::string FileCell2DUpdatedCellsName = "Cell2DUpdatedCells", std::string FileCell3DUpdatedCellsName = "Cell3DUpdatedCells", char Separator = ';', std::string FileExtension = "csv")
-                {
-                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Configuration>();
-                    r_ctor_->Folder = Folder;
-                    r_ctor_->FileCell0DsName = FileCell0DsName;
-                    r_ctor_->FileCell1DsName = FileCell1DsName;
-                    r_ctor_->FileCell2DsName = FileCell2DsName;
-                    r_ctor_->FileCell3DsName = FileCell3DsName;
-                    r_ctor_->FileCell0DNeighboursName = FileCell0DNeighboursName;
-                    r_ctor_->FileCell1DNeighboursName = FileCell1DNeighboursName;
-                    r_ctor_->FileCell2DNeighboursName = FileCell2DNeighboursName;
-                    r_ctor_->FileCell0DPropertiesName = FileCell0DPropertiesName;
-                    r_ctor_->FileCell1DPropertiesName = FileCell1DPropertiesName;
-                    r_ctor_->FileCell2DPropertiesName = FileCell2DPropertiesName;
-                    r_ctor_->FileCell3DPropertiesName = FileCell3DPropertiesName;
-                    r_ctor_->FileCell2DSubDivisionsName = FileCell2DSubDivisionsName;
-                    r_ctor_->FileCell0DUpdatedCellsName = FileCell0DUpdatedCellsName;
-                    r_ctor_->FileCell1DUpdatedCellsName = FileCell1DUpdatedCellsName;
-                    r_ctor_->FileCell2DUpdatedCellsName = FileCell2DUpdatedCellsName;
-                    r_ctor_->FileCell3DUpdatedCellsName = FileCell3DUpdatedCellsName;
-                    r_ctor_->Separator = Separator;
-                    r_ctor_->FileExtension = FileExtension;
-                    return r_ctor_;
-                })
-                , py::arg("folder") = "./", py::arg("file_cell0_ds_name") = "Cell0Ds", py::arg("file_cell1_ds_name") = "Cell1Ds", py::arg("file_cell2_ds_name") = "Cell2Ds", py::arg("file_cell3_ds_name") = "Cell3Ds", py::arg("file_cell0_d_neighbours_name") = "Cell0DNeighbours", py::arg("file_cell1_d_neighbours_name") = "Cell1DNeighbours", py::arg("file_cell2_d_neighbours_name") = "Cell2DNeighbours", py::arg("file_cell0_d_properties_name") = "Cell0DProperties", py::arg("file_cell1_d_properties_name") = "Cell1DProperties", py::arg("file_cell2_d_properties_name") = "Cell2DProperties", py::arg("file_cell3_d_properties_name") = "Cell3DProperties", py::arg("file_cell2_d_sub_divisions_name") = "Cell2DSubDivisions", py::arg("file_cell0_d_updated_cells_name") = "Cell0DUpdatedCells", py::arg("file_cell1_d_updated_cells_name") = "Cell1DUpdatedCells", py::arg("file_cell2_d_updated_cells_name") = "Cell2DUpdatedCells", py::arg("file_cell3_d_updated_cells_name") = "Cell3DUpdatedCells", py::arg("separator") = ';', py::arg("file_extension") = "csv"
-                )
-                .def_readwrite("folder", &Gedim::MeshFromCsvUtilities::Configuration::Folder, "")
-                .def_readwrite("file_cell0_ds_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell0DsName, "")
-                .def_readwrite("file_cell1_ds_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell1DsName, "")
-                .def_readwrite("file_cell2_ds_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DsName, "")
-                .def_readwrite("file_cell3_ds_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell3DsName, "")
-                .def_readwrite("file_cell0_d_neighbours_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell0DNeighboursName, "")
-                .def_readwrite("file_cell1_d_neighbours_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell1DNeighboursName, "")
-                .def_readwrite("file_cell2_d_neighbours_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DNeighboursName, "")
-                .def_readwrite("file_cell0_d_properties_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell0DPropertiesName, "")
-                .def_readwrite("file_cell1_d_properties_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell1DPropertiesName, "")
-                .def_readwrite("file_cell2_d_properties_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DPropertiesName, "")
-                .def_readwrite("file_cell3_d_properties_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell3DPropertiesName, "")
-                .def_readwrite("file_cell2_d_sub_divisions_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DSubDivisionsName, "")
-                .def_readwrite("file_cell0_d_updated_cells_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell0DUpdatedCellsName, "")
-                .def_readwrite("file_cell1_d_updated_cells_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell1DUpdatedCellsName, "")
-                .def_readwrite("file_cell2_d_updated_cells_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DUpdatedCellsName, "")
-                .def_readwrite("file_cell3_d_updated_cells_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell3DUpdatedCellsName, "")
-                .def_readwrite("separator", &Gedim::MeshFromCsvUtilities::Configuration::Separator, "")
-                .def_readwrite("file_extension", &Gedim::MeshFromCsvUtilities::Configuration::FileExtension, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCellDoubleProperty =
-                py::class_<Gedim::MeshFromCsvUtilities::CellDoubleProperty>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "CellDoubleProperty", "");
-
-            { // inner classes & enums of CellDoubleProperty
-                auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCellDoubleProperty_ClassValue =
-                    py::class_<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value>
-                        (pyNsGedim_ClassMeshFromCsvUtilities_ClassCellDoubleProperty, "Value", "")
-                    .def(py::init<>([](
-                    std::vector<double> Values = std::vector<double>())
-                    {
-                        auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value>();
-                        r_ctor_->Values = Values;
-                        return r_ctor_;
-                    })
-                    , py::arg("values") = std::vector<double>()
-                    )
-                    .def_readwrite("cell_id", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value::CellId, "")
-                    .def_readwrite("values", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value::Values, "")
-                    ;
-            } // end of inner classes & enums of CellDoubleProperty
-
-            pyNsGedim_ClassMeshFromCsvUtilities_ClassCellDoubleProperty
-                .def(py::init<>([](
-                std::string Id = std::string(), std::string FilePath = std::string(), std::vector<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value> Values = std::vector<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value>())
-                {
-                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::CellDoubleProperty>();
-                    r_ctor_->Id = Id;
-                    r_ctor_->FilePath = FilePath;
-                    r_ctor_->Values = Values;
-                    return r_ctor_;
-                })
-                , py::arg("id") = std::string(), py::arg("file_path") = std::string(), py::arg("values") = std::vector<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value>()
-                )
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::Id, "")
-                .def_readwrite("file_path", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::FilePath, "")
-                .def_readwrite("values", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::Values, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell0D =
-                py::class_<Gedim::MeshFromCsvUtilities::Cell0D>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell0D", "")
-                .def(py::init<>([](
-                double X = double(), double Y = double(), double Z = double(), bool Active = bool())
-                {
-                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Cell0D>();
-                    r_ctor_->X = X;
-                    r_ctor_->Y = Y;
-                    r_ctor_->Z = Z;
-                    r_ctor_->Active = Active;
-                    return r_ctor_;
-                })
-                , py::arg("x") = double(), py::arg("y") = double(), py::arg("z") = double(), py::arg("active") = bool()
-                )
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell0D::Id, "")
-                .def_readwrite("x", &Gedim::MeshFromCsvUtilities::Cell0D::X, "")
-                .def_readwrite("y", &Gedim::MeshFromCsvUtilities::Cell0D::Y, "")
-                .def_readwrite("z", &Gedim::MeshFromCsvUtilities::Cell0D::Z, "")
-                .def_readwrite("marker", &Gedim::MeshFromCsvUtilities::Cell0D::Marker, "")
-                .def_readwrite("active", &Gedim::MeshFromCsvUtilities::Cell0D::Active, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell0DNeighbours =
-                py::class_<Gedim::MeshFromCsvUtilities::Cell0DNeighbours>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell0DNeighbours", "")
-                .def(py::init<>()) // implicit default constructor
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell0DNeighbours::Id, "")
-                .def_readwrite("cell1_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell0DNeighbours::Cell1DNeighbours, "")
-                .def_readwrite("cell2_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell0DNeighbours::Cell2DNeighbours, "")
-                .def_readwrite("cell3_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell0DNeighbours::Cell3DNeighbours, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCellUpdatedCells =
-                py::class_<Gedim::MeshFromCsvUtilities::CellUpdatedCells>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "CellUpdatedCells", "")
-                .def(py::init<>()) // implicit default constructor
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::CellUpdatedCells::Id, "")
-                .def_readwrite("updated_cells", &Gedim::MeshFromCsvUtilities::CellUpdatedCells::UpdatedCells, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell1D =
-                py::class_<Gedim::MeshFromCsvUtilities::Cell1D>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell1D", "")
-                .def(py::init<>([](
-                bool Active = bool())
-                {
-                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Cell1D>();
-                    r_ctor_->Active = Active;
-                    return r_ctor_;
-                })
-                , py::arg("active") = bool()
-                )
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell1D::Id, "")
-                .def_readwrite("origin", &Gedim::MeshFromCsvUtilities::Cell1D::Origin, "")
-                .def_readwrite("end", &Gedim::MeshFromCsvUtilities::Cell1D::End, "")
-                .def_readwrite("marker", &Gedim::MeshFromCsvUtilities::Cell1D::Marker, "")
-                .def_readwrite("active", &Gedim::MeshFromCsvUtilities::Cell1D::Active, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell1DNeighbours =
-                py::class_<Gedim::MeshFromCsvUtilities::Cell1DNeighbours>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell1DNeighbours", "")
-                .def(py::init<>()) // implicit default constructor
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell1DNeighbours::Id, "")
-                .def_readwrite("cell2_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell1DNeighbours::Cell2DNeighbours, "")
-                .def_readwrite("cell3_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell1DNeighbours::Cell3DNeighbours, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell2D =
-                py::class_<Gedim::MeshFromCsvUtilities::Cell2D>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell2D", "")
-                .def(py::init<>([](
-                bool Active = bool())
-                {
-                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Cell2D>();
-                    r_ctor_->Active = Active;
-                    return r_ctor_;
-                })
-                , py::arg("active") = bool()
-                )
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell2D::Id, "")
-                .def_readwrite("vertices", &Gedim::MeshFromCsvUtilities::Cell2D::Vertices, "")
-                .def_readwrite("edges", &Gedim::MeshFromCsvUtilities::Cell2D::Edges, "")
-                .def_readwrite("marker", &Gedim::MeshFromCsvUtilities::Cell2D::Marker, "")
-                .def_readwrite("active", &Gedim::MeshFromCsvUtilities::Cell2D::Active, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell2DNeighbours =
-                py::class_<Gedim::MeshFromCsvUtilities::Cell2DNeighbours>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell2DNeighbours", "")
-                .def(py::init<>()) // implicit default constructor
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell2DNeighbours::Id, "")
-                .def_readwrite("cell3_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell2DNeighbours::Cell3DNeighbours, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell2DSubDivision =
-                py::class_<Gedim::MeshFromCsvUtilities::Cell2DSubDivision>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell2DSubDivision", "")
-                .def(py::init<>()) // implicit default constructor
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell2DSubDivision::Id, "")
-                .def_readwrite("sub_division", &Gedim::MeshFromCsvUtilities::Cell2DSubDivision::SubDivision, "")
-                ;
-            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell3D =
-                py::class_<Gedim::MeshFromCsvUtilities::Cell3D>
-                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell3D", "")
-                .def(py::init<>([](
-                bool Active = bool())
-                {
-                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Cell3D>();
-                    r_ctor_->Active = Active;
-                    return r_ctor_;
-                })
-                , py::arg("active") = bool()
-                )
-                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell3D::Id, "")
-                .def_readwrite("vertices", &Gedim::MeshFromCsvUtilities::Cell3D::Vertices, "")
-                .def_readwrite("edges", &Gedim::MeshFromCsvUtilities::Cell3D::Edges, "")
-                .def_readwrite("faces", &Gedim::MeshFromCsvUtilities::Cell3D::Faces, "")
-                .def_readwrite("marker", &Gedim::MeshFromCsvUtilities::Cell3D::Marker, "")
-                .def_readwrite("active", &Gedim::MeshFromCsvUtilities::Cell3D::Active, "")
-                ;
-        } // end of inner classes & enums of MeshFromCsvUtilities
-
-        pyNsGedim_ClassMeshFromCsvUtilities
-            .def(py::init<>())
-            .def("convert_mesh2_d",
-                &Gedim::MeshFromCsvUtilities::ConvertMesh2D,
-                py::arg("cell0_ds"), py::arg("cell1_ds"), py::arg("cell2_ds"), py::arg("mesh"),
-                "/ \\brief Convert a 2D Mesh\n/ \\param cell0Ds the container of cell0Ds\n/ \\param cell1Ds the container of cell1Ds\n/ \\param cell2Ds the container of cell2Ds\n/ \\param mesh the resulting mesh")
-            .def("convert_cell0_ds",
-                &Gedim::MeshFromCsvUtilities::ConvertCell0Ds,
-                py::arg("cell0_ds"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell0Ds to mesh\n/ \\param cell0Ds the container of cell0Ds\n/ \\param mesh the mesh")
-            .def("convert_cell1_ds",
-                &Gedim::MeshFromCsvUtilities::ConvertCell1Ds,
-                py::arg("cell1_ds"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell1Ds to mesh\n/ \\param cell1Ds the container of cell1Ds\n/ \\param mesh the mesh")
-            .def("convert_cell2_ds",
-                &Gedim::MeshFromCsvUtilities::ConvertCell2Ds,
-                py::arg("cell2_ds"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell2Ds to mesh\n/ \\param cell2Ds the container of cell2Ds\n/ \\param mesh the mesh")
-            .def("convert_cell3_ds",
-                &Gedim::MeshFromCsvUtilities::ConvertCell3Ds,
-                py::arg("cell3_ds"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell3Ds to mesh\n/ \\param cell3Ds the container of cell3Ds\n/ \\param mesh the mesh")
-            .def("convert_cell0_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ConvertCell0DNeighbours,
-                py::arg("cell0_d_neighbours"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell0D neighbours to mesh\n/ \\param cell0DNeighbours the container of cell0D neighbours\n/ \\param mesh the mesh")
-            .def("convert_cell1_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ConvertCell1DNeighbours,
-                py::arg("cell1_d_neighbours"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell1D neighbours to mesh\n/ \\param cell1DNeighbours the container of cell1D neighbours\n/ \\param mesh the mesh")
-            .def("convert_cell2_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ConvertCell2DNeighbours,
-                py::arg("cell2_d_neighbours"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell2D neighbours to mesh\n/ \\param cell2DNeighbours the container of cell2D neighbours\n/ \\param mesh the mesh")
-            .def("convert_cell2_d_sub_divisions",
-                &Gedim::MeshFromCsvUtilities::ConvertCell2DSubDivisions,
-                py::arg("cell2_d_sub_divisions"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell2D subdivision to mesh\n/ \\param cell2DSubDivisions the container of cell2D neighbours\n/ \\param mesh the mesh")
-            .def("convert_cell0_d_double_properties",
-                &Gedim::MeshFromCsvUtilities::ConvertCell0DDoubleProperties,
-                py::arg("cell0_d_double_properties"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell0D double properties to mesh\n/ \\param cell0DDoubleProperties the container of cell0D double properties\n/ \\param mesh the mesh")
-            .def("convert_cell1_d_double_properties",
-                &Gedim::MeshFromCsvUtilities::ConvertCell1DDoubleProperties,
-                py::arg("cell1_d_double_properties"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell1D double properties to mesh\n/ \\param cell1DDoubleProperties the container of cell1D double properties\n/ \\param mesh the mesh")
-            .def("convert_cell2_d_double_properties",
-                &Gedim::MeshFromCsvUtilities::ConvertCell2DDoubleProperties,
-                py::arg("cell2_d_double_properties"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell2D double properties to mesh\n/ \\param cell2DDoubleProperties the container of cell2D double properties\n/ \\param mesh the mesh")
-            .def("convert_cell3_d_double_properties",
-                &Gedim::MeshFromCsvUtilities::ConvertCell3DDoubleProperties,
-                py::arg("cell3_d_double_properties"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell3D double properties to mesh\n/ \\param cell3DDoubleProperties the container of cell3D double properties\n/ \\param mesh the mesh")
-            .def("convert_cell0_d_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ConvertCell0DUpdatedCells,
-                py::arg("cell0_d_updated_cells"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell0D updated cells to mesh\n/ \\param cell0DUpdatedCells the container of cell0D updated cells\n/ \\param mesh the mesh")
-            .def("convert_cell1_d_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ConvertCell1DUpdatedCells,
-                py::arg("cell1_d_updated_cells"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell1D updated cells to mesh\n/ \\param cell1DUpdatedCells the container of cell1D updated cells\n/ \\param mesh the mesh")
-            .def("convert_cell2_d_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ConvertCell2DUpdatedCells,
-                py::arg("cell2_d_updated_cells"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell2D updated cells to mesh\n/ \\param cell2DUpdatedCells the container of cell2D updated cells\n/ \\param mesh the mesh")
-            .def("convert_cell3_d_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ConvertCell3DUpdatedCells,
-                py::arg("cell3_d_updated_cells"), py::arg("mesh"),
-                "/ \\brief Convert the imported Cell3D updated cells to mesh\n/ \\param cell3DUpdatedCells the container of cell3D updated cells\n/ \\param mesh the mesh")
-            .def("import_cell0_ds",
-                &Gedim::MeshFromCsvUtilities::ImportCell0Ds,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import Cell0Ds; format: Id, Marker, Active, X, Y, Z\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator\n/ \\param mesh the mesh to be Imported")
-            .def("import_cell1_ds",
-                &Gedim::MeshFromCsvUtilities::ImportCell1Ds,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import Cell1Ds; format: Id, Marker, Active, Origin, End\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
-            .def("import_cell2_ds",
-                &Gedim::MeshFromCsvUtilities::ImportCell2Ds,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import Cell2Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
-            .def("import_cell3_ds",
-                &Gedim::MeshFromCsvUtilities::ImportCell3Ds,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import Cell3Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges, NumFaces, Faces\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
-            .def("import_cell0_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ImportCell0DNeighbours,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import Cell0DNeighbours; format: Id, Num1DNeighbours, 1DNeighbours, Num2DNeighbours, 2DNeighbours,\n/ Num3DNeighbours, 3DNeighbours \\param csvFileReader the file reader \\param separator the file separator")
-            .def("import_cell1_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ImportCell1DNeighbours,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import Cell1DNeighbours; format: Id, Num2DNeighbours, 2DNeighbours, Num3DNeighbours, 3DNeighbours\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
-            .def("import_cell2_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ImportCell2DNeighbours,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import Cell2DNeighbours; format: Id, Num3DNeighbours, 3DNeighbours\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
-            .def("import_cell2_d_sub_division",
-                &Gedim::MeshFromCsvUtilities::ImportCell2DSubDivision,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import Cell2DSubDivision; format: Id, NumSubDivision, SubDivisions\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
-            .def("import_cell_double_properties",
-                &Gedim::MeshFromCsvUtilities::ImportCellDoubleProperties,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import CellProperties; format: Id, FilePath\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
-            .def("import_cell_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ImportCellUpdatedCells,
-                py::arg("csv_file_reader"), py::arg("separator"),
-                "/ \\brief Import CellUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
-            .def("export_cell0_ds",
-                &Gedim::MeshFromCsvUtilities::ExportCell0Ds,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell0Ds; format: Id, Marker, Active, X, Y, Z\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell1_ds",
-                &Gedim::MeshFromCsvUtilities::ExportCell1Ds,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell1Ds; format: Id, Marker, Active, Origin, End\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell2_ds",
-                &Gedim::MeshFromCsvUtilities::ExportCell2Ds,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell2Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell3_ds",
-                &Gedim::MeshFromCsvUtilities::ExportCell3Ds,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell3Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges, NumFaces, Faces\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell0_d_properties",
-                &Gedim::MeshFromCsvUtilities::ExportCell0DProperties,
-                py::arg("export_folder"), py::arg("property_file_name"), py::arg("property_file_extension"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell0DProperties; format: Id, FilePath\n/ \\param exportFolder the folder where to export the files\n/ \\param propertyFileName the name of property file\n/ \\param propertyFileExtension the extension of the files\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell0_d_property",
-                &Gedim::MeshFromCsvUtilities::ExportCell0DProperty,
-                py::arg("property_index"), py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell0DProperty identified by index; format: Id, PropertySize, PropertyValues\n/ \\param propertyIndex the property index\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell1_d_properties",
-                &Gedim::MeshFromCsvUtilities::ExportCell1DProperties,
-                py::arg("export_folder"), py::arg("property_file_name"), py::arg("property_file_extension"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell1DProperties; format: Id, FilePath\n/ \\param exportFolder the folder where to export the files\n/ \\param propertyFileName the name of property file\n/ \\param propertyFileExtension the extension of the files\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell1_d_property",
-                &Gedim::MeshFromCsvUtilities::ExportCell1DProperty,
-                py::arg("property_index"), py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell1DProperty identified by index; format: Id, PropertySize, PropertyValues\n/ \\param propertyIndex the property index\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell2_d_properties",
-                &Gedim::MeshFromCsvUtilities::ExportCell2DProperties,
-                py::arg("export_folder"), py::arg("property_file_name"), py::arg("property_file_extension"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell2DProperties; format: Id, FilePath\n/ \\param exportFolder the folder where to export the files\n/ \\param propertyFileName the name of property file\n/ \\param propertyFileExtension the extension of the files\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell2_d_property",
-                &Gedim::MeshFromCsvUtilities::ExportCell2DProperty,
-                py::arg("property_index"), py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell2DProperty identified by index; format: Id, PropertySize, PropertyValues\n/ \\param propertyIndex the property index\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell3_d_properties",
-                &Gedim::MeshFromCsvUtilities::ExportCell3DProperties,
-                py::arg("export_folder"), py::arg("property_file_name"), py::arg("property_file_extension"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell3DProperties; format: Id, FilePath\n/ \\param exportFolder the folder where to export the files\n/ \\param propertyFileName the name of property file\n/ \\param propertyFileExtension the extension of the files\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell3_d_property",
-                &Gedim::MeshFromCsvUtilities::ExportCell3DProperty,
-                py::arg("property_index"), py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell3DProperty identified by index; format: Id, PropertySize, PropertyValues\n/ \\param propertyIndex the property index\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell0_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ExportCell0DNeighbours,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell0DNeighbours; format: Id, Num1DNeighbours, 1DNeighbours, Num2DNeighbours, 2DNeighbours,\n/ Num3DNeighbours, 3DNeighbours \\param filePath the path of the file \\param separator the file separator \\param\n/ mesh the mesh to be exported")
-            .def("export_cell1_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ExportCell1DNeighbours,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell1DNeighbours; format: Id, Num2DNeighbours, 2DNeighbours, Num3DNeighbours, 3DNeighbours\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell2_d_neighbours",
-                &Gedim::MeshFromCsvUtilities::ExportCell2DNeighbours,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell2DNeighbours; format: Id, Num3DNeighbours, 3DNeighbours\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell2_d_sub_divisions",
-                &Gedim::MeshFromCsvUtilities::ExportCell2DSubDivisions,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell2DSubDivisions; format: Id, NumSubDivision, SubDivisions\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell0_d_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ExportCell0DUpdatedCells,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell0DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell1_d_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ExportCell1DUpdatedCells,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell1DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell2_d_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ExportCell2DUpdatedCells,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell2DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            .def("export_cell3_d_updated_cells",
-                &Gedim::MeshFromCsvUtilities::ExportCell3DUpdatedCells,
-                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
-                "/ \\brief Export Cell3DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
-            ;
-    } // </namespace Gedim>
-    ////////////////////    </generated_from:MeshFromCsvUtilities.hpp>    ////////////////////
-
-
     ////////////////////    <generated_from:MeshMatrices.hpp>    ////////////////////
     // #ifndef __MeshMatrices_H
     //
@@ -3474,6 +3020,460 @@ void py_init_module_polydim(py::module &m)
             ;
     } // </namespace Gedim>
     ////////////////////    </generated_from:MeshMatricesDAO.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:MeshDAOExporterToCsv.hpp>    ////////////////////
+    // #ifndef __MeshDAOExporterToCsv_H
+    //
+    // #endif
+
+    { // <namespace Gedim>
+        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
+        auto pyNsGedim_ClassMeshDAOExporterToCsv =
+            py::class_<Gedim::MeshDAOExporterToCsv>
+                (pyNsGedim, "MeshDAOExporterToCsv", py::is_final(), "/ \\brief MeshDAOExporterToCsv\n/ \\copyright See top level LICENSE file for details.\n(final class)")
+            .def(py::init<const Gedim::MeshFromCsvUtilities &>(),
+                py::arg("utilities"))
+            .def("export",
+                &Gedim::MeshDAOExporterToCsv::Export,
+                py::arg("configuration"), py::arg("mesh"),
+                "/ \\brief Export the mesh in all parts\n/ \\param configuration the configuration for export\n/ \\param mesh the mesh to be exported")
+            ;
+    } // </namespace Gedim>
+    ////////////////////    </generated_from:MeshDAOExporterToCsv.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:MeshDAOImporterFromCsv.hpp>    ////////////////////
+    // #ifndef __MeshDAOImporterFromCsv_H
+    //
+    // #endif
+
+    { // <namespace Gedim>
+        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
+        auto pyNsGedim_ClassMeshDAOImporterFromCsv =
+            py::class_<Gedim::MeshDAOImporterFromCsv>
+                (pyNsGedim, "MeshDAOImporterFromCsv", py::is_final(), "/ \\brief MeshDAOImporterFromCsv\n/ \note each file could be EmptyFileReader if not necessary\n/ \\copyright See top level LICENSE file for details\n(final class)")
+            .def(py::init<const Gedim::MeshFromCsvUtilities &>(),
+                py::arg("utilities"))
+            .def("import_",
+                &Gedim::MeshDAOImporterFromCsv::Import, py::arg("configuration"), py::arg("mesh"))
+            .def("import_mesh2_d",
+                &Gedim::MeshDAOImporterFromCsv::ImportMesh2D, py::arg("configuration"), py::arg("mesh"))
+            ;
+    } // </namespace Gedim>
+    ////////////////////    </generated_from:MeshDAOImporterFromCsv.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:MeshFromCsvUtilities.hpp>    ////////////////////
+    // #ifndef __MeshImporterFromCsvUtilities_H
+    //
+    // #endif
+
+    { // <namespace Gedim>
+        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
+        auto pyNsGedim_ClassMeshFromCsvUtilities =
+            py::class_<Gedim::MeshFromCsvUtilities>
+                (pyNsGedim, "MeshFromCsvUtilities", py::is_final(), "/ \\brief MeshImporterFromCsvUtilities\n/ \note each file could be EmptyFileReader if not necessary\n/ \\copyright See top level LICENSE file for details\n(final class)");
+
+        { // inner classes & enums of MeshFromCsvUtilities
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassConfiguration =
+                py::class_<Gedim::MeshFromCsvUtilities::Configuration>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Configuration", "")
+                .def(py::init<>([](
+                std::string Folder = "./", std::string FileCell0DsName = "Cell0Ds", std::string FileCell1DsName = "Cell1Ds", std::string FileCell2DsName = "Cell2Ds", std::string FileCell3DsName = "Cell3Ds", std::string FileCell0DNeighboursName = "Cell0DNeighbours", std::string FileCell1DNeighboursName = "Cell1DNeighbours", std::string FileCell2DNeighboursName = "Cell2DNeighbours", std::string FileCell0DPropertiesName = "Cell0DProperties", std::string FileCell1DPropertiesName = "Cell1DProperties", std::string FileCell2DPropertiesName = "Cell2DProperties", std::string FileCell3DPropertiesName = "Cell3DProperties", std::string FileCell2DSubDivisionsName = "Cell2DSubDivisions", std::string FileCell0DUpdatedCellsName = "Cell0DUpdatedCells", std::string FileCell1DUpdatedCellsName = "Cell1DUpdatedCells", std::string FileCell2DUpdatedCellsName = "Cell2DUpdatedCells", std::string FileCell3DUpdatedCellsName = "Cell3DUpdatedCells", char Separator = ';', std::string FileExtension = "csv")
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Configuration>();
+                    r_ctor_->Folder = Folder;
+                    r_ctor_->FileCell0DsName = FileCell0DsName;
+                    r_ctor_->FileCell1DsName = FileCell1DsName;
+                    r_ctor_->FileCell2DsName = FileCell2DsName;
+                    r_ctor_->FileCell3DsName = FileCell3DsName;
+                    r_ctor_->FileCell0DNeighboursName = FileCell0DNeighboursName;
+                    r_ctor_->FileCell1DNeighboursName = FileCell1DNeighboursName;
+                    r_ctor_->FileCell2DNeighboursName = FileCell2DNeighboursName;
+                    r_ctor_->FileCell0DPropertiesName = FileCell0DPropertiesName;
+                    r_ctor_->FileCell1DPropertiesName = FileCell1DPropertiesName;
+                    r_ctor_->FileCell2DPropertiesName = FileCell2DPropertiesName;
+                    r_ctor_->FileCell3DPropertiesName = FileCell3DPropertiesName;
+                    r_ctor_->FileCell2DSubDivisionsName = FileCell2DSubDivisionsName;
+                    r_ctor_->FileCell0DUpdatedCellsName = FileCell0DUpdatedCellsName;
+                    r_ctor_->FileCell1DUpdatedCellsName = FileCell1DUpdatedCellsName;
+                    r_ctor_->FileCell2DUpdatedCellsName = FileCell2DUpdatedCellsName;
+                    r_ctor_->FileCell3DUpdatedCellsName = FileCell3DUpdatedCellsName;
+                    r_ctor_->Separator = Separator;
+                    r_ctor_->FileExtension = FileExtension;
+                    return r_ctor_;
+                })
+                , py::arg("folder") = "./", py::arg("file_cell0_ds_name") = "Cell0Ds", py::arg("file_cell1_ds_name") = "Cell1Ds", py::arg("file_cell2_ds_name") = "Cell2Ds", py::arg("file_cell3_ds_name") = "Cell3Ds", py::arg("file_cell0_d_neighbours_name") = "Cell0DNeighbours", py::arg("file_cell1_d_neighbours_name") = "Cell1DNeighbours", py::arg("file_cell2_d_neighbours_name") = "Cell2DNeighbours", py::arg("file_cell0_d_properties_name") = "Cell0DProperties", py::arg("file_cell1_d_properties_name") = "Cell1DProperties", py::arg("file_cell2_d_properties_name") = "Cell2DProperties", py::arg("file_cell3_d_properties_name") = "Cell3DProperties", py::arg("file_cell2_d_sub_divisions_name") = "Cell2DSubDivisions", py::arg("file_cell0_d_updated_cells_name") = "Cell0DUpdatedCells", py::arg("file_cell1_d_updated_cells_name") = "Cell1DUpdatedCells", py::arg("file_cell2_d_updated_cells_name") = "Cell2DUpdatedCells", py::arg("file_cell3_d_updated_cells_name") = "Cell3DUpdatedCells", py::arg("separator") = ';', py::arg("file_extension") = "csv"
+                )
+                .def_readwrite("folder", &Gedim::MeshFromCsvUtilities::Configuration::Folder, "")
+                .def_readwrite("file_cell0_ds_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell0DsName, "")
+                .def_readwrite("file_cell1_ds_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell1DsName, "")
+                .def_readwrite("file_cell2_ds_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DsName, "")
+                .def_readwrite("file_cell3_ds_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell3DsName, "")
+                .def_readwrite("file_cell0_d_neighbours_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell0DNeighboursName, "")
+                .def_readwrite("file_cell1_d_neighbours_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell1DNeighboursName, "")
+                .def_readwrite("file_cell2_d_neighbours_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DNeighboursName, "")
+                .def_readwrite("file_cell0_d_properties_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell0DPropertiesName, "")
+                .def_readwrite("file_cell1_d_properties_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell1DPropertiesName, "")
+                .def_readwrite("file_cell2_d_properties_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DPropertiesName, "")
+                .def_readwrite("file_cell3_d_properties_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell3DPropertiesName, "")
+                .def_readwrite("file_cell2_d_sub_divisions_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DSubDivisionsName, "")
+                .def_readwrite("file_cell0_d_updated_cells_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell0DUpdatedCellsName, "")
+                .def_readwrite("file_cell1_d_updated_cells_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell1DUpdatedCellsName, "")
+                .def_readwrite("file_cell2_d_updated_cells_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell2DUpdatedCellsName, "")
+                .def_readwrite("file_cell3_d_updated_cells_name", &Gedim::MeshFromCsvUtilities::Configuration::FileCell3DUpdatedCellsName, "")
+                .def_readwrite("separator", &Gedim::MeshFromCsvUtilities::Configuration::Separator, "")
+                .def_readwrite("file_extension", &Gedim::MeshFromCsvUtilities::Configuration::FileExtension, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCellDoubleProperty =
+                py::class_<Gedim::MeshFromCsvUtilities::CellDoubleProperty>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "CellDoubleProperty", "");
+
+            { // inner classes & enums of CellDoubleProperty
+                auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCellDoubleProperty_ClassValue =
+                    py::class_<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value>
+                        (pyNsGedim_ClassMeshFromCsvUtilities_ClassCellDoubleProperty, "Value", "")
+                    .def(py::init<>([](
+                    std::vector<double> Values = std::vector<double>())
+                    {
+                        auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value>();
+                        r_ctor_->Values = Values;
+                        return r_ctor_;
+                    })
+                    , py::arg("values") = std::vector<double>()
+                    )
+                    .def_readwrite("cell_id", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value::CellId, "")
+                    .def_readwrite("values", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value::Values, "")
+                    ;
+            } // end of inner classes & enums of CellDoubleProperty
+
+            pyNsGedim_ClassMeshFromCsvUtilities_ClassCellDoubleProperty
+                .def(py::init<>([](
+                std::string Id = std::string(), std::string FilePath = std::string(), std::vector<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value> Values = std::vector<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value>())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::CellDoubleProperty>();
+                    r_ctor_->Id = Id;
+                    r_ctor_->FilePath = FilePath;
+                    r_ctor_->Values = Values;
+                    return r_ctor_;
+                })
+                , py::arg("id") = std::string(), py::arg("file_path") = std::string(), py::arg("values") = std::vector<Gedim::MeshFromCsvUtilities::CellDoubleProperty::Value>()
+                )
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::Id, "")
+                .def_readwrite("file_path", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::FilePath, "")
+                .def_readwrite("values", &Gedim::MeshFromCsvUtilities::CellDoubleProperty::Values, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell0D =
+                py::class_<Gedim::MeshFromCsvUtilities::Cell0D>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell0D", "")
+                .def(py::init<>([](
+                double X = double(), double Y = double(), double Z = double(), bool Active = bool())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Cell0D>();
+                    r_ctor_->X = X;
+                    r_ctor_->Y = Y;
+                    r_ctor_->Z = Z;
+                    r_ctor_->Active = Active;
+                    return r_ctor_;
+                })
+                , py::arg("x") = double(), py::arg("y") = double(), py::arg("z") = double(), py::arg("active") = bool()
+                )
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell0D::Id, "")
+                .def_readwrite("x", &Gedim::MeshFromCsvUtilities::Cell0D::X, "")
+                .def_readwrite("y", &Gedim::MeshFromCsvUtilities::Cell0D::Y, "")
+                .def_readwrite("z", &Gedim::MeshFromCsvUtilities::Cell0D::Z, "")
+                .def_readwrite("marker", &Gedim::MeshFromCsvUtilities::Cell0D::Marker, "")
+                .def_readwrite("active", &Gedim::MeshFromCsvUtilities::Cell0D::Active, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell0DNeighbours =
+                py::class_<Gedim::MeshFromCsvUtilities::Cell0DNeighbours>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell0DNeighbours", "")
+                .def(py::init<>()) // implicit default constructor
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell0DNeighbours::Id, "")
+                .def_readwrite("cell1_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell0DNeighbours::Cell1DNeighbours, "")
+                .def_readwrite("cell2_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell0DNeighbours::Cell2DNeighbours, "")
+                .def_readwrite("cell3_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell0DNeighbours::Cell3DNeighbours, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCellUpdatedCells =
+                py::class_<Gedim::MeshFromCsvUtilities::CellUpdatedCells>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "CellUpdatedCells", "")
+                .def(py::init<>()) // implicit default constructor
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::CellUpdatedCells::Id, "")
+                .def_readwrite("updated_cells", &Gedim::MeshFromCsvUtilities::CellUpdatedCells::UpdatedCells, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell1D =
+                py::class_<Gedim::MeshFromCsvUtilities::Cell1D>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell1D", "")
+                .def(py::init<>([](
+                bool Active = bool())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Cell1D>();
+                    r_ctor_->Active = Active;
+                    return r_ctor_;
+                })
+                , py::arg("active") = bool()
+                )
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell1D::Id, "")
+                .def_readwrite("origin", &Gedim::MeshFromCsvUtilities::Cell1D::Origin, "")
+                .def_readwrite("end", &Gedim::MeshFromCsvUtilities::Cell1D::End, "")
+                .def_readwrite("marker", &Gedim::MeshFromCsvUtilities::Cell1D::Marker, "")
+                .def_readwrite("active", &Gedim::MeshFromCsvUtilities::Cell1D::Active, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell1DNeighbours =
+                py::class_<Gedim::MeshFromCsvUtilities::Cell1DNeighbours>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell1DNeighbours", "")
+                .def(py::init<>()) // implicit default constructor
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell1DNeighbours::Id, "")
+                .def_readwrite("cell2_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell1DNeighbours::Cell2DNeighbours, "")
+                .def_readwrite("cell3_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell1DNeighbours::Cell3DNeighbours, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell2D =
+                py::class_<Gedim::MeshFromCsvUtilities::Cell2D>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell2D", "")
+                .def(py::init<>([](
+                bool Active = bool())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Cell2D>();
+                    r_ctor_->Active = Active;
+                    return r_ctor_;
+                })
+                , py::arg("active") = bool()
+                )
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell2D::Id, "")
+                .def_readwrite("vertices", &Gedim::MeshFromCsvUtilities::Cell2D::Vertices, "")
+                .def_readwrite("edges", &Gedim::MeshFromCsvUtilities::Cell2D::Edges, "")
+                .def_readwrite("marker", &Gedim::MeshFromCsvUtilities::Cell2D::Marker, "")
+                .def_readwrite("active", &Gedim::MeshFromCsvUtilities::Cell2D::Active, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell2DNeighbours =
+                py::class_<Gedim::MeshFromCsvUtilities::Cell2DNeighbours>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell2DNeighbours", "")
+                .def(py::init<>()) // implicit default constructor
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell2DNeighbours::Id, "")
+                .def_readwrite("cell3_d_neighbours", &Gedim::MeshFromCsvUtilities::Cell2DNeighbours::Cell3DNeighbours, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell2DSubDivision =
+                py::class_<Gedim::MeshFromCsvUtilities::Cell2DSubDivision>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell2DSubDivision", "")
+                .def(py::init<>()) // implicit default constructor
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell2DSubDivision::Id, "")
+                .def_readwrite("sub_division", &Gedim::MeshFromCsvUtilities::Cell2DSubDivision::SubDivision, "")
+                ;
+            auto pyNsGedim_ClassMeshFromCsvUtilities_ClassCell3D =
+                py::class_<Gedim::MeshFromCsvUtilities::Cell3D>
+                    (pyNsGedim_ClassMeshFromCsvUtilities, "Cell3D", "")
+                .def(py::init<>([](
+                bool Active = bool())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::MeshFromCsvUtilities::Cell3D>();
+                    r_ctor_->Active = Active;
+                    return r_ctor_;
+                })
+                , py::arg("active") = bool()
+                )
+                .def_readwrite("id", &Gedim::MeshFromCsvUtilities::Cell3D::Id, "")
+                .def_readwrite("vertices", &Gedim::MeshFromCsvUtilities::Cell3D::Vertices, "")
+                .def_readwrite("edges", &Gedim::MeshFromCsvUtilities::Cell3D::Edges, "")
+                .def_readwrite("faces", &Gedim::MeshFromCsvUtilities::Cell3D::Faces, "")
+                .def_readwrite("marker", &Gedim::MeshFromCsvUtilities::Cell3D::Marker, "")
+                .def_readwrite("active", &Gedim::MeshFromCsvUtilities::Cell3D::Active, "")
+                ;
+        } // end of inner classes & enums of MeshFromCsvUtilities
+
+        pyNsGedim_ClassMeshFromCsvUtilities
+            .def(py::init<>())
+            .def("convert_mesh2_d",
+                &Gedim::MeshFromCsvUtilities::ConvertMesh2D,
+                py::arg("cell0_ds"), py::arg("cell1_ds"), py::arg("cell2_ds"), py::arg("mesh"),
+                "/ \\brief Convert a 2D Mesh\n/ \\param cell0Ds the container of cell0Ds\n/ \\param cell1Ds the container of cell1Ds\n/ \\param cell2Ds the container of cell2Ds\n/ \\param mesh the resulting mesh")
+            .def("convert_cell0_ds",
+                &Gedim::MeshFromCsvUtilities::ConvertCell0Ds,
+                py::arg("cell0_ds"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell0Ds to mesh\n/ \\param cell0Ds the container of cell0Ds\n/ \\param mesh the mesh")
+            .def("convert_cell1_ds",
+                &Gedim::MeshFromCsvUtilities::ConvertCell1Ds,
+                py::arg("cell1_ds"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell1Ds to mesh\n/ \\param cell1Ds the container of cell1Ds\n/ \\param mesh the mesh")
+            .def("convert_cell2_ds",
+                &Gedim::MeshFromCsvUtilities::ConvertCell2Ds,
+                py::arg("cell2_ds"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell2Ds to mesh\n/ \\param cell2Ds the container of cell2Ds\n/ \\param mesh the mesh")
+            .def("convert_cell3_ds",
+                &Gedim::MeshFromCsvUtilities::ConvertCell3Ds,
+                py::arg("cell3_ds"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell3Ds to mesh\n/ \\param cell3Ds the container of cell3Ds\n/ \\param mesh the mesh")
+            .def("convert_cell0_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ConvertCell0DNeighbours,
+                py::arg("cell0_d_neighbours"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell0D neighbours to mesh\n/ \\param cell0DNeighbours the container of cell0D neighbours\n/ \\param mesh the mesh")
+            .def("convert_cell1_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ConvertCell1DNeighbours,
+                py::arg("cell1_d_neighbours"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell1D neighbours to mesh\n/ \\param cell1DNeighbours the container of cell1D neighbours\n/ \\param mesh the mesh")
+            .def("convert_cell2_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ConvertCell2DNeighbours,
+                py::arg("cell2_d_neighbours"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell2D neighbours to mesh\n/ \\param cell2DNeighbours the container of cell2D neighbours\n/ \\param mesh the mesh")
+            .def("convert_cell2_d_sub_divisions",
+                &Gedim::MeshFromCsvUtilities::ConvertCell2DSubDivisions,
+                py::arg("cell2_d_sub_divisions"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell2D subdivision to mesh\n/ \\param cell2DSubDivisions the container of cell2D neighbours\n/ \\param mesh the mesh")
+            .def("convert_cell0_d_double_properties",
+                &Gedim::MeshFromCsvUtilities::ConvertCell0DDoubleProperties,
+                py::arg("cell0_d_double_properties"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell0D double properties to mesh\n/ \\param cell0DDoubleProperties the container of cell0D double properties\n/ \\param mesh the mesh")
+            .def("convert_cell1_d_double_properties",
+                &Gedim::MeshFromCsvUtilities::ConvertCell1DDoubleProperties,
+                py::arg("cell1_d_double_properties"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell1D double properties to mesh\n/ \\param cell1DDoubleProperties the container of cell1D double properties\n/ \\param mesh the mesh")
+            .def("convert_cell2_d_double_properties",
+                &Gedim::MeshFromCsvUtilities::ConvertCell2DDoubleProperties,
+                py::arg("cell2_d_double_properties"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell2D double properties to mesh\n/ \\param cell2DDoubleProperties the container of cell2D double properties\n/ \\param mesh the mesh")
+            .def("convert_cell3_d_double_properties",
+                &Gedim::MeshFromCsvUtilities::ConvertCell3DDoubleProperties,
+                py::arg("cell3_d_double_properties"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell3D double properties to mesh\n/ \\param cell3DDoubleProperties the container of cell3D double properties\n/ \\param mesh the mesh")
+            .def("convert_cell0_d_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ConvertCell0DUpdatedCells,
+                py::arg("cell0_d_updated_cells"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell0D updated cells to mesh\n/ \\param cell0DUpdatedCells the container of cell0D updated cells\n/ \\param mesh the mesh")
+            .def("convert_cell1_d_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ConvertCell1DUpdatedCells,
+                py::arg("cell1_d_updated_cells"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell1D updated cells to mesh\n/ \\param cell1DUpdatedCells the container of cell1D updated cells\n/ \\param mesh the mesh")
+            .def("convert_cell2_d_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ConvertCell2DUpdatedCells,
+                py::arg("cell2_d_updated_cells"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell2D updated cells to mesh\n/ \\param cell2DUpdatedCells the container of cell2D updated cells\n/ \\param mesh the mesh")
+            .def("convert_cell3_d_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ConvertCell3DUpdatedCells,
+                py::arg("cell3_d_updated_cells"), py::arg("mesh"),
+                "/ \\brief Convert the imported Cell3D updated cells to mesh\n/ \\param cell3DUpdatedCells the container of cell3D updated cells\n/ \\param mesh the mesh")
+            .def("import_cell0_ds",
+                &Gedim::MeshFromCsvUtilities::ImportCell0Ds,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import Cell0Ds; format: Id, Marker, Active, X, Y, Z\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator\n/ \\param mesh the mesh to be Imported")
+            .def("import_cell1_ds",
+                &Gedim::MeshFromCsvUtilities::ImportCell1Ds,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import Cell1Ds; format: Id, Marker, Active, Origin, End\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
+            .def("import_cell2_ds",
+                &Gedim::MeshFromCsvUtilities::ImportCell2Ds,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import Cell2Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
+            .def("import_cell3_ds",
+                &Gedim::MeshFromCsvUtilities::ImportCell3Ds,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import Cell3Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges, NumFaces, Faces\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
+            .def("import_cell0_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ImportCell0DNeighbours,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import Cell0DNeighbours; format: Id, Num1DNeighbours, 1DNeighbours, Num2DNeighbours, 2DNeighbours,\n/ Num3DNeighbours, 3DNeighbours \\param csvFileReader the file reader \\param separator the file separator")
+            .def("import_cell1_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ImportCell1DNeighbours,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import Cell1DNeighbours; format: Id, Num2DNeighbours, 2DNeighbours, Num3DNeighbours, 3DNeighbours\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
+            .def("import_cell2_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ImportCell2DNeighbours,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import Cell2DNeighbours; format: Id, Num3DNeighbours, 3DNeighbours\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
+            .def("import_cell2_d_sub_division",
+                &Gedim::MeshFromCsvUtilities::ImportCell2DSubDivision,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import Cell2DSubDivision; format: Id, NumSubDivision, SubDivisions\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
+            .def("import_cell_double_properties",
+                &Gedim::MeshFromCsvUtilities::ImportCellDoubleProperties,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import CellProperties; format: Id, FilePath\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
+            .def("import_cell_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ImportCellUpdatedCells,
+                py::arg("csv_file_reader"), py::arg("separator"),
+                "/ \\brief Import CellUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param csvFileReader the file reader\n/ \\param separator the file separator")
+            .def("export_cell0_ds",
+                &Gedim::MeshFromCsvUtilities::ExportCell0Ds,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell0Ds; format: Id, Marker, Active, X, Y, Z\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell1_ds",
+                &Gedim::MeshFromCsvUtilities::ExportCell1Ds,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell1Ds; format: Id, Marker, Active, Origin, End\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell2_ds",
+                &Gedim::MeshFromCsvUtilities::ExportCell2Ds,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell2Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell3_ds",
+                &Gedim::MeshFromCsvUtilities::ExportCell3Ds,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell3Ds; format: Id, Marker, Active, NumVertices, Vertices, NumEdges, Edges, NumFaces, Faces\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell0_d_properties",
+                &Gedim::MeshFromCsvUtilities::ExportCell0DProperties,
+                py::arg("export_folder"), py::arg("property_file_name"), py::arg("property_file_extension"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell0DProperties; format: Id, FilePath\n/ \\param exportFolder the folder where to export the files\n/ \\param propertyFileName the name of property file\n/ \\param propertyFileExtension the extension of the files\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell0_d_property",
+                &Gedim::MeshFromCsvUtilities::ExportCell0DProperty,
+                py::arg("property_index"), py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell0DProperty identified by index; format: Id, PropertySize, PropertyValues\n/ \\param propertyIndex the property index\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell1_d_properties",
+                &Gedim::MeshFromCsvUtilities::ExportCell1DProperties,
+                py::arg("export_folder"), py::arg("property_file_name"), py::arg("property_file_extension"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell1DProperties; format: Id, FilePath\n/ \\param exportFolder the folder where to export the files\n/ \\param propertyFileName the name of property file\n/ \\param propertyFileExtension the extension of the files\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell1_d_property",
+                &Gedim::MeshFromCsvUtilities::ExportCell1DProperty,
+                py::arg("property_index"), py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell1DProperty identified by index; format: Id, PropertySize, PropertyValues\n/ \\param propertyIndex the property index\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell2_d_properties",
+                &Gedim::MeshFromCsvUtilities::ExportCell2DProperties,
+                py::arg("export_folder"), py::arg("property_file_name"), py::arg("property_file_extension"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell2DProperties; format: Id, FilePath\n/ \\param exportFolder the folder where to export the files\n/ \\param propertyFileName the name of property file\n/ \\param propertyFileExtension the extension of the files\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell2_d_property",
+                &Gedim::MeshFromCsvUtilities::ExportCell2DProperty,
+                py::arg("property_index"), py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell2DProperty identified by index; format: Id, PropertySize, PropertyValues\n/ \\param propertyIndex the property index\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell3_d_properties",
+                &Gedim::MeshFromCsvUtilities::ExportCell3DProperties,
+                py::arg("export_folder"), py::arg("property_file_name"), py::arg("property_file_extension"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell3DProperties; format: Id, FilePath\n/ \\param exportFolder the folder where to export the files\n/ \\param propertyFileName the name of property file\n/ \\param propertyFileExtension the extension of the files\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell3_d_property",
+                &Gedim::MeshFromCsvUtilities::ExportCell3DProperty,
+                py::arg("property_index"), py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell3DProperty identified by index; format: Id, PropertySize, PropertyValues\n/ \\param propertyIndex the property index\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell0_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ExportCell0DNeighbours,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell0DNeighbours; format: Id, Num1DNeighbours, 1DNeighbours, Num2DNeighbours, 2DNeighbours,\n/ Num3DNeighbours, 3DNeighbours \\param filePath the path of the file \\param separator the file separator \\param\n/ mesh the mesh to be exported")
+            .def("export_cell1_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ExportCell1DNeighbours,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell1DNeighbours; format: Id, Num2DNeighbours, 2DNeighbours, Num3DNeighbours, 3DNeighbours\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell2_d_neighbours",
+                &Gedim::MeshFromCsvUtilities::ExportCell2DNeighbours,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell2DNeighbours; format: Id, Num3DNeighbours, 3DNeighbours\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell2_d_sub_divisions",
+                &Gedim::MeshFromCsvUtilities::ExportCell2DSubDivisions,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell2DSubDivisions; format: Id, NumSubDivision, SubDivisions\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell0_d_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ExportCell0DUpdatedCells,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell0DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell1_d_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ExportCell1DUpdatedCells,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell1DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell2_d_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ExportCell2DUpdatedCells,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell2DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            .def("export_cell3_d_updated_cells",
+                &Gedim::MeshFromCsvUtilities::ExportCell3DUpdatedCells,
+                py::arg("file_path"), py::arg("separator"), py::arg("mesh"),
+                "/ \\brief Export Cell3DUpdatedCells; format: Id, NumUpdatedCells, UpdatedCells\n/ \\param filePath the path of the file\n/ \\param separator the file separator\n/ \\param mesh the mesh to be exported")
+            ;
+    } // </namespace Gedim>
+    ////////////////////    </generated_from:MeshFromCsvUtilities.hpp>    ////////////////////
 
 
     ////////////////////    <generated_from:MeshUtilities.hpp>    ////////////////////

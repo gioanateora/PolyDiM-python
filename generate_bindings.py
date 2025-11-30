@@ -72,12 +72,52 @@ def preprocess_cpp(code: str) -> str:
     return "".join(output_lines)
 
 
+def remove_imesh(code: str) -> str:
+    """
+    Rimuove:
+    - la riga '#if pybind == 1'
+    - la riga '#else'
+    - la riga '#endif'
+    - tutto ciò che è tra #else e #endif
+    lasciando solo il blocco di codice valido sotto #if PYBIND == 1.
+    """
+    lines = code.splitlines(keepends=True)
+    output_lines = []
+
+    pattern = r"\bGedim::IMeshDAO\b"
+    replacement = "Gedim::MeshMatricesDAO"
+
+    pattern1 = r"\bIMeshDAO.hpp\b"
+    replacement1 = "MeshMatricesDAO.hpp"
+
+    for line in lines:
+
+        line = re.sub(pattern, replacement, line)
+        line = re.sub(pattern1, replacement1, line)
+
+        output_lines.append(line)
+
+    #g = "".join(output_lines)
+
+    #print(g)
+
+    return "".join(output_lines)
+
+def preprocess(code: str) -> str:
+    code_1 = preprocess_cpp(code)
+    #code_2 = remove_imesh(code_1)
+
+    return code_1
+
+
+
 opts = litgen.LitgenOptions()
 
+opts.skip_abstract_classes = True
 opts.srcmlcpp_options.header_filter_preprocessor_regions = True
-#opts.type_replacements.add_replacement("Gedim::IMeshDAO", "Gedim::MeshMatricesDAO")
-#opts.type_replacements.add_replacement("IMeshDAO", "Gedim::MeshMatricesDAO")
-opts.class_override_virtual_methods_in_python__regex = "^IMeshDAO$|^MeshMatricesDAO$"
+opts.type_replacements.add_replacement("IMeshDAO", "Gedim::MeshMatricesDAO")
+opts.type_replacements.add_replacement("const Gedim::IMeshDAO &", "const Gedim::MeshMatricesDAO &")
+#opts.class_override_virtual_methods_in_python__regex = "^IMeshDAO$|^MeshMatricesDAO$"
 
 opts.fn_template_options.add_specialization("ComputePolynomialsValues", ["Polydim::Utilities::Monomials_2D", "Polydim::Utilities::Monomials_3D"], add_suffix_to_function_name=False)
 opts.fn_template_options.add_specialization("ComputePolynomialsDerivativeValues", ["Polydim::Utilities::Monomials_2D", "Polydim::Utilities::Monomials_3D"], add_suffix_to_function_name=False)
@@ -94,10 +134,10 @@ opts.fn_template_options.add_specialization("CreateDOFs_3D", ["Polydim::PDETools
 
 opts.srcmlcpp_options.ignored_warning_parts.append("Ignoring template function")
 
-opts.srcmlcpp_options.code_preprocess_function = preprocess_cpp
-gen = litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/VEM/PCC/VEM_PCC_Utilities.hpp")
-gen = litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/VEM/DF_PCC/VEM_DF_PCC_Utilities.hpp")
-gen = litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp")
+opts.srcmlcpp_options.code_preprocess_function = preprocess
+litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/VEM/PCC/VEM_PCC_Utilities.hpp")
+litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/VEM/DF_PCC/VEM_DF_PCC_Utilities.hpp")
+litgen.generate_code_for_file(options=opts, filename="PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp")
 
 headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
            "PolyDiM/gedim/GeDiM/src/Geometry/GeometryUtilities.hpp",
@@ -112,11 +152,12 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             #"PolyDiM/gedim/GeDiM/src/Mesh/ConformMeshUtilities.hpp",
             #"PolyDiM/gedim/GeDiM/src/Mesh/IntersectorMesh2DSegment.hpp",
             #"PolyDiM/gedim/GeDiM/src/Mesh/IntersectorMesh3DSegment.hpp",
+            #"PolyDiM/gedim/GeDiM/src/Mesh/IMeshDAO.hpp",
+            "PolyDiM/gedim/GeDiM/src/Mesh/MeshMatrices.hpp",
+            "PolyDiM/gedim/GeDiM/src/Mesh/MeshMatricesDAO.hpp",
             "PolyDiM/gedim/GeDiM/src/Mesh/MeshDAOExporterToCsv.hpp",
             "PolyDiM/gedim/GeDiM/src/Mesh/MeshDAOImporterFromCsv.hpp",
             "PolyDiM/gedim/GeDiM/src/Mesh/MeshFromCsvUtilities.hpp",
-            "PolyDiM/gedim/GeDiM/src/Mesh/MeshMatrices.hpp",
-            "PolyDiM/gedim/GeDiM/src/Mesh/MeshMatricesDAO.hpp",
             "PolyDiM/gedim/GeDiM/src/Mesh/MeshUtilities.hpp",
             #"PolyDiM/gedim/GeDiM/src/Mesh/ObjectFileFormatInterface.hpp",
             #"PolyDiM/gedim/GeDiM/src/Mesh/OpenVolumeMeshInterface.hpp",
@@ -218,7 +259,6 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_MCC_2D.hpp",
             ]
-
 
 # Stampa a console:
 litgen.write_generated_code_for_files(
