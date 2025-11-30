@@ -26,7 +26,7 @@ void py_init_module_polydim(py::module &m)
 
     py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
     // Registrazione della classe astratta con trampolino
-    py::class_<Gedim::IMeshDAO>(pyNsGedim, "IMeshDAO", py::is_abstract());  // solo dichiarazione, senza metodi
+    py::class_<Gedim::IMeshDAO>(pyNsGedim, "IMeshDAO");  // solo dichiarazione, senza metodi
 
     // Registrazione della classe concreta come derivata
     py::class_<Gedim::MeshMatricesDAO, Gedim::IMeshDAO>(pyNsGedim, "MeshMatricesDAO");
