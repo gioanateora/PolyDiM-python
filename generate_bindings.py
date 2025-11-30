@@ -115,10 +115,16 @@ opts = litgen.LitgenOptions()
 
 #opts.skip_abstract_classes = True
 opts.srcmlcpp_options.header_filter_preprocessor_regions = True
-opts.type_replacements.add_replacement("Gedim::IMeshDAO", "Gedim::MeshMatricesDAO")
-opts.type_replacements.add_replacement("const Gedim::IMeshDAO &", "const Gedim::MeshMatricesDAO &")
-opts.type_replacements.add_replacement("Gedim::IMeshDAO &", "Gedim::MeshMatricesDAO &")
-#opts.class_override_virtual_methods_in_python__regex = "^IMeshDAO$|^MeshMatricesDAO$"
+#opts.type_replacements.add_replacement("Gedim::IMeshDAO", "Gedim::MeshMatricesDAO")
+#opts.type_replacements.add_replacement("const Gedim::IMeshDAO &", "const Gedim::MeshMatricesDAO &")
+#opts.type_replacements.add_replacement("Gedim::IMeshDAO &", "Gedim::MeshMatricesDAO &")
+
+# Escludi i metodi di IMeshDAO (così non prova a generare binding per funzioni pure virtuali)
+# opts.fn_exclude_by_class_name = ["Gedim::IMeshDAO"]
+# opts.class_force_abstract = ["Gedim::IMeshDAO"]
+
+
+opts.class_override_virtual_methods_in_python__regex = "^IMeshDAO$|^MeshMatricesDAO$"
 
 opts.fn_template_options.add_specialization("ComputePolynomialsValues", ["Polydim::Utilities::Monomials_2D", "Polydim::Utilities::Monomials_3D"], add_suffix_to_function_name=False)
 opts.fn_template_options.add_specialization("ComputePolynomialsDerivativeValues", ["Polydim::Utilities::Monomials_2D", "Polydim::Utilities::Monomials_3D"], add_suffix_to_function_name=False)
@@ -153,7 +159,7 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             #"PolyDiM/gedim/GeDiM/src/Mesh/ConformMeshUtilities.hpp",
             #"PolyDiM/gedim/GeDiM/src/Mesh/IntersectorMesh2DSegment.hpp",
             #"PolyDiM/gedim/GeDiM/src/Mesh/IntersectorMesh3DSegment.hpp",
-            #"PolyDiM/gedim/GeDiM/src/Mesh/IMeshDAO.hpp",
+            "PolyDiM/gedim/GeDiM/src/Mesh/IMeshDAO.hpp",
             "PolyDiM/gedim/GeDiM/src/Mesh/MeshMatrices.hpp",
             "PolyDiM/gedim/GeDiM/src/Mesh/MeshMatricesDAO.hpp",
             "PolyDiM/gedim/GeDiM/src/Mesh/MeshDAOExporterToCsv.hpp",

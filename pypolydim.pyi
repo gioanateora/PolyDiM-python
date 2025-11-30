@@ -3970,7 +3970,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 ####################    </generated_from:MapQuadrilateral.hpp>    ####################
 
 
-####################    <generated_from:MeshMatrices.hpp>    ####################
+####################    <generated_from:IMeshDAO.hpp>    ####################
 # _LICENSE_HEADER_
 #
 # Copyright (C) 2019 - 2025.
@@ -3982,8 +3982,9 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 #
 # This file can be used citing references in CITATION.cff file.
 
-# #ifndef __MeshMatrices_H
+# #ifndef __IMeshWrapper_H
 #
+
 
 
 
@@ -3994,153 +3995,2197 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 class gedim:  # Proxy class that introduces typings for the *submodule* gedim
     pass  # (This corresponds to a C++ namespace. All method are static!)
     """ namespace Gedim"""
-    class MeshMatrices:
-        """
-        (final class)
-        """
-        dimension: int = 0                                                                                                   #/< Geometric dimension
-        number_cell0_d: int = 0                                                                                              #/< number of Cell0D
-        cell0_d_coordinates: List[float] = List[float]()                                                                     #/< Cell0D coordinates, size 3 x NumberCell0D (x,y,z)
-        cell0_d_markers: List[int] = List[int]()                                                                             #/< Cell0D markers, size 1 x NumberCell0D (marker)
-        number_cell0_d_neighbour_cell1_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell1D indices per cell, size  1
-        #/< x NumberCell0D + 1
-        cell0_d_neighbour_cell1_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell1D indices, size 1 x
-        #/< NumberCell0DNeighbourCell1D[NumberCell0D]
-        number_cell0_d_neighbour_cell2_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell2D indices per cell, size  1
-        #/< x NumberCell0D + 1
-        cell0_d_neighbour_cell2_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell2D indices, size 1 x
-        #/< NumberCell0DNeighbourCell2D[NumberCell0D]
-        number_cell0_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell2D indices per cell, size  1
-        #/< x NumberCell0D + 1
-        cell0_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell3D indices, size 1 x
-        #/< NumberCell0DNeighbourCell3D[NumberCell0D]
-        active_cell0_d: List[bool] = List[bool]()                                                                            #/< active Cell0D
-        updated_cell0_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell0D the
-        #/< list to the new cell0Ds
-        cell0_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell0D double property id - double property index
-        cell0_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell0D double property id -
-        #/< double property index
-        cell0_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell0D double property sizes
-        cell0_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell0D double property values
-        number_cell1_d: int = 0                                                                                              #/< number of Cell1D
-        cell1_d_vertices: List[int] = List[int]()                                                                            #/< Cell1D vertices indices, size 2 x NumberCell1D (fromId,toId)
-        number_cell1_d_neighbour_cell2_d: List[int] = List[int](0)                                                           #/< Cell1D neighbour Cell2D indices per cell, size  1
-        #/< x NumberCell1D + 1
-        number_cell1_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell1D neighbour Cell3D indices per cell, size  1
-        #/< x NumberCell1D + 1
-        cell1_d_neighbour_cell2_ds: List[int] = List[int]()                                                                  #/< Cell1D neighbour Cell2D indices, size 1 x
-        #/< NumberCell1DNeighbourCell2D[NumberCell1D]
-        cell1_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell1D neighbour Cell3D indices, size 1 x
-        #/< NumberCell1DNeighbourCell3D[NumberCell1D]
-        cell1_d_markers: List[int] = List[int]()                                                                             #/< Cell1D propertoes, size 1 x NumberCell1D (marker)
-        active_cell1_d: List[bool] = List[bool]()                                                                            #/< active Cell1D
-        cell1_d_original_cell1_ds: List[int] = List[int]()                                                                   #/< for each cell1D the index of original cell1D,
-        #/< NumberCell1D is the default value (no original cell),
-        #/< size 1 x NumberCell1D
-        updated_cell1_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell1D the
-        #/< list to the new cell1Ds
-        cell1_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell1D double property id - double property index
-        cell1_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell1D double property id -
-        #/< double property index
-        cell1_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell1D double property sizes
-        cell1_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell1D double property values
-        number_cell2_d: int = 0                                                                                              #/< number of Cell2D
-        number_cell2_d_vertices: List[int] = List[int](0)                                                                    #/< number of Vertices per Cell2D, size 1 x NumberCell2D + 1
-        number_cell2_d_edges: List[int] = List[int](0)                                                                       #/< number of Edges per Cell2D, size 1 x NumberCell2D + 1
-        cell2_d_vertices: List[int] = List[int]()                                                                            #/< Cell2D Vertices indices, size 1 x
-        #/< NumberCell2DVertices[NumberCell2D]
-        cell2_d_edges: List[int] = List[int]()                                                                               #/< Cell2D Cell1D indices, size 1 x NumberCell2DEdges[NumberCell2D]
-        number_cell2_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell2D neighbour Cell3D indices per cell, size  1
-        #/< x NumberCell2D + 1
-        cell2_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell2D neighbour Cell3D indices, size 1 x
-        #/< NumberCell2DNeighbourCell3D[NumberCell2D]
-        cell2_d_markers: List[int] = List[int]()                                                                             #/< Cell2D markers, size 1 x NumberCell2D (marker)
-        active_cell2_d: List[bool] = List[bool]()                                                                            #/< active Cell2D
-        number_cell2_d_subdivision: List[int] = List[int](0)                                                                 #/< number of sub-division per Cell2D, size 1 x
-        #/< NumberCell2D + 1
-        cell2_d_subdivision: List[int] = List[int]()                                                                         #/< Sub-division of Cell2Ds, used for Concave polygons, size 1 x
-        #/< NumberCell2DSubdivision[NumberCell2D]
-        cell2_d_original_cell2_ds: List[int] = List[int]()                                                                   #/< for each cell2D the index of original cell2D,
-        #/< NumberCell2D is the default value (no original cell),
-        #/< size 1 x NumberCell2D
-        updated_cell2_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell2D the
-        #/< list to the new cell2Ds
-        cell2_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell2D double property id - double property index
-        cell2_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell2D double property id -
-        #/< double property index
-        cell2_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell2D double property sizes
-        cell2_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell2D double property values
-        number_cell3_d: int = 0                                                                                              #/< number of Cell3D
-        number_cell3_d_vertices: List[int] = List[int](0)                                                                    #/< number of Vertices per Cell3D, size 1 x NumberCell3D + 1
-        number_cell3_d_edges: List[int] = List[int](0)                                                                       #/< number of Edges per Cell3D, size 1 x NumberCell3D + 1
-        number_cell3_d_faces: List[int] = List[int](0)                                                                       #/< number of Faces per Cell3D, size 1 x NumberCell3D + 1
-        cell3_d_vertices: List[int] = List[int]()                                                                            #/< Cell3D Cell0D indices, size 1 x
-        #/< NumberCell3DVertices[NumberCell3D]
-        cell3_d_edges: List[int] = List[int]()                                                                               #/< Cell3D Cell1D indices, size 1 x NumberCell3DEdges[NumberCell3D]
-        cell3_d_faces: List[int] = List[int]()                                                                               #/< Cell3D Cell2D indices, size 1 x NumberCell3DFaces[NumberCell3D]
-        cell3_d_markers: List[int] = List[int]()                                                                             #/< Cell3D markers, size 1 x NumberCell3D (marker)
-        active_cell3_d: List[bool] = List[bool]()                                                                            #/< active Cell3D
-        cell3_d_original_cell3_ds: List[int] = List[int]()                                                                   #/< for each cell3D the index of original cell3D,
-        #/< NumberCell3D is the default value (no original cell),
-        #/< size 1 x NumberCell3D
-        updated_cell3_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell3D the
-        #/< list to the new cell3Ds
-        cell3_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell3D double property id - double property index
-        cell3_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell3D double property id -
-        #/< double property index
-        cell3_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell3D double property sizes
-        cell3_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell3D double property values
-        def __init__(
-            self,
-            cell0_d_coordinates: List[float] = List[float](),
-            active_cell0_d: List[bool] = List[bool](),
-            cell0_d_double_property_ids: List[str] = List[str](),
-            cell0_d_double_property_values: List[List[float]] = List[List[float]](),
-            active_cell1_d: List[bool] = List[bool](),
-            cell1_d_double_property_ids: List[str] = List[str](),
-            cell1_d_double_property_values: List[List[float]] = List[List[float]](),
-            active_cell2_d: List[bool] = List[bool](),
-            cell2_d_double_property_ids: List[str] = List[str](),
-            cell2_d_double_property_values: List[List[float]] = List[List[float]](),
-            active_cell3_d: List[bool] = List[bool](),
-            cell3_d_double_property_ids: List[str] = List[str](),
-            cell3_d_double_property_values: List[List[float]] = List[List[float]]()
-            ) -> None:
-            """Auto-generated default constructor with named params"""
+    class IMeshDAO:
+        """/ \brief The IMeshDAO (mesh data access object) class to read and write mesh data"""
+
+        def initialize_dimension(self, dimension: int) -> None:    # overridable (pure virtual)
+            """/ \brief Initialize the mesh dimension"""
+            pass
+        def dimension(self) -> int:                                # overridable (pure virtual)
+            """/ \return the geometric dimension of the mesh"""
             pass
 
-# </submodule gedim>
-####################    </generated_from:MeshMatrices.hpp>    ####################
+        def cell0_ds_initialize(                                   # overridable (pure virtual)
+            self,
+            number_cell0_ds: int
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds container
+            / \param numberCell0Ds the total number of Cell0Ds
+            / \note No reset of Cell0Ds is performed
+            """
+            pass
+        def cell0_d_append(self, number_cell0_ds: int) -> int:     # overridable (pure virtual)
+            """/ \brief Append Cell0Ds to the Cell0Ds container
+            / \param numberCell0Ds the number of Cell0Ds to append
+            / \return the previous number of Cell0Ds before the append operation
+            """
+            pass
 
+        def cell0_d_remove(self, cell0_d_index: int) -> None:      # overridable (pure virtual)
+            """/ \brief Remove the Cell0D from the mesh
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \note the cell0D is removed and no integrity check in the mesh are performed
+            """
+            pass
+        def cell0_d_insert_coordinates(                            # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            coordinates: Eigen.Vector3d
+            ) -> None:
+            """/ \brief Add the Cell0D Coordinates
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param coordinates the coordinates of the Cell0D
+            """
+            pass
+        def cell0_ds_insert_coordinates(                           # overridable (pure virtual)
+            self,
+            coordinates: Eigen.MatrixXd
+            ) -> None:
+            """/ \brief Add the Cell0Ds Coordinates
+            / \param coordinates the coordinates of the Cell0Ds, size 3 x Cell0DTotalNumber()
+            """
+            pass
+        def cell0_d_set_marker(                                    # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            marker: int
+            ) -> None:
+            """/ \brief Set the Cell0D Marker
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param marker the marker of the Cell0D
+            """
+            pass
+        def cell0_d_set_state(                                     # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            state: bool
+            ) -> None:
+            """/ \brief Set the Cell0D state
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param state True if Cell0D is active, False otherwise
+            """
+            pass
+        def cell0_d_total_number(self) -> int:                     # overridable (pure virtual)
+            """/ \return the total number of Cell0Ds"""
+            pass
+        def cell0_d_coordinate_x(                                  # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> float:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the X coordinate of cell0D
+            """
+            pass
+        def cell0_d_coordinate_y(                                  # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> float:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the Y coordinate of cell0D
+            """
+            pass
+        def cell0_d_coordinate_z(                                  # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> float:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the Z coordinate of cell0D
+            """
+            pass
+        def cell0_d_coordinates(                                   # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> Eigen.Vector3d:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the coordinates as Eigen Vector3 of cell0D, size 3x1
+            """
+            pass
+        #/ \return the coordinates as Eigen MatrixXd of cell0D, size 3xCell0DTotalNumber()
+        @overload
+        def cell0_ds_coordinates(self) -> Eigen.MatrixXd:          # overridable (pure virtual)
+            pass
+        @overload
+        def cell0_ds_coordinates(                                  # overridable (pure virtual)
+            self,
+            cell0_ds: List[int]
+            ) -> Eigen.MatrixXd:
+            pass
+        def cell0_d_is_active(self, cell0_d_index: int) -> bool:   # overridable (pure virtual)
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return if the cell0D is active
+            """
+            pass
+        def cell0_ds_state(self) -> List[bool]:                    # overridable (pure virtual)
+            """/ \return the activation state of all cell0Ds"""
+            pass
+        #/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+        #/ \return the cell0D marker
+        def cell0_d_marker(self, cell0_d_index: int) -> int:       # overridable (pure virtual)
+            pass
+        def cell0_ds_marker(self) -> List[int]:                    # overridable (pure virtual)
+            pass
+        def cell0_d_has_updated_cell0_ds(                          # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return if the cell0D has new cell0Ds associated
+            """
+            pass
+        def cell0_d_number_updated_cell0_ds(                       # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the number of new cell0Ds associated to cell0DIndex
+            """
+            pass
+        def cell0_d_has_updated_cell0_d(                           # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_idex: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param updatedCell0DIdex the index of the new cell0D from 0 to Cell0DTotalNumber()
+            / \return if the cell0D has the updatedCell0DIdex associated
+            """
+            pass
+        def cell0_d_insert_updated_cell0_d(                        # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_idex: int
+            ) -> None:
+            """/ \brief Add the new Cell0D to an existing Cell0D
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param updatedCell0DIdex the index of the new cell0D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell0_d_updated_cell0_ds(                              # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            updated_cell0_d_ids: std.list[int]
+            ) -> bool:
+            """/ \brief return the updated Cell0D Ids for cell0DIndex
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param updatedCell0DIds the list of the new Cell0D Ids associated to cell0DIndex
+            / \return True if the cell0DIndex is contained in the updatedCell0DIds list, False otherwise
+            """
+            pass
 
-####################    <generated_from:MeshMatricesDAO.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
+        def cell0_ds_neighbour_cell1_ds(self) -> List[List[int]]:  # overridable (pure virtual)
+            pass
+        def cell0_ds_initialize_neighbour_cell1_ds(                # overridable (pure virtual)
+            self,
+            numbers_neighbour_cell1_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds Cell1D neighbours number
+            / \param numbersNeighbourCell1Ds the number of Cell1D neighbours of each Cell0D, size 1 x Cell0DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell0D Cell1D neighbours number
+        #/ \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+        #/ \param numberNeighbourCell1Ds the number of Cell1D neighbours of the Cell0D
+        @overload
+        def cell0_d_initialize_neighbour_cell1_ds(                 # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell1_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell1_ds(                 # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_cell1_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell1_d(                      # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell1_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell0D Cell1D neighbour
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell1D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell1D(cell0DIndex) \param neigbourCell1DIndex the Cell1D neighbour index from 0 to
+            / Cell1DTotalNumber() \note Cell0DInitializeNeighbourCell1Ds() shall be called before
+            """
+            pass
+        def cell0_d_number_neighbour_cell1_d(                      # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the number of Neighbour Cell1Ds of Cell0D
+            """
+            pass
+        def cell0_d_neighbour_cell1_d(                             # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell1D from 0 to Cell0DNumberNeighbourCell1D(cell0DIndex)
+            / \return the Cell1D index of Neighbour Cell1Ds of Cell0D from 0 to Cell1DTotalNumber()
+            """
+            pass
 
-# #ifndef __MeshMatricesWrapper_H
-#
+        def cell0_d_neighbour_cell1_ds(                            # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> List[int]:
+            pass
 
+        def cell0_d_has_neighbour_cell1_d(                         # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell1D from 0 to Cell0DNumberNeighbourCell1D(cell0DIndex)
+            / \return True if Neighbour Cell1Ds of Cell0D at position neighbourIndex exists
+            """
+            pass
 
+        def cell0_d_reset_neighbour_cell1_d(                       # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell0D Cell1D neighbour to empty value (Cell0DHasNeighbourCell1D is False)
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell1D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell1D(cell0DIndex)
+            """
+            pass
 
-# #endif
-#
+        def cell0_ds_neighbour_cell2_ds(self) -> List[List[int]]:  # overridable (pure virtual)
+            pass
+        def cell0_ds_initialize_neighbour_cell2_ds(                # overridable (pure virtual)
+            self,
+            numbers_neighbour_cell2_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds Cell2D neighbours number
+            / \param numbersNeighbourCell2Ds the number of Cell2D neighbours of each Cell0D, size 1 x Cell0DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell0D Cell2D neighbours number
+        #/ \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+        #/ \param numberNeighbourCell2Ds the number of Cell2D neighbours of the Cell0D
+        @overload
+        def cell0_d_initialize_neighbour_cell2_ds(                 # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell2_ds(                 # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_cell2_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell2_d(                      # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell2_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell0D Cell2D neighbour
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell2D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell2D(cell0DIndex) \param neigbourCell2DIndex the Cell2D neighbour index from 0 to
+            / Cell2DTotalNumber() \note Cell0DInitializeNeighbourCell2Ds() shall be called before
+            """
+            pass
+        def cell0_d_number_neighbour_cell2_d(                      # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the number of Neighbour Cell2Ds of Cell0D
+            """
+            pass
+        def cell0_d_neighbour_cell2_d(                             # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell2D from 0 to Cell0DNumberNeighbourCell2D(cell0DIndex)
+            / \return the Cell2D index of Neighbour Cell2Ds of Cell0D from 0 to Cell2DTotalNumber()
+            """
+            pass
 
-# <submodule gedim>
-class gedim:  # Proxy class that introduces typings for the *submodule* gedim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Gedim"""
-    class MeshMatricesDAO:
-        """
-        (final class)
-        """
+        def cell0_d_neighbour_cell2_ds(                            # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> List[int]:
+            pass
+
+        def cell0_d_has_neighbour_cell2_d(                         # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell2D from 0 to Cell0DNumberNeighbourCell2D(cell0DIndex)
+            / \return True if Neighbour Cell2Ds of Cell0D at position neighbourIndex exists
+            """
+            pass
+        def cell0_d_reset_neighbour_cell2_d(                       # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell0D Cell2D neighbour to empty value (Cell0DHasNeighbourCell2D is False)
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell2D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell2D(cell0DIndex)
+            """
+            pass
+
+        def cell0_ds_neighbour_cell3_ds(self) -> List[List[int]]:  # overridable (pure virtual)
+            pass
+        def cell0_ds_initialize_neighbour_cell3_ds(                # overridable (pure virtual)
+            self,
+            numbers_neighbour_cell3_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds Cell3D neighbours number
+            / \param numbersNeighbourCell3Ds the number of Cell3D neighbours of each Cell0D, size 1 x Cell0DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell0D Cell3D neighbours number
+        #/ \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+        #/ \param numberNeighbourCell3Ds the number of Cell3D neighbours of the Cell0D
+        @overload
+        def cell0_d_initialize_neighbour_cell3_ds(                 # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell0_d_initialize_neighbour_cell3_ds(                 # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell0_d_insert_neighbour_cell3_d(                      # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell0D Cell3D neighbour
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell3D(cell0DIndex) \param neigbourCell3DIndex the Cell3D neighbour index from 0 to
+            / Cell3DTotalNumber() \note Cell0DInitializeNeighbourCell3Ds() shall be called before
+            """
+            pass
+        def cell0_d_number_neighbour_cell3_d(                      # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> int:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the number of Neighbour Cell3Ds of Cell0D
+            """
+            pass
+        #/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+        #/ \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell0DNumberNeighbourCell3D(cell0DIndex)
+        #/ \return the Cell3D index of Neighbour Cell3Ds of Cell0D from 0 to Cell3DTotalNumber()
+        def cell0_d_neighbour_cell3_d(                             # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> int:
+            pass
+        def cell0_d_neighbour_cell3_ds(                            # overridable (pure virtual)
+            self,
+            cell0_d_index: int
+            ) -> List[int]:
+            pass
+        def cell0_d_has_neighbour_cell3_d(                         # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell0DNumberNeighbourCell3D(cell0DIndex)
+            / \return True if Neighbour Cell3Ds of Cell0D at position neighbourIndex exists
+            """
+            pass
+        def cell0_d_reset_neighbour_cell3_d(                       # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell0D Cell3D neighbour to empty value (Cell0DHasNeighbourCell3D is False)
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell0D from 0 to
+            / Cell0DNumberNeighbourCell3D(cell0DIndex)
+            """
+            pass
+
+        def cell0_d_initialize_double_properties(                  # overridable (pure virtual)
+            self,
+            number_double_properties: int
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds double properties
+            / \param numberDoubleProperties the total number of Cell0Ds properties
+            / \note No reset of Cell0Ds is performed
+            """
+            pass
+        def cell0_d_add_double_property(                           # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> int:
+            """/ \brief Add the Cell0Ds double property identified by id
+            / \param propertyId the id of Cell0Ds property
+            / \return the double property position
+            """
+            pass
+        def cell0_ds_initialize_double_property_values(            # overridable (pure virtual)
+            self,
+            property_index: int,
+            porperty_sizes: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds double property sizes
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            / \param porpertySize the double property size of each Cell0D, size 1 x Cell0DTotalNumber()
+            """
+            pass
+        def cell0_d_initialize_double_property_values(             # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            porperty_size: int
+            ) -> None:
+            """/ \brief Initialize the Cell0Ds double property size
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            / \param porpertySize the double property size of Cell0D
+            """
+            pass
+        def cell0_d_insert_double_property_value(                  # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            """/ \brief Insert the Cell0Ds double property value at position
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            """
+            pass
+
+        def cell0_d_number_double_properties(self) -> int:         # overridable (pure virtual)
+            """/ \return the total number of double properties of Cell0Ds"""
+            pass
+        def cell0_d_double_property_id(                            # overridable (pure virtual)
+            self,
+            property_index: int
+            ) -> str:
+            """/ \return the id of the double property of Cell0Ds
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            """
+            pass
+        def cell0_d_double_property_exists(                        # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> bool:
+            """/ \return True if the double propertyId of Cell0Ds exists
+            / \param propertyId the id of Cell0D double property
+            """
+            pass
+        def cell0_d_double_property_index(                         # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> int:
+            """/ \return the propertyIndex of the double property of Cell0Ds from 0 to Cell0DNumberProperties()
+            / \param propertyId the id of Cell0D double property
+            """
+            pass
+        def cell0_d_double_property_size(                          # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            property_index: int
+            ) -> int:
+            """/ \return the size of the double property of Cell0D
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            """
+            pass
+        def cell0_d_double_property_value(                         # overridable (pure virtual)
+            self,
+            cell0_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            """/ \return the value of the double property at valueIndex of Cell0D
+            / \param cell0DIndex the index of Cell0D from 0 to Cell0DTotalNumber()
+            / \param propertyIndex the index of Cell0D double property from 0 to Cell0DNumberProperties()
+            / \param propertyValueIndex the index of Cell0D double property value from 0 to Cell0DDoublePropertySize()
+            """
+            pass
+
+        def cell1_ds_initialize(                                   # overridable (pure virtual)
+            self,
+            number_cell1_ds: int
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds container
+            / \param numberCell1Ds the total number of Cell1Ds
+            / \note No reset of Cell1Ds is performed
+            """
+            pass
+        def cell1_d_append(self, number_cell1_ds: int) -> int:     # overridable (pure virtual)
+            """/ \brief Append Cell1Ds to the Cell1Ds container
+            / \param numberCell1Ds the number of Cell1Ds to append
+            / \return the previous number of Cell1Ds before the append operation
+            """
+            pass
+        def cell1_d_remove(self, cell1_d_index: int) -> None:      # overridable (pure virtual)
+            """/ \brief Remove the Cell1D from the mesh
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \note the cell1D is removed and no integrity check in the mesh are performed
+            """
+            pass
+        def cell1_d_insert_extremes(                               # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> None:
+            """/ \brief Set the Cell1D Origin and End
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param originCell0DIndex the Cell0D index of Cell1D origin from 0 to Cell0DTotalNumber()
+            / \param endCell0DIndex the Cell0D index of Cell1D end from 0 to Cell0DTotalNumber()
+            """
+            pass
+
+        def cell1_ds_insert_extremes(                              # overridable (pure virtual)
+            self,
+            cell1_d_extremes: Eigen.MatrixXi
+            ) -> None:
+            """/ \brief Set the Cell1D Extremes for the whole mesh edges
+            / \param cell1DExtremes the origin and end indices of all the edges, size 2 x Cell1DTotalNumber()
+            """
+            pass
+
+        @overload
+        def cell1_ds_extremes(self) -> Eigen.MatrixXi:             # overridable (pure virtual)
+            """/ \return the extrems as Eigen MatrixXi of cell1Ds, size 2xCell1DTotalNumber()"""
+            pass
+        #/ \return the extrems as Eigen MatrixXi of cell1D, size 2
+        #/ \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+        def cell1_d_extremes(                                      # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> Eigen.VectorXi:
+            pass
+        @overload
+        def cell1_ds_extremes(                                     # overridable (pure virtual)
+            self,
+            cell1_ds: List[int]
+            ) -> Eigen.MatrixXi:
+            pass
+        def cell1_d_by_extremes(                                   # overridable (pure virtual)
+            self,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            """/ \return the Cell1D Index if Cell1D (origin->end) exists, Cell1DTotalNumber() otherwise
+            / \param originCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \param endCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell1_d_set_marker(                                    # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            marker: int
+            ) -> None:
+            """/ \brief Set the Cell1D Marker
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param marker the marker of the Cell1D
+            """
+            pass
+        def cell1_d_set_state(                                     # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            state: bool
+            ) -> None:
+            """/ \brief Set the Cell1D state
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param state True if Cell1D is active, False otherwise
+            """
+            pass
+        def cell1_d_total_number(self) -> int:                     # overridable (pure virtual)
+            """/ \return the total number of Cell1Ds"""
+            pass
+        def cell1_d_vertex(                                        # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            vertex_index: int
+            ) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param vertexIndex the index of the vertex from 0 to 2
+            / \return Cell0D index of the vertex of Cell1D
+            """
+            pass
+        def cell1_d_coordinates(                                   # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> Eigen.MatrixXd:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the coordinates of Cell1D, size 3x2
+            """
+            pass
+        def cell1_d_origin_coordinates(                            # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> Eigen.Vector3d:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the origin coordinates of Cell1D
+            """
+            pass
+        def cell1_d_end_coordinates(                               # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> Eigen.Vector3d:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the end coordinates of Cell1D
+            """
+            pass
+        def cell1_d_origin(self, cell1_d_index: int) -> int:       # overridable (pure virtual)
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the origin Cell0D index of Cell1D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell1_d_end(self, cell1_d_index: int) -> int:          # overridable (pure virtual)
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the end Cell0D index of Cell1D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell1_d_find_extreme(                                  # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            cell0_d_index: int
+            ) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the index of the cell0DIndex on the cell1D from 0 to 1, 2 if not found
+            """
+            pass
+        #/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+        #/ \return the cell1D marker
+        def cell1_d_marker(self, cell1_d_index: int) -> int:       # overridable (pure virtual)
+            pass
+        def cell1_ds_marker(self) -> List[int]:                    # overridable (pure virtual)
+            pass
+        def cell1_d_is_active(self, cell1_d_index: int) -> bool:   # overridable (pure virtual)
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return if the cell1D is active
+            """
+            pass
+        def cell1_ds_state(self) -> List[bool]:                    # overridable (pure virtual)
+            """/ \return the activation state of all cell1Ds"""
+            pass
+
+        def cell1_d_has_original_cell1_d(                          # overridable (pure virtual)
+            self,
+            updated_cell1_d_index: int
+            ) -> bool:
+            """/ \param updatedCell1DIndex the updated cell1D index, from 0 to Cell1DTotalNumber()
+            / \return True if has an original cell, False otherwise (the original cell is itself)
+            """
+            pass
+        def cell1_d_original_cell1_d(                              # overridable (pure virtual)
+            self,
+            updated_cell1_d_index: int
+            ) -> int:
+            """/ \param updatedCell1DIndex the updated cell1D index, from 0 to Cell1DTotalNumber()
+            / \return the original cell1D index, from 0 to Cell1DTotalNumber()
+            """
+            pass
+        def cell1_d_has_updated_cell1_ds(                          # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return if the cell1D has new cell1Ds associated
+            """
+            pass
+        def cell1_d_number_updated_cell1_ds(                       # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the number of new cell1Ds associated to cell1DIndex
+            """
+            pass
+        def cell1_d_has_updated_cell1_d(                           # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_idex: int
+            ) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param updatedCell1DIdex the index of the new Cell1D from 0 to Cell1DTotalNumber()
+            / \return if the Cell1D has the updatedCell1DIdex associated
+            """
+            pass
+        def cell1_d_insert_updated_cell1_d(                        # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_idex: int
+            ) -> None:
+            """/ \brief Add the new Cell1D to an existing Cell1D
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param updatedCell1DIdex the index of the new Cell1D from 0 to Cell1DTotalNumber()
+            """
+            pass
+        def cell1_d_updated_cell1_ds(                              # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            updated_cell1_d_ids: std.list[int]
+            ) -> bool:
+            """/ \brief return the updated Cell1D Ids for cell1DIndex
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param updatedCell1DIds the list of the new Cell1D Ids associated to cell1DIndex
+            / \return True if the cell1DIndex is contained in the updatedCell1DIds list, False otherwise
+            """
+            pass
+
+        def cell1_ds_neighbour_cell2_ds(self) -> List[List[int]]:  # overridable (pure virtual)
+            pass
+        @overload
+        def cell1_ds_initialize_neighbour_cell2_ds(                # overridable (pure virtual)
+            self,
+            numbers_neighbour_cell2_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds Cell2D neighbours number
+            / \param numbersNeighbourCell2Ds the number of Cell2D neighbours of each Cell1D, size 1 x Cell1DTotalNumber()
+            """
+            pass
+        @overload
+        def cell1_ds_initialize_neighbour_cell2_ds(                # overridable (pure virtual)
+            self,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds Cell2D neighbours number
+            / \param numberNeighbourCell2Ds the number of Cell2D neighbours of the Cell1D
+            """
+            pass
+
+        #/ \brief Initialize the Cell1D Cell2D neighbours number
+        #/ \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+        #/ \param numberNeighbourCell2Ds the number of Cell2D neighbours of the Cell1D
+        @overload
+        def cell1_d_initialize_neighbour_cell2_ds(                 # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            number_neighbour_cell2_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell1_d_initialize_neighbour_cell2_ds(                 # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_cell2_ds: List[int]
+            ) -> None:
+            pass
+        def cell1_d_insert_neighbour_cell2_d(                      # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_index: int,
+            neigbour_cell2_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell1D Cell2D neighbour
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of Cell2D neighbour of the Cell1D from 0 to
+            / Cell1DNumberNeighbourCell2D(cell1DIndex) \param neigbourCell2DIndex the Cell2D neighbour index from 0 to
+            / Cell2DTotalNumber() \note Cell1DInitializeNeighbourCell2Ds() shall be called before
+            """
+            pass
+        def cell1_d_number_neighbour_cell2_d(                      # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the number of Neighbour Cell2Ds of Cell1D
+            """
+            pass
+        def cell1_d_neighbour_cell2_d(                             # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell2D from 0 to Cell1DNumberNeighbourCell2D(cell1DIndex)
+            / \return the Cell2D index of Neighbour Cell2Ds of Cell1D from 0 to Cell2DTotalNumber()
+            """
+            pass
+
+        def cell1_d_neighbour_cell2_ds(                            # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> List[int]:
+            pass
+
+        def cell1_d_has_neighbour_cell2_d(                         # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell2D from 0 to Cell1DNumberNeighbourCell2D(cell1DIndex)
+            / \return True if Neighbour Cell2Ds of Cell1D at position neighbourIndex exists
+            """
+            pass
+        def cell1_d_reset_neighbour_cell2_d(                       # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell1D Cell2D neighbour to empty value (Cell1DHasNeighbourCell2D is False)
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of Cell2D neighbour of the Cell1D from 0 to
+            / Cell1DNumberNeighbourCell2D(cell1DIndex)
+            """
+            pass
+
+        def cell1_ds_neighbour_cell3_ds(self) -> List[List[int]]:  # overridable (pure virtual)
+            pass
+        def cell1_ds_initialize_neighbour_cell3_ds(                # overridable (pure virtual)
+            self,
+            numbers_neighbour_cell3_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds Cell3D neighbours number
+            / \param numbersNeighbourCell3Ds the number of Cell2D neighbours of each Cell1D, size 1 x Cell1DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell1D Cell3D neighbours number
+        #/ \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+        #/ \param numberNeighbourCell3Ds the number of Cell3D neighbours of the Cell1D
+        @overload
+        def cell1_d_initialize_neighbour_cell3_ds(                 # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell1_d_initialize_neighbour_cell3_ds(                 # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell1_d_insert_neighbour_cell3_d(                      # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell1D Cell3D neighbour
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell1D from 0 to
+            / Cell1DNumberNeighbourCell3D(cell1DIndex) \param neigbourCell3DIndex the Cell3D neighbour index from 0 to
+            / Cell3DTotalNumber() \note Cell1DInitializeNeighbourCell3Ds() shall be called before
+            """
+            pass
+        def cell1_d_number_neighbour_cell3_d(                      # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> int:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the number of Neighbour Cell3Ds of Cell1D
+            """
+            pass
+        #/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+        #/ \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell1DNumberNeighbourCell3D(cell1DIndex)
+        #/ \return the Cell3D index of Neighbour Cell3Ds of Cell1D from 0 to Cell3DTotalNumber()
+        def cell1_d_neighbour_cell3_d(                             # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> int:
+            pass
+        def cell1_d_neighbour_cell3_ds(                            # overridable (pure virtual)
+            self,
+            cell1_d_index: int
+            ) -> List[int]:
+            pass
+        def cell1_d_has_neighbour_cell3_d(                         # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell1DNumberNeighbourCell3D(cell1DIndex)
+            / \return True if Neighbour Cell3Ds of Cell1D at position neighbourIndex exists
+            """
+            pass
+        def cell1_d_reset_neighbour_cell3_d(                       # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell1D Cell3D neighbour to empty value (Cell1DHasNeighbourCell3D is False)
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell1D from 0 to
+            / Cell1DNumberNeighbourCell3D(cell1DIndex)
+            """
+            pass
+
+        def cell1_d_initialize_double_properties(                  # overridable (pure virtual)
+            self,
+            number_double_properties: int
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds double properties
+            / \param numberDoubleProperties the total number of Cell1Ds properties
+            / \note No reset of Cell1Ds is performed
+            """
+            pass
+        def cell1_d_add_double_property(                           # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> int:
+            """/ \brief Add the Cell1Ds double property identified by id
+            / \param propertyId the id of Cell1Ds property
+            / \return the double property position
+            """
+            pass
+        def cell1_ds_initialize_double_property_values(            # overridable (pure virtual)
+            self,
+            property_index: int,
+            porperty_sizes: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds double property sizes
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            / \param porpertySize the double property size of each Cell1D, size 1 x Cell1DTotalNumber()
+            """
+            pass
+        def cell1_d_initialize_double_property_values(             # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            porperty_size: int
+            ) -> None:
+            """/ \brief Initialize the Cell1Ds double property size
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            / \param porpertySize the double property size of Cell1D
+            """
+            pass
+        def cell1_d_insert_double_property_value(                  # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            """/ \brief Insert the Cell1Ds double property value at position
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            """
+            pass
+
+        def cell1_d_number_double_properties(self) -> int:         # overridable (pure virtual)
+            """/ \return the total number of double properties of Cell1Ds"""
+            pass
+        def cell1_d_double_property_id(                            # overridable (pure virtual)
+            self,
+            property_index: int
+            ) -> str:
+            """/ \return the id of the double property of Cell1Ds
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            """
+            pass
+        def cell1_d_double_property_exists(                        # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> bool:
+            """/ \return True if the double propertyId of Cell1Ds exists
+            / \param propertyId the id of Cell1D double property
+            """
+            pass
+        def cell1_d_double_property_index(                         # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> int:
+            """/ \return the propertyIndex of the double property of Cell1Ds from 0 to Cell1DNumberProperties()
+            / \param propertyId the id of Cell1D double property
+            """
+            pass
+        def cell1_d_double_property_size(                          # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            property_index: int
+            ) -> int:
+            """/ \return the size of the double property of Cell1D
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            """
+            pass
+        def cell1_d_double_property_value(                         # overridable (pure virtual)
+            self,
+            cell1_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            """/ \return the value of the double property at valueIndex of Cell1D
+            / \param cell1DIndex the index of Cell1D from 0 to Cell1DTotalNumber()
+            / \param propertyIndex the index of Cell1D double property from 0 to Cell1DNumberProperties()
+            / \param propertyValueIndex the index of Cell1D double property value from 0 to Cell1DDoublePropertySize()
+            """
+            pass
+
+        def cell2_ds_initialize(                                   # overridable (pure virtual)
+            self,
+            number_cell2_ds: int
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds container
+            / \param numberCell2Ds the total number of Cell2Ds
+            / \note No reset of Cell2Ds is performed
+            """
+            pass
+        def cell2_d_append(self, number_cell2_ds: int) -> int:     # overridable (pure virtual)
+            """/ \brief Append Cell2Ds to the Cell2Ds container
+            / \param numberCell2Ds the number of Cell2Ds to append
+            / \return the previous number of Cell2Ds before the append operation
+            """
+            pass
+        def cell2_d_remove(self, cell2_d_index: int) -> None:      # overridable (pure virtual)
+            """/ \brief Remove the Cell2D from the mesh
+            / \param cell2DIndex the index of Cell0D from 0 to Cell2DTotalNumber()
+            / \note the cell2D is removed and no integrity check in the mesh are performed
+            """
+            pass
+        @overload
+        def cell2_ds_initialize_vertices(                          # overridable (pure virtual)
+            self,
+            number_cell2_d_vertices: int
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds vertices number
+            / \param numberCell2DVertices the number of vertices of all Cell2Ds
+            """
+            pass
+        @overload
+        def cell2_ds_initialize_vertices(                          # overridable (pure virtual)
+            self,
+            number_cell2_ds_vertices: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds vertices number
+            / \param numberCell2DsVertices the number of vertices of each Cell2D
+            """
+            pass
+        def cell2_d_initialize_vertices(                           # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            number_cell2_d_vertices: int
+            ) -> None:
+            """/ \brief Initialize the Cell2D vertices  number
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param numberCell2DVertices the number of vertices of Cell2D
+            """
+            pass
+        @overload
+        def cell2_ds_initialize_edges(                             # overridable (pure virtual)
+            self,
+            number_cell2_d_edges: int
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds edges number
+            / \param numberCell2DEdges the number of edges of all Cell2Ds
+            """
+            pass
+        @overload
+        def cell2_ds_initialize_edges(                             # overridable (pure virtual)
+            self,
+            number_cell2_ds_edges: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds edges number
+            / \param numberCell2DsEdges the number of edges of each Cell2D
+            """
+            pass
+        def cell2_d_initialize_edges(                              # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            number_cell2_d_edges: int
+            ) -> None:
+            """/ \brief Initialize the Cell2D edges number
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param numberCell2DEdges the number of edges of Cell2D
+            """
+            pass
+        def cell2_d_insert_vertices(                               # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Insert the Cell2D vertex
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param verticesCell0DIndices the Cell0D vertices index from 0 to Cell0DTotalNumber()
+            / \note Cell2DInitializeVertices() should be called before using this method
+            """
+            pass
+        def cell2_d_insert_vertex(                                 # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            vertex_index: int,
+            vertex_cell0_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell2D vertex
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param vertexIndex the number of vertex of the Cell2D from 0 to Cell2DNumberVertices(cell2DIndex)
+            / \param vertexCell0DIndex the Cell0D vertex index from 0 to Cell0DTotalNumber()
+            / \note Cell2DInitializeVertices() should be called before using this method
+            """
+            pass
+        def cell2_d_add_vertices(                                  # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell2D vertices
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param vertexCell0DIndices the Cell0D vertices indices from 0 to Cell0DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+        def cell2_d_insert_edges(                                  # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            edges_cell1_d_indices: List[int]
+            ) -> None:
+            """/ \brief Insert the Cell2D edge
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param edgesCell1DIndices the Cell1D edges indices from 0 to Cell1DTotalNumber()
+            / \note Cell2DInitializeEdges() should be called before using this method
+            """
+            pass
+        def cell2_d_insert_edge(                                   # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            edge_index: int,
+            edge_cell1_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell2D edge
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param edgeIndex the number of edge of the Cell2D from 0 to Cell2DNumberEdges(cell2DIndex)
+            / \param edgeCell0DIndex the Cell1D edge index from 0 to Cell1DTotalNumber()
+            / \note Cell2DInitializeEdges() should be called before using this method
+            """
+            pass
+        def cell2_d_add_edges(                                     # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            edges_cell1_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell2D edges
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param edgesCell1DIndices the Cell1D edges indices from 0 to Cell1DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+
+        def cell2_d_add_vertices_and_edges(                        # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            vertices_and_edges_indices: Eigen.MatrixXi
+            ) -> None:
+            """/ \brief Cell2D Add Vertices And Edges
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param verticesAndEdgesIndices the matrix of Cell0Ds and Cell1Ds indices
+            / \note No itialization is necessary
+            """
+            pass
+
+        def cell2_d_set_marker(                                    # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            marker: int
+            ) -> None:
+            """/ \brief Set the Cell2D Marker
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param marker the marker of the Cell2D
+            """
+            pass
+        def cell2_d_set_state(                                     # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            state: bool
+            ) -> None:
+            """/ \brief Set the Cell1D state
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param state True if Cell1D is active, False otherwise
+            """
+            pass
+        def cell2_d_total_number(self) -> int:                     # overridable (pure virtual)
+            """/ \return the total number of Cell2Ds"""
+            pass
+        def cell2_d_number_vertices(                               # overridable (pure virtual)
+            self,
+            cell2_d_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the number of vertices of Cell2D
+            """
+            pass
+        def cell2_d_number_edges(self, cell2_d_index: int) -> int: # overridable (pure virtual)
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the number of edges of Cell2D
+            """
+            pass
+        def cell2_ds_vertices(self) -> List[List[int]]:            # overridable (pure virtual)
+            """/ \return the Cell0D index collections of all Cell2Ds, size Cell2DTotalNumber() x
+            / Cell2DNumberVertices(cell2DIndex)
+            """
+            pass
+        def cell2_ds_extremes(self) -> List[Eigen.MatrixXi]:       # overridable (pure virtual)
+            """/ \return the Cell0Ds and Cell1Ds index collections of all Cell2Ds, size Cell2DTotalNumber() x (2 x
+            / Cell2DNumberVertices(cell2DIndex))
+            """
+            pass
+        def cell2_d_vertices(                                      # overridable (pure virtual)
+            self,
+            cell2_d_index: int
+            ) -> List[int]:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the Cell0D index collections of Cell2D from 0 to Cell0DTotalNumber(), size
+            / Cell2DNumberVertices(cell2DIndex)
+            """
+            pass
+        def cell2_d_vertex(                                        # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            vertex_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param vertexIndex the index of cell0D vertex from 0 to NumberCell2DVertices(cell2DIndex)
+            / \return the Cell0D index of vertex of Cell2D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell2_d_vertex_coordinates(                            # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            vertex_index: int
+            ) -> Eigen.Vector3d:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param vertexIndex the index of cell0D vertex from 0 to NumberCell2DVertices(cell2DIndex)
+            / \return the Cell0D coordinates of vertex of Cell2D, size 3 x 1
+            """
+            pass
+        def cell2_d_vertices_coordinates(                          # overridable (pure virtual)
+            self,
+            cell2_d_index: int
+            ) -> Eigen.MatrixXd:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the Cell0D coordinates of all the vertices of Cell2D, size 3 x NumberCell2DVertices(cell2DIndex)
+            """
+            pass
+        def cell2_d_find_vertex(                                   # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            cell0_d_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the index of the cell0DIndex on the cell2D from 0 to NumberCell2DVertices(cell2DIndex),
+            / NumberCell2DVertices(cell2DIndex) if not found
+            """
+            pass
+        def cell2_d_edges(self, cell2_d_index: int) -> List[int]:  # overridable (pure virtual)
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the Cell1D index collections of Cell2D from 0 to Cell1DTotalNumber(), size
+            / Cell2DNumberEdges(cell2DIndex)
+            """
+            pass
+        def cell2_d_edge(                                          # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            edge_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param edgeIndex the index of cell1D edge from 0 to NumberCell2DEdges(cell2DIndex)
+            / \return the Cell1D index of edge of Cell2D from 0 to Cell1DTotalNumber()
+            """
+            pass
+        def cell2_d_find_edge(                                     # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            cell1_d_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the index of the cell1DIndex on the cell2D from 0 to NumberCell2DEdges(cell2DIndex),
+            / NumberCell2DEdges(cell2DIndex) if not found
+            """
+            pass
+        def cell2_d_find_edge_by_extremes(                         # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param originCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \param endCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \return the index of the cell1DIndex on the cell2D from 0 to NumberCell2DEdges(cell2DIndex),
+            / NumberCell2DEdges(cell2DIndex) otherwise
+            """
+            pass
+        #/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+        #/ \return the cell2D marker
+        def cell2_d_marker(self, cell2_d_index: int) -> int:       # overridable (pure virtual)
+            pass
+        def cell2_ds_marker(self) -> List[int]:                    # overridable (pure virtual)
+            pass
+        def cell2_d_is_active(self, cell2_d_index: int) -> bool:   # overridable (pure virtual)
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return if the cell2D is active
+            """
+            pass
+        def cell2_ds_state(self) -> List[bool]:                    # overridable (pure virtual)
+            """/ \return the activation state of all cell2Ds"""
+            pass
+
+        def cell2_d_has_updated_cell2_ds(                          # overridable (pure virtual)
+            self,
+            cell2_d_index: int
+            ) -> bool:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return if the cell2D has new cell2Ds associated
+            """
+            pass
+        def cell2_d_number_updated_cell2_ds(                       # overridable (pure virtual)
+            self,
+            cell2_d_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the number of new cell2Ds associated to cell2DIndex
+            """
+            pass
+        def cell2_d_has_updated_cell2_d(                           # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_index: int
+            ) -> bool:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param updatedCell2DIndex the index of the new Cell2D from 0 to Cell2DTotalNumber()
+            / \return if the Cell2D has the updatedCell2DIdex associated
+            """
+            pass
+        def cell2_d_insert_updated_cell2_d(                        # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_idex: int
+            ) -> None:
+            """/ \brief Add the new Cell2D to an existing Cell2D
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param updatedCell2DIdex the index of the new Cell2D from 0 to Cell2DTotalNumber()
+            """
+            pass
+
+        def cell2_d_has_original_cell2_d(                          # overridable (pure virtual)
+            self,
+            updated_cell2_d_index: int
+            ) -> bool:
+            """/ \param updatedCell2DIndex the updated cell2D index, from 0 to Cell2DTotalNumber()
+            / \return True if has an original cell, False otherwise (the original cell is itself)
+            """
+            pass
+        def cell2_d_original_cell2_d(                              # overridable (pure virtual)
+            self,
+            updated_cell2_d_index: int
+            ) -> int:
+            """/ \param updatedCell2DIndex the updated cell2D index, from 0 to Cell2DTotalNumber()
+            / \return the original cell2D index, from 0 to Cell2DTotalNumber()
+            """
+            pass
+        def cell2_d_updated_cell2_ds(                              # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            updated_cell2_d_ids: std.list[int]
+            ) -> bool:
+            """/ \brief return the updated Cell2D Ids for cell2DIndex
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param updatedCell2DIds the list of the new Cell2D Ids associated to cell2DIndex
+            / \return True if the cell2DIndex is contained in the updatedCell2DIds list, False otherwise
+            """
+            pass
+
+        def cell2_ds_neighbour_cell3_ds(self) -> List[List[int]]:  # overridable (pure virtual)
+            pass
+        def cell2_ds_initialize_neighbour_cell3_ds(                # overridable (pure virtual)
+            self,
+            numbers_neighbour_cell3_ds: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds Cell3D neighbours number
+            / \param numbersNeighbourCell3Ds the number of Cell3D neighbours of each Cell2D, size 1 x Cell2DTotalNumber()
+            """
+            pass
+        #/ \brief Initialize the Cell2D Cell3D neighbours number
+        #/ \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+        #/ \param numberNeighbourCell3Ds the number of Cell3D neighbours of the Cell2D
+        @overload
+        def cell2_d_initialize_neighbour_cell3_ds(                 # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            number_neighbour_cell3_ds: int
+            ) -> None:
+            pass
+        @overload
+        def cell2_d_initialize_neighbour_cell3_ds(                 # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            neighbour_cell3_ds: List[int]
+            ) -> None:
+            pass
+        def cell2_d_insert_neighbour_cell3_d(                      # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            neighbour_index: int,
+            neigbour_cell3_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell2D Cell3D neighbour
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell2D from 0 to
+            / Cell2DNumberNeighbourCell3D(cell2DIndex) \param neigbourCell3DIndex the Cell3D neighbour index from 0 to
+            / Cell3DTotalNumber() \note Cell2DInitializeNeighbourCell3Ds() shall be called before
+            """
+            pass
+        def cell2_d_number_neighbour_cell3_d(                      # overridable (pure virtual)
+            self,
+            cell2_d_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the number of Neighbour Cell3Ds of Cell2D
+            """
+            pass
+        #/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+        #/ \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell2DNumberNeighbourCell3D(cell2DIndex)
+        #/ \return the Cell3D index of Neighbour Cell3Ds of Cell2D from 0 to Cell3DTotalNumber()
+        def cell2_d_neighbour_cell3_d(                             # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            neighbour_index: int
+            ) -> int:
+            pass
+        def cell2_d_neighbour_cell3_ds(                            # overridable (pure virtual)
+            self,
+            cell2_d_index: int
+            ) -> List[int]:
+            pass
+        def cell2_d_has_neighbour_cell3_d(                         # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            neighbour_index: int
+            ) -> bool:
+            """/ \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \param neighbourIndex the number of neigbourh Cell3D from 0 to Cell2DNumberNeighbourCell3D(cell2DIndex)
+            / \return True if Neighbour Cell3Ds of Cell2D at position neighbourIndex exists
+            """
+            pass
+        def cell2_d_reset_neighbour_cell3_d(                       # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            neighbour_index: int
+            ) -> None:
+            """/ \brief Reset the Cell2D Cell3D neighbour to empty value (Cell2DHasNeighbourCell3D is False)
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param neighbourIndex the number of Cell3D neighbour of the Cell2D from 0 to
+            / Cell2DNumberNeighbourCell3D(cell2DIndex)
+            """
+            pass
+
+        def cell2_d_initialize_double_properties(                  # overridable (pure virtual)
+            self,
+            number_double_properties: int
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds double properties
+            / \param numberDoubleProperties the total number of Cell2Ds properties
+            / \note No reset of Cell2Ds is performed
+            """
+            pass
+        def cell2_d_add_double_property(                           # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> int:
+            """/ \brief Add the Cell2Ds double property identified by id
+            / \param propertyId the id of Cell2Ds property
+            / \return the double property position
+            """
+            pass
+        def cell2_ds_initialize_double_property_values(            # overridable (pure virtual)
+            self,
+            property_index: int,
+            porperty_sizes: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds double property sizes
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            / \param porpertySize the double property size of each Cell2D, size 1 x Cell2DTotalNumber()
+            """
+            pass
+        def cell2_d_initialize_double_property_values(             # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            porperty_size: int
+            ) -> None:
+            """/ \brief Initialize the Cell2Ds double property size
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            / \param porpertySize the double property size of Cell2D
+            """
+            pass
+        def cell2_d_insert_double_property_value(                  # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            """/ \brief Insert the Cell2Ds double property value at position
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            """
+            pass
+
+        def cell2_d_number_double_properties(self) -> int:         # overridable (pure virtual)
+            """/ \return the total number of double properties of Cell2Ds"""
+            pass
+        def cell2_d_double_property_id(                            # overridable (pure virtual)
+            self,
+            property_index: int
+            ) -> str:
+            """/ \return the id of the double property of Cell2Ds
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            """
+            pass
+        def cell2_d_double_property_exists(                        # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> bool:
+            """/ \return True if the double propertyId of Cell2Ds exists
+            / \param propertyId the id of Cell2D double property
+            """
+            pass
+        def cell2_d_double_property_index(                         # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> int:
+            """/ \return the propertyIndex of the double property of Cell2Ds from 0 to Cell2DNumberProperties()
+            / \param propertyId the id of Cell2D double property
+            """
+            pass
+        def cell2_d_double_property_size(                          # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            property_index: int
+            ) -> int:
+            """/ \return the size of the double property of Cell2D
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            """
+            pass
+        def cell2_d_double_property_value(                         # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            """/ \return the value of the double property at valueIndex of Cell2D
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param propertyIndex the index of Cell2D double property from 0 to Cell2DNumberProperties()
+            / \param propertyValueIndex the index of Cell2D double property value from 0 to Cell2DDoublePropertySize()
+            """
+            pass
+
+        def cell2_ds_initialize_sub_division(                      # overridable (pure virtual)
+            self,
+            number_sub_divisions: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell2D subdivision number for each Cell2D
+            / \param numberSubDivisions the number of sub-polygons for each Cell2D, size 1 x Cell2DTotalNumber()
+            / \note each subdivision is a triangle, thus numberSubDivision shall be a multiple of 3
+            """
+            pass
+        def cell2_d_initialize_sub_division(                       # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            number_sub_division: int
+            ) -> None:
+            """/ \brief Initialize the Cell2D subdivision number
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param numberSubDivision the number of sub-polygons of the Cell2D
+            / \note each subdivision is a triangle, thus numberSubDivision shall be a multiple of 3
+            """
+            pass
+        def cell2_d_insert_sub_division(                           # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            sub_division_index: int,
+            cell2_d_vertex_index: int
+            ) -> None:
+            """/ \brief Insert the subDivision vertex index
+            / \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param subDivisionIndex the subDivision index, from 0 to Cell2DNumberSubDivision(cell2DIndex)
+            / \param cell2DVertexIndex the Cell2D vertex index of the subDivision, from 0 to Cell0DTotalNumber()
+            / \note each subdivision is a triangle
+            """
+            pass
+
+        def cell2_d_number_sub_division(                           # overridable (pure virtual)
+            self,
+            cell2_d_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \return the total number of vertices of sub-polygons contained in the subdivision, a multiple of 3
+            / \note each subdivision is a triangle
+            """
+            pass
+
+        def cell2_d_sub_division_cell0_d(                          # overridable (pure virtual)
+            self,
+            cell2_d_index: int,
+            sub_division_index: int
+            ) -> int:
+            """/ \param cell2DIndex the index of Cell2D from 0 to Cell2DTotalNumber()
+            / \param subDivisionIndex the subDivision index, from 0 to Cell2DNumberSubDivision(cell2DIndex)
+            / \return the Cell0D index of sub-polygons contained in the subdivision, from 0 to Cell0DTotalNumber()
+            / \note each sub-division shall be a triangle
+            """
+            pass
+
+        def cell3_ds_initialize(                                   # overridable (pure virtual)
+            self,
+            number_cell3_ds: int
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds container
+            / \param numberCell3Ds the total number of Cell3Ds
+            / \note No reset of Cell3Ds is performed
+            """
+            pass
+        def cell3_d_append(self, number_cell3_ds: int) -> int:     # overridable (pure virtual)
+            """/ \brief Append Cell3Ds to the Cell3Ds container
+            / \param numberCell3Ds the number of Cell3Ds to append
+            / \return the previous number of Cell3Ds before the append operation
+            """
+            pass
+        def cell3_d_remove(self, cell3_d_index: int) -> None:      # overridable (pure virtual)
+            """/ \brief Remove the Cell3D from the mesh
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \note the cell3D is removed and no integrity check in the mesh are performed
+            """
+            pass
+        def cell3_ds_initialize_vertices(                          # overridable (pure virtual)
+            self,
+            number_cell3_ds_vertices: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds vertices number
+            / \param numberCell3DsVertices the number of vertices of each Cell3D
+            """
+            pass
+        def cell3_d_initialize_vertices(                           # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            number_cell3_d_vertices: int
+            ) -> None:
+            """/ \brief Initialize the Cell3D vertices  number
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param numberCell3DVertices the number of vertices of Cell3D
+            """
+            pass
+        def cell3_ds_initialize_edges(                             # overridable (pure virtual)
+            self,
+            number_cell3_ds_edges: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds edges number
+            / \param numberCell3DsEdges the number of edges of each Cell3D
+            """
+            pass
+        def cell3_d_initialize_edges(                              # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            number_cell3_d_edges: int
+            ) -> None:
+            """/ \brief Initialize the Cell3D edges number
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param numberCell3DEdges the number of edges of Cell3D
+            """
+            pass
+        def cell3_ds_initialize_faces(                             # overridable (pure virtual)
+            self,
+            number_cell3_ds_faces: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds faces number
+            / \param numberCell3DsFaces the number of faces of each Cell3D
+            """
+            pass
+        def cell3_d_initialize_faces(                              # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            number_cell3_d_faces: int
+            ) -> None:
+            """/ \brief Initialize the Cell3D faces number
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param numberCell3DFaces the number of faces of Cell3D
+            """
+            pass
+        def cell3_d_insert_vertex(                                 # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            vertex_index: int,
+            vertex_cell0_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell3D vertex
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param vertexIndex the number of vertex of the Cell3D from 0 to Cell3DNumberVertices(cell3DIndex)
+            / \param vertexCell0DIndex the Cell0D vertex index from 0 to Cell0DTotalNumber()
+            / \note Cell3DInitializeVertices() should be called before using this method
+            """
+            pass
+        def cell3_d_add_vertices(                                  # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            vertices_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell3D vertices
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param vertexCell0DIndices the Cell0D vertices indices from 0 to Cell0DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+        def cell3_d_insert_edge(                                   # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            edge_index: int,
+            edge_cell1_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell3D edge
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param edgeIndex the number of edge of the Cell3D from 0 to Cell3DNumberEdges(cell3DIndex)
+            / \param edgeCell0DIndex the Cell1D edge index from 0 to Cell1DTotalNumber()
+            / \note Cell3DInitializeEdges() should be called before using this method
+            """
+            pass
+        def cell3_d_add_edges(                                     # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            edges_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell3D edges
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param edgesCell0DIndices the Cell1D edges indices from 0 to Cell1DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+        def cell3_d_find_vertex(                                   # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            cell0_d_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param cell0DIndex the index of cell0D from 0 to Cell0DTotalNumber()
+            / \return the index of the cell0DIndex on the cell3D from 0 to NumberCell3DVertices(cell3DIndex),
+            / NumberCell3DVertices(cell3DIndex) if not found
+            """
+            pass
+        def cell3_d_find_edge(                                     # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            cell1_d_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param cell1DIndex the index of cell1D from 0 to Cell1DTotalNumber()
+            / \return the index of the cell1DIndex on the cell3D from 0 to NumberCell3DEdges(cell3DIndex),
+            / NumberCell3DEdges(cell3DIndex) if not found
+            """
+            pass
+        def cell3_d_find_face(                                     # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            cell2_d_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param cell2DIndex the index of cell2D from 0 to Cell2DTotalNumber()
+            / \return the index of the cell2DIndex on the cell3D from 0 to NumberCell3DFaces(cell3DIndex),
+            / NumberCell3DFaces(cell3DIndex) if not found
+            """
+            pass
+
+        def cell3_d_find_edge_by_extremes(                         # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            origin_cell0_d_index: int,
+            end_cell0_d_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param originCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \param endCell0DIndex the Cell0D Id of origin from 0 to Cell0DTotalNumber()
+            / \return the index of the cell1DIndex on the cell2D from 0 to NumberCell2DEdges(cell3DIndex),
+            / NumberCell2DEdges(cell2DIndex) otherwise
+            """
+            pass
+        def cell3_d_insert_face(                                   # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            face_index: int,
+            face_cell2_d_index: int
+            ) -> None:
+            """/ \brief Insert the Cell3D face
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param faceIndex the number of face of the Cell3D from 0 to Cell3DNumberFaces(cell3DIndex)
+            / \param faceCell0DIndex the Cell2D face index from 0 to Cell2DTotalNumber()
+            / \note Cell3DInitializeFaces() should be called before using this method
+            """
+            pass
+        def cell3_d_add_faces(                                     # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            faces_cell0_d_indices: List[int]
+            ) -> None:
+            """/ \brief Add the Cell3D faces
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param facesCell0DIndices the Cell2D faces indices from 0 to Cell2DTotalNumber()
+            / \note No itialization is necessary
+            """
+            pass
+        def cell3_d_set_marker(                                    # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            marker: int
+            ) -> None:
+            """/ \brief Set the Cell1D Marker
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param marker the marker of the Cell3D
+            """
+            pass
+        def cell3_d_set_state(                                     # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            state: bool
+            ) -> None:
+            """/ \brief Set the Cell3D state
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param state True if Cell3D is active, False otherwise
+            """
+            pass
+        def cell3_d_total_number(self) -> int:                     # overridable (pure virtual)
+            """/ \return the total number of Cell3Ds"""
+            pass
+        def cell3_d_number_vertices(                               # overridable (pure virtual)
+            self,
+            cell3_d_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the number of vertices of Cell3D
+            """
+            pass
+        def cell3_d_number_edges(self, cell3_d_index: int) -> int: # overridable (pure virtual)
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the number of edges of Cell3D
+            """
+            pass
+        def cell3_d_number_faces(self, cell3_d_index: int) -> int: # overridable (pure virtual)
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the number of faces of Cell3D
+            """
+            pass
+        def cell3_d_vertices(                                      # overridable (pure virtual)
+            self,
+            cell3_d_index: int
+            ) -> List[int]:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the Cell0D index collections of Cell3D from 0 to Cell0DTotalNumber(), size
+            / Cell3DNumberVertices(cell3DIndex)
+            """
+            pass
+        def cell3_d_vertex(                                        # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            vertex_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param vertexIndex the index of cell0D vertex from 0 to NumberCell3DVertices(cell3DIndex)
+            / \return the Cell0D index of vertex of Cell3D from 0 to Cell0DTotalNumber()
+            """
+            pass
+        def cell3_d_vertex_coordinates(                            # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            vertex_index: int
+            ) -> Eigen.Vector3d:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param vertexIndex the index of cell0D vertex from 0 to NumberCell3DVertices(cell3DIndex)
+            / \return the Cell0D coordinates of vertex of Cell3D, size 3 x 1
+            """
+            pass
+        def cell3_d_vertices_coordinates(                          # overridable (pure virtual)
+            self,
+            cell3_d_index: int
+            ) -> Eigen.MatrixXd:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the Cell0D coordinates of all the vertices of Cell3D, size 3 x NumberCell3DVertices(cell3DIndex)
+            """
+            pass
+
+        def cell3_d_edges(self, cell3_d_index: int) -> List[int]:  # overridable (pure virtual)
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the Cell1D index collections of Cell3D from 0 to Cell1DTotalNumber(), size
+            / Cell3DNumberEdges(cell3DIndex)
+            """
+            pass
+
+        def cell3_d_edge(                                          # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            edge_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param edgeIndex the index of cell1D edge from 0 to NumberCell3DEdges(edgeIndex)
+            / \return the Cell1D index of edge of Cell3D from 0 to Cell1DTotalNumber()
+            """
+            pass
+
+        def cell3_d_faces(self, cell3_d_index: int) -> List[int]:  # overridable (pure virtual)
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the Cell2D index collections of Cell3D from 0 to Cell2DTotalNumber(), size
+            / Cell3DNumberFaces(cell3DIndex)
+            """
+            pass
+
+        def cell3_ds_faces_vertices(                               # overridable (pure virtual)
+            self
+            ) -> List[List[List[int]]]:
+            """/ \return the Cell0D index collections of all the faces of all Cell3Ds, size Cell3DTotalNumber() x
+            / Cell3DNumberFaces(cell3DIndex) x Cell2DNumberVertices(cell2DIndex)
+            """
+            pass
+        def cell3_ds_vertices(self) -> List[List[int]]:            # overridable (pure virtual)
+            """/ \return the Cell0D index collections of all Cell3Ds, size Cell3DTotalNumber() x
+            / Cell3DNumberVertices(cell3DIndex)
+            """
+            pass
+        def cell3_ds_edges(self) -> List[List[int]]:               # overridable (pure virtual)
+            """/ \return the Cell1D index collections of all Cell3Ds, size Cell3DTotalNumber() x Cell3DNumberEdges(cell3DIndex)"""
+            pass
+        def cell3_ds_faces(self) -> List[List[int]]:               # overridable (pure virtual)
+            """/ \return the Cell2D index collections of all Cell3Ds, size Cell3DTotalNumber() x Cell3DNumberFaces(cell3DIndex)"""
+            pass
+
+        def cell3_d_face(                                          # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            face_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param faceIndex the index of cell2D face from 0 to NumberCell3DFaces(cell3DIndex)
+            / \return the Cell2D index of face of Cell3D from 0 to Cell2DTotalNumber()
+            """
+            pass
+        #/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+        #/ \return the cell3D marker
+        def cell3_d_marker(self, cell3_d_index: int) -> int:       # overridable (pure virtual)
+            pass
+        def cell3_ds_marker(self) -> List[int]:                    # overridable (pure virtual)
+            pass
+        def cell3_d_is_active(self, cell3_d_index: int) -> bool:   # overridable (pure virtual)
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return if the cell3D is active
+            """
+            pass
+        def cell3_ds_state(self) -> List[bool]:                    # overridable (pure virtual)
+            """/ \return the activation state of all cell3Ds"""
+            pass
+
+        def cell3_d_has_original_cell3_d(                          # overridable (pure virtual)
+            self,
+            updated_cell3_d_index: int
+            ) -> bool:
+            """/ \param updatedCell3DIndex the updated cell3D index, from 0 to Cell3DTotalNumber()
+            / \return True if has an original cell, False otherwise (the original cell is itself)
+            """
+            pass
+        def cell3_d_original_cell3_d(                              # overridable (pure virtual)
+            self,
+            updated_cell3_d_index: int
+            ) -> int:
+            """/ \param updatedCell3DIndex the updated cell3D index, from 0 to Cell3DTotalNumber()
+            / \return the original cell3D index, from 0 to Cell3DTotalNumber()
+            """
+            pass
+        def cell3_d_has_updated_cell3_ds(                          # overridable (pure virtual)
+            self,
+            cell3_d_index: int
+            ) -> bool:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return if the cell3D has new cell3Ds associated
+            """
+            pass
+        def cell3_d_number_updated_cell3_ds(                       # overridable (pure virtual)
+            self,
+            cell3_d_index: int
+            ) -> int:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \return the number of new cell3Ds associated to cell3DIndex
+            """
+            pass
+        def cell3_d_has_updated_cell3_d(                           # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_idex: int
+            ) -> bool:
+            """/ \param cell3DIndex the index of cell3D from 0 to Cell3DTotalNumber()
+            / \param updatedCell3DIdex the index of the new Cell3D from 0 to Cell3DTotalNumber()
+            / \return if the Cell3D has the updatedCell3DIdex associated
+            """
+            pass
+        def cell3_d_insert_updated_cell3_d(                        # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_idex: int
+            ) -> None:
+            """/ \brief Add the new Cell3D to an existing Cell3D
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param updatedCell3DIdex the index of the new Cell3D from 0 to Cell3DTotalNumber()
+            """
+            pass
+        def cell3_d_updated_cell3_ds(                              # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            updated_cell3_d_ids: std.list[int]
+            ) -> bool:
+            """/ \brief return the updated Cell3D Ids for cell3DIndex
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param updatedCell3DIds the list of the new Cell3D Ids associated to cell3DIndex
+            / \return True if the cell3DIndex is contained in the updatedCell3DIds list, False otherwise
+            """
+            pass
+
+        def cell3_d_initialize_double_properties(                  # overridable (pure virtual)
+            self,
+            number_double_properties: int
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds double properties
+            / \param numberDoubleProperties the total number of Cell3Ds properties
+            / \note No reset of Cell3Ds is performed
+            """
+            pass
+        def cell3_d_add_double_property(                           # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> int:
+            """/ \brief Add the Cell3Ds double property identified by id
+            / \param propertyId the id of Cell3Ds property
+            / \return the double property position
+            """
+            pass
+        def cell3_ds_initialize_double_property_values(            # overridable (pure virtual)
+            self,
+            property_index: int,
+            porperty_sizes: List[int]
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds double property sizes
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            / \param porpertySize the double property size of each Cell3D, size 1 x Cell3DTotalNumber()
+            """
+            pass
+        def cell3_d_initialize_double_property_values(             # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            porperty_size: int
+            ) -> None:
+            """/ \brief Initialize the Cell3Ds double property size
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            / \param porpertySize the double property size of Cell3D
+            """
+            pass
+        def cell3_d_insert_double_property_value(                  # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            property_value_index: int,
+            property_value: float
+            ) -> None:
+            """/ \brief Insert the Cell3Ds double property value at position
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            """
+            pass
+
+        def cell3_d_number_double_properties(self) -> int:         # overridable (pure virtual)
+            """/ \return the total number of double properties of Cell3Ds"""
+            pass
+        def cell3_d_double_property_id(                            # overridable (pure virtual)
+            self,
+            property_index: int
+            ) -> str:
+            """/ \return the id of the double property of Cell3Ds
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            """
+            pass
+        def cell3_d_double_property_exists(                        # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> bool:
+            """/ \return True if the double propertyId of Cell3Ds exists
+            / \param propertyId the id of Cell3D double property
+            """
+            pass
+        def cell3_d_double_property_index(                         # overridable (pure virtual)
+            self,
+            property_id: str
+            ) -> int:
+            """/ \return the propertyIndex of the double property of Cell3Ds from 0 to Cell3DNumberProperties()
+            / \param propertyId the id of Cell3D double property
+            """
+            pass
+        def cell3_d_double_property_size(                          # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            property_index: int
+            ) -> int:
+            """/ \return the size of the double property of Cell3D
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            """
+            pass
+        def cell3_d_double_property_value(                         # overridable (pure virtual)
+            self,
+            cell3_d_index: int,
+            property_index: int,
+            property_value_index: int
+            ) -> float:
+            """/ \return the value of the double property at valueIndex of Cell3D
+            / \param cell3DIndex the index of Cell3D from 0 to Cell3DTotalNumber()
+            / \param propertyIndex the index of Cell3D double property from 0 to Cell3DNumberProperties()
+            / \param propertyValueIndex the index of Cell3D double property value from 0 to Cell3DDoublePropertySize()
+            """
+            pass
+
+        def compress(self) -> None:                                # overridable (pure virtual)
+            """/ \brief Compact the mesh to save memory"""
+            pass
+
+        def to_string(self) -> str:                                # overridable (pure virtual)
+            """/ \return The mesh converted to string"""
+            pass
+        def __init__(self) -> None:
+            """Autogenerated default constructor"""
+            pass
+    class MeshMatricesDAO(Gedim.IMeshDAO):
         def __init__(self, mesh: MeshMatrices) -> None:
             pass
 
@@ -5123,6 +7168,170 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             pass
 
 # </submodule gedim>
+####################    </generated_from:IMeshDAO.hpp>    ####################
+
+
+####################    <generated_from:MeshMatrices.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __MeshMatrices_H
+#
+
+
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class MeshMatrices:
+        """
+        (final class)
+        """
+        dimension: int = 0                                                                                                   #/< Geometric dimension
+        number_cell0_d: int = 0                                                                                              #/< number of Cell0D
+        cell0_d_coordinates: List[float] = List[float]()                                                                     #/< Cell0D coordinates, size 3 x NumberCell0D (x,y,z)
+        cell0_d_markers: List[int] = List[int]()                                                                             #/< Cell0D markers, size 1 x NumberCell0D (marker)
+        number_cell0_d_neighbour_cell1_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell1D indices per cell, size  1
+        #/< x NumberCell0D + 1
+        cell0_d_neighbour_cell1_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell1D indices, size 1 x
+        #/< NumberCell0DNeighbourCell1D[NumberCell0D]
+        number_cell0_d_neighbour_cell2_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell2D indices per cell, size  1
+        #/< x NumberCell0D + 1
+        cell0_d_neighbour_cell2_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell2D indices, size 1 x
+        #/< NumberCell0DNeighbourCell2D[NumberCell0D]
+        number_cell0_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell0D neighbour Cell2D indices per cell, size  1
+        #/< x NumberCell0D + 1
+        cell0_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell0D neighbour Cell3D indices, size 1 x
+        #/< NumberCell0DNeighbourCell3D[NumberCell0D]
+        active_cell0_d: List[bool] = List[bool]()                                                                            #/< active Cell0D
+        updated_cell0_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell0D the
+        #/< list to the new cell0Ds
+        cell0_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell0D double property id - double property index
+        cell0_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell0D double property id -
+        #/< double property index
+        cell0_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell0D double property sizes
+        cell0_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell0D double property values
+        number_cell1_d: int = 0                                                                                              #/< number of Cell1D
+        cell1_d_vertices: List[int] = List[int]()                                                                            #/< Cell1D vertices indices, size 2 x NumberCell1D (fromId,toId)
+        number_cell1_d_neighbour_cell2_d: List[int] = List[int](0)                                                           #/< Cell1D neighbour Cell2D indices per cell, size  1
+        #/< x NumberCell1D + 1
+        number_cell1_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell1D neighbour Cell3D indices per cell, size  1
+        #/< x NumberCell1D + 1
+        cell1_d_neighbour_cell2_ds: List[int] = List[int]()                                                                  #/< Cell1D neighbour Cell2D indices, size 1 x
+        #/< NumberCell1DNeighbourCell2D[NumberCell1D]
+        cell1_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell1D neighbour Cell3D indices, size 1 x
+        #/< NumberCell1DNeighbourCell3D[NumberCell1D]
+        cell1_d_markers: List[int] = List[int]()                                                                             #/< Cell1D propertoes, size 1 x NumberCell1D (marker)
+        active_cell1_d: List[bool] = List[bool]()                                                                            #/< active Cell1D
+        cell1_d_original_cell1_ds: List[int] = List[int]()                                                                   #/< for each cell1D the index of original cell1D,
+        #/< NumberCell1D is the default value (no original cell),
+        #/< size 1 x NumberCell1D
+        updated_cell1_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell1D the
+        #/< list to the new cell1Ds
+        cell1_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell1D double property id - double property index
+        cell1_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell1D double property id -
+        #/< double property index
+        cell1_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell1D double property sizes
+        cell1_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell1D double property values
+        number_cell2_d: int = 0                                                                                              #/< number of Cell2D
+        number_cell2_d_vertices: List[int] = List[int](0)                                                                    #/< number of Vertices per Cell2D, size 1 x NumberCell2D + 1
+        number_cell2_d_edges: List[int] = List[int](0)                                                                       #/< number of Edges per Cell2D, size 1 x NumberCell2D + 1
+        cell2_d_vertices: List[int] = List[int]()                                                                            #/< Cell2D Vertices indices, size 1 x
+        #/< NumberCell2DVertices[NumberCell2D]
+        cell2_d_edges: List[int] = List[int]()                                                                               #/< Cell2D Cell1D indices, size 1 x NumberCell2DEdges[NumberCell2D]
+        number_cell2_d_neighbour_cell3_d: List[int] = List[int](0)                                                           #/< Cell2D neighbour Cell3D indices per cell, size  1
+        #/< x NumberCell2D + 1
+        cell2_d_neighbour_cell3_ds: List[int] = List[int]()                                                                  #/< Cell2D neighbour Cell3D indices, size 1 x
+        #/< NumberCell2DNeighbourCell3D[NumberCell2D]
+        cell2_d_markers: List[int] = List[int]()                                                                             #/< Cell2D markers, size 1 x NumberCell2D (marker)
+        active_cell2_d: List[bool] = List[bool]()                                                                            #/< active Cell2D
+        number_cell2_d_subdivision: List[int] = List[int](0)                                                                 #/< number of sub-division per Cell2D, size 1 x
+        #/< NumberCell2D + 1
+        cell2_d_subdivision: List[int] = List[int]()                                                                         #/< Sub-division of Cell2Ds, used for Concave polygons, size 1 x
+        #/< NumberCell2DSubdivision[NumberCell2D]
+        cell2_d_original_cell2_ds: List[int] = List[int]()                                                                   #/< for each cell2D the index of original cell2D,
+        #/< NumberCell2D is the default value (no original cell),
+        #/< size 1 x NumberCell2D
+        updated_cell2_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell2D the
+        #/< list to the new cell2Ds
+        cell2_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell2D double property id - double property index
+        cell2_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell2D double property id -
+        #/< double property index
+        cell2_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell2D double property sizes
+        cell2_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell2D double property values
+        number_cell3_d: int = 0                                                                                              #/< number of Cell3D
+        number_cell3_d_vertices: List[int] = List[int](0)                                                                    #/< number of Vertices per Cell3D, size 1 x NumberCell3D + 1
+        number_cell3_d_edges: List[int] = List[int](0)                                                                       #/< number of Edges per Cell3D, size 1 x NumberCell3D + 1
+        number_cell3_d_faces: List[int] = List[int](0)                                                                       #/< number of Faces per Cell3D, size 1 x NumberCell3D + 1
+        cell3_d_vertices: List[int] = List[int]()                                                                            #/< Cell3D Cell0D indices, size 1 x
+        #/< NumberCell3DVertices[NumberCell3D]
+        cell3_d_edges: List[int] = List[int]()                                                                               #/< Cell3D Cell1D indices, size 1 x NumberCell3DEdges[NumberCell3D]
+        cell3_d_faces: List[int] = List[int]()                                                                               #/< Cell3D Cell2D indices, size 1 x NumberCell3DFaces[NumberCell3D]
+        cell3_d_markers: List[int] = List[int]()                                                                             #/< Cell3D markers, size 1 x NumberCell3D (marker)
+        active_cell3_d: List[bool] = List[bool]()                                                                            #/< active Cell3D
+        cell3_d_original_cell3_ds: List[int] = List[int]()                                                                   #/< for each cell3D the index of original cell3D,
+        #/< NumberCell3D is the default value (no original cell),
+        #/< size 1 x NumberCell3D
+        updated_cell3_ds: std.unordered_map[int, std.unordered_set[int]] = std.unordered_map<int, std.unordered_set<int>>()  #/< for each cell3D the
+        #/< list to the new cell3Ds
+        cell3_d_double_property_ids: List[str] = List[str]()                                                                 #/< Cell3D double property id - double property index
+        cell3_d_double_property_indices: std.unordered_map[str, int] = std.unordered_map<str, int>()                         #/< Cell3D double property id -
+        #/< double property index
+        cell3_d_double_property_sizes: List[List[int]] = List[List[int]]()                                                   #/< Cell3D double property sizes
+        cell3_d_double_property_values: List[List[float]] = List[List[float]]()                                              #/< Cell3D double property values
+        def __init__(
+            self,
+            cell0_d_coordinates: List[float] = List[float](),
+            active_cell0_d: List[bool] = List[bool](),
+            cell0_d_double_property_ids: List[str] = List[str](),
+            cell0_d_double_property_values: List[List[float]] = List[List[float]](),
+            active_cell1_d: List[bool] = List[bool](),
+            cell1_d_double_property_ids: List[str] = List[str](),
+            cell1_d_double_property_values: List[List[float]] = List[List[float]](),
+            active_cell2_d: List[bool] = List[bool](),
+            cell2_d_double_property_ids: List[str] = List[str](),
+            cell2_d_double_property_values: List[List[float]] = List[List[float]](),
+            active_cell3_d: List[bool] = List[bool](),
+            cell3_d_double_property_ids: List[str] = List[str](),
+            cell3_d_double_property_values: List[List[float]] = List[List[float]]()
+            ) -> None:
+            """Auto-generated default constructor with named params"""
+            pass
+
+# </submodule gedim>
+####################    </generated_from:MeshMatrices.hpp>    ####################
+
+
+####################    <generated_from:MeshMatricesDAO.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __MeshMatricesWrapper_H
+#
+
+
+# #endif
+#
 ####################    </generated_from:MeshMatricesDAO.hpp>    ####################
 
 
