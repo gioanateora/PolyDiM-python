@@ -119,6 +119,15 @@ class assembler_utilities:
             test_global_offset_do_fs = test_functions_do_fs_data.global_offsets_do_fs[test_f]
             test_local_offset = test_functions_do_fs_data.local_offsets[test_f]
 
+            # Test slicing indices
+            global_dof_i = np.array(test_do_fs_data.cells_do_fs_global_index[cell_index],
+                                    dtype=np.int64) + test_global_offset_do_fs
+            local_dof_i = np.array(test_do_fs_data.cells_do_fs_local_index[cell_index],
+                                   dtype=np.int64) + test_local_offset
+
+            if local_rhs is not None and global_rhs is not None:
+                global_rhs[global_dof_i] += local_rhs[local_dof_i]
+
             for trial_f in range(len(trial_functions_do_fs_data.do_fs_data_indices)):
 
                 # data
@@ -129,12 +138,6 @@ class assembler_utilities:
                 trial_local_offset = trial_functions_do_fs_data.local_offsets[trial_f]
                 trial_global_offset_strongs = trial_functions_do_fs_data.global_offsets_strongs[trial_f]
 
-                # Test slicing indices
-                global_dof_i = np.array(test_do_fs_data.cells_do_fs_global_index[cell_index], dtype=np.int64) + test_global_offset_do_fs
-                local_dof_i = np.array(test_do_fs_data.cells_do_fs_local_index[cell_index], dtype=np.int64) + test_local_offset
-
-                if local_rhs is not None and global_rhs is not None:
-                    global_rhs[global_dof_i] += local_rhs[local_dof_i]
 
                 # Trial slicing indices
                 global_dof_j = np.array(trial_do_fs_data.cells_do_fs_global_index[cell_index], dtype=np.int64) + trial_global_offset_do_fs

@@ -2478,6 +2478,13 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             ) -> Eigen.Vector3d:
             pass
 
+        def plane_to_polygon(
+            self,
+            plane_normal: Eigen.Vector3d,
+            plane_origin: Eigen.Vector3d
+            ) -> Eigen.MatrixXd:
+            pass
+
         def rotate_points(
             self,
             points: Eigen.MatrixXd,
@@ -9491,6 +9498,19 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """
             pass
 
+        def export_mesh_to_medit(
+            self,
+            mesh: IMeshDAO,
+            export_folder: str,
+            file_name: str,
+            separate_file: bool = False
+            ) -> None:
+            """/ \brief Export Mesh To MEDIT
+            / \param mesh the mesh
+            / \param exportFolder the folder in which the mesh is exported
+            """
+            pass
+
         def export_cell2_d_to_vtu(
             self,
             mesh: IMeshDAO,
@@ -10461,6 +10481,11 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
                 """
                 (final class)
                 """
+                class StatusTypes(enum.IntEnum):
+                    unknown = enum.auto()                        # (= -1)
+                    active = enum.auto()                         # (= 0)
+                    inactive = enum.auto()                       # (= 1)
+
                 unaligned_vertices_index: List[List[int]] = List[List[int]]()
                 vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd]()
                 area: List[float] = List[float]()
@@ -10476,6 +10501,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
                 centroid_vertices_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd]()
                 in_radius: List[float] = List[float]()
                 quality: List[float] = List[float]()
+                status: List[Gedim.RefinementUtilities.Cell2Ds_GeometricData.Cell2D_GeometricData.StatusTypes]
                 def __init__(
                     self,
                     vertices: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
@@ -10491,7 +10517,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
                     centroid_edges_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
                     centroid_vertices_distance: List[Eigen.VectorXd] = List[Eigen.VectorXd](),
                     in_radius: List[float] = List[float](),
-                    quality: List[float] = List[float]()
+                    quality: List[float] = List[float](),
+                    status: List[RefinementUtilities.Cell2Ds_GeometricData.Cell2D_GeometricData.StatusTypes] = List[RefinementUtilities.Cell2Ds_GeometricData.Cell2D_GeometricData.StatusTypes]()
                     ) -> None:
                     """Auto-generated default constructor with named params"""
                     pass
@@ -10500,10 +10527,19 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
                 """
                 (final class)
                 """
+                class StatusTypes(enum.IntEnum):
+                    unknown = enum.auto()                        # (= -1)
+                    quality_checked = enum.auto()                # (= 0)
+                    quality_to_check = enum.auto()               # (= 1)
+
                 max_aligned: int = 0
                 aligned: List[int] = List[int]()
-                def __init__(self) -> None:
-                    """Auto-generated default constructor"""
+                status: List[Gedim.RefinementUtilities.Cell2Ds_GeometricData.Cell1D_GeometricData.StatusTypes] = List[Gedim.RefinementUtilities.Cell2Ds_GeometricData.Cell1D_GeometricData.StatusTypes]()
+                def __init__(
+                    self,
+                    status: List[RefinementUtilities.Cell2Ds_GeometricData.Cell1D_GeometricData.StatusTypes] = List[RefinementUtilities.Cell2Ds_GeometricData.Cell1D_GeometricData.StatusTypes]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
                     pass
 
             cell1_ds: Gedim.RefinementUtilities.Cell2Ds_GeometricData.Cell1D_GeometricData
@@ -10752,7 +10788,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell2_ds_rotation: List[Eigen.Matrix3d],
             cell2_ds_translation: List[Eigen.Vector3d],
             mesh: IMeshDAO
-            ) -> None:
+            ) -> RefinementUtilities.RefinePolygon_UpdateNeighbour_Result:
             """/ \brief Update Cell1D neighbours of refined triangle by edge with refine by edge
             / \param cell2DIndex the index of Cell2D refined, from 0 to Cell2DTotalNumber()
             / \param cell1DIndex the index of Cell1D splitted by the refinement, from 0 to Cell1DTotalNumber()
@@ -10836,6 +10872,15 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell1_ds_aligned: List[int],
             mesh: IMeshDAO
             ) -> RefinementUtilities.RefinePolygon_CheckResult.Cell1DToSplit:
+            pass
+
+        def refine_mesh_2_d_triangles(
+            self,
+            geometry_utilities: GeometryUtilities,
+            cell2_ds_to_refine_index: List[int],
+            mesh_geometric_data: RefinementUtilities.Cell2Ds_GeometricData,
+            mesh: IMeshDAO
+            ) -> List[int]:
             pass
 
 
@@ -19711,6 +19756,591 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 ####################    </generated_from:FEM_PCC_3D_LocalSpace.hpp>    ####################
 
 
+####################    <generated_from:FEM_Triangle_RT_MCC_2D_ReferenceElement.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_Triangle_RT_MCC_2D_ReferenceElement_HPP
+#
+
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule mcc>
+        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace MCC"""
+
+            class FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                num_dofs0_d: int
+                num_dofs1_d: int
+                num_dofs2_d: int
+
+                num_basis_functions: int
+
+                reference_basis_function_values: Eigen.MatrixXd
+                def __init__(
+                    self,
+                    reference_basis_function_values: Eigen.MatrixXd = Eigen.MatrixXd()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                class BasisFunctions:
+                    monomials_coefficients: Eigen.MatrixXd
+
+                    reference_basis_function_values: List[Eigen.MatrixXd]
+                    reference_basis_function_divergence_values: Eigen.MatrixXd
+                    def __init__(
+                        self,
+                        monomials_coefficients: Eigen.MatrixXd = Eigen.MatrixXd(),
+                        reference_basis_function_values: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                        reference_basis_function_divergence_values: Eigen.MatrixXd = Eigen.MatrixXd()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+                num_dofs0_d: int
+                num_dofs1_d: int
+                num_dofs2_d: int
+
+                num_basis_functions: int
+
+                basis_functions: Dict[List[bool], Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data.BasisFunctions]
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            class FEM_Triangle_RT_MCC_2D_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                dimension: int
+                order: int
+                nk: int
+                nkm1: int
+
+                quadrature: Polydim.VEM.Quadrature.VEM_QuadratureData_2D
+                boundary_quadrature: Dict[List[bool], Polydim.VEM.Quadrature.VEM_Quadrature_2D.Edges_QuadratureData]
+
+                monomials_2_d_data: Polydim.Utilities.Monomials_Data
+                monomials_2_d_center: Eigen.Vector3d
+                monomials_2_d_scale: float
+
+                monomials_1_d_data: Polydim.Utilities.Monomials_Data
+                monomials_1_d_center: Eigen.Vector3d
+                monomials_1_d_scale: float
+
+                vander_boundary1_d: Eigen.MatrixXd
+
+                triangle_vertices: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0).finished()
+                edge_lengths: Eigen.Vector3d = (Eigen.Vector3d() << 1.0, sqrt(2.0), 1.0).finished()
+                edge_tangents: Eigen.Matrix3d = (Eigen.Matrix3d() << 1.0, -1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0).finished()
+                edge_normals: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0 / sqrt(2.0), -1.0, -1.0, 1.0 / sqrt(2.0), 0.0, 0.0, 0.0, 0.0).finished()
+
+                reference_element_data_velocity: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data
+                reference_element_data_pressure: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data
+                def __init__(
+                    self,
+                    quadrature: VEM.Quadrature.VEM_QuadratureData_2D = VEM.Quadrature.VEM_QuadratureData_2(),
+                    monomials_2_d_data: Utilities.Monomials_Data = Utilities.Monomials_Data(),
+                    monomials_2_d_center: Eigen.Vector3d = Eigen.Vector3d(),
+                    monomials_2_d_scale: float = float(),
+                    monomials_1_d_data: Utilities.Monomials_Data = Utilities.Monomials_Data(),
+                    monomials_1_d_center: Eigen.Vector3d = Eigen.Vector3d(),
+                    monomials_1_d_scale: float = float(),
+                    vander_boundary1_d: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    triangle_vertices: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0).finished(),
+                    edge_lengths: Eigen.Vector3d = (Eigen.Vector3d() << 1.0, sqrt(2.0), 1.0).finished(),
+                    edge_tangents: Eigen.Matrix3d = (Eigen.Matrix3d() << 1.0, -1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0).finished(),
+                    edge_normals: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0 / sqrt(2.0), -1.0, -1.0, 1.0 / sqrt(2.0), 0.0, 0.0, 0.0, 0.0).finished(),
+                    reference_element_data_velocity: FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data = FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data(),
+                    reference_element_data_pressure: FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data = FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_Triangle_RT_MCC_2D_ReferenceElement:
+                """
+                (final class)
+                """
+                def create(self, order: int) -> FEM_Triangle_RT_MCC_2D_ReferenceElement_Data:
+                    pass
+                def evaluate_velocity_basis_functions(
+                    self,
+                    points: Eigen.MatrixXd,
+                    monomials_coefficients: Eigen.MatrixXd,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
+                    ) -> List[Eigen.MatrixXd]:
+                    """ ***************************************************************************"""
+                    pass
+                def evaluate_pressure_basis_functions(
+                    self,
+                    points: Eigen.MatrixXd,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
+                    ) -> Eigen.MatrixXd:
+                    """ ***************************************************************************"""
+                    pass
+                def evaluate_velocity_basis_functions_divergence(
+                    self,
+                    points: Eigen.MatrixXd,
+                    monomials_coefficients: Eigen.MatrixXd,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
+                    ) -> Eigen.MatrixXd:
+                    """ ***************************************************************************"""
+                    pass
+                # ***************************************************************************
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+        # </submodule mcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_Triangle_RT_MCC_2D_ReferenceElement.hpp>    ####################
+
+
+####################    <generated_from:FEM_Triangle_RT_MCC_2D_LocalSpace.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_Triangle_RT_MCC_2D_LocalSpace_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule mcc>
+        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace MCC"""
+
+            class FEM_Triangle_RT_MCC_2D_LocalSpace:
+                """
+                (final class)
+                """
+                def create_local_space(
+                    self,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    polygon: FEM_MCC_2D_Polygon_Geometry
+                    ) -> FEM_Triangle_RT_MCC_2D_LocalSpace_Data:
+                    pass
+
+                @overload
+                def compute_pressure_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    """ Basis functions"""
+                    pass
+
+                @overload
+                def compute_velocity_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
+                    ) -> List[Eigen.MatrixXd]:
+                    pass
+
+                @overload
+                def compute_velocity_basis_functions_divergence_values(
+                    self,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_pressure_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_velocity_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> List[Eigen.MatrixXd]:
+                    pass
+
+                @overload
+                def compute_velocity_basis_functions_divergence_values(
+                    self,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+        # </submodule mcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_Triangle_RT_MCC_2D_LocalSpace.hpp>    ####################
+
+
+####################    <generated_from:FEM_MCC_2D_ReferenceElement.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_MCC_2D_ReferenceElement_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule mcc>
+        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace MCC"""
+
+            class FEM_MCC_Types(enum.IntEnum):
+                rt = enum.auto() # (= 0)
+
+            class FEM_MCC_2D_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                dimension: int
+                order: int
+                num_dofs0_d: int
+                num_dofs1_d: int
+
+                fem_main_type: Polydim.FEM.MCC.FEM_MCC_Types
+
+                rt_triangle_reference_element_data: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
+                def __init__(
+                    self,
+                    fem_main_type: FEM.MCC.FEM_MCC_Types = FEM.MCC.FEM_MCC_Types(),
+                    rt_triangle_reference_element_data: FEM.MCC.FEM_Triangle_RT_MCC_2D_ReferenceElement_Data = FEM.MCC.FEM_Triangle_RT_MCC_2D_ReferenceElement_Data()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_MCC_2D_ReferenceElement:
+                """
+                (final class)
+                """
+
+                def __init__(self) -> None:
+                    pass
+
+                def create(
+                    self,
+                    order: int,
+                    fem_main_type: FEM_MCC_Types
+                    ) -> FEM_MCC_2D_ReferenceElement_Data:
+                    pass
+
+        # </submodule mcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_MCC_2D_ReferenceElement.hpp>    ####################
+
+
+####################    <generated_from:FEM_MCC_2D_LocalSpace_Data.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_MCC_2D_LocalSpace_Data_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule mcc>
+        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace MCC"""
+            class FEM_MCC_2D_Types(enum.IntEnum):
+                rt_triangle = enum.auto() # (= 0)
+
+            class FEM_MCC_2D_Polygon_Geometry:
+                """
+                (final class)
+                """
+                tolerance1_d: float
+                tolerance2_d: float
+
+                vertices: Eigen.MatrixXd
+                edges_length: Eigen.VectorXd
+                edges_direction: List[bool]
+                edges_tangent: Eigen.MatrixXd
+                edges_normal: Eigen.MatrixXd
+                def __init__(
+                    self,
+                    tolerance1_d: float = float(),
+                    tolerance2_d: float = float(),
+                    vertices: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    edges_length: Eigen.VectorXd = Eigen.VectorXd(),
+                    edges_direction: List[bool] = List[bool](),
+                    edges_tangent: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    edges_normal: Eigen.MatrixXd = Eigen.MatrixXd()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_Triangle_RT_MCC_2D_LocalSpace_Data:
+                """
+                (final class)
+                """
+                map_data: Gedim.MapTriangle.MapTriangleData
+
+                order: int
+                num_velocity_basis_functions: int
+                num_pressure_basis_functions: int
+                edges_direction: List[bool]
+
+                internal_quadrature: Gedim.Quadrature.QuadratureData
+                boundary_quadrature: List[Gedim.Quadrature.QuadratureData]
+                def __init__(
+                    self,
+                    map_data: Gedim.MapTriangle.MapTriangleData = Gedim.MapTriangle.MapTriangleData(),
+                    internal_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    boundary_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_MCC_2D_LocalSpace_Data:
+                """
+                (final class)
+                """
+                rt_triangle_local_space_data: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_LocalSpace_Data
+                fem_type: Polydim.FEM.MCC.FEM_MCC_2D_Types
+
+                internal_quadrature: Gedim.Quadrature.QuadratureData
+                boundary_quadrature: List[Gedim.Quadrature.QuadratureData]
+                num_velocity_basis_functions: int
+                num_pressure_basis_functions: int
+                def __init__(
+                    self,
+                    rt_triangle_local_space_data: FEM.MCC.FEM_Triangle_RT_MCC_2D_LocalSpace_Data = FEM.MCC.FEM_Triangle_RT_MCC_2D_LocalSpace_Data(),
+                    fem_type: FEM.MCC.FEM_MCC_2D_Types = FEM.MCC.FEM_MCC_2D_Types(),
+                    internal_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    boundary_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+
+        # </submodule mcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_MCC_2D_LocalSpace_Data.hpp>    ####################
+
+
+####################    <generated_from:FEM_MCC_2D_LocalSpace.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_MCC_2D_LocalSpace_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule mcc>
+        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace MCC"""
+
+            class FEM_MCC_2D_LocalSpace:
+                """
+                (final class)
+                """
+                def create_local_space(
+                    self,
+                    reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
+                    polygon: FEM_MCC_2D_Polygon_Geometry
+                    ) -> FEM_MCC_2D_LocalSpace_Data:
+                    pass
+
+                @overload
+                def compute_velocity_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_MCC_2D_LocalSpace_Data
+                    ) -> List[Eigen.MatrixXd]:
+                    pass
+
+                @overload
+                def compute_pressure_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_MCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_velocity_basis_functions_divergence_values(
+                    self,
+                    reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_MCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_velocity_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_MCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> List[Eigen.MatrixXd]:
+                    pass
+
+                @overload
+                def compute_pressure_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_MCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_velocity_basis_functions_divergence_values(
+                    self,
+                    reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_MCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+        # </submodule mcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_MCC_2D_LocalSpace.hpp>    ####################
+
+
 ####################    <generated_from:PDE_Mesh_Utilities.hpp>    ####################
 # _LICENSE_HEADER_
 #
@@ -20838,6 +21468,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 vem_mcc_ortho = enum.auto()            # (= 3)
                 vem_mcc_edge_ortho = enum.auto()       # (= 4)
                 vem_mcc_ortho_edge_ortho = enum.auto() # (= 5)
+                fem_rt_mcc = enum.auto()               # (= 6)
 
             class ReferenceElement_Data:
                 """
@@ -20853,6 +21484,11 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 vem_type: Polydim.VEM.MCC.VEM_MCC_2D_LocalSpace_Types
                 vem_local_space_velocity: VEM.MCC.I_VEM_MCC_2D_Velocity_LocalSpace
                 vem_local_space_pressure: VEM.MCC.I_VEM_MCC_2D_Pressure_LocalSpace
+
+                fem_type: Polydim.FEM.MCC.FEM_MCC_Types
+                fem_local_space: Polydim.FEM.MCC.FEM_MCC_2D_LocalSpace
+                fem_reference_element: Polydim.FEM.MCC.FEM_MCC_2D_ReferenceElement
+                fem_reference_element_data: Polydim.FEM.MCC.FEM_MCC_2D_ReferenceElement_Data
                 def __init__(self) -> None:
                     """Autogenerated default constructor"""
                     pass
@@ -20864,6 +21500,9 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 vem_geometry: Polydim.VEM.MCC.VEM_MCC_2D_Polygon_Geometry
                 vem_local_space_data_velocity: Polydim.VEM.MCC.VEM_MCC_2D_Velocity_LocalSpace_Data
                 vem_local_space_data_pressure: Polydim.VEM.MCC.VEM_MCC_2D_Pressure_LocalSpace_Data
+
+                fem_geometry: Polydim.FEM.MCC.FEM_MCC_2D_Polygon_Geometry
+                fem_local_space_data: Polydim.FEM.MCC.FEM_MCC_2D_LocalSpace_Data
                 def __init__(self) -> None:
                     """Autogenerated default constructor"""
                     pass
@@ -20878,12 +21517,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     """
                     num_boundary_quadrature_points: int = 0
                     num_internal_quadrature_points: int = 0
-                    analysis: Polydim.VEM.MCC.VEM_MCC_PerformanceAnalysis_Data
+                    vem_analysis: Polydim.VEM.MCC.VEM_MCC_PerformanceAnalysis_Data
                     def __init__(self) -> None:
                         """Autogenerated default constructor"""
                         pass
 
-                vem_performance_data: Polydim.PDETools.LocalSpace_MCC_2D.Performance_Data.Cell2D_Performance
+                performance_data: Polydim.PDETools.LocalSpace_MCC_2D.Performance_Data.Cell2D_Performance
                 def __init__(self) -> None:
                     """Autogenerated default constructor"""
                     pass
@@ -20912,6 +21551,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 pass
 
             @staticmethod
+            @overload
             def velocity_basis_functions_values(
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data,
@@ -20966,6 +21606,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 edge_quadrature_points: Eigen.MatrixXd
                 ) -> Eigen.MatrixXd:
+                pass
+
+            @staticmethod
+            @overload
+            def velocity_basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                points: Eigen.MatrixXd,
+                projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
+                ) -> List[Eigen.MatrixXd]:
                 pass
 
             @staticmethod
