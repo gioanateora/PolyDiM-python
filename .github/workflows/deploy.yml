@@ -1,12 +1,14 @@
 name: Build
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  release:
+    types: [published, released]
+  #push:
+  #  branches:
+  #    - main
+  #pull_request:
+  #  branches:
+  #    - main
 
 jobs:
   generate_bindings:
@@ -95,6 +97,29 @@ jobs:
   upload_test_pypi:
     needs: [build_wheels]
     runs-on: ubuntu-latest
+    if: ${{ github.event.release.prerelease }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: cibw-*
+          path: wheelhouse
+          merge-multiple: true
+
+      - name: Upload to TestPyPI
+        env:
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          pip install twine
+          twine upload --repository-url https://test.pypi.org/legacy/ wheelhouse/* --verbose
+
+  upload_pypi:
+    needs: [build_wheels]
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.release.prerelease }}
     steps:
       - uses: actions/setup-python@v5
         with:

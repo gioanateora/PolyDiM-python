@@ -183,7 +183,7 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/Utilities/GBasis_Data.hpp",
             "PolyDiM/PolyDiM/src/Utilities/GBasis_2D.hpp",
             "PolyDiM/PolyDiM/src/Utilities/GBasis_3D.hpp",
-            #"PolyDiM/PolyDiM/src/Utilities/Monomials_Utilities.hpp",
+            # "PolyDiM/PolyDiM/src/Utilities/Monomials_Utilities.hpp",
             "PolyDiM/PolyDiM/src/Utilities/Monomials_1D.hpp",
             "PolyDiM/PolyDiM/src/Utilities/Monomials_2D.hpp",
             "PolyDiM/PolyDiM/src/Utilities/Monomials_3D.hpp",
@@ -202,7 +202,7 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_Creator.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_LocalSpace.hpp",
             "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_Inertia_LocalSpace.hpp",
-            "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_Ortho_LocalSpace.hpp",
+            "PolyDiM/PolyDiM/src/VEM/PCC/3D/VEM_PCC_3D_Ortho_LocalSpace.hpp", # ok
             "PolyDiM/PolyDiM/src/VEM/MCC/VEM_MCC_Utilities.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/2D/VEM_MCC_2D_Creator.hpp",
             "PolyDiM/PolyDiM/src/VEM/MCC/2D/VEM_MCC_2D_EdgeOrtho_Velocity_LocalSpace.hpp",
@@ -262,6 +262,8 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_2D.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_MCC_2D.hpp",
+            "PolyDiM/PolyDiM/src/PDETools/Assembler/assembler_PCC_2D_functions_data.hpp",
+            "PolyDiM/PolyDiM/src/PDETools/Assembler/assembler_PCC_2D_functions.hpp"
             ]
 
 # Stampa a console:
