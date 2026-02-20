@@ -13452,6 +13452,3634 @@ void py_init_module_polydim(py::module &m)
     } // </namespace Polydim>
     ////////////////////    </generated_from:VEM_MCC_3D_Creator.hpp>    ////////////////////
 
+
+    ////////////////////    <generated_from:VEM_MCC_3D_Pressure_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_MCC_3D_Pressure_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace MCC>
+                py::module_ pyNsPolydim_NsVEM_NsMCC = pyNsPolydim_NsVEM.def_submodule("mcc", "namespace MCC");
+                auto pyNsPolydim_NsVEM_NsMCC_ClassVEM_MCC_3D_Pressure_LocalSpace =
+                    py::class_<Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsMCC, "VEM_MCC_3D_Pressure_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace_Data &>(&Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::MCC::VEM_MCC_3D_Pressure_ReferenceElement_Data &, const Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace_Data &>(&Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::MCC::VEM_MCC_3D_Pressure_ReferenceElement_Data &, const Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::MCC::VEM_MCC_3D_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    ;
+            } // </namespace MCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_MCC_3D_Pressure_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_MCC_3D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __VEM_MCC_3D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace MCC>
+                py::module_ pyNsPolydim_NsVEM_NsMCC = pyNsPolydim_NsVEM.def_submodule("mcc", "namespace MCC");
+                auto pyNsPolydim_NsVEM_NsMCC_ClassVEM_MCC_3D_Pressure_ReferenceElement =
+                    py::class_<Polydim::VEM::MCC::VEM_MCC_3D_Pressure_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsMCC, "VEM_MCC_3D_Pressure_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::MCC::VEM_MCC_3D_Pressure_ReferenceElement::Create, py::arg("order"))
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsMCC_ClassVEM_MCC_3D_Velocity_ReferenceElement =
+                    py::class_<Polydim::VEM::MCC::VEM_MCC_3D_Velocity_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsMCC, "VEM_MCC_3D_Velocity_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::MCC::VEM_MCC_3D_Velocity_ReferenceElement::Create, py::arg("order"))
+                    ;
+            } // </namespace MCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_MCC_3D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_MCC_3D_Velocity_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_MCC_3D_Velocity_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace MCC>
+                py::module_ pyNsPolydim_NsVEM_NsMCC = pyNsPolydim_NsVEM.def_submodule("mcc", "namespace MCC");
+                auto pyNsPolydim_NsVEM_NsMCC_ClassVEM_MCC_3D_Velocity_LocalSpace =
+                    py::class_<Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsMCC, "VEM_MCC_3D_Velocity_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polyhedron"))
+                    .def("compute_dofi_dofi_stabilization_matrix",
+                        &Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace::ComputeDofiDofiStabilizationMatrix, py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_values",
+                        &Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_divergence_values",
+                        &Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace::ComputeBasisFunctionsDivergenceValues, py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace_Data &>(&Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::MCC::VEM_MCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::MCC::VEM_MCC_3D_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    ;
+            } // </namespace MCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_MCC_3D_Velocity_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_Utilities.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_Utilities_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyEnumProjectionTypes =
+                    py::enum_<Polydim::VEM::DF_PCC::ProjectionTypes>(pyNsPolydim_NsVEM_NsDF_PCC, "ProjectionTypes", py::arithmetic(), "")
+                        .value("pi0km2", Polydim::VEM::DF_PCC::ProjectionTypes::Pi0km2, "")
+                        .value("pi0k", Polydim::VEM::DF_PCC::ProjectionTypes::Pi0k, "")
+                        .value("pi_nabla", Polydim::VEM::DF_PCC::ProjectionTypes::PiNabla, "")
+                        .value("pi0km1_der", Polydim::VEM::DF_PCC::ProjectionTypes::Pi0km1Der, "");
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_Utilities =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_Utilities", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("compute_edge_basis_coefficients",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputeEdgeBasisCoefficients, py::arg("order"), py::arg("edge_internal_points"))
+                    .def("compute_basis_functions_derivative_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputeBasisFunctionsDerivativeValues, py::arg("dimension"), py::arg("projection_type"), py::arg("nkm1"), py::arg("vander_internal"), py::arg("vander_internal_derivatives"), py::arg("pi_nabla"), py::arg("pi0km1_der"))
+                    .def("compute_basis_functions_divergence_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputeBasisFunctionsDivergenceValues, py::arg("nkm1"), py::arg("vander_internal"), py::arg("vmatrix"))
+                    .def("compute_basis_functions_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputeBasisFunctionsValues, py::arg("dimension"), py::arg("projection_type"), py::arg("nkm2"), py::arg("pi0km2"), py::arg("pi0k"), py::arg("vander_internal"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Eigen::MatrixXd &, const Polydim::Utilities::Monomials_2D &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsValues<Polydim::Utilities::Monomials_2D>, py::const_), py::arg("vander_internal"), py::arg("param_1"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Eigen::MatrixXd &, const Polydim::Utilities::Monomials_3D &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsValues<Polydim::Utilities::Monomials_3D>, py::const_), py::arg("vander_internal"), py::arg("param_1"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::Utilities::Monomials_Data &, const Polydim::Utilities::Monomials_2D &, const Eigen::Vector3d &, const double &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsValues<Polydim::Utilities::Monomials_2D>, py::const_), py::arg("data"), py::arg("monomials"), py::arg("centroid"), py::arg("diameter"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::Utilities::Monomials_Data &, const Polydim::Utilities::Monomials_3D &, const Eigen::Vector3d &, const double &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsValues<Polydim::Utilities::Monomials_3D>, py::const_), py::arg("data"), py::arg("monomials"), py::arg("centroid"), py::arg("diameter"), py::arg("points"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const std::vector<Eigen::MatrixXd> &, const Polydim::Utilities::Monomials_2D &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsDerivativeValues<Polydim::Utilities::Monomials_2D>, py::const_), py::arg("vander_internal_derivatives"), py::arg("param_1"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const std::vector<Eigen::MatrixXd> &, const Polydim::Utilities::Monomials_3D &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsDerivativeValues<Polydim::Utilities::Monomials_3D>, py::const_), py::arg("vander_internal_derivatives"), py::arg("param_1"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::Utilities::Monomials_Data &, const Polydim::Utilities::Monomials_2D &, const double &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsDerivativeValues<Polydim::Utilities::Monomials_2D>, py::const_), py::arg("data"), py::arg("monomials"), py::arg("diameter"), py::arg("vander"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::Utilities::Monomials_Data &, const Polydim::Utilities::Monomials_3D &, const double &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsDerivativeValues<Polydim::Utilities::Monomials_3D>, py::const_), py::arg("data"), py::arg("monomials"), py::arg("diameter"), py::arg("vander"))
+                    .def("compute_polynomials_laplacian_values",
+                        py::overload_cast<const Polydim::Utilities::Monomials_Data &, const Polydim::Utilities::Monomials_2D &, const double &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsLaplacianValues<Polydim::Utilities::Monomials_2D>, py::const_), py::arg("data"), py::arg("monomials"), py::arg("diameter"), py::arg("vander"))
+                    .def("compute_polynomials_laplacian_values",
+                        py::overload_cast<const Polydim::Utilities::Monomials_Data &, const Polydim::Utilities::Monomials_3D &, const double &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputePolynomialsLaplacianValues<Polydim::Utilities::Monomials_3D>, py::const_), py::arg("data"), py::arg("monomials"), py::arg("diameter"), py::arg("vander"))
+                    .def("compute_values_on_edge",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputeValuesOnEdge, py::arg("edge_internal_points"), py::arg("order"), py::arg("edge_basis_coefficients"), py::arg("points_curvilinear_coordinates"))
+                    .def("compute_dofi_dofi_stabilization_matrix",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_Utilities::ComputeDofiDofiStabilizationMatrix, py::arg("dimension"), py::arg("projector"), py::arg("coefficient"), py::arg("dmatrix"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_Utilities.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_2D_Creator.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_2D_Creator_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyEnumVEM_DF_PCC_2D_LocalSpace_Types =
+                    py::enum_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_LocalSpace_Types>(pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_LocalSpace_Types", py::arithmetic(), "")
+                        .value("vem_df_pcc_2_d_local_space", Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_LocalSpace_Types::VEM_DF_PCC_2D_LocalSpace, "")
+                        .value("vem_df_pcc_2_d_reduced_local_space", Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_LocalSpace_Types::VEM_DF_PCC_2D_Reduced_LocalSpace, "");
+
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_2_d_full_pressure_reference_element",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_2D_full_pressure_reference_element, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_2_d_full_velocity_reference_element",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_2D_full_velocity_reference_element, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_2_d_full_pressure_local_space",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_2D_full_pressure_local_space, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_2_d_full_velocity_local_space",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_2D_full_velocity_local_space, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_2_d_pressure_reference_element",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_2D_pressure_reference_element, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_2_d_velocity_reference_element",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_2D_velocity_reference_element, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_2_d_pressure_local_space",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_2D_pressure_local_space, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_2_d_velocity_local_space",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_2D_velocity_local_space, py::arg("type"));
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_2D_Creator.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_2D_LocalSpace_Data.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_2D_LocalSpace_Data_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Polygon_Geometry =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Polygon_Geometry", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    double Tolerance1D = double(), double Tolerance2D = double(), Eigen::MatrixXd Vertices = Eigen::MatrixXd(), Eigen::Vector3d Centroid = Eigen::Vector3d(), double Measure = double(), double Diameter = double(), std::vector<Eigen::Matrix3d> TriangulationVertices = std::vector<Eigen::Matrix3d>(), Eigen::VectorXd EdgesLength = Eigen::VectorXd(), std::vector<bool> EdgesDirection = std::vector<bool>(), Eigen::MatrixXd EdgesTangent = Eigen::MatrixXd(), Eigen::MatrixXd EdgesNormal = Eigen::MatrixXd())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry>();
+                        r_ctor_->Tolerance1D = Tolerance1D;
+                        r_ctor_->Tolerance2D = Tolerance2D;
+                        r_ctor_->Vertices = Vertices;
+                        r_ctor_->Centroid = Centroid;
+                        r_ctor_->Measure = Measure;
+                        r_ctor_->Diameter = Diameter;
+                        r_ctor_->TriangulationVertices = TriangulationVertices;
+                        r_ctor_->EdgesLength = EdgesLength;
+                        r_ctor_->EdgesDirection = EdgesDirection;
+                        r_ctor_->EdgesTangent = EdgesTangent;
+                        r_ctor_->EdgesNormal = EdgesNormal;
+                        return r_ctor_;
+                    })
+                    , py::arg("tolerance1_d") = double(), py::arg("tolerance2_d") = double(), py::arg("vertices") = Eigen::MatrixXd(), py::arg("centroid") = Eigen::Vector3d(), py::arg("measure") = double(), py::arg("diameter") = double(), py::arg("triangulation_vertices") = std::vector<Eigen::Matrix3d>(), py::arg("edges_length") = Eigen::VectorXd(), py::arg("edges_direction") = std::vector<bool>(), py::arg("edges_tangent") = Eigen::MatrixXd(), py::arg("edges_normal") = Eigen::MatrixXd()
+                    )
+                    .def_readwrite("tolerance1_d", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::Tolerance1D, "")
+                    .def_readwrite("tolerance2_d", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::Tolerance2D, "")
+                    .def_readwrite("vertices", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::Vertices, "")
+                    .def_readwrite("centroid", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::Centroid, "")
+                    .def_readwrite("measure", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::Measure, "")
+                    .def_readwrite("diameter", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::Diameter, "")
+                    .def_readwrite("triangulation_vertices", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::TriangulationVertices, "")
+                    .def_readwrite("edges_length", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::EdgesLength, "")
+                    .def_readwrite("edges_direction", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::EdgesDirection, "")
+                    .def_readwrite("edges_tangent", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::EdgesTangent, "")
+                    .def_readwrite("edges_normal", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry::EdgesNormal, "")
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Velocity_LocalSpace_Data =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Velocity_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData BoundaryQuadrature = Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData(), Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData EdgesDOFs = Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData(), double Diameter = double(), double Measure = double(), Eigen::Vector3d Centroid = Eigen::Vector3d(), Eigen::MatrixXd VanderInternal = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> VanderInternalDerivatives = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd VanderBoundary = Eigen::MatrixXd(), Eigen::MatrixXd VanderBoundaryKp1 = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> VanderBoundaryDerivatives = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd VanderKp1EdgeProjections = Eigen::MatrixXd(), std::vector<std::vector<Eigen::MatrixXd>> VectorDecompositionMatrices = std::vector<std::vector<Eigen::MatrixXd>>(), std::vector<Eigen::MatrixXd> VanderGBigOPlus = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> VanderGBigOPluskm2 = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd Hmatrix = Eigen::MatrixXd(), Eigen::MatrixXd HmatrixKp1 = Eigen::MatrixXd(), Eigen::VectorXd ReferenceEdgeInternalPoints = Eigen::VectorXd(), Eigen::VectorXd ReferenceEdgeDofInternalPoints = Eigen::VectorXd(), Eigen::VectorXd EdgeBasisCoefficients = Eigen::VectorXd(), std::vector<Eigen::MatrixXd> PiNabla = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Pi0km2 = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Pi0k = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Pi0km1Der = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd Wmatrix = Eigen::MatrixXd(), Eigen::MatrixXd Vmatrix = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> Bmatrix = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Dmatrix = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd Gmatrix = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> Cmatrix = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Cmatrixkm2 = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Ematrix = std::vector<Eigen::MatrixXd>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data>();
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->BoundaryQuadrature = BoundaryQuadrature;
+                        r_ctor_->EdgesDOFs = EdgesDOFs;
+                        r_ctor_->Diameter = Diameter;
+                        r_ctor_->Measure = Measure;
+                        r_ctor_->Centroid = Centroid;
+                        r_ctor_->VanderInternal = VanderInternal;
+                        r_ctor_->VanderInternalDerivatives = VanderInternalDerivatives;
+                        r_ctor_->VanderBoundary = VanderBoundary;
+                        r_ctor_->VanderBoundaryKp1 = VanderBoundaryKp1;
+                        r_ctor_->VanderBoundaryDerivatives = VanderBoundaryDerivatives;
+                        r_ctor_->VanderKp1EdgeProjections = VanderKp1EdgeProjections;
+                        r_ctor_->VectorDecompositionMatrices = VectorDecompositionMatrices;
+                        r_ctor_->VanderGBigOPlus = VanderGBigOPlus;
+                        r_ctor_->VanderGBigOPluskm2 = VanderGBigOPluskm2;
+                        r_ctor_->Hmatrix = Hmatrix;
+                        r_ctor_->HmatrixKp1 = HmatrixKp1;
+                        r_ctor_->ReferenceEdgeInternalPoints = ReferenceEdgeInternalPoints;
+                        r_ctor_->ReferenceEdgeDofInternalPoints = ReferenceEdgeDofInternalPoints;
+                        r_ctor_->EdgeBasisCoefficients = EdgeBasisCoefficients;
+                        r_ctor_->PiNabla = PiNabla;
+                        r_ctor_->Pi0km2 = Pi0km2;
+                        r_ctor_->Pi0k = Pi0k;
+                        r_ctor_->Pi0km1Der = Pi0km1Der;
+                        r_ctor_->Wmatrix = Wmatrix;
+                        r_ctor_->Vmatrix = Vmatrix;
+                        r_ctor_->Bmatrix = Bmatrix;
+                        r_ctor_->Dmatrix = Dmatrix;
+                        r_ctor_->Gmatrix = Gmatrix;
+                        r_ctor_->Cmatrix = Cmatrix;
+                        r_ctor_->Cmatrixkm2 = Cmatrixkm2;
+                        r_ctor_->Ematrix = Ematrix;
+                        return r_ctor_;
+                    })
+                    , py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("boundary_quadrature") = Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData(), py::arg("edges_do_fs") = Polydim::VEM::Quadrature::VEM_Quadrature_2D::Edges_QuadratureData(), py::arg("diameter") = double(), py::arg("measure") = double(), py::arg("centroid") = Eigen::Vector3d(), py::arg("vander_internal") = Eigen::MatrixXd(), py::arg("vander_internal_derivatives") = std::vector<Eigen::MatrixXd>(), py::arg("vander_boundary") = Eigen::MatrixXd(), py::arg("vander_boundary_kp1") = Eigen::MatrixXd(), py::arg("vander_boundary_derivatives") = std::vector<Eigen::MatrixXd>(), py::arg("vander_kp1_edge_projections") = Eigen::MatrixXd(), py::arg("vector_decomposition_matrices") = std::vector<std::vector<Eigen::MatrixXd>>(), py::arg("vander_g_big_o_plus") = std::vector<Eigen::MatrixXd>(), py::arg("vander_g_big_o_pluskm2") = std::vector<Eigen::MatrixXd>(), py::arg("hmatrix") = Eigen::MatrixXd(), py::arg("hmatrix_kp1") = Eigen::MatrixXd(), py::arg("reference_edge_internal_points") = Eigen::VectorXd(), py::arg("reference_edge_dof_internal_points") = Eigen::VectorXd(), py::arg("edge_basis_coefficients") = Eigen::VectorXd(), py::arg("pi_nabla") = std::vector<Eigen::MatrixXd>(), py::arg("pi0km2") = std::vector<Eigen::MatrixXd>(), py::arg("pi0k") = std::vector<Eigen::MatrixXd>(), py::arg("pi0km1_der") = std::vector<Eigen::MatrixXd>(), py::arg("wmatrix") = Eigen::MatrixXd(), py::arg("vmatrix") = Eigen::MatrixXd(), py::arg("bmatrix") = std::vector<Eigen::MatrixXd>(), py::arg("dmatrix") = std::vector<Eigen::MatrixXd>(), py::arg("gmatrix") = Eigen::MatrixXd(), py::arg("cmatrix") = std::vector<Eigen::MatrixXd>(), py::arg("cmatrixkm2") = std::vector<Eigen::MatrixXd>(), py::arg("ematrix") = std::vector<Eigen::MatrixXd>()
+                    )
+                    .def_readwrite("order", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Order, "")
+                    .def_readwrite("dimension", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Dimension, "")
+                    .def_readwrite("n_kp1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::NKp1, "")
+                    .def_readwrite("nk", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Nk, "")
+                    .def_readwrite("nkm1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Nkm1, "")
+                    .def_readwrite("nkm2", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Nkm2, "")
+                    .def_readwrite("nkm3", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Nkm3, "")
+                    .def_readwrite("nkm4", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Nkm4, "")
+                    .def_readwrite("num_vertex_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::NumVertexBasisFunctions, "")
+                    .def_readwrite("num_edge_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::NumEdgeBasisFunctions, "")
+                    .def_readwrite("num_boundary_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::NumBoundaryBasisFunctions, "")
+                    .def_readwrite("num_divergence_internal_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::NumDivergenceInternalBasisFunctions, "")
+                    .def_readwrite("num_big_o_plus_internal_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::NumBigOPlusInternalBasisFunctions, "")
+                    .def_readwrite("num_internal_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::NumInternalBasisFunctions, "")
+                    .def_readwrite("num_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::NumBasisFunctions, "")
+                    .def_readwrite("internal_quadrature", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::BoundaryQuadrature, "")
+                    .def_readwrite("edges_do_fs", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::EdgesDOFs, "")
+                    .def_readwrite("diameter", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Diameter, "")
+                    .def_readwrite("measure", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Measure, "")
+                    .def_readwrite("centroid", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Centroid, "")
+                    .def_readwrite("vander_internal", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VanderInternal, "")
+                    .def_readwrite("vander_internal_derivatives", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VanderInternalDerivatives, "")
+                    .def_readwrite("vander_boundary", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VanderBoundary, "")
+                    .def_readwrite("vander_boundary_kp1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VanderBoundaryKp1, "")
+                    .def_readwrite("vander_boundary_derivatives", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VanderBoundaryDerivatives, "")
+                    .def_readwrite("vander_kp1_edge_projections", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VanderKp1EdgeProjections, "")
+                    .def_readwrite("vector_decomposition_matrices", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VectorDecompositionMatrices, "")
+                    .def_readwrite("vander_g_big_o_plus", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VanderGBigOPlus, "")
+                    .def_readwrite("vander_g_big_o_pluskm2", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::VanderGBigOPluskm2, "")
+                    .def_readwrite("hmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Hmatrix, "")
+                    .def_readwrite("hmatrix_kp1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::HmatrixKp1, "")
+                    .def_readwrite("reference_edge_internal_points", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::ReferenceEdgeInternalPoints, "")
+                    .def_readwrite("reference_edge_dof_internal_points", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::ReferenceEdgeDofInternalPoints, "")
+                    .def_readwrite("edge_basis_coefficients", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::EdgeBasisCoefficients, "")
+                    .def_readwrite("pi_nabla", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::PiNabla, "")
+                    .def_readwrite("pi0km2", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Pi0km2, "")
+                    .def_readwrite("pi0k", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Pi0k, "")
+                    .def_readwrite("pi0km1_der", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Pi0km1Der, "")
+                    .def_readwrite("wmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Wmatrix, "")
+                    .def_readwrite("vmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Vmatrix, "")
+                    .def_readwrite("bmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Bmatrix, "")
+                    .def_readwrite("dmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Dmatrix, "")
+                    .def_readwrite("gmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Gmatrix, "")
+                    .def_readwrite("cmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Cmatrix, "")
+                    .def_readwrite("cmatrixkm2", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Cmatrixkm2, "")
+                    .def_readwrite("ematrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data::Ematrix, "")
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Pressure_LocalSpace_Data =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Pressure_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    double Diameter = double(), Eigen::Vector3d Centroid = Eigen::Vector3d(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), Eigen::MatrixXd VanderInternal = Eigen::MatrixXd(), Eigen::MatrixXd Hmatrix = Eigen::MatrixXd())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data>();
+                        r_ctor_->Diameter = Diameter;
+                        r_ctor_->Centroid = Centroid;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->VanderInternal = VanderInternal;
+                        r_ctor_->Hmatrix = Hmatrix;
+                        return r_ctor_;
+                    })
+                    , py::arg("diameter") = double(), py::arg("centroid") = Eigen::Vector3d(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("vander_internal") = Eigen::MatrixXd(), py::arg("hmatrix") = Eigen::MatrixXd()
+                    )
+                    .def_readwrite("order", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::Order, "")
+                    .def_readwrite("dimension", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::Dimension, "")
+                    .def_readwrite("nk", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::Nk, "")
+                    .def_readwrite("nkm1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::Nkm1, "")
+                    .def_readwrite("num_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::NumBasisFunctions, "")
+                    .def_readwrite("diameter", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::Diameter, "")
+                    .def_readwrite("centroid", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::Centroid, "")
+                    .def_readwrite("internal_quadrature", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("vander_internal", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::VanderInternal, "")
+                    .def_readwrite("hmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data::Hmatrix, "")
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_2D_LocalSpace_Data.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_2D_Pressure_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_2D_Presure_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Pressure_LocalSpace =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Pressure_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_2D_Pressure_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Reduced_Pressure_LocalSpace =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_2D_Reduced_Pressure_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_2D_Reduced_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_2D_Reduced_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Reduced_Pressure_ReferenceElement =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Pressure_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Reduced_Pressure_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Pressure_ReferenceElement::Create, py::arg("order"))
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Reduced_Velocity_ReferenceElement =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Reduced_Velocity_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_ReferenceElement::Create, py::arg("order"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_2D_Reduced_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Reduced_Velocity_LocalSpace =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_dofi_dofi_stabilization_matrix",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputeDofiDofiStabilizationMatrix, py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_values_on_edge",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputeValuesOnEdge, py::arg("reference_element_data"), py::arg("points_curvilinear_coordinates"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("polygon"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("polygon"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("polygon"), py::arg("points"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("polygon"), py::arg("points"))
+                    .def("compute_polynomials_laplacian_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputePolynomialsLaplacianValues, py::arg("reference_element_data"), py::arg("polygon"), py::arg("points"))
+                    .def("compute_basis_functions_divergence_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsDivergenceValues, py::arg("local_space"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_2D_Reduced_Velocity_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_2D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_2D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Pressure_ReferenceElement =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Pressure_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Pressure_ReferenceElement::Create, py::arg("order"))
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Velocity_ReferenceElement =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Velocity_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement::Create, py::arg("order"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_2D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_2D_Velocity_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_2D_Velocity_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_2D_Velocity_LocalSpace =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_2D_Velocity_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_dofi_dofi_stabilization_matrix",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputeDofiDofiStabilizationMatrix, py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_values_on_edge",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputeValuesOnEdge, py::arg("reference_element_data"), py::arg("points_curvilinear_coordinates"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("polygon"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("polygon"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("polygon"), py::arg("points"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Polygon_Geometry &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("polygon"), py::arg("points"))
+                    .def("compute_polynomials_laplacian_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputePolynomialsLaplacianValues, py::arg("reference_element_data"), py::arg("polygon"), py::arg("points"))
+                    .def("compute_basis_functions_divergence_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_2D_Velocity_LocalSpace::ComputeBasisFunctionsDivergenceValues, py::arg("local_space"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_2D_Velocity_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_3D_Creator.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_3D_Creator_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyEnumVEM_DF_PCC_3D_LocalSpace_Types =
+                    py::enum_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_LocalSpace_Types>(pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_LocalSpace_Types", py::arithmetic(), "")
+                        .value("vem_df_pcc_3_d_local_space", Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_LocalSpace_Types::VEM_DF_PCC_3D_LocalSpace, "")
+                        .value("vem_df_pcc_3_d_reduced_local_space", Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_LocalSpace_Types::VEM_DF_PCC_3D_Reduced_LocalSpace, "");
+
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_velocity_reference_element_2_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_velocity_reference_element_2D, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_full_pressure_reference_element_3_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_full_pressure_reference_element_3D, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_full_velocity_reference_element_3_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_full_velocity_reference_element_3D, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_full_pressure_local_space_3_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_full_pressure_local_space_3D, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_full_velocity_local_space_3_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_full_velocity_local_space_3D, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_pressure_reference_element_3_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_pressure_reference_element_3D, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_velocity_reference_element_3_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_velocity_reference_element_3D, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_pressure_local_space_3_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_pressure_local_space_3D, py::arg("type"));
+
+                pyNsPolydim_NsVEM_NsDF_PCC.def("create_vem_df_pcc_3_d_velocity_local_space_3_d",
+                    Polydim::VEM::DF_PCC::create_VEM_DF_PCC_3D_velocity_local_space_3D, py::arg("type"));
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_3D_Creator.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_3D_LocalSpace_Data.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_3D_LocalSpace_Data_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Polyhedron_Geometry =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Polyhedron_Geometry", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    double Tolerance1D = double(), double Tolerance2D = double(), double Tolerance3D = double(), Eigen::MatrixXd Vertices = Eigen::MatrixXd(), Eigen::MatrixXi Edges = Eigen::MatrixXi(), std::vector<Eigen::MatrixXi> Faces = std::vector<Eigen::MatrixXi>(), Eigen::Vector3d Centroid = Eigen::Vector3d(), double Measure = double(), double Diameter = double(), std::vector<Eigen::MatrixXd> TetrahedronVertices = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::Matrix3d> FacesRotationMatrix = std::vector<Eigen::Matrix3d>(), std::vector<Eigen::Vector3d> FacesTranslation = std::vector<Eigen::Vector3d>(), std::vector<Eigen::Vector3d> FacesNormal = std::vector<Eigen::Vector3d>(), std::vector<bool> FacesNormalDirection = std::vector<bool>(), std::vector<bool> FacesNormalGlobalDirection = std::vector<bool>(), std::vector<bool> EdgesDirection = std::vector<bool>(), Eigen::MatrixXd EdgesTangent = Eigen::MatrixXd())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry>();
+                        r_ctor_->Tolerance1D = Tolerance1D;
+                        r_ctor_->Tolerance2D = Tolerance2D;
+                        r_ctor_->Tolerance3D = Tolerance3D;
+                        r_ctor_->Vertices = Vertices;
+                        r_ctor_->Edges = Edges;
+                        r_ctor_->Faces = Faces;
+                        r_ctor_->Centroid = Centroid;
+                        r_ctor_->Measure = Measure;
+                        r_ctor_->Diameter = Diameter;
+                        r_ctor_->TetrahedronVertices = TetrahedronVertices;
+                        r_ctor_->FacesRotationMatrix = FacesRotationMatrix;
+                        r_ctor_->FacesTranslation = FacesTranslation;
+                        r_ctor_->FacesNormal = FacesNormal;
+                        r_ctor_->FacesNormalDirection = FacesNormalDirection;
+                        r_ctor_->FacesNormalGlobalDirection = FacesNormalGlobalDirection;
+                        r_ctor_->EdgesDirection = EdgesDirection;
+                        r_ctor_->EdgesTangent = EdgesTangent;
+                        return r_ctor_;
+                    })
+                    , py::arg("tolerance1_d") = double(), py::arg("tolerance2_d") = double(), py::arg("tolerance3_d") = double(), py::arg("vertices") = Eigen::MatrixXd(), py::arg("edges") = Eigen::MatrixXi(), py::arg("faces") = std::vector<Eigen::MatrixXi>(), py::arg("centroid") = Eigen::Vector3d(), py::arg("measure") = double(), py::arg("diameter") = double(), py::arg("tetrahedron_vertices") = std::vector<Eigen::MatrixXd>(), py::arg("faces_rotation_matrix") = std::vector<Eigen::Matrix3d>(), py::arg("faces_translation") = std::vector<Eigen::Vector3d>(), py::arg("faces_normal") = std::vector<Eigen::Vector3d>(), py::arg("faces_normal_direction") = std::vector<bool>(), py::arg("faces_normal_global_direction") = std::vector<bool>(), py::arg("edges_direction") = std::vector<bool>(), py::arg("edges_tangent") = Eigen::MatrixXd()
+                    )
+                    .def_readwrite("tolerance1_d", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Tolerance1D, "")
+                    .def_readwrite("tolerance2_d", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Tolerance2D, "")
+                    .def_readwrite("tolerance3_d", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Tolerance3D, "")
+                    .def_readwrite("vertices", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Vertices, "")
+                    .def_readwrite("edges", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Edges, "")
+                    .def_readwrite("faces", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Faces, "")
+                    .def_readwrite("centroid", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Centroid, "")
+                    .def_readwrite("measure", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Measure, "")
+                    .def_readwrite("diameter", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::Diameter, "")
+                    .def_readwrite("tetrahedron_vertices", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::TetrahedronVertices, "")
+                    .def_readwrite("faces_rotation_matrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::FacesRotationMatrix, "")
+                    .def_readwrite("faces_translation", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::FacesTranslation, "")
+                    .def_readwrite("faces_normal", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::FacesNormal, "")
+                    .def_readwrite("faces_normal_direction", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::FacesNormalDirection, "")
+                    .def_readwrite("faces_normal_global_direction", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::FacesNormalGlobalDirection, "")
+                    .def_readwrite("faces_tangents", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::FacesTangents, "")
+                    .def_readwrite("faces_tangents_global_direction", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::FacesTangentsGlobalDirection, "")
+                    .def_readwrite("edges_direction", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::EdgesDirection, "")
+                    .def_readwrite("edges_tangent", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry::EdgesTangent, "")
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Velocity_LocalSpace_Data =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Velocity_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    std::vector<Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data> facesLocalSpace = std::vector<Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data>(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC BoundaryQuadrature = Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC(), Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC BoundaryQuadratureKL = Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC(), double Diameter = double(), double Measure = double(), Eigen::Vector3d Centroid = Eigen::Vector3d(), Eigen::MatrixXd VanderInternal = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> VanderInternalDerivatives = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd VanderBoundary = Eigen::MatrixXd(), Eigen::MatrixXd VanderBoundaryKL = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> VanderBoundaryDerivatives = std::vector<Eigen::MatrixXd>(), std::vector<std::vector<Eigen::MatrixXd>> VectorDecompositionMatrices = std::vector<std::vector<Eigen::MatrixXd>>(), std::vector<Eigen::MatrixXd> VanderGBigOPlus = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> VanderGBigOPluskm2 = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd Hmatrix = Eigen::MatrixXd(), Eigen::MatrixXd HmatrixKp1 = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> VanderFaceProjectionsKm1 = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd VanderEdgeDofs = Eigen::MatrixXd(), Eigen::MatrixXd VanderFaceProjectionsKp1TimesNormal = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> FaceScaledMomentsBasis = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> ScaledHmatrixOnBoundary = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> PiNabla = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Pi0km2 = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Pi0k = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Pi0km1Der = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd Wmatrix = Eigen::MatrixXd(), Eigen::MatrixXd Vmatrix = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> Bmatrix = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Dmatrix = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd Gmatrix = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> Cmatrix = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Cmatrixkm2 = std::vector<Eigen::MatrixXd>(), std::vector<Eigen::MatrixXd> Ematrix = std::vector<Eigen::MatrixXd>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data>();
+                        r_ctor_->facesLocalSpace = facesLocalSpace;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->BoundaryQuadrature = BoundaryQuadrature;
+                        r_ctor_->BoundaryQuadratureKL = BoundaryQuadratureKL;
+                        r_ctor_->Diameter = Diameter;
+                        r_ctor_->Measure = Measure;
+                        r_ctor_->Centroid = Centroid;
+                        r_ctor_->VanderInternal = VanderInternal;
+                        r_ctor_->VanderInternalDerivatives = VanderInternalDerivatives;
+                        r_ctor_->VanderBoundary = VanderBoundary;
+                        r_ctor_->VanderBoundaryKL = VanderBoundaryKL;
+                        r_ctor_->VanderBoundaryDerivatives = VanderBoundaryDerivatives;
+                        r_ctor_->VectorDecompositionMatrices = VectorDecompositionMatrices;
+                        r_ctor_->VanderGBigOPlus = VanderGBigOPlus;
+                        r_ctor_->VanderGBigOPluskm2 = VanderGBigOPluskm2;
+                        r_ctor_->Hmatrix = Hmatrix;
+                        r_ctor_->HmatrixKp1 = HmatrixKp1;
+                        r_ctor_->VanderFaceProjectionsKm1 = VanderFaceProjectionsKm1;
+                        r_ctor_->VanderEdgeDofs = VanderEdgeDofs;
+                        r_ctor_->VanderFaceProjectionsKp1TimesNormal = VanderFaceProjectionsKp1TimesNormal;
+                        r_ctor_->FaceScaledMomentsBasis = FaceScaledMomentsBasis;
+                        r_ctor_->ScaledHmatrixOnBoundary = ScaledHmatrixOnBoundary;
+                        r_ctor_->PiNabla = PiNabla;
+                        r_ctor_->Pi0km2 = Pi0km2;
+                        r_ctor_->Pi0k = Pi0k;
+                        r_ctor_->Pi0km1Der = Pi0km1Der;
+                        r_ctor_->Wmatrix = Wmatrix;
+                        r_ctor_->Vmatrix = Vmatrix;
+                        r_ctor_->Bmatrix = Bmatrix;
+                        r_ctor_->Dmatrix = Dmatrix;
+                        r_ctor_->Gmatrix = Gmatrix;
+                        r_ctor_->Cmatrix = Cmatrix;
+                        r_ctor_->Cmatrixkm2 = Cmatrixkm2;
+                        r_ctor_->Ematrix = Ematrix;
+                        return r_ctor_;
+                    })
+                    , py::arg("faces_local_space") = std::vector<Polydim::VEM::PCC::VEM_PCC_2D_LocalSpace_Data>(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("boundary_quadrature") = Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC(), py::arg("boundary_quadrature_kl") = Polydim::VEM::Quadrature::VEM_Quadrature_3D::Faces_QuadratureData_PCC(), py::arg("diameter") = double(), py::arg("measure") = double(), py::arg("centroid") = Eigen::Vector3d(), py::arg("vander_internal") = Eigen::MatrixXd(), py::arg("vander_internal_derivatives") = std::vector<Eigen::MatrixXd>(), py::arg("vander_boundary") = Eigen::MatrixXd(), py::arg("vander_boundary_kl") = Eigen::MatrixXd(), py::arg("vander_boundary_derivatives") = std::vector<Eigen::MatrixXd>(), py::arg("vector_decomposition_matrices") = std::vector<std::vector<Eigen::MatrixXd>>(), py::arg("vander_g_big_o_plus") = std::vector<Eigen::MatrixXd>(), py::arg("vander_g_big_o_pluskm2") = std::vector<Eigen::MatrixXd>(), py::arg("hmatrix") = Eigen::MatrixXd(), py::arg("hmatrix_kp1") = Eigen::MatrixXd(), py::arg("vander_face_projections_km1") = std::vector<Eigen::MatrixXd>(), py::arg("vander_edge_dofs") = Eigen::MatrixXd(), py::arg("vander_face_projections_kp1_times_normal") = Eigen::MatrixXd(), py::arg("face_scaled_moments_basis") = std::vector<Eigen::MatrixXd>(), py::arg("scaled_hmatrix_on_boundary") = std::vector<Eigen::MatrixXd>(), py::arg("pi_nabla") = std::vector<Eigen::MatrixXd>(), py::arg("pi0km2") = std::vector<Eigen::MatrixXd>(), py::arg("pi0k") = std::vector<Eigen::MatrixXd>(), py::arg("pi0km1_der") = std::vector<Eigen::MatrixXd>(), py::arg("wmatrix") = Eigen::MatrixXd(), py::arg("vmatrix") = Eigen::MatrixXd(), py::arg("bmatrix") = std::vector<Eigen::MatrixXd>(), py::arg("dmatrix") = std::vector<Eigen::MatrixXd>(), py::arg("gmatrix") = Eigen::MatrixXd(), py::arg("cmatrix") = std::vector<Eigen::MatrixXd>(), py::arg("cmatrixkm2") = std::vector<Eigen::MatrixXd>(), py::arg("ematrix") = std::vector<Eigen::MatrixXd>()
+                    )
+                    .def_readwrite("order", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Order, "")
+                    .def_readwrite("dimension", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Dimension, "")
+                    .def_readwrite("n_kp1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NKp1, "")
+                    .def_readwrite("nk", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Nk, "")
+                    .def_readwrite("nkm1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Nkm1, "")
+                    .def_readwrite("nkm2", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Nkm2, "")
+                    .def_readwrite("nkm3", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Nkm3, "")
+                    .def_readwrite("nkm4", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Nkm4, "")
+                    .def_readwrite("faces_local_space", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::facesLocalSpace, "")
+                    .def_readwrite("num_vertex_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumVertexBasisFunctions, "")
+                    .def_readwrite("num_edge_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumEdgeBasisFunctions, "")
+                    .def_readwrite("num_face_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumFaceBasisFunctions, "")
+                    .def_readwrite("num_normal_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumNormalBasisFunctions, "")
+                    .def_readwrite("num_tangents_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumTangentsBasisFunctions, "")
+                    .def_readwrite("num_boundary_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumBoundaryBasisFunctions, "")
+                    .def_readwrite("num_divergence_internal_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumDivergenceInternalBasisFunctions, "")
+                    .def_readwrite("num_big_o_plus_internal_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumBigOPlusInternalBasisFunctions, "")
+                    .def_readwrite("num_internal_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumInternalBasisFunctions, "")
+                    .def_readwrite("num_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::NumBasisFunctions, "")
+                    .def_readwrite("internal_quadrature", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::BoundaryQuadrature, "")
+                    .def_readwrite("boundary_quadrature_kl", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::BoundaryQuadratureKL, "")
+                    .def_readwrite("diameter", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Diameter, "")
+                    .def_readwrite("measure", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Measure, "")
+                    .def_readwrite("centroid", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Centroid, "")
+                    .def_readwrite("vander_internal", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderInternal, "")
+                    .def_readwrite("vander_internal_derivatives", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderInternalDerivatives, "")
+                    .def_readwrite("vander_boundary", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderBoundary, "")
+                    .def_readwrite("vander_boundary_kl", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderBoundaryKL, "")
+                    .def_readwrite("vander_boundary_derivatives", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderBoundaryDerivatives, "")
+                    .def_readwrite("vector_decomposition_matrices", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VectorDecompositionMatrices, "")
+                    .def_readwrite("vander_g_big_o_plus", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderGBigOPlus, "")
+                    .def_readwrite("vander_g_big_o_pluskm2", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderGBigOPluskm2, "")
+                    .def_readwrite("hmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Hmatrix, "")
+                    .def_readwrite("hmatrix_kp1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::HmatrixKp1, "")
+                    .def_readwrite("vander_face_projections_km1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderFaceProjectionsKm1, "")
+                    .def_readwrite("vander_edge_dofs", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderEdgeDofs, "")
+                    .def_readwrite("vander_face_projections_kp1_times_normal", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::VanderFaceProjectionsKp1TimesNormal, "")
+                    .def_readwrite("face_scaled_moments_basis", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::FaceScaledMomentsBasis, "")
+                    .def_readwrite("scaled_hmatrix_on_boundary", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::ScaledHmatrixOnBoundary, "")
+                    .def_readwrite("pi_nabla", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::PiNabla, "")
+                    .def_readwrite("pi0km2", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Pi0km2, "")
+                    .def_readwrite("pi0k", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Pi0k, "")
+                    .def_readwrite("pi0km1_der", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Pi0km1Der, "")
+                    .def_readwrite("wmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Wmatrix, "")
+                    .def_readwrite("vmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Vmatrix, "")
+                    .def_readwrite("bmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Bmatrix, "")
+                    .def_readwrite("dmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Dmatrix, "")
+                    .def_readwrite("gmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Gmatrix, "")
+                    .def_readwrite("cmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Cmatrix, "")
+                    .def_readwrite("cmatrixkm2", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Cmatrixkm2, "")
+                    .def_readwrite("ematrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data::Ematrix, "")
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Pressure_LocalSpace_Data =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Pressure_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    double Diameter = double(), Eigen::Vector3d Centroid = Eigen::Vector3d(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), Eigen::MatrixXd VanderInternal = Eigen::MatrixXd(), Eigen::MatrixXd Hmatrix = Eigen::MatrixXd())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data>();
+                        r_ctor_->Diameter = Diameter;
+                        r_ctor_->Centroid = Centroid;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->VanderInternal = VanderInternal;
+                        r_ctor_->Hmatrix = Hmatrix;
+                        return r_ctor_;
+                    })
+                    , py::arg("diameter") = double(), py::arg("centroid") = Eigen::Vector3d(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("vander_internal") = Eigen::MatrixXd(), py::arg("hmatrix") = Eigen::MatrixXd()
+                    )
+                    .def_readwrite("order", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::Order, "")
+                    .def_readwrite("dimension", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::Dimension, "")
+                    .def_readwrite("nk", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::Nk, "")
+                    .def_readwrite("nkm1", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::Nkm1, "")
+                    .def_readwrite("num_basis_functions", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::NumBasisFunctions, "")
+                    .def_readwrite("diameter", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::Diameter, "")
+                    .def_readwrite("centroid", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::Centroid, "")
+                    .def_readwrite("internal_quadrature", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("vander_internal", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::VanderInternal, "")
+                    .def_readwrite("hmatrix", &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data::Hmatrix, "")
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_3D_LocalSpace_Data.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_3D_Pressure_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_3D_Pressure_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Pressure_LocalSpace =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Pressure_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polyhedron"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_3D_Pressure_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Reduced_Pressure_LocalSpace =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace::CreateLocalSpace, py::arg("reference_element_data_3_d"), py::arg("polyhedron"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_3D_Reduced_Pressure_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_3D_Reduced_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_3D_Reduced_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Reduced_Pressure_ReferenceElement =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Pressure_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Reduced_Pressure_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Pressure_ReferenceElement::Create, py::arg("order"))
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Reduced_Velocity_ReferenceElement =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Reduced_Velocity_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_ReferenceElement::Create, py::arg("order"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_3D_Reduced_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Reduced_Velocity_LocalSpace =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::CreateLocalSpace, py::arg("reference_element_data_2_d"), py::arg("reference_element_data_3_d"), py::arg("polygonal_faces"), py::arg("polyhedron"))
+                    .def("compute_dofi_dofi_stabilization_matrix",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputeDofiDofiStabilizationMatrix, py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("points"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("points"))
+                    .def("compute_polynomials_laplacian_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputePolynomialsLaplacianValues, py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("points"))
+                    .def("compute_basis_functions_divergence_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace::ComputeBasisFunctionsDivergenceValues, py::arg("local_space"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_3D_Reduced_Velocity_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_3D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_3D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Pressure_ReferenceElement =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Pressure_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Pressure_ReferenceElement::Create, py::arg("order"))
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Velocity_ReferenceElement =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Velocity_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement::Create, py::arg("order"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_3D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VEM_DF_PCC_3D_Velocity_LocalSpace.hpp>    ////////////////////
+    // #ifndef __VEM_DF_PCC_3D_Velocity_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace DF_PCC>
+                py::module_ pyNsPolydim_NsVEM_NsDF_PCC = pyNsPolydim_NsVEM.def_submodule("df_pcc", "namespace DF_PCC");
+                auto pyNsPolydim_NsVEM_NsDF_PCC_ClassVEM_DF_PCC_3D_Velocity_LocalSpace =
+                    py::class_<Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace>
+                        (pyNsPolydim_NsVEM_NsDF_PCC, "VEM_DF_PCC_3D_Velocity_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::CreateLocalSpace, py::arg("reference_element_data_2_d"), py::arg("reference_element_data_3_d"), py::arg("polygonal_faces"), py::arg("polyhedron"))
+                    .def("compute_dofi_dofi_stabilization_matrix",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputeDofiDofiStabilizationMatrix, py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("local_space"), py::arg("projection_type"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("local_space"), py::arg("projection_type"), py::arg("points"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputePolynomialsValues, py::const_), py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("points"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace_Data &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("local_space"))
+                    .def("compute_polynomials_derivative_values",
+                        py::overload_cast<const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_ReferenceElement_Data &, const Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Polyhedron_Geometry &, const Eigen::MatrixXd &>(&Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputePolynomialsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("points"))
+                    .def("compute_polynomials_laplacian_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputePolynomialsLaplacianValues, py::arg("reference_element_data"), py::arg("polyhedron"), py::arg("points"))
+                    .def("compute_basis_functions_divergence_values",
+                        &Polydim::VEM::DF_PCC::VEM_DF_PCC_3D_Velocity_LocalSpace::ComputeBasisFunctionsDivergenceValues, py::arg("local_space"))
+                    ;
+            } // </namespace DF_PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:VEM_DF_PCC_3D_Velocity_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_PCC_1D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_PCC_1D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_1D_Segment_Geometry =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_1D_Segment_Geometry>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_1D_Segment_Geometry", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    double Tolerance1D = double(), Eigen::Vector3d Origin = Eigen::Vector3d(), Eigen::Vector3d Tangent = Eigen::Vector3d(), double Length = double())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_1D_Segment_Geometry>();
+                        r_ctor_->Tolerance1D = Tolerance1D;
+                        r_ctor_->Origin = Origin;
+                        r_ctor_->Tangent = Tangent;
+                        r_ctor_->Length = Length;
+                        return r_ctor_;
+                    })
+                    , py::arg("tolerance1_d") = double(), py::arg("origin") = Eigen::Vector3d(), py::arg("tangent") = Eigen::Vector3d(), py::arg("length") = double()
+                    )
+                    .def_readwrite("tolerance1_d", &Polydim::FEM::PCC::FEM_PCC_1D_Segment_Geometry::Tolerance1D, "")
+                    .def_readwrite("origin", &Polydim::FEM::PCC::FEM_PCC_1D_Segment_Geometry::Origin, "")
+                    .def_readwrite("tangent", &Polydim::FEM::PCC::FEM_PCC_1D_Segment_Geometry::Tangent, "")
+                    .def_readwrite("length", &Polydim::FEM::PCC::FEM_PCC_1D_Segment_Geometry::Length, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_1D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_1D_LocalSpace_Data", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of FEM_PCC_1D_LocalSpace_Data
+                    auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_1D_LocalSpace_Data_ClassSegmentMapData =
+                        py::class_<Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData>
+                            (pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_1D_LocalSpace_Data, "SegmentMapData", "")
+                        .def(py::init<>([](
+                        Eigen::Vector3d Origin = Eigen::Vector3d(), Eigen::Vector3d Tangent = Eigen::Vector3d(), double Length = double(), double SquaredLength = double())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData>();
+                            r_ctor_->Origin = Origin;
+                            r_ctor_->Tangent = Tangent;
+                            r_ctor_->Length = Length;
+                            r_ctor_->SquaredLength = SquaredLength;
+                            return r_ctor_;
+                        })
+                        , py::arg("origin") = Eigen::Vector3d(), py::arg("tangent") = Eigen::Vector3d(), py::arg("length") = double(), py::arg("squared_length") = double()
+                        )
+                        .def_readwrite("origin", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData::Origin, "")
+                        .def_readwrite("tangent", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData::Tangent, "")
+                        .def_readwrite("length", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData::Length, "")
+                        .def_readwrite("squared_length", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData::SquaredLength, "")
+                        ;
+                } // end of inner classes & enums of FEM_PCC_1D_LocalSpace_Data
+
+                pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_1D_LocalSpace_Data
+                    .def(py::init<>([](
+                    Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData MapData = Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData(), Eigen::MatrixXd Dofs = Eigen::MatrixXd(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data>();
+                        r_ctor_->MapData = MapData;
+                        r_ctor_->Dofs = Dofs;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        return r_ctor_;
+                    })
+                    , py::arg("map_data") = Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::SegmentMapData(), py::arg("dofs") = Eigen::MatrixXd(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData()
+                    )
+                    .def_readwrite("map_data", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::MapData, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::Order, "")
+                    .def_readwrite("number_of_basis_functions", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::NumberOfBasisFunctions, "")
+                    .def_readwrite("dofs", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::Dofs, "")
+                    .def_readwrite("dofs_mesh_order", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::DofsMeshOrder, "")
+                    .def_readwrite("dof0_ds_index", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::Dof0DsIndex, "")
+                    .def_readwrite("dof1_ds_index", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::Dof1DsIndex, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data::InternalQuadrature, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_1D_LocalSpace =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_1D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("segment"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("internal_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_PCC_1D_LocalSpace::InternalDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_PCC_1D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_PCC_1D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_PCC_1D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyEnumFEM_PCC_1D_Types =
+                    py::enum_<Polydim::FEM::PCC::FEM_PCC_1D_Types>(pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_1D_Types", py::arithmetic(), "")
+                        .value("equispaced", Polydim::FEM::PCC::FEM_PCC_1D_Types::Equispaced, "")
+                        .value("gauss_lobatto", Polydim::FEM::PCC::FEM_PCC_1D_Types::GaussLobatto, "");
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_1D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_1D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Eigen::MatrixXd DofPositions = Eigen::MatrixXd(), Eigen::VectorXd Interpolation_coefficients = Eigen::VectorXd(), Gedim::Quadrature::QuadratureData ReferenceSegmentQuadrature = Gedim::Quadrature::QuadratureData(), Eigen::MatrixXd ReferenceBasisFunctionValues = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> ReferenceBasisFunctionDerivativeValues = std::vector<Eigen::MatrixXd>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data>();
+                        r_ctor_->DofPositions = DofPositions;
+                        r_ctor_->Interpolation_coefficients = Interpolation_coefficients;
+                        r_ctor_->ReferenceSegmentQuadrature = ReferenceSegmentQuadrature;
+                        r_ctor_->ReferenceBasisFunctionValues = ReferenceBasisFunctionValues;
+                        r_ctor_->ReferenceBasisFunctionDerivativeValues = ReferenceBasisFunctionDerivativeValues;
+                        return r_ctor_;
+                    })
+                    , py::arg("dof_positions") = Eigen::MatrixXd(), py::arg("interpolation_coefficients") = Eigen::VectorXd(), py::arg("reference_segment_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_basis_function_values") = Eigen::MatrixXd(), py::arg("reference_basis_function_derivative_values") = std::vector<Eigen::MatrixXd>()
+                    )
+                    .def_readwrite("dimension", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("num_basis_functions", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::NumBasisFunctions, "")
+                    .def_readwrite("dof_positions", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::DofPositions, "")
+                    .def_readwrite("interpolation_coefficients", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::Interpolation_coefficients, "")
+                    .def_readwrite("reference_segment_quadrature", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::ReferenceSegmentQuadrature, "")
+                    .def_readwrite("reference_basis_function_values", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::ReferenceBasisFunctionValues, "")
+                    .def_readwrite("reference_basis_function_derivative_values", &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data::ReferenceBasisFunctionDerivativeValues, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_1D_ReferenceElement =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_1D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement::Create, py::arg("order"), py::arg("type") = Polydim::FEM::PCC::FEM_PCC_1D_Types::Equispaced, py::arg("quadrature_order") = 0)
+                    .def("evaluate_lambda",
+                        &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement::EvaluateLambda,
+                        py::arg("points"),
+                        "***************************************************************************")
+                    .def("evaluate_grad_lambda",
+                        &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement::EvaluateGradLambda,
+                        py::arg("points"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_functions",
+                        &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement::EvaluateBasisFunctions,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_function_derivatives",
+                        &Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement::EvaluateBasisFunctionDerivatives,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_PCC_1D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_PCC_2D_LocalSpace_Data.hpp>    ////////////////////
+    // #ifndef __FEM_PCC_2D_LocalSpace_Data_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyEnumFEM_PCC_2D_Types =
+                    py::enum_<Polydim::FEM::PCC::FEM_PCC_2D_Types>(pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_2D_Types", py::arithmetic(), "")
+                        .value("triangle", Polydim::FEM::PCC::FEM_PCC_2D_Types::Triangle, "")
+                        .value("quadrilateral", Polydim::FEM::PCC::FEM_PCC_2D_Types::Quadrilateral, "");
+
+
+                auto pyEnumQuadrilateralType =
+                    py::enum_<Polydim::FEM::PCC::QuadrilateralType>(pyNsPolydim_NsFEM_NsPCC, "QuadrilateralType", py::arithmetic(), "")
+                        .value("parallelogram", Polydim::FEM::PCC::QuadrilateralType::Parallelogram, "")
+                        .value("generic", Polydim::FEM::PCC::QuadrilateralType::Generic, "");
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_2D_Polygon_Geometry =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_2D_Polygon_Geometry", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    double Tolerance1D = double(), double Tolerance2D = double(), Eigen::MatrixXd Vertices = Eigen::MatrixXd(), std::vector<bool> EdgesDirection = std::vector<bool>(), Eigen::MatrixXd EdgesTangent = Eigen::MatrixXd(), Eigen::VectorXd EdgesLength = Eigen::VectorXd())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry>();
+                        r_ctor_->Tolerance1D = Tolerance1D;
+                        r_ctor_->Tolerance2D = Tolerance2D;
+                        r_ctor_->Vertices = Vertices;
+                        r_ctor_->EdgesDirection = EdgesDirection;
+                        r_ctor_->EdgesTangent = EdgesTangent;
+                        r_ctor_->EdgesLength = EdgesLength;
+                        return r_ctor_;
+                    })
+                    , py::arg("tolerance1_d") = double(), py::arg("tolerance2_d") = double(), py::arg("vertices") = Eigen::MatrixXd(), py::arg("edges_direction") = std::vector<bool>(), py::arg("edges_tangent") = Eigen::MatrixXd(), py::arg("edges_length") = Eigen::VectorXd()
+                    )
+                    .def_readwrite("tolerance1_d", &Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry::Tolerance1D, "")
+                    .def_readwrite("tolerance2_d", &Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry::Tolerance2D, "")
+                    .def_readwrite("vertices", &Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry::Vertices, "")
+                    .def_readwrite("edges_direction", &Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry::EdgesDirection, "")
+                    .def_readwrite("edges_tangent", &Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry::EdgesTangent, "")
+                    .def_readwrite("edges_length", &Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry::EdgesLength, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Triangle_PCC_2D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Triangle_PCC_2D_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Gedim::MapTriangle::MapTriangleData MapData = Gedim::MapTriangle::MapTriangleData(), Eigen::Matrix3d B_lap = Eigen::Matrix3d(), Eigen::MatrixXd Dofs = Eigen::MatrixXd(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), std::vector<Gedim::Quadrature::QuadratureData> BoundaryQuadrature = std::vector<Gedim::Quadrature::QuadratureData>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data>();
+                        r_ctor_->MapData = MapData;
+                        r_ctor_->B_lap = B_lap;
+                        r_ctor_->Dofs = Dofs;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->BoundaryQuadrature = BoundaryQuadrature;
+                        return r_ctor_;
+                    })
+                    , py::arg("map_data") = Gedim::MapTriangle::MapTriangleData(), py::arg("b_lap") = Eigen::Matrix3d(), py::arg("dofs") = Eigen::MatrixXd(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("boundary_quadrature") = std::vector<Gedim::Quadrature::QuadratureData>()
+                    )
+                    .def_readwrite("map_data", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::MapData, "")
+                    .def_readwrite("b_lap", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::B_lap, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::Order, "")
+                    .def_readwrite("number_of_basis_functions", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::NumberOfBasisFunctions, "")
+                    .def_readwrite("num_boundary_basis_functions", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::NumBoundaryBasisFunctions, "")
+                    .def_readwrite("num_internal_basis_functions", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::NumInternalBasisFunctions, "")
+                    .def_readwrite("dofs", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::Dofs, "")
+                    .def_readwrite("dofs_mesh_order", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::DofsMeshOrder, "")
+                    .def_readwrite("dof0_ds_index", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::Dof0DsIndex, "")
+                    .def_readwrite("dof1_ds_index", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::Dof1DsIndex, "")
+                    .def_readwrite("dof2_ds_index", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::Dof2DsIndex, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data::BoundaryQuadrature, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Quadrilateral_PCC_2D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Quadrilateral_PCC_2D_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Eigen::MatrixXd Vertices = Eigen::MatrixXd(), Gedim::MapParallelogram::MapParallelogramData MapData = Gedim::MapParallelogram::MapParallelogramData(), Eigen::Matrix3d B_lap = Eigen::Matrix3d(), Eigen::MatrixXd Dofs = Eigen::MatrixXd(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), std::vector<Gedim::Quadrature::QuadratureData> BoundaryQuadrature = std::vector<Gedim::Quadrature::QuadratureData>(), Polydim::FEM::PCC::QuadrilateralType quadrilateral_type = Polydim::FEM::PCC::QuadrilateralType())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data>();
+                        r_ctor_->Vertices = Vertices;
+                        r_ctor_->MapData = MapData;
+                        r_ctor_->B_lap = B_lap;
+                        r_ctor_->Dofs = Dofs;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->BoundaryQuadrature = BoundaryQuadrature;
+                        r_ctor_->quadrilateral_type = quadrilateral_type;
+                        return r_ctor_;
+                    })
+                    , py::arg("vertices") = Eigen::MatrixXd(), py::arg("map_data") = Gedim::MapParallelogram::MapParallelogramData(), py::arg("b_lap") = Eigen::Matrix3d(), py::arg("dofs") = Eigen::MatrixXd(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("boundary_quadrature") = std::vector<Gedim::Quadrature::QuadratureData>(), py::arg("quadrilateral_type") = Polydim::FEM::PCC::QuadrilateralType()
+                    )
+                    .def_readwrite("vertices", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::Vertices, "")
+                    .def_readwrite("map_data", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::MapData, "")
+                    .def_readwrite("b_lap", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::B_lap, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::Order, "")
+                    .def_readwrite("number_of_basis_functions", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::NumberOfBasisFunctions, "")
+                    .def_readwrite("dofs", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::Dofs, "")
+                    .def_readwrite("dofs_mesh_order", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::DofsMeshOrder, "")
+                    .def_readwrite("dof0_ds_index", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::Dof0DsIndex, "")
+                    .def_readwrite("dof1_ds_index", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::Dof1DsIndex, "")
+                    .def_readwrite("dof2_ds_index", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::Dof2DsIndex, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::BoundaryQuadrature, "")
+                    .def_readwrite("quadrilateral_type", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data::quadrilateral_type, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_2D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_2D_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data triangle_local_space_data = Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data(), Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data quadrilateral_local_space_data = Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data(), Polydim::FEM::PCC::FEM_PCC_2D_Types fem_type = Polydim::FEM::PCC::FEM_PCC_2D_Types(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), std::vector<Gedim::Quadrature::QuadratureData> BoundaryQuadrature = std::vector<Gedim::Quadrature::QuadratureData>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data>();
+                        r_ctor_->triangle_local_space_data = triangle_local_space_data;
+                        r_ctor_->quadrilateral_local_space_data = quadrilateral_local_space_data;
+                        r_ctor_->fem_type = fem_type;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->BoundaryQuadrature = BoundaryQuadrature;
+                        return r_ctor_;
+                    })
+                    , py::arg("triangle_local_space_data") = Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data(), py::arg("quadrilateral_local_space_data") = Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data(), py::arg("fem_type") = Polydim::FEM::PCC::FEM_PCC_2D_Types(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("boundary_quadrature") = std::vector<Gedim::Quadrature::QuadratureData>()
+                    )
+                    .def_readwrite("triangle_local_space_data", &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data::triangle_local_space_data, "")
+                    .def_readwrite("quadrilateral_local_space_data", &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data::quadrilateral_local_space_data, "")
+                    .def_readwrite("fem_type", &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data::fem_type, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data::BoundaryQuadrature, "")
+                    .def_readwrite("number_of_basis_functions", &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data::NumberOfBasisFunctions, "")
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_PCC_2D_LocalSpace_Data.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Quadrilateral_PCC_2D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_Quadrilateral_PCC_2D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Quadrilateral_PCC_2D_LocalSpace =
+                    py::class_<Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Quadrilateral_PCC_2D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_laplacian_values",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsLaplacianValues, py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("edge_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("internal_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::InternalDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values_on_edge",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data &>(&Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::const_), py::arg("reference_element_data"))
+                    .def("compute_basis_functions_values_on_edge",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data &, const Eigen::VectorXd &>(&Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::const_), py::arg("reference_element_data"), py::arg("points_curvilinear_coordinates"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Quadrilateral_PCC_2D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Quadrilateral_PCC_2D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_Quadrilateral_PCC_2D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Quadrilateral_PCC_2D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Quadrilateral_PCC_2D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Eigen::MatrixXd DofPositions = Eigen::MatrixXd(), Gedim::Quadrature::QuadratureData ReferenceTriangleQuadrature = Gedim::Quadrature::QuadratureData(), Gedim::Quadrature::QuadratureData ReferenceSquareQuadrature = Gedim::Quadrature::QuadratureData(), Eigen::MatrixXd ReferenceBasisFunctionValues = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> ReferenceBasisFunctionDerivativeValues = std::vector<Eigen::MatrixXd>(), Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data BoundaryReferenceElement_Data = Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data>();
+                        r_ctor_->DofPositions = DofPositions;
+                        r_ctor_->ReferenceTriangleQuadrature = ReferenceTriangleQuadrature;
+                        r_ctor_->ReferenceSquareQuadrature = ReferenceSquareQuadrature;
+                        r_ctor_->ReferenceBasisFunctionValues = ReferenceBasisFunctionValues;
+                        r_ctor_->ReferenceBasisFunctionDerivativeValues = ReferenceBasisFunctionDerivativeValues;
+                        r_ctor_->BoundaryReferenceElement_Data = BoundaryReferenceElement_Data;
+                        return r_ctor_;
+                    })
+                    , py::arg("dof_positions") = Eigen::MatrixXd(), py::arg("reference_triangle_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_square_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_basis_function_values") = Eigen::MatrixXd(), py::arg("reference_basis_function_derivative_values") = std::vector<Eigen::MatrixXd>(), py::arg("boundary_reference_element_data") = Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data()
+                    )
+                    .def_readwrite("dimension", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("num_dofs2_d", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::NumDofs2D, "")
+                    .def_readwrite("num_basis_functions", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::NumBasisFunctions, "")
+                    .def_readwrite("dof_positions", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::DofPositions, "")
+                    .def_readwrite("dof_types", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::DofTypes, "")
+                    .def_readwrite("edges_by_vertices", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::Edges_by_vertices, "")
+                    .def_readwrite("reference_triangle_quadrature", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::ReferenceTriangleQuadrature, "")
+                    .def_readwrite("reference_square_quadrature", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::ReferenceSquareQuadrature, "")
+                    .def_readwrite("reference_basis_function_values", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::ReferenceBasisFunctionValues, "")
+                    .def_readwrite("reference_basis_function_derivative_values", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::ReferenceBasisFunctionDerivativeValues, "")
+                    .def_readwrite("reference_basis_function_second_derivative_values", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::ReferenceBasisFunctionSecondDerivativeValues, "")
+                    .def_readwrite("boundary_reference_element_data", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data::BoundaryReferenceElement_Data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Quadrilateral_PCC_2D_ReferenceElement =
+                    py::class_<Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Quadrilateral_PCC_2D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def_readwrite("vertices", &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement::Vertices, "")
+                    .def(py::init<>())
+                    .def("create",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement::Create, py::arg("order"))
+                    .def("evaluate_basis_functions",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement::EvaluateBasisFunctions,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_function_derivatives",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement::EvaluateBasisFunctionDerivatives,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_function_second_derivatives",
+                        &Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement::EvaluateBasisFunctionSecondDerivatives,
+                        py::arg("param_0"), py::arg("param_1"),
+                        "***************************************************************************")
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Quadrilateral_PCC_2D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Triangle_PCC_2D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_Triangle_PCC_2D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Triangle_PCC_2D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Triangle_PCC_2D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Eigen::MatrixXd DofPositions = Eigen::MatrixXd(), Eigen::MatrixXi DofTypes = Eigen::MatrixXi(), Gedim::Quadrature::QuadratureData ReferenceTriangleQuadrature = Gedim::Quadrature::QuadratureData(), Eigen::MatrixXd ReferenceBasisFunctionValues = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> ReferenceBasisFunctionDerivativeValues = std::vector<Eigen::MatrixXd>(), Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data BoundaryReferenceElement_Data = Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data(), Eigen::RowVectorXd EdgeInternalPoints = Eigen::RowVectorXd(), Eigen::VectorXd EdgeBasisCoefficients = Eigen::VectorXd())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data>();
+                        r_ctor_->DofPositions = DofPositions;
+                        r_ctor_->DofTypes = DofTypes;
+                        r_ctor_->ReferenceTriangleQuadrature = ReferenceTriangleQuadrature;
+                        r_ctor_->ReferenceBasisFunctionValues = ReferenceBasisFunctionValues;
+                        r_ctor_->ReferenceBasisFunctionDerivativeValues = ReferenceBasisFunctionDerivativeValues;
+                        r_ctor_->BoundaryReferenceElement_Data = BoundaryReferenceElement_Data;
+                        r_ctor_->EdgeInternalPoints = EdgeInternalPoints;
+                        r_ctor_->EdgeBasisCoefficients = EdgeBasisCoefficients;
+                        return r_ctor_;
+                    })
+                    , py::arg("dof_positions") = Eigen::MatrixXd(), py::arg("dof_types") = Eigen::MatrixXi(), py::arg("reference_triangle_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_basis_function_values") = Eigen::MatrixXd(), py::arg("reference_basis_function_derivative_values") = std::vector<Eigen::MatrixXd>(), py::arg("boundary_reference_element_data") = Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data(), py::arg("edge_internal_points") = Eigen::RowVectorXd(), py::arg("edge_basis_coefficients") = Eigen::VectorXd()
+                    )
+                    .def_readwrite("dimension", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("num_dofs2_d", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::NumDofs2D, "")
+                    .def_readwrite("num_basis_functions", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::NumBasisFunctions, "")
+                    .def_readwrite("dof_positions", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::DofPositions, "")
+                    .def_readwrite("dof_types", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::DofTypes, "")
+                    .def_readwrite("reference_triangle_quadrature", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::ReferenceTriangleQuadrature, "")
+                    .def_readwrite("reference_basis_function_values", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::ReferenceBasisFunctionValues, "")
+                    .def_readwrite("reference_basis_function_derivative_values", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::ReferenceBasisFunctionDerivativeValues, "")
+                    .def_readwrite("reference_basis_function_second_derivative_values", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::ReferenceBasisFunctionSecondDerivativeValues, "")
+                    .def_readwrite("boundary_reference_element_data", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::BoundaryReferenceElement_Data, "")
+                    .def_readwrite("edge_internal_points", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::EdgeInternalPoints, "")
+                    .def_readwrite("edge_basis_coefficients", &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data::EdgeBasisCoefficients, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Triangle_PCC_2D_ReferenceElement =
+                    py::class_<Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Triangle_PCC_2D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement::Create, py::arg("order"))
+                    .def("evaluate_basis_functions",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement::EvaluateBasisFunctions,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_function_derivatives",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement::EvaluateBasisFunctionDerivatives,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_function_second_derivatives",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement::EvaluateBasisFunctionSecondDerivatives,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Triangle_PCC_2D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Triangle_PCC_2D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_Triangle_PCC_2D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Triangle_PCC_2D_LocalSpace =
+                    py::class_<Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Triangle_PCC_2D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("edge_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("internal_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::InternalDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_laplacian_values",
+                        &Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsLaplacianValues, py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_values_on_edge",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data &>(&Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::const_), py::arg("reference_element_data"))
+                    .def("compute_basis_functions_values_on_edge",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data &, const Eigen::VectorXd &>(&Polydim::FEM::PCC::FEM_Triangle_PCC_2D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::const_), py::arg("reference_element_data"), py::arg("points_curvilinear_coordinates"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Triangle_PCC_2D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_PCC_2D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_PCC_2D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_2D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_2D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def_readwrite("dimension", &Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("triangle_reference_element_data", &Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data::triangle_reference_element_data, "")
+                    .def_readwrite("quadrilateral_reference_element_data", &Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data::quadrilateral_reference_element_data, "")
+                    .def_readwrite("mesh_geometric_data_config", &Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data::mesh_geometric_data_config, "")
+                    .def(py::init<>())
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_2D_ReferenceElement =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_2D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>())
+                    .def("create",
+                        &Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement::Create, py::arg("order"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_PCC_2D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_PCC_2D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_PCC_2D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_2D_LocalSpace =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_2D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_laplacian_values",
+                        &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::ComputeBasisFunctionsLaplacianValues, py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_values_on_edge",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values_on_edge",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_2D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace_Data &, const Eigen::VectorXd &>(&Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points_curvilinear_coordinates"))
+                    .def("edge_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("internal_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_PCC_2D_LocalSpace::InternalDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_PCC_2D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Hexahedron_PCC_3D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_Hexahedron_PCC_3D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Hexahedron_PCC_3D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Hexahedron_PCC_3D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Eigen::MatrixXd DofPositions = Eigen::MatrixXd(), Gedim::Quadrature::QuadratureData ReferenceHexahedronQuadrature = Gedim::Quadrature::QuadratureData(), Eigen::MatrixXd ReferenceBasisFunctionValues = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> ReferenceBasisFunctionDerivativeValues = std::vector<Eigen::MatrixXd>(), Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data EdgeReferenceElement_Data = Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data(), Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data BoundaryReferenceElement_Data = Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data>();
+                        r_ctor_->DofPositions = DofPositions;
+                        r_ctor_->ReferenceHexahedronQuadrature = ReferenceHexahedronQuadrature;
+                        r_ctor_->ReferenceBasisFunctionValues = ReferenceBasisFunctionValues;
+                        r_ctor_->ReferenceBasisFunctionDerivativeValues = ReferenceBasisFunctionDerivativeValues;
+                        r_ctor_->EdgeReferenceElement_Data = EdgeReferenceElement_Data;
+                        r_ctor_->BoundaryReferenceElement_Data = BoundaryReferenceElement_Data;
+                        return r_ctor_;
+                    })
+                    , py::arg("dof_positions") = Eigen::MatrixXd(), py::arg("reference_hexahedron_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_basis_function_values") = Eigen::MatrixXd(), py::arg("reference_basis_function_derivative_values") = std::vector<Eigen::MatrixXd>(), py::arg("edge_reference_element_data") = Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data(), py::arg("boundary_reference_element_data") = Polydim::FEM::PCC::FEM_Quadrilateral_PCC_2D_ReferenceElement_Data()
+                    )
+                    .def_readwrite("dimension", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("num_dofs2_d", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::NumDofs2D, "")
+                    .def_readwrite("num_dofs3_d", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::NumDofs3D, "")
+                    .def_readwrite("edges_by_vertices", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::Edges_by_vertices, "")
+                    .def_readwrite("faces_by_edges", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::Faces_by_edges, "")
+                    .def_readwrite("num_basis_functions", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::NumBasisFunctions, "")
+                    .def_readwrite("dof_positions", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::DofPositions, "")
+                    .def_readwrite("dof_types", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::DofTypes, "")
+                    .def_readwrite("reference_hexahedron_quadrature", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::ReferenceHexahedronQuadrature, "")
+                    .def_readwrite("reference_basis_function_values", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::ReferenceBasisFunctionValues, "")
+                    .def_readwrite("reference_basis_function_derivative_values", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::ReferenceBasisFunctionDerivativeValues, "")
+                    .def_readwrite("edge_reference_element_data", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::EdgeReferenceElement_Data, "")
+                    .def_readwrite("boundary_reference_element_data", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data::BoundaryReferenceElement_Data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Hexahedron_PCC_3D_ReferenceElement =
+                    py::class_<Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Hexahedron_PCC_3D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def_readwrite("vertices", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement::Vertices, "")
+                    .def(py::init<>())
+                    .def("create",
+                        &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement::Create, py::arg("order"))
+                    .def("evaluate_basis_functions",
+                        &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement::EvaluateBasisFunctions,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_function_derivatives",
+                        &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement::EvaluateBasisFunctionDerivatives,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_function_second_derivatives",
+                        &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement::EvaluateBasisFunctionSecondDerivatives,
+                        py::arg("param_0"), py::arg("param_1"),
+                        "***************************************************************************")
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Hexahedron_PCC_3D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Hexahedron_PCC_3D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_Hexahedron_PCC_3D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Hexahedron_PCC_3D_LocalSpace =
+                    py::class_<Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Hexahedron_PCC_3D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polyhedron"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_values_on_face",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data &, const unsigned int>(&Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnFace, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_index"))
+                    .def("compute_basis_functions_values_on_face",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data &, const unsigned int, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnFace, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_index"), py::arg("points2_d"))
+                    .def("edge_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("face_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::FaceDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_local_index"))
+                    .def("compute_basis_functions_values_on_edge",
+                        &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::arg("reference_element_data"), py::arg("points_curvilinear_coordinates"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Hexahedron_PCC_3D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Tetrahedron_PCC_3D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_Tetrahedron_PCC_3D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Tetrahedron_PCC_3D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Tetrahedron_PCC_3D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Eigen::MatrixXd DofPositions = Eigen::MatrixXd(), Gedim::Quadrature::QuadratureData ReferenceTetrahedronQuadrature = Gedim::Quadrature::QuadratureData(), Eigen::MatrixXd ReferenceBasisFunctionValues = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> ReferenceBasisFunctionDerivativeValues = std::vector<Eigen::MatrixXd>(), Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data EdgeReferenceElement_Data = Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data(), Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data BoundaryReferenceElement_Data = Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data>();
+                        r_ctor_->DofPositions = DofPositions;
+                        r_ctor_->ReferenceTetrahedronQuadrature = ReferenceTetrahedronQuadrature;
+                        r_ctor_->ReferenceBasisFunctionValues = ReferenceBasisFunctionValues;
+                        r_ctor_->ReferenceBasisFunctionDerivativeValues = ReferenceBasisFunctionDerivativeValues;
+                        r_ctor_->EdgeReferenceElement_Data = EdgeReferenceElement_Data;
+                        r_ctor_->BoundaryReferenceElement_Data = BoundaryReferenceElement_Data;
+                        return r_ctor_;
+                    })
+                    , py::arg("dof_positions") = Eigen::MatrixXd(), py::arg("reference_tetrahedron_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("reference_basis_function_values") = Eigen::MatrixXd(), py::arg("reference_basis_function_derivative_values") = std::vector<Eigen::MatrixXd>(), py::arg("edge_reference_element_data") = Polydim::FEM::PCC::FEM_PCC_1D_ReferenceElement_Data(), py::arg("boundary_reference_element_data") = Polydim::FEM::PCC::FEM_Triangle_PCC_2D_ReferenceElement_Data()
+                    )
+                    .def_readwrite("dimension", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("num_dofs2_d", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::NumDofs2D, "")
+                    .def_readwrite("num_dofs3_d", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::NumDofs3D, "")
+                    .def_readwrite("edges_by_vertices", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::Edges_by_vertices, "")
+                    .def_readwrite("faces_by_edge_vertex", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::Faces_by_edge_vertex, "")
+                    .def_readwrite("faces_by_edges", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::Faces_by_edges, "")
+                    .def_readwrite("num_basis_functions", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::NumBasisFunctions, "")
+                    .def_readwrite("dof_positions", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::DofPositions, "")
+                    .def_readwrite("dof_types", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::DofTypes, "")
+                    .def_readwrite("reference_tetrahedron_quadrature", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::ReferenceTetrahedronQuadrature, "")
+                    .def_readwrite("reference_basis_function_values", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::ReferenceBasisFunctionValues, "")
+                    .def_readwrite("reference_basis_function_derivative_values", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::ReferenceBasisFunctionDerivativeValues, "")
+                    .def_readwrite("edge_reference_element_data", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::EdgeReferenceElement_Data, "")
+                    .def_readwrite("boundary_reference_element_data", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data::BoundaryReferenceElement_Data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Tetrahedron_PCC_3D_ReferenceElement =
+                    py::class_<Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Tetrahedron_PCC_3D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement::Create, py::arg("order"))
+                    .def("evaluate_lambda",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement::EvaluateLambda,
+                        py::arg("points"),
+                        "***************************************************************************")
+                    .def("evaluate_grad_lambda",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement::EvaluateGradLambda,
+                        py::arg("points"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_functions",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement::EvaluateBasisFunctions,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_basis_function_derivatives",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement::EvaluateBasisFunctionDerivatives,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Tetrahedron_PCC_3D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Tetrahedron_PCC_3D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_Tetrahedron_PCC_3D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Tetrahedron_PCC_3D_LocalSpace =
+                    py::class_<Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Tetrahedron_PCC_3D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polyhedron"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("edge_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("face_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::FaceDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_local_index"))
+                    .def("compute_basis_functions_values_on_face",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data &, const unsigned int>(&Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnFace, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_index"))
+                    .def("compute_basis_functions_values_on_face",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data &, const unsigned int, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnFace, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_index"), py::arg("points2_d"))
+                    .def("compute_basis_functions_values_on_edge",
+                        &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::arg("reference_element_data"), py::arg("points_curvilinear_coordinates"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Tetrahedron_PCC_3D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_PCC_3D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_PCC_3D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_3D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_3D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data tetrahedron_reference_element_data = Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data(), Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data hexahedron_reference_element_data = Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data>();
+                        r_ctor_->tetrahedron_reference_element_data = tetrahedron_reference_element_data;
+                        r_ctor_->hexahedron_reference_element_data = hexahedron_reference_element_data;
+                        return r_ctor_;
+                    })
+                    , py::arg("tetrahedron_reference_element_data") = Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_ReferenceElement_Data(), py::arg("hexahedron_reference_element_data") = Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_ReferenceElement_Data()
+                    )
+                    .def_readwrite("dimension", &Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("tetrahedron_reference_element_data", &Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data::tetrahedron_reference_element_data, "")
+                    .def_readwrite("hexahedron_reference_element_data", &Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data::hexahedron_reference_element_data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_3D_ReferenceElement =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_3D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>())
+                    .def("create",
+                        &Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement::Create, py::arg("order"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_PCC_3D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_PCC_3D_LocalSpace_Data.hpp>    ////////////////////
+    // #ifndef __FEM_Hexahedron_PCC_3D_LocalSpace_Data_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyEnumFEM_PCC_3D_Types =
+                    py::enum_<Polydim::FEM::PCC::FEM_PCC_3D_Types>(pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_3D_Types", py::arithmetic(), "")
+                        .value("tetrahedron", Polydim::FEM::PCC::FEM_PCC_3D_Types::Tetrahedron, "")
+                        .value("hexahedron", Polydim::FEM::PCC::FEM_PCC_3D_Types::Hexahedron, "");
+
+
+                auto pyEnumHexahedronType =
+                    py::enum_<Polydim::FEM::PCC::HexahedronType>(pyNsPolydim_NsFEM_NsPCC, "HexahedronType", py::arithmetic(), "")
+                        .value("parallelepiped", Polydim::FEM::PCC::HexahedronType::Parallelepiped, "")
+                        .value("generic", Polydim::FEM::PCC::HexahedronType::Generic, "");
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_3D_Polyhedron_Geometry =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_3D_Polyhedron_Geometry", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    double Tolerance1D = double(), double Tolerance2D = double(), double Tolerance3D = double(), Eigen::MatrixXd Vertices = Eigen::MatrixXd(), Eigen::MatrixXi Edges = Eigen::MatrixXi(), std::vector<Eigen::MatrixXi> Faces = std::vector<Eigen::MatrixXi>(), std::vector<bool> EdgesDirection = std::vector<bool>(), std::vector<bool> FacesDirection = std::vector<bool>(), std::vector<Eigen::Matrix3d> FacesRotationMatrix = std::vector<Eigen::Matrix3d>(), std::vector<Eigen::Vector3d> FacesTranslation = std::vector<Eigen::Vector3d>(), std::vector<Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry> Faces_2D_Geometry = std::vector<Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry>();
+                        r_ctor_->Tolerance1D = Tolerance1D;
+                        r_ctor_->Tolerance2D = Tolerance2D;
+                        r_ctor_->Tolerance3D = Tolerance3D;
+                        r_ctor_->Vertices = Vertices;
+                        r_ctor_->Edges = Edges;
+                        r_ctor_->Faces = Faces;
+                        r_ctor_->EdgesDirection = EdgesDirection;
+                        r_ctor_->FacesDirection = FacesDirection;
+                        r_ctor_->FacesRotationMatrix = FacesRotationMatrix;
+                        r_ctor_->FacesTranslation = FacesTranslation;
+                        r_ctor_->Faces_2D_Geometry = Faces_2D_Geometry;
+                        return r_ctor_;
+                    })
+                    , py::arg("tolerance1_d") = double(), py::arg("tolerance2_d") = double(), py::arg("tolerance3_d") = double(), py::arg("vertices") = Eigen::MatrixXd(), py::arg("edges") = Eigen::MatrixXi(), py::arg("faces") = std::vector<Eigen::MatrixXi>(), py::arg("edges_direction") = std::vector<bool>(), py::arg("faces_direction") = std::vector<bool>(), py::arg("faces_rotation_matrix") = std::vector<Eigen::Matrix3d>(), py::arg("faces_translation") = std::vector<Eigen::Vector3d>(), py::arg("faces_2_d_geometry") = std::vector<Polydim::FEM::PCC::FEM_PCC_2D_Polygon_Geometry>()
+                    )
+                    .def_readwrite("tolerance1_d", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::Tolerance1D, "")
+                    .def_readwrite("tolerance2_d", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::Tolerance2D, "")
+                    .def_readwrite("tolerance3_d", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::Tolerance3D, "")
+                    .def_readwrite("vertices", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::Vertices, "")
+                    .def_readwrite("edges", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::Edges, "")
+                    .def_readwrite("faces", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::Faces, "")
+                    .def_readwrite("edges_direction", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::EdgesDirection, "")
+                    .def_readwrite("faces_direction", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::FacesDirection, "")
+                    .def_readwrite("faces_rotation_matrix", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::FacesRotationMatrix, "")
+                    .def_readwrite("faces_translation", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::FacesTranslation, "")
+                    .def_readwrite("faces_2_d_geometry", &Polydim::FEM::PCC::FEM_PCC_3D_Polyhedron_Geometry::Faces_2D_Geometry, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Hexahedron_PCC_3D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Hexahedron_PCC_3D_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Gedim::MapParallelepiped::MapParallelepipedData MapDataParallelepiped = Gedim::MapParallelepiped::MapParallelepipedData(), Gedim::MapHexahedron::MapHexahedronData MapDataHexahedron = Gedim::MapHexahedron::MapHexahedronData(), Eigen::MatrixXd Dofs = Eigen::MatrixXd(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), Polydim::FEM::PCC::HexahedronType hexahedron_type = Polydim::FEM::PCC::HexahedronType())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data>();
+                        r_ctor_->MapDataParallelepiped = MapDataParallelepiped;
+                        r_ctor_->MapDataHexahedron = MapDataHexahedron;
+                        r_ctor_->Dofs = Dofs;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->hexahedron_type = hexahedron_type;
+                        return r_ctor_;
+                    })
+                    , py::arg("map_data_parallelepiped") = Gedim::MapParallelepiped::MapParallelepipedData(), py::arg("map_data_hexahedron") = Gedim::MapHexahedron::MapHexahedronData(), py::arg("dofs") = Eigen::MatrixXd(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("hexahedron_type") = Polydim::FEM::PCC::HexahedronType()
+                    )
+                    .def_readwrite("map_data_parallelepiped", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::MapDataParallelepiped, "")
+                    .def_readwrite("map_data_hexahedron", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::MapDataHexahedron, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::Order, "")
+                    .def_readwrite("number_of_basis_functions", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::NumberOfBasisFunctions, "")
+                    .def_readwrite("dofs", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::Dofs, "")
+                    .def_readwrite("polyhedron_to_reference_edge_index", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::polyhedron_to_reference_edge_index, "")
+                    .def_readwrite("polyhedron_to_reference_edge_direction", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::polyhedron_to_reference_edge_direction, "")
+                    .def_readwrite("polyhedron_to_reference_face_index", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::polyhedron_to_reference_face_index, "")
+                    .def_readwrite("dofs_mesh_order", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::DofsMeshOrder, "")
+                    .def_readwrite("dof0_ds_index", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::Dof0DsIndex, "")
+                    .def_readwrite("dof1_ds_index", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::Dof1DsIndex, "")
+                    .def_readwrite("dof2_ds_index", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::Dof2DsIndex, "")
+                    .def_readwrite("dof3_ds_index", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::Dof3DsIndex, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_local_space_data", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::Boundary_LocalSpace_Data, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::BoundaryQuadrature, "")
+                    .def_readwrite("hexahedron_type", &Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data::hexahedron_type, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_Tetrahedron_PCC_3D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_Tetrahedron_PCC_3D_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Gedim::MapTetrahedron::MapTetrahedronData MapData = Gedim::MapTetrahedron::MapTetrahedronData(), Eigen::MatrixXd Dofs = Eigen::MatrixXd(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data>();
+                        r_ctor_->MapData = MapData;
+                        r_ctor_->Dofs = Dofs;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        return r_ctor_;
+                    })
+                    , py::arg("map_data") = Gedim::MapTetrahedron::MapTetrahedronData(), py::arg("dofs") = Eigen::MatrixXd(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData()
+                    )
+                    .def_readwrite("map_data", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::MapData, "")
+                    .def_readwrite("order", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::Order, "")
+                    .def_readwrite("number_of_basis_functions", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::NumberOfBasisFunctions, "")
+                    .def_readwrite("dofs", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::Dofs, "")
+                    .def_readwrite("polyhedron_to_reference_edge_index", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::polyhedron_to_reference_edge_index, "")
+                    .def_readwrite("polyhedron_to_reference_edge_direction", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::polyhedron_to_reference_edge_direction, "")
+                    .def_readwrite("polyhedron_to_reference_face_index", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::polyhedron_to_reference_face_index, "")
+                    .def_readwrite("polyhedron_to_reference_face_direction", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::polyhedron_to_reference_face_direction, "")
+                    .def_readwrite("polyhedron_to_reference_face_starting_index", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::polyhedron_to_reference_face_starting_index, "")
+                    .def_readwrite("dofs_mesh_order", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::DofsMeshOrder, "")
+                    .def_readwrite("dof0_ds_index", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::Dof0DsIndex, "")
+                    .def_readwrite("dof1_ds_index", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::Dof1DsIndex, "")
+                    .def_readwrite("dof2_ds_index", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::Dof2DsIndex, "")
+                    .def_readwrite("dof3_ds_index", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::Dof3DsIndex, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_local_space_data", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::Boundary_LocalSpace_Data, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data::BoundaryQuadrature, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_3D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_3D_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data hexahedron_local_space_data = Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data(), Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data tetrahedron_local_space_data = Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data(), Polydim::FEM::PCC::FEM_PCC_3D_Types fem_type = Polydim::FEM::PCC::FEM_PCC_3D_Types(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), std::vector<Gedim::Quadrature::QuadratureData> BoundaryQuadrature = std::vector<Gedim::Quadrature::QuadratureData>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data>();
+                        r_ctor_->hexahedron_local_space_data = hexahedron_local_space_data;
+                        r_ctor_->tetrahedron_local_space_data = tetrahedron_local_space_data;
+                        r_ctor_->fem_type = fem_type;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->BoundaryQuadrature = BoundaryQuadrature;
+                        return r_ctor_;
+                    })
+                    , py::arg("hexahedron_local_space_data") = Polydim::FEM::PCC::FEM_Hexahedron_PCC_3D_LocalSpace_Data(), py::arg("tetrahedron_local_space_data") = Polydim::FEM::PCC::FEM_Tetrahedron_PCC_3D_LocalSpace_Data(), py::arg("fem_type") = Polydim::FEM::PCC::FEM_PCC_3D_Types(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("boundary_quadrature") = std::vector<Gedim::Quadrature::QuadratureData>()
+                    )
+                    .def_readwrite("hexahedron_local_space_data", &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data::hexahedron_local_space_data, "")
+                    .def_readwrite("tetrahedron_local_space_data", &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data::tetrahedron_local_space_data, "")
+                    .def_readwrite("fem_type", &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data::fem_type, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data::BoundaryQuadrature, "")
+                    .def_readwrite("number_of_basis_functions", &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data::NumberOfBasisFunctions, "")
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_PCC_3D_LocalSpace_Data.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_PCC_3D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_PCC_3D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsFEM_NsPCC = pyNsPolydim_NsFEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsFEM_NsPCC_ClassFEM_PCC_3D_LocalSpace =
+                    py::class_<Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsPCC, "FEM_PCC_3D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polyhedron"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data &>(&Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_derivative_values",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_basis_functions_values_on_face",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data &, const unsigned int>(&Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnFace, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_index"))
+                    .def("compute_basis_functions_values_on_face",
+                        py::overload_cast<const Polydim::FEM::PCC::FEM_PCC_3D_ReferenceElement_Data &, const Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace_Data &, const unsigned int, const Eigen::MatrixXd &>(&Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnFace, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_index"), py::arg("points2_d"))
+                    .def("face_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::FaceDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("face_local_index"))
+                    .def("edge_do_fs_coordinates",
+                        &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::EdgeDOFsCoordinates, py::arg("reference_element_data"), py::arg("local_space"), py::arg("edge_local_index"))
+                    .def("compute_basis_functions_values_on_edge",
+                        &Polydim::FEM::PCC::FEM_PCC_3D_LocalSpace::ComputeBasisFunctionsValuesOnEdge, py::arg("reference_element_data"), py::arg("local_space"), py::arg("points_curvilinear_coordinates"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_PCC_3D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Triangle_RT_MCC_2D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_Triangle_RT_MCC_2D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace MCC>
+                py::module_ pyNsPolydim_NsFEM_NsMCC = pyNsPolydim_NsFEM.def_submodule("mcc", "namespace MCC");
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Eigen::MatrixXd ReferenceBasisFunctionValues = Eigen::MatrixXd())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data>();
+                        r_ctor_->ReferenceBasisFunctionValues = ReferenceBasisFunctionValues;
+                        return r_ctor_;
+                    })
+                    , py::arg("reference_basis_function_values") = Eigen::MatrixXd()
+                    )
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("num_dofs2_d", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data::NumDofs2D, "")
+                    .def_readwrite("num_basis_functions", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data::NumBasisFunctions, "")
+                    .def_readwrite("reference_basis_function_values", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data::ReferenceBasisFunctionValues, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data
+                    auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data_ClassBasisFunctions =
+                        py::class_<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::BasisFunctions>
+                            (pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data, "BasisFunctions", "")
+                        .def(py::init<>([](
+                        Eigen::MatrixXd MonomialsCoefficients = Eigen::MatrixXd(), std::vector<Eigen::MatrixXd> ReferenceBasisFunctionValues = std::vector<Eigen::MatrixXd>(), Eigen::MatrixXd ReferenceBasisFunctionDivergenceValues = Eigen::MatrixXd())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::BasisFunctions>();
+                            r_ctor_->MonomialsCoefficients = MonomialsCoefficients;
+                            r_ctor_->ReferenceBasisFunctionValues = ReferenceBasisFunctionValues;
+                            r_ctor_->ReferenceBasisFunctionDivergenceValues = ReferenceBasisFunctionDivergenceValues;
+                            return r_ctor_;
+                        })
+                        , py::arg("monomials_coefficients") = Eigen::MatrixXd(), py::arg("reference_basis_function_values") = std::vector<Eigen::MatrixXd>(), py::arg("reference_basis_function_divergence_values") = Eigen::MatrixXd()
+                        )
+                        .def_readwrite("monomials_coefficients", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::BasisFunctions::MonomialsCoefficients, "")
+                        .def_readwrite("reference_basis_function_values", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::BasisFunctions::ReferenceBasisFunctionValues, "")
+                        .def_readwrite("reference_basis_function_divergence_values", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::BasisFunctions::ReferenceBasisFunctionDivergenceValues, "")
+                        ;
+                } // end of inner classes & enums of FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data
+
+                pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("num_dofs2_d", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::NumDofs2D, "")
+                    .def_readwrite("num_basis_functions", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::NumBasisFunctions, "")
+                    .def_readwrite("basis_functions", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data::basis_functions, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_Triangle_RT_MCC_2D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Polydim::VEM::Quadrature::VEM_QuadratureData_2D Quadrature = Polydim::VEM::Quadrature::VEM_QuadratureData_2D(), Polydim::Utilities::Monomials_Data monomials_2D_data = Polydim::Utilities::Monomials_Data(), Eigen::Vector3d monomials_2D_center = Eigen::Vector3d(), double monomials_2D_scale = double(), Polydim::Utilities::Monomials_Data monomials_1D_data = Polydim::Utilities::Monomials_Data(), Eigen::Vector3d monomials_1D_center = Eigen::Vector3d(), double monomials_1D_scale = double(), Eigen::MatrixXd VanderBoundary1D = Eigen::MatrixXd(), Eigen::Matrix3d TriangleVertices = (Eigen::Matrix3d() << 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0).finished(), Eigen::Vector3d EdgeLengths = (Eigen::Vector3d() << 1.0, sqrt(2.0), 1.0).finished(), Eigen::Matrix3d EdgeTangents = (Eigen::Matrix3d() << 1.0, -1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0).finished(), Eigen::Matrix3d EdgeNormals = (Eigen::Matrix3d() << 0.0, 1.0 / sqrt(2.0), -1.0, -1.0, 1.0 / sqrt(2.0), 0.0, 0.0, 0.0, 0.0).finished(), Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data reference_element_data_velocity = Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data(), Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data reference_element_data_pressure = Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data>();
+                        r_ctor_->Quadrature = Quadrature;
+                        r_ctor_->monomials_2D_data = monomials_2D_data;
+                        r_ctor_->monomials_2D_center = monomials_2D_center;
+                        r_ctor_->monomials_2D_scale = monomials_2D_scale;
+                        r_ctor_->monomials_1D_data = monomials_1D_data;
+                        r_ctor_->monomials_1D_center = monomials_1D_center;
+                        r_ctor_->monomials_1D_scale = monomials_1D_scale;
+                        r_ctor_->VanderBoundary1D = VanderBoundary1D;
+                        r_ctor_->TriangleVertices = TriangleVertices;
+                        r_ctor_->EdgeLengths = EdgeLengths;
+                        r_ctor_->EdgeTangents = EdgeTangents;
+                        r_ctor_->EdgeNormals = EdgeNormals;
+                        r_ctor_->reference_element_data_velocity = reference_element_data_velocity;
+                        r_ctor_->reference_element_data_pressure = reference_element_data_pressure;
+                        return r_ctor_;
+                    })
+                    , py::arg("quadrature") = Polydim::VEM::Quadrature::VEM_QuadratureData_2D(), py::arg("monomials_2_d_data") = Polydim::Utilities::Monomials_Data(), py::arg("monomials_2_d_center") = Eigen::Vector3d(), py::arg("monomials_2_d_scale") = double(), py::arg("monomials_1_d_data") = Polydim::Utilities::Monomials_Data(), py::arg("monomials_1_d_center") = Eigen::Vector3d(), py::arg("monomials_1_d_scale") = double(), py::arg("vander_boundary1_d") = Eigen::MatrixXd(), py::arg("triangle_vertices") = (Eigen::Matrix3d() << 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0).finished(), py::arg("edge_lengths") = (Eigen::Vector3d() << 1.0, sqrt(2.0), 1.0).finished(), py::arg("edge_tangents") = (Eigen::Matrix3d() << 1.0, -1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0).finished(), py::arg("edge_normals") = (Eigen::Matrix3d() << 0.0, 1.0 / sqrt(2.0), -1.0, -1.0, 1.0 / sqrt(2.0), 0.0, 0.0, 0.0, 0.0).finished(), py::arg("reference_element_data_velocity") = Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data(), py::arg("reference_element_data_pressure") = Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data()
+                    )
+                    .def_readwrite("dimension", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("nk", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::Nk, "")
+                    .def_readwrite("nkm1", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::Nkm1, "")
+                    .def_readwrite("quadrature", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::Quadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::BoundaryQuadrature, "")
+                    .def_readwrite("monomials_2_d_data", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::monomials_2D_data, "")
+                    .def_readwrite("monomials_2_d_center", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::monomials_2D_center, "")
+                    .def_readwrite("monomials_2_d_scale", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::monomials_2D_scale, "")
+                    .def_readwrite("monomials_1_d_data", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::monomials_1D_data, "")
+                    .def_readwrite("monomials_1_d_center", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::monomials_1D_center, "")
+                    .def_readwrite("monomials_1_d_scale", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::monomials_1D_scale, "")
+                    .def_readwrite("vander_boundary1_d", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::VanderBoundary1D, "")
+                    .def_readwrite("triangle_vertices", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::TriangleVertices, "")
+                    .def_readwrite("edge_lengths", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::EdgeLengths, "")
+                    .def_readwrite("edge_tangents", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::EdgeTangents, "")
+                    .def_readwrite("edge_normals", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::EdgeNormals, "")
+                    .def_readwrite("reference_element_data_velocity", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::reference_element_data_velocity, "")
+                    .def_readwrite("reference_element_data_pressure", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data::reference_element_data_pressure, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_ReferenceElement =
+                    py::class_<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_Triangle_RT_MCC_2D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement::Create, py::arg("order"))
+                    .def("evaluate_velocity_basis_functions",
+                        &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement::EvaluateVelocityBasisFunctions,
+                        py::arg("points"), py::arg("monomials_coefficients"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_pressure_basis_functions",
+                        &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement::EvaluatePressureBasisFunctions,
+                        py::arg("points"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    .def("evaluate_velocity_basis_functions_divergence",
+                        &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement::EvaluateVelocityBasisFunctionsDivergence,
+                        py::arg("points"), py::arg("monomials_coefficients"), py::arg("reference_element_data"),
+                        "***************************************************************************")
+                    ;
+            } // </namespace MCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Triangle_RT_MCC_2D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_Triangle_RT_MCC_2D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_Triangle_RT_MCC_2D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace MCC>
+                py::module_ pyNsPolydim_NsFEM_NsMCC = pyNsPolydim_NsFEM.def_submodule("mcc", "namespace MCC");
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_LocalSpace =
+                    py::class_<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_Triangle_RT_MCC_2D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_pressure_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data &>(&Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace::ComputePressureBasisFunctionsValues, py::const_),
+                        py::arg("reference_element_data"), py::arg("local_space"),
+                        "Basis functions")
+                    .def("compute_velocity_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data &>(&Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace::ComputeVelocityBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_velocity_basis_functions_divergence_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data &>(&Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace::ComputeVelocityBasisFunctionsDivergenceValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_pressure_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace::ComputePressureBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_velocity_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace::ComputeVelocityBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_velocity_basis_functions_divergence_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace::ComputeVelocityBasisFunctionsDivergenceValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    ;
+            } // </namespace MCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_Triangle_RT_MCC_2D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_MCC_2D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __FEM_MCC_2D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace MCC>
+                py::module_ pyNsPolydim_NsFEM_NsMCC = pyNsPolydim_NsFEM.def_submodule("mcc", "namespace MCC");
+                auto pyEnumFEM_MCC_Types =
+                    py::enum_<Polydim::FEM::MCC::FEM_MCC_Types>(pyNsPolydim_NsFEM_NsMCC, "FEM_MCC_Types", py::arithmetic(), "")
+                        .value("rt", Polydim::FEM::MCC::FEM_MCC_Types::RT, "");
+
+
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_MCC_2D_ReferenceElement_Data =
+                    py::class_<Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_MCC_2D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Polydim::FEM::MCC::FEM_MCC_Types fem_main_type = Polydim::FEM::MCC::FEM_MCC_Types(), Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data rt_triangle_reference_element_data = Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data>();
+                        r_ctor_->fem_main_type = fem_main_type;
+                        r_ctor_->rt_triangle_reference_element_data = rt_triangle_reference_element_data;
+                        return r_ctor_;
+                    })
+                    , py::arg("fem_main_type") = Polydim::FEM::MCC::FEM_MCC_Types(), py::arg("rt_triangle_reference_element_data") = Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_ReferenceElement_Data()
+                    )
+                    .def_readwrite("dimension", &Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("fem_main_type", &Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data::fem_main_type, "")
+                    .def_readwrite("rt_triangle_reference_element_data", &Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data::rt_triangle_reference_element_data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_MCC_2D_ReferenceElement =
+                    py::class_<Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_MCC_2D_ReferenceElement", py::is_final(), "\n(final class)")
+                    .def(py::init<>())
+                    .def("create",
+                        &Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement::Create, py::arg("order"), py::arg("fem_main_type"))
+                    ;
+            } // </namespace MCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_MCC_2D_ReferenceElement.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_MCC_2D_LocalSpace_Data.hpp>    ////////////////////
+    // #ifndef __FEM_MCC_2D_LocalSpace_Data_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace MCC>
+                py::module_ pyNsPolydim_NsFEM_NsMCC = pyNsPolydim_NsFEM.def_submodule("mcc", "namespace MCC");
+                auto pyEnumFEM_MCC_2D_Types =
+                    py::enum_<Polydim::FEM::MCC::FEM_MCC_2D_Types>(pyNsPolydim_NsFEM_NsMCC, "FEM_MCC_2D_Types", py::arithmetic(), "")
+                        .value("rt_triangle", Polydim::FEM::MCC::FEM_MCC_2D_Types::RT_Triangle, "");
+
+
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_MCC_2D_Polygon_Geometry =
+                    py::class_<Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_MCC_2D_Polygon_Geometry", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    double Tolerance1D = double(), double Tolerance2D = double(), Eigen::MatrixXd Vertices = Eigen::MatrixXd(), Eigen::VectorXd EdgesLength = Eigen::VectorXd(), std::vector<bool> EdgesDirection = std::vector<bool>(), Eigen::MatrixXd EdgesTangent = Eigen::MatrixXd(), Eigen::MatrixXd EdgesNormal = Eigen::MatrixXd())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry>();
+                        r_ctor_->Tolerance1D = Tolerance1D;
+                        r_ctor_->Tolerance2D = Tolerance2D;
+                        r_ctor_->Vertices = Vertices;
+                        r_ctor_->EdgesLength = EdgesLength;
+                        r_ctor_->EdgesDirection = EdgesDirection;
+                        r_ctor_->EdgesTangent = EdgesTangent;
+                        r_ctor_->EdgesNormal = EdgesNormal;
+                        return r_ctor_;
+                    })
+                    , py::arg("tolerance1_d") = double(), py::arg("tolerance2_d") = double(), py::arg("vertices") = Eigen::MatrixXd(), py::arg("edges_length") = Eigen::VectorXd(), py::arg("edges_direction") = std::vector<bool>(), py::arg("edges_tangent") = Eigen::MatrixXd(), py::arg("edges_normal") = Eigen::MatrixXd()
+                    )
+                    .def_readwrite("tolerance1_d", &Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry::Tolerance1D, "")
+                    .def_readwrite("tolerance2_d", &Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry::Tolerance2D, "")
+                    .def_readwrite("vertices", &Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry::Vertices, "")
+                    .def_readwrite("edges_length", &Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry::EdgesLength, "")
+                    .def_readwrite("edges_direction", &Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry::EdgesDirection, "")
+                    .def_readwrite("edges_tangent", &Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry::EdgesTangent, "")
+                    .def_readwrite("edges_normal", &Polydim::FEM::MCC::FEM_MCC_2D_Polygon_Geometry::EdgesNormal, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_Triangle_RT_MCC_2D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_Triangle_RT_MCC_2D_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Gedim::MapTriangle::MapTriangleData MapData = Gedim::MapTriangle::MapTriangleData(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), std::vector<Gedim::Quadrature::QuadratureData> BoundaryQuadrature = std::vector<Gedim::Quadrature::QuadratureData>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data>();
+                        r_ctor_->MapData = MapData;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->BoundaryQuadrature = BoundaryQuadrature;
+                        return r_ctor_;
+                    })
+                    , py::arg("map_data") = Gedim::MapTriangle::MapTriangleData(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("boundary_quadrature") = std::vector<Gedim::Quadrature::QuadratureData>()
+                    )
+                    .def_readwrite("map_data", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data::MapData, "")
+                    .def_readwrite("order", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data::Order, "")
+                    .def_readwrite("num_velocity_basis_functions", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data::NumVelocityBasisFunctions, "")
+                    .def_readwrite("num_pressure_basis_functions", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data::NumPressureBasisFunctions, "")
+                    .def_readwrite("edges_direction", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data::EdgesDirection, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data::BoundaryQuadrature, "")
+                    ;
+
+
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_MCC_2D_LocalSpace_Data =
+                    py::class_<Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_MCC_2D_LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>([](
+                    Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data rt_triangle_local_space_data = Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data(), Polydim::FEM::MCC::FEM_MCC_2D_Types fem_type = Polydim::FEM::MCC::FEM_MCC_2D_Types(), Gedim::Quadrature::QuadratureData InternalQuadrature = Gedim::Quadrature::QuadratureData(), std::vector<Gedim::Quadrature::QuadratureData> BoundaryQuadrature = std::vector<Gedim::Quadrature::QuadratureData>())
+                    {
+                        auto r_ctor_ = std::make_unique<Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data>();
+                        r_ctor_->rt_triangle_local_space_data = rt_triangle_local_space_data;
+                        r_ctor_->fem_type = fem_type;
+                        r_ctor_->InternalQuadrature = InternalQuadrature;
+                        r_ctor_->BoundaryQuadrature = BoundaryQuadrature;
+                        return r_ctor_;
+                    })
+                    , py::arg("rt_triangle_local_space_data") = Polydim::FEM::MCC::FEM_Triangle_RT_MCC_2D_LocalSpace_Data(), py::arg("fem_type") = Polydim::FEM::MCC::FEM_MCC_2D_Types(), py::arg("internal_quadrature") = Gedim::Quadrature::QuadratureData(), py::arg("boundary_quadrature") = std::vector<Gedim::Quadrature::QuadratureData>()
+                    )
+                    .def_readwrite("rt_triangle_local_space_data", &Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data::rt_triangle_local_space_data, "")
+                    .def_readwrite("fem_type", &Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data::fem_type, "")
+                    .def_readwrite("internal_quadrature", &Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data::InternalQuadrature, "")
+                    .def_readwrite("boundary_quadrature", &Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data::BoundaryQuadrature, "")
+                    .def_readwrite("num_velocity_basis_functions", &Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data::NumVelocityBasisFunctions, "")
+                    .def_readwrite("num_pressure_basis_functions", &Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data::NumPressureBasisFunctions, "")
+                    ;
+            } // </namespace MCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_MCC_2D_LocalSpace_Data.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:FEM_MCC_2D_LocalSpace.hpp>    ////////////////////
+    // #ifndef __FEM_MCC_2D_LocalSpace_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace FEM>
+            py::module_ pyNsPolydim_NsFEM = pyNsPolydim.def_submodule("fem", "namespace FEM");
+            { // <namespace MCC>
+                py::module_ pyNsPolydim_NsFEM_NsMCC = pyNsPolydim_NsFEM.def_submodule("mcc", "namespace MCC");
+                auto pyNsPolydim_NsFEM_NsMCC_ClassFEM_MCC_2D_LocalSpace =
+                    py::class_<Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace>
+                        (pyNsPolydim_NsFEM_NsMCC, "FEM_MCC_2D_LocalSpace", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_local_space",
+                        &Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace::CreateLocalSpace, py::arg("reference_element_data"), py::arg("polygon"))
+                    .def("compute_velocity_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data &>(&Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace::ComputeVelocityBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_pressure_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data &>(&Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace::ComputePressureBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_velocity_basis_functions_divergence_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data &>(&Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace::ComputeVelocityBasisFunctionsDivergenceValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"))
+                    .def("compute_velocity_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace::ComputeVelocityBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_pressure_basis_functions_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace::ComputePressureBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    .def("compute_velocity_basis_functions_divergence_values",
+                        py::overload_cast<const Polydim::FEM::MCC::FEM_MCC_2D_ReferenceElement_Data &, const Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace_Data &, const Eigen::MatrixXd &>(&Polydim::FEM::MCC::FEM_MCC_2D_LocalSpace::ComputeVelocityBasisFunctionsDivergenceValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                    ;
+            } // </namespace MCC>
+
+        } // </namespace FEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:FEM_MCC_2D_LocalSpace.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:PDE_Mesh_Utilities.hpp>    ////////////////////
+    // #ifndef __PDETOOLS_MESH_PDE_Mesh_Utilities_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace Mesh>
+                py::module_ pyNsPolydim_NsPDETools_NsMesh = pyNsPolydim_NsPDETools.def_submodule("mesh", "namespace Mesh");
+                { // <namespace PDE_Mesh_Utilities>
+                    py::module_ pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities = pyNsPolydim_NsPDETools_NsMesh.def_submodule("pde_mesh_utilities", "namespace PDE_Mesh_Utilities");
+                    auto pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_1D =
+                        py::class_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_1D>
+                            (pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "PDE_Domain_1D", py::is_final(), "\n(final class)")
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("vertices", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_1D::vertices, "")
+                        .def_readwrite("length", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_1D::length, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_2D =
+                        py::class_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D>
+                            (pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "PDE_Domain_2D", py::is_final(), "\n(final class)");
+
+                    { // inner classes & enums of PDE_Domain_2D
+                        auto pyEnumDomain_Shape_Types =
+                            py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_2D, "Domain_Shape_Types", py::arithmetic(), "")
+                                .value("parallelogram", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Parallelogram, "")
+                                .value("polygon", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Polygon, "")
+                                .value("ellipse", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::Domain_Shape_Types::Ellipse, "");
+                    } // end of inner classes & enums of PDE_Domain_2D
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_2D
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("vertices", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::vertices, "")
+                        .def_readwrite("area", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::area, "")
+                        .def_readwrite("radius_1", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::radius_1, "")
+                        .def_readwrite("radius_2", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::radius_2, "")
+                        .def_readwrite("center", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::center, "")
+                        .def_readwrite("rotation_angle", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::rotation_angle, "")
+                        .def_readwrite("shape_type", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D::shape_type, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Time_Domain_2D =
+                        py::class_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Time_Domain_2D>
+                            (pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "PDE_Time_Domain_2D", py::is_final(), "\n(final class)")
+                        .def(py::init<>([](
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D spatial_domain = Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Time_Domain_2D>();
+                            r_ctor_->spatial_domain = spatial_domain;
+                            return r_ctor_;
+                        })
+                        , py::arg("spatial_domain") = Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_2D()
+                        )
+                        .def_readwrite("time_domain", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Time_Domain_2D::time_domain, "")
+                        .def_readwrite("spatial_domain", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Time_Domain_2D::spatial_domain, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_3D =
+                        py::class_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D>
+                            (pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "PDE_Domain_3D", py::is_final(), "\n(final class)");
+
+                    { // inner classes & enums of PDE_Domain_3D
+                        auto pyEnumDomain_Shape_Types =
+                            py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_3D, "Domain_Shape_Types", py::arithmetic(), "")
+                                .value("parallelepiped", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types::Parallelepiped, "")
+                                .value("polygon", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::Domain_Shape_Types::Polygon, "");
+                    } // end of inner classes & enums of PDE_Domain_3D
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities_ClassPDE_Domain_3D
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("vertices", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::vertices, "")
+                        .def_readwrite("edges", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::edges, "")
+                        .def_readwrite("faces", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::faces, "")
+                        .def_readwrite("volume", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::volume, "")
+                        .def_readwrite("shape_type", &Polydim::PDETools::Mesh::PDE_Mesh_Utilities::PDE_Domain_3D::shape_type, "")
+                        ;
+
+
+                    auto pyEnumMeshGenerator_Types_1D =
+                        py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_1D>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "MeshGenerator_Types_1D", py::arithmetic(), "")
+                            .value("equispaced", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_1D::Equispaced, "/< equispaced mesh")
+                            .value("minimal", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_1D::Minimal, "/< minimal mesh")
+                            .value("csv_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_1D::CsvImporter, "/< imported csv mesh");
+
+
+                    auto pyEnumMeshGenerator_Types_2D =
+                        py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "MeshGenerator_Types_2D", py::arithmetic(), "")
+                            .value("triangular", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Triangular, "/< generated triangular mesh")
+                            .value("minimal", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Minimal, "/< generated minimal mesh")
+                            .value("polygonal", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Polygonal, "/< generated voronoi polygonal mesh")
+                            .value("off_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::OFFImporter, "/< imported off mesh")
+                            .value("csv_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::CsvImporter, "/< imported csv mesh")
+                            .value("squared", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Squared, "/< squared mesh")
+                            .value("random_distorted", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::RandomDistorted, "");
+
+
+                    auto pyEnumMeshGenerator_Types_3D =
+                        py::enum_<Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D>(pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities, "MeshGenerator_Types_3D", py::arithmetic(), "")
+                            .value("tetrahedral", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::Tetrahedral, "/< generated tetrahedral mesh")
+                            .value("minimal", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::Minimal, "/< generated minimal mesh")
+                            .value("polyhedral", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::Polyhedral, "/< generated voronoi polyhedral mesh")
+                            .value("ovm_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::OVMImporter, "/< imported ovm mesh")
+                            .value("vtk_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::VtkImporter, "/< imported vtk mesh")
+                            .value("csv_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::CsvImporter, "/< imported csv mesh")
+                            .value("cubic", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_3D::Cubic, "/< cubic mesh");
+
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("create_mesh_1_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::create_mesh_1D, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("pde_domain"), py::arg("max_relative_length"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("create_mesh_2_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::create_mesh_2D, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("pde_domain"), py::arg("max_relative_area"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("create_mesh_3_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::create_mesh_3D, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("pde_domain"), py::arg("max_relative_volume"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("import_mesh_1_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::import_mesh_1D, py::arg("mesh_type"), py::arg("file_path"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("import_mesh_2_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::import_mesh_2D, py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("file_path"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("import_mesh_3_d",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::import_mesh_3D, py::arg("mesh_utilities"), py::arg("mesh_type"), py::arg("file_path"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("compute_mesh_1_d_geometry_data",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::compute_mesh_1D_geometry_data, py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh"));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("compute_mesh_2_d_geometry_data",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::compute_mesh_2D_geometry_data,
+                        py::arg("geometry_utilities"), py::arg("mesh_utilities"), py::arg("mesh"), py::arg("mesh_geometric_data_config") = Gedim::MeshUtilities::MeshGeometricData2DConfig(
+                            true, true, true, true, true, true, true, true, true, true, true, true, true));
+
+                    pyNsPolydim_NsPDETools_NsMesh_NsPDE_Mesh_Utilities.def("compute_mesh_3_d_geometry_data",
+                        Polydim::PDETools::Mesh::PDE_Mesh_Utilities::compute_mesh_3D_geometry_data, py::arg("geometry_utilities"), py::arg("mesh"));
+                } // </namespace PDE_Mesh_Utilities>
+
+            } // </namespace Mesh>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:PDE_Mesh_Utilities.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:EllipticEquation.hpp>    ////////////////////
+    // #ifndef __PDETOOLS_EQUATION_EllipticEquation_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace Equations>
+                py::module_ pyNsPolydim_NsPDETools_NsEquations = pyNsPolydim_NsPDETools.def_submodule("equations", "namespace Equations");
+                auto pyNsPolydim_NsPDETools_NsEquations_ClassEllipticEquation =
+                    py::class_<Polydim::PDETools::Equations::EllipticEquation>
+                        (pyNsPolydim_NsPDETools_NsEquations, "EllipticEquation", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("compute_cell_diffusion_matrix",
+                        py::overload_cast<const Eigen::VectorXd &, const std::vector<Eigen::MatrixXd> &, const Eigen::VectorXd &>(&Polydim::PDETools::Equations::EllipticEquation::ComputeCellDiffusionMatrix, py::const_), py::arg("diffusion_term_values"), py::arg("basis_functions_derivative_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_diffusion_matrix",
+                        py::overload_cast<const std::array<Eigen::VectorXd, 9> &, const std::vector<Eigen::MatrixXd> &, const Eigen::VectorXd &>(&Polydim::PDETools::Equations::EllipticEquation::ComputeCellDiffusionMatrix, py::const_), py::arg("diffusion_term_values"), py::arg("basis_functions_derivative_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_reaction_matrix",
+                        &Polydim::PDETools::Equations::EllipticEquation::ComputeCellReactionMatrix, py::arg("reaction_term_values"), py::arg("basis_functions_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_advection_matrix",
+                        &Polydim::PDETools::Equations::EllipticEquation::ComputeCellAdvectionMatrix, py::arg("advection_term_values"), py::arg("basis_functions_values"), py::arg("basis_functions_derivative_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_forcing_term",
+                        py::overload_cast<const Eigen::VectorXd &, const Eigen::MatrixXd &, const Eigen::VectorXd &>(&Polydim::PDETools::Equations::EllipticEquation::ComputeCellForcingTerm, py::const_), py::arg("forcing_term_values"), py::arg("basis_functions_values"), py::arg("quadrature_weights"))
+                    .def("compute_cell_forcing_term",
+                        py::overload_cast<const std::array<Eigen::VectorXd, 3> &, const std::vector<Eigen::MatrixXd> &, const Eigen::VectorXd &>(&Polydim::PDETools::Equations::EllipticEquation::ComputeCellForcingTerm, py::const_), py::arg("forcing_term_values"), py::arg("basis_functions_values"), py::arg("quadrature_weights"))
+                    ;
+            } // </namespace Equations>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:EllipticEquation.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:MeshMatricesDAO_mesh_connectivity_data.hpp>    ////////////////////
+    // #ifndef __PDETOOLS_MESH_MeshMatricesDAO_mesh_connectivity_data_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace Mesh>
+                py::module_ pyNsPolydim_NsPDETools_NsMesh = pyNsPolydim_NsPDETools.def_submodule("mesh", "namespace Mesh");
+                auto pyNsPolydim_NsPDETools_NsMesh_ClassMeshMatricesDAO_mesh_connectivity_data =
+                    py::class_<Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data>
+                        (pyNsPolydim_NsPDETools_NsMesh, "MeshMatricesDAO_mesh_connectivity_data", py::is_final(), "\n(final class)")
+                    .def(py::init<const Gedim::MeshMatricesDAO &>(),
+                        py::arg("mesh_data"))
+                    .def("dimension",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Dimension)
+                    .def("cell0_ds_number",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell0Ds_number)
+                    .def("cell1_ds_number",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell1Ds_number)
+                    .def("cell2_ds_number",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell2Ds_number)
+                    .def("cell3_ds_number",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell3Ds_number)
+                    .def("cell0_d_marker",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell0D_marker, py::arg("cell0_d_index"))
+                    .def("cell1_d_marker",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell1D_marker, py::arg("cell1_d_index"))
+                    .def("cell2_d_marker",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell2D_marker, py::arg("cell2_d_index"))
+                    .def("cell3_d_marker",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell3D_marker, py::arg("cell3_d_index"))
+                    .def("cell1_d_vertices",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell1D_vertices, py::arg("cell1_d_index"))
+                    .def("cell2_d_vertices",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell2D_vertices, py::arg("cell2_d_index"))
+                    .def("cell2_d_edges",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell2D_edges, py::arg("cell2_d_index"))
+                    .def("cell3_d_vertices",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell3D_vertices, py::arg("cell3_d_index"))
+                    .def("cell3_d_edges",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell3D_edges, py::arg("cell3_d_index"))
+                    .def("cell3_d_faces",
+                        &Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data::Cell3D_faces, py::arg("cell3_d_index"))
+                    ;
+            } // </namespace Mesh>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:MeshMatricesDAO_mesh_connectivity_data.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:DOFsManager.hpp>    ////////////////////
+    // #ifndef __PDETOOLS_DOFS_DOFsManager_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace DOFs>
+                py::module_ pyNsPolydim_NsPDETools_NsDOFs = pyNsPolydim_NsPDETools.def_submodule("do_fs", "namespace DOFs");
+                auto pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager =
+                    py::class_<Polydim::PDETools::DOFs::DOFsManager>
+                        (pyNsPolydim_NsPDETools_NsDOFs, "DOFsManager", "");
+
+                { // inner classes & enums of DOFsManager
+                    auto pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassMeshDOFsInfo =
+                        py::class_<Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo>
+                            (pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager, "MeshDOFsInfo", py::is_final(), "\n(final class)");
+
+                    { // inner classes & enums of MeshDOFsInfo
+                        auto pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassMeshDOFsInfo_ClassBoundaryInfo =
+                            py::class_<Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo>
+                                (pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassMeshDOFsInfo, "BoundaryInfo", "");
+
+                        { // inner classes & enums of BoundaryInfo
+                            auto pyEnumBoundaryTypes =
+                                py::enum_<Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes>(pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassMeshDOFsInfo_ClassBoundaryInfo, "BoundaryTypes", py::arithmetic(), "")
+                                    .value("unknwon", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::Unknwon, "")
+                                    .value("strong", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::Strong, "")
+                                    .value("weak", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::Weak, "")
+                                    .value("robin", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::Robin, "")
+                                    .value("none", Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes::None, "");
+                        } // end of inner classes & enums of BoundaryInfo
+
+                        pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassMeshDOFsInfo_ClassBoundaryInfo
+                            .def(py::init<>([](
+                            Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes Type = Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes())
+                            {
+                                auto r_ctor_ = std::make_unique<Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo>();
+                                r_ctor_->Type = Type;
+                                return r_ctor_;
+                            })
+                            , py::arg("type") = Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::BoundaryTypes()
+                            )
+                            .def_readwrite("type", &Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::Type, "")
+                            .def_readwrite("marker", &Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::BoundaryInfo::Marker, "")
+                            ;
+                    } // end of inner classes & enums of MeshDOFsInfo
+
+                    pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassMeshDOFsInfo
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("cells_num_do_fs", &Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::CellsNumDOFs, "")
+                        .def_readwrite("cells_boundary_info", &Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo::CellsBoundaryInfo, "")
+                        ;
+                    auto pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassConstantDOFsInfo =
+                        py::class_<Polydim::PDETools::DOFs::DOFsManager::ConstantDOFsInfo>
+                            (pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager, "ConstantDOFsInfo", py::is_final(), "\n(final class)")
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("num_do_fs", &Polydim::PDETools::DOFs::DOFsManager::ConstantDOFsInfo::NumDOFs, "")
+                        .def_readwrite("boundary_info", &Polydim::PDETools::DOFs::DOFsManager::ConstantDOFsInfo::BoundaryInfo, "")
+                        ;
+                    auto pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData =
+                        py::class_<Polydim::PDETools::DOFs::DOFsManager::DOFsData>
+                            (pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager, "DOFsData", py::is_final(), "\n(final class)");
+
+                    { // inner classes & enums of DOFsData
+                        auto pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData_ClassDOF =
+                            py::class_<Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF>
+                                (pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData, "DOF", py::is_final(), "\n(final class)");
+
+                        { // inner classes & enums of DOF
+                            auto pyEnumTypes =
+                                py::enum_<Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types>(pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData_ClassDOF, "Types", py::arithmetic(), "")
+                                    .value("unknwon", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::Unknwon, "")
+                                    .value("strong", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::Strong, "")
+                                    .value("dof", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::DOF, "")
+                                    .value("robin", Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types::Robin, "");
+                        } // end of inner classes & enums of DOF
+
+                        pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData_ClassDOF
+                            .def(py::init<>([](
+                            Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types Type = Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types())
+                            {
+                                auto r_ctor_ = std::make_unique<Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF>();
+                                r_ctor_->Type = Type;
+                                return r_ctor_;
+                            })
+                            , py::arg("type") = Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Types()
+                            )
+                            .def_readwrite("type", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Type, "")
+                            .def_readwrite("global_index", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::DOF::Global_Index, "")
+                            ;
+                        auto pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData_ClassGlobalCell_DOF =
+                            py::class_<Polydim::PDETools::DOFs::DOFsManager::DOFsData::GlobalCell_DOF>
+                                (pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData, "GlobalCell_DOF", "")
+                            .def(py::init<>()) // implicit default constructor
+                            .def_readwrite("dimension", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::GlobalCell_DOF::Dimension, "")
+                            .def_readwrite("cell_index", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::GlobalCell_DOF::CellIndex, "")
+                            .def_readwrite("dof_index", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::GlobalCell_DOF::DOFIndex, "")
+                            ;
+                    } // end of inner classes & enums of DOFsData
+
+                    pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassDOFsData
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("number_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberDOFs, "")
+                        .def_readwrite("number_internal_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberInternalDOFs, "")
+                        .def_readwrite("number_boundary_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberBoundaryDOFs, "")
+                        .def_readwrite("number_strongs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberStrongs, "")
+                        .def_readwrite("number_robin", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::NumberRobin, "")
+                        .def_readwrite("cells_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::CellsDOFs, "")
+                        .def_readwrite("cells_global_do_fs", &Polydim::PDETools::DOFs::DOFsManager::DOFsData::CellsGlobalDOFs, "")
+                        ;
+                    auto pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager_ClassCellsDOFsIndicesData =
+                        py::class_<Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData>
+                            (pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager, "CellsDOFsIndicesData", py::is_final(), "\n(final class)")
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("cells_do_fs_local_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_DOFs_LocalIndex, "")
+                        .def_readwrite("cells_strongs_local_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_Strongs_LocalIndex, "")
+                        .def_readwrite("cells_robin_local_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_Robin_LocalIndex, "")
+                        .def_readwrite("cells_do_fs_global_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_DOFs_GlobalIndex, "")
+                        .def_readwrite("cells_strongs_global_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_Strongs_GlobalIndex, "")
+                        .def_readwrite("cells_robin_global_index", &Polydim::PDETools::DOFs::DOFsManager::CellsDOFsIndicesData::Cells_Robin_GlobalIndex, "")
+                        ;
+                } // end of inner classes & enums of DOFsManager
+
+                pyNsPolydim_NsPDETools_NsDOFs_ClassDOFsManager
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create_constant_do_fs_info_0_d",
+                        py::overload_cast<const Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data &, const Polydim::PDETools::DOFs::DOFsManager::ConstantDOFsInfo &>(&Polydim::PDETools::DOFs::DOFsManager::Create_Constant_DOFsInfo_0D<Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data>, py::const_), py::arg("mesh"), py::arg("boundary_info"))
+                    .def("create_constant_do_fs_info_1_d",
+                        py::overload_cast<const Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data &, const Polydim::PDETools::DOFs::DOFsManager::ConstantDOFsInfo &>(&Polydim::PDETools::DOFs::DOFsManager::Create_Constant_DOFsInfo_1D<Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data>, py::const_), py::arg("mesh"), py::arg("boundary_info"))
+                    .def("create_constant_do_fs_info_2_d",
+                        py::overload_cast<const Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data &, const Polydim::PDETools::DOFs::DOFsManager::ConstantDOFsInfo &>(&Polydim::PDETools::DOFs::DOFsManager::Create_Constant_DOFsInfo_2D<Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data>, py::const_), py::arg("mesh"), py::arg("boundary_info"))
+                    .def("create_constant_do_fs_info_3_d",
+                        py::overload_cast<const Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data &, const Polydim::PDETools::DOFs::DOFsManager::ConstantDOFsInfo &>(&Polydim::PDETools::DOFs::DOFsManager::Create_Constant_DOFsInfo_3D<Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data>, py::const_), py::arg("mesh"), py::arg("boundary_info"))
+                    .def("create_do_fs_0_d",
+                        &Polydim::PDETools::DOFs::DOFsManager::CreateDOFs_0D, py::arg("mesh_do_fs_info"))
+                    .def("create_do_fs_1_d",
+                        py::overload_cast<const Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo &, const Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data &>(&Polydim::PDETools::DOFs::DOFsManager::CreateDOFs_1D<Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data>, py::const_), py::arg("mesh_do_fs_info"), py::arg("mesh"))
+                    .def("create_do_fs_2_d",
+                        py::overload_cast<const Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo &, const Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data &>(&Polydim::PDETools::DOFs::DOFsManager::CreateDOFs_2D<Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data>, py::const_), py::arg("mesh_do_fs_info"), py::arg("mesh"))
+                    .def("create_do_fs_3_d",
+                        py::overload_cast<const Polydim::PDETools::DOFs::DOFsManager::MeshDOFsInfo &, const Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data &>(&Polydim::PDETools::DOFs::DOFsManager::CreateDOFs_3D<Polydim::PDETools::Mesh::MeshMatricesDAO_mesh_connectivity_data>, py::const_), py::arg("mesh_do_fs_info"), py::arg("mesh"))
+                    .def("compute_cells_do_fs_indices",
+                        &Polydim::PDETools::DOFs::DOFsManager::ComputeCellsDOFsIndices, py::arg("dofs"), py::arg("dim"))
+                    ;
+            } // </namespace DOFs>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:DOFsManager.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:LocalSpace_PCC_2D.hpp>    ////////////////////
+    // #ifndef __LocalSpace_PCC_2D_H
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace LocalSpace_PCC_2D>
+                py::module_ pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D = pyNsPolydim_NsPDETools.def_submodule("local_space_pcc_2_d", "namespace LocalSpace_PCC_2D");
+                auto pyEnumMethodTypes =
+                    py::enum_<Polydim::PDETools::LocalSpace_PCC_2D::MethodTypes>(pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D, "MethodTypes", py::arithmetic(), "")
+                        .value("fem_pcc", Polydim::PDETools::LocalSpace_PCC_2D::MethodTypes::FEM_PCC, "")
+                        .value("vem_pcc", Polydim::PDETools::LocalSpace_PCC_2D::MethodTypes::VEM_PCC, "")
+                        .value("vem_pcc_inertia", Polydim::PDETools::LocalSpace_PCC_2D::MethodTypes::VEM_PCC_Inertia, "")
+                        .value("vem_pcc_ortho", Polydim::PDETools::LocalSpace_PCC_2D::MethodTypes::VEM_PCC_Ortho, "")
+                        .value("zfem_pcc", Polydim::PDETools::LocalSpace_PCC_2D::MethodTypes::ZFEM_PCC, "");
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D_ClassReferenceElement_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D, "ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("method_type", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::Method_Type, "")
+                    .def_readwrite("order", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::Order, "")
+                    .def_readwrite("vem_reference_element", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::VEM_ReferenceElement, "")
+                    .def_readwrite("vem_reference_element_data", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::VEM_ReferenceElement_Data, "")
+                    .def_readwrite("vem_type", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::VEM_Type, "")
+                    .def_readwrite("vem_local_space", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::VEM_LocalSpace, "")
+                    .def_readwrite("fem_reference_element", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::FEM_ReferenceElement, "")
+                    .def_readwrite("fem_reference_element_data", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::FEM_ReferenceElement_Data, "")
+                    .def_readwrite("fem_local_space", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::FEM_LocalSpace, "")
+                    .def_readwrite("zfem_reference_element", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::ZFEM_ReferenceElement, "")
+                    .def_readwrite("zfem_reference_element_data", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::ZFEM_ReferenceElement_Data, "")
+                    .def_readwrite("zfem_local_space", &Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data::ZFEM_LocalSpace, "")
+                    ;
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D_ClassLocalSpace_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D, "LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("vem_geometry", &Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data::VEM_Geometry, "")
+                    .def_readwrite("vem_local_space_data", &Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data::VEM_LocalSpace_Data, "")
+                    .def_readwrite("fem_geometry", &Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data::FEM_Geometry, "")
+                    .def_readwrite("fem_local_space_data", &Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data::FEM_LocalSpace_Data, "")
+                    .def_readwrite("zfem_geometry", &Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data::ZFEM_Geometry, "")
+                    .def_readwrite("zfem_local_space_data", &Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data::ZFEM_LocalSpace_Data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D_ClassPerformance_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_PCC_2D::Performance_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D, "Performance_Data", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of Performance_Data
+                    auto pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D_ClassPerformance_Data_ClassCell2D_Performance =
+                        py::class_<Polydim::PDETools::LocalSpace_PCC_2D::Performance_Data::Cell2D_Performance>
+                            (pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D_ClassPerformance_Data, "Cell2D_Performance", py::is_final(), "\n(final class)")
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("num_boundary_quadrature_points", &Polydim::PDETools::LocalSpace_PCC_2D::Performance_Data::Cell2D_Performance::NumBoundaryQuadraturePoints, "")
+                        .def_readwrite("num_internal_quadrature_points", &Polydim::PDETools::LocalSpace_PCC_2D::Performance_Data::Cell2D_Performance::NumInternalQuadraturePoints, "")
+                        .def_readwrite("vem_analysis_data", &Polydim::PDETools::LocalSpace_PCC_2D::Performance_Data::Cell2D_Performance::vem_analysis_data, "")
+                        .def_readwrite("zfem_analysis_data", &Polydim::PDETools::LocalSpace_PCC_2D::Performance_Data::Cell2D_Performance::zfem_analysis_data, "")
+                        ;
+                } // end of inner classes & enums of Performance_Data
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D_ClassPerformance_Data
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("performance_data", &Polydim::PDETools::LocalSpace_PCC_2D::Performance_Data::performance_data, "")
+                    ;
+
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("create_reference_element",
+                    Polydim::PDETools::LocalSpace_PCC_2D::CreateReferenceElement, py::arg("method_type"), py::arg("method_order"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("mesh_geometric_data_configiguration",
+                    Polydim::PDETools::LocalSpace_PCC_2D::MeshGeometricDataConfigiguration, py::arg("reference_element_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("set_mesh_do_fs_info",
+                    Polydim::PDETools::LocalSpace_PCC_2D::SetMeshDOFsInfo, py::arg("reference_element_data"), py::arg("mesh"), py::arg("boundary_info"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("create_local_space",
+                    Polydim::PDETools::LocalSpace_PCC_2D::CreateLocalSpace, py::arg("geometric_tolerance_1_d"), py::arg("geometric_tolerance_2_d"), py::arg("mesh_geometric_data"), py::arg("cell2_d_index"), py::arg("reference_element_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("basis_functions_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data &, const Polydim::VEM::PCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_PCC_2D::BasisFunctionsValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::Pi0km1);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("basis_functions_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data &, const Eigen::MatrixXd &, const Polydim::VEM::PCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_PCC_2D::BasisFunctionsValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("points"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::Pi0km1);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("basis_functions_values_on_edge",
+                    Polydim::PDETools::LocalSpace_PCC_2D::BasisFunctionsValuesOnEdge, py::arg("edge_local_index"), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("points_curvilinear_coordinates"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("basis_functions_derivative_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data &, const Polydim::VEM::PCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_PCC_2D::BasisFunctionsDerivativeValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::Pi0km1Der);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("basis_functions_derivative_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_PCC_2D::LocalSpace_Data &, const Eigen::MatrixXd &, const Polydim::VEM::PCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_PCC_2D::BasisFunctionsDerivativeValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("points"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::Pi0km1Der);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("basis_functions_laplacian_values",
+                    Polydim::PDETools::LocalSpace_PCC_2D::BasisFunctionsLaplacianValues, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::Pi0km1Der);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("stabilization_matrix",
+                    Polydim::PDETools::LocalSpace_PCC_2D::StabilizationMatrix, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::PiNabla);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("edge_dofs_coordinates",
+                    Polydim::PDETools::LocalSpace_PCC_2D::EdgeDofsCoordinates, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("edge_local_index"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("internal_dofs_coordinates",
+                    Polydim::PDETools::LocalSpace_PCC_2D::InternalDofsCoordinates, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("internal_dofs",
+                    Polydim::PDETools::LocalSpace_PCC_2D::InternalDofs, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("values_at_dofs"), py::arg("internal_dofs_coordinates"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("internal_quadrature",
+                    Polydim::PDETools::LocalSpace_PCC_2D::InternalQuadrature, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("size",
+                    Polydim::PDETools::LocalSpace_PCC_2D::Size, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("compute_performance",
+                    Polydim::PDETools::LocalSpace_PCC_2D::ComputePerformance, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_2D.def("export_dofs",
+                    Polydim::PDETools::LocalSpace_PCC_2D::export_dofs, py::arg("geometry_utilities"), py::arg("mesh"), py::arg("mesh_geometric_data"), py::arg("mesh_dofs_info"), py::arg("dofs_data"), py::arg("right_hand_side"), py::arg("solution"), py::arg("solution_strongs"), py::arg("file_path"));
+            } // </namespace LocalSpace_PCC_2D>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:LocalSpace_PCC_2D.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:LocalSpace_PCC_3D.hpp>    ////////////////////
+    // #ifndef __LocalSpace_PCC_3D_H
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace LocalSpace_PCC_3D>
+                py::module_ pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D = pyNsPolydim_NsPDETools.def_submodule("local_space_pcc_3_d", "namespace LocalSpace_PCC_3D");
+                auto pyEnumMethodTypes =
+                    py::enum_<Polydim::PDETools::LocalSpace_PCC_3D::MethodTypes>(pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D, "MethodTypes", py::arithmetic(), "")
+                        .value("fem_pcc", Polydim::PDETools::LocalSpace_PCC_3D::MethodTypes::FEM_PCC, "")
+                        .value("vem_pcc", Polydim::PDETools::LocalSpace_PCC_3D::MethodTypes::VEM_PCC, "")
+                        .value("vem_pcc_inertia", Polydim::PDETools::LocalSpace_PCC_3D::MethodTypes::VEM_PCC_Inertia, "")
+                        .value("vem_pcc_ortho", Polydim::PDETools::LocalSpace_PCC_3D::MethodTypes::VEM_PCC_Ortho, "");
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D_ClassReferenceElement_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D, "ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("method_type", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::Method_Type, "")
+                    .def_readwrite("order", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::Order, "")
+                    .def_readwrite("vem_reference_element_2_d", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::VEM_ReferenceElement_2D, "")
+                    .def_readwrite("vem_reference_element_data_2_d", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::VEM_ReferenceElement_Data_2D, "")
+                    .def_readwrite("vem_reference_element_3_d", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::VEM_ReferenceElement_3D, "")
+                    .def_readwrite("vem_reference_element_data_3_d", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::VEM_ReferenceElement_Data_3D, "")
+                    .def_readwrite("vem_type", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::VEM_Type, "")
+                    .def_readwrite("vem_local_space", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::VEM_LocalSpace, "")
+                    .def_readwrite("fem_reference_element_3_d", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::FEM_ReferenceElement_3D, "")
+                    .def_readwrite("fem_reference_element_data_3_d", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::FEM_ReferenceElement_Data_3D, "")
+                    .def_readwrite("fem_local_space", &Polydim::PDETools::LocalSpace_PCC_3D::ReferenceElement_Data::FEM_LocalSpace, "")
+                    ;
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D_ClassLocalSpace_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_PCC_3D::LocalSpace_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D, "LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("vem_geometry", &Polydim::PDETools::LocalSpace_PCC_3D::LocalSpace_Data::VEM_Geometry, "")
+                    .def_readwrite("vem_local_space_data", &Polydim::PDETools::LocalSpace_PCC_3D::LocalSpace_Data::VEM_LocalSpace_Data, "")
+                    .def_readwrite("fem_geometry", &Polydim::PDETools::LocalSpace_PCC_3D::LocalSpace_Data::FEM_Geometry, "")
+                    .def_readwrite("fem_local_space_data", &Polydim::PDETools::LocalSpace_PCC_3D::LocalSpace_Data::FEM_LocalSpace_Data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D_ClassPerformance_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_PCC_3D::Performance_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D, "Performance_Data", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of Performance_Data
+                    auto pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D_ClassPerformance_Data_ClassCell3D_Performance =
+                        py::class_<Polydim::PDETools::LocalSpace_PCC_3D::Performance_Data::Cell3D_Performance>
+                            (pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D_ClassPerformance_Data, "Cell3D_Performance", py::is_final(), "\n(final class)")
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("num_boundary_quadrature_points", &Polydim::PDETools::LocalSpace_PCC_3D::Performance_Data::Cell3D_Performance::NumBoundaryQuadraturePoints, "")
+                        .def_readwrite("num_internal_quadrature_points", &Polydim::PDETools::LocalSpace_PCC_3D::Performance_Data::Cell3D_Performance::NumInternalQuadraturePoints, "")
+                        .def_readwrite("analysis", &Polydim::PDETools::LocalSpace_PCC_3D::Performance_Data::Cell3D_Performance::Analysis, "")
+                        ;
+                } // end of inner classes & enums of Performance_Data
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D_ClassPerformance_Data
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("vem_performance_data", &Polydim::PDETools::LocalSpace_PCC_3D::Performance_Data::VEM_Performance_Data, "")
+                    ;
+
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("create_reference_element",
+                    Polydim::PDETools::LocalSpace_PCC_3D::CreateReferenceElement, py::arg("method_type"), py::arg("method_order"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("set_mesh_do_fs_info",
+                    Polydim::PDETools::LocalSpace_PCC_3D::SetMeshDOFsInfo, py::arg("reference_element_data"), py::arg("mesh"), py::arg("boundary_info"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("create_local_space",
+                    Polydim::PDETools::LocalSpace_PCC_3D::CreateLocalSpace, py::arg("geometric_tolerance_1_d"), py::arg("geometric_tolerance_2_d"), py::arg("geometric_tolerance_3_d"), py::arg("mesh_geometric_data"), py::arg("cell3_d_index"), py::arg("reference_element_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("basis_functions_values",
+                    Polydim::PDETools::LocalSpace_PCC_3D::BasisFunctionsValues, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::Pi0km1);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("basis_functions_values_on_face",
+                    Polydim::PDETools::LocalSpace_PCC_3D::BasisFunctionsValuesOnFace, py::arg("face_local_index"), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("quadrature_points"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("basis_functions_derivative_values",
+                    Polydim::PDETools::LocalSpace_PCC_3D::BasisFunctionsDerivativeValues, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::Pi0km1Der);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("stabilization_matrix",
+                    Polydim::PDETools::LocalSpace_PCC_3D::StabilizationMatrix, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::PCC::ProjectionTypes::PiNabla);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("edge_dofs_coordinates",
+                    Polydim::PDETools::LocalSpace_PCC_3D::EdgeDofsCoordinates, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("edge_local_index"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("face_dofs_coordinates",
+                    Polydim::PDETools::LocalSpace_PCC_3D::FaceDofsCoordinates, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("face_local_index"), py::arg("quadrature_offset"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("face_dofs",
+                    Polydim::PDETools::LocalSpace_PCC_3D::FaceDofs, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("face_local_index"), py::arg("strong_values"), py::arg("quadrature_offset"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("face_quadrature",
+                    Polydim::PDETools::LocalSpace_PCC_3D::FaceQuadrature, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("face_local_index"), py::arg("quadrature_offset"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("internal_quadrature",
+                    Polydim::PDETools::LocalSpace_PCC_3D::InternalQuadrature, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("size",
+                    Polydim::PDETools::LocalSpace_PCC_3D::Size, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_PCC_3D.def("compute_performance",
+                    Polydim::PDETools::LocalSpace_PCC_3D::ComputePerformance, py::arg("reference_element_data"), py::arg("local_space_data"));
+            } // </namespace LocalSpace_PCC_3D>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:LocalSpace_PCC_3D.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:LocalSpace_MCC_2D.hpp>    ////////////////////
+    // #ifndef __LocalSpace_MCC_2D_H
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace LocalSpace_MCC_2D>
+                py::module_ pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D = pyNsPolydim_NsPDETools.def_submodule("local_space_mcc_2_d", "namespace LocalSpace_MCC_2D");
+                auto pyEnumMethodTypes =
+                    py::enum_<Polydim::PDETools::LocalSpace_MCC_2D::MethodTypes>(pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D, "MethodTypes", py::arithmetic(), "")
+                        .value("vem_mcc", Polydim::PDETools::LocalSpace_MCC_2D::MethodTypes::VEM_MCC, "")
+                        .value("vem_mcc_partial", Polydim::PDETools::LocalSpace_MCC_2D::MethodTypes::VEM_MCC_Partial, "")
+                        .value("vem_mcc_ortho", Polydim::PDETools::LocalSpace_MCC_2D::MethodTypes::VEM_MCC_Ortho, "")
+                        .value("vem_mcc_edge_ortho", Polydim::PDETools::LocalSpace_MCC_2D::MethodTypes::VEM_MCC_EdgeOrtho, "")
+                        .value("vem_mcc_ortho_edge_ortho", Polydim::PDETools::LocalSpace_MCC_2D::MethodTypes::VEM_MCC_Ortho_EdgeOrtho, "")
+                        .value("fem_rt_mcc", Polydim::PDETools::LocalSpace_MCC_2D::MethodTypes::FEM_RT_MCC, "");
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D_ClassReferenceElement_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D, "ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("method_type", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::Method_Type, "")
+                    .def_readwrite("order", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::Order, "")
+                    .def_readwrite("vem_reference_element_velocity", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::VEM_ReferenceElement_Velocity, "")
+                    .def_readwrite("vem_reference_element_pressure", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::VEM_ReferenceElement_Pressure, "")
+                    .def_readwrite("vem_reference_element_data_velocity", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::VEM_ReferenceElement_Data_Velocity, "")
+                    .def_readwrite("vem_reference_element_data_pressure", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::VEM_ReferenceElement_Data_Pressure, "")
+                    .def_readwrite("vem_type", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::VEM_Type, "")
+                    .def_readwrite("vem_local_space_velocity", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::VEM_LocalSpace_Velocity, "")
+                    .def_readwrite("vem_local_space_pressure", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::VEM_LocalSpace_Pressure, "")
+                    .def_readwrite("fem_type", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::FEM_Type, "")
+                    .def_readwrite("fem_local_space", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::FEM_LocalSpace, "")
+                    .def_readwrite("fem_reference_element", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::FEM_ReferenceElement, "")
+                    .def_readwrite("fem_reference_element_data", &Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data::FEM_ReferenceElement_Data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D_ClassLocalSpace_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_MCC_2D::LocalSpace_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D, "LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("vem_geometry", &Polydim::PDETools::LocalSpace_MCC_2D::LocalSpace_Data::VEM_Geometry, "")
+                    .def_readwrite("vem_local_space_data_velocity", &Polydim::PDETools::LocalSpace_MCC_2D::LocalSpace_Data::VEM_LocalSpace_Data_Velocity, "")
+                    .def_readwrite("vem_local_space_data_pressure", &Polydim::PDETools::LocalSpace_MCC_2D::LocalSpace_Data::VEM_LocalSpace_Data_Pressure, "")
+                    .def_readwrite("fem_geometry", &Polydim::PDETools::LocalSpace_MCC_2D::LocalSpace_Data::FEM_Geometry, "")
+                    .def_readwrite("fem_local_space_data", &Polydim::PDETools::LocalSpace_MCC_2D::LocalSpace_Data::FEM_LocalSpace_Data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D_ClassPerformance_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_MCC_2D::Performance_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D, "Performance_Data", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of Performance_Data
+                    auto pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D_ClassPerformance_Data_ClassCell2D_Performance =
+                        py::class_<Polydim::PDETools::LocalSpace_MCC_2D::Performance_Data::Cell2D_Performance>
+                            (pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D_ClassPerformance_Data, "Cell2D_Performance", py::is_final(), "\n(final class)")
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("num_boundary_quadrature_points", &Polydim::PDETools::LocalSpace_MCC_2D::Performance_Data::Cell2D_Performance::NumBoundaryQuadraturePoints, "")
+                        .def_readwrite("num_internal_quadrature_points", &Polydim::PDETools::LocalSpace_MCC_2D::Performance_Data::Cell2D_Performance::NumInternalQuadraturePoints, "")
+                        .def_readwrite("vem_analysis", &Polydim::PDETools::LocalSpace_MCC_2D::Performance_Data::Cell2D_Performance::VEM_Analysis, "")
+                        ;
+                } // end of inner classes & enums of Performance_Data
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D_ClassPerformance_Data
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("performance_data", &Polydim::PDETools::LocalSpace_MCC_2D::Performance_Data::Performance_Data, "")
+                    ;
+
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("create_reference_element",
+                    Polydim::PDETools::LocalSpace_MCC_2D::CreateReferenceElement, py::arg("method_type"), py::arg("method_order"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("reference_element_num_do_fs",
+                    Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElementNumDOFs, py::arg("reference_element_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("create_local_space",
+                    Polydim::PDETools::LocalSpace_MCC_2D::CreateLocalSpace, py::arg("geometric_tolerance_1_d"), py::arg("geometric_tolerance_2_d"), py::arg("mesh_geometric_data"), py::arg("cell2_d_index"), py::arg("reference_element_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("velocity_basis_functions_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_MCC_2D::LocalSpace_Data &, const Polydim::VEM::MCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_MCC_2D::VelocityBasisFunctionsValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::MCC::ProjectionTypes::Pi0k);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("pressure_basis_functions_values",
+                    Polydim::PDETools::LocalSpace_MCC_2D::PressureBasisFunctionsValues, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("velocity_basis_functions_divergence_values",
+                    Polydim::PDETools::LocalSpace_MCC_2D::VelocityBasisFunctionsDivergenceValues, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("stabilization_matrix",
+                    Polydim::PDETools::LocalSpace_MCC_2D::StabilizationMatrix, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::MCC::ProjectionTypes::Pi0k);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("edge_dofs_coordinates",
+                    Polydim::PDETools::LocalSpace_MCC_2D::EdgeDofsCoordinates, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("edge_local_index"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("edge_dofs",
+                    Polydim::PDETools::LocalSpace_MCC_2D::EdgeDofs, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("edge_local_index"), py::arg("edge_dofs_coordinates"), py::arg("strong_values"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("velocity_basis_functions_values_on_edges",
+                    Polydim::PDETools::LocalSpace_MCC_2D::VelocityBasisFunctionsValuesOnEdges, py::arg("edge_local_index"), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("edge_quadrature_points"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("velocity_basis_functions_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_MCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_MCC_2D::LocalSpace_Data &, const Eigen::MatrixXd &, const Polydim::VEM::MCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_MCC_2D::VelocityBasisFunctionsValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("points"), py::arg("projection_type") = Polydim::VEM::MCC::ProjectionTypes::Pi0k);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("edge_quadrature",
+                    Polydim::PDETools::LocalSpace_MCC_2D::EdgeQuadrature, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("edge_local_index"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("edge_reference_quadrature",
+                    Polydim::PDETools::LocalSpace_MCC_2D::EdgeReferenceQuadrature, py::arg("reference_element_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("internal_quadrature",
+                    Polydim::PDETools::LocalSpace_MCC_2D::InternalQuadrature, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("velocity_size",
+                    Polydim::PDETools::LocalSpace_MCC_2D::VelocitySize, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_MCC_2D.def("compute_performance",
+                    Polydim::PDETools::LocalSpace_MCC_2D::ComputePerformance, py::arg("reference_element_data"), py::arg("local_space_data"));
+            } // </namespace LocalSpace_MCC_2D>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:LocalSpace_MCC_2D.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:assembler_PCC_2D_functions_data.hpp>    ////////////////////
+    // #ifndef __PDETOOLS_ASSEMBLER_assembler_PCC_2D_functions_data_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace Assembler_Utilities>
+                py::module_ pyNsPolydim_NsPDETools_NsAssembler_Utilities = pyNsPolydim_NsPDETools.def_submodule("assembler_utilities", "namespace Assembler_Utilities");
+                { // <namespace PCC_2D>
+                    py::module_ pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D = pyNsPolydim_NsPDETools_NsAssembler_Utilities.def_submodule("pcc_2_d", "namespace PCC_2D");
+                    auto pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D_ClassSparse_Matrix_Triplet =
+                        py::class_<Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Triplet>
+                            (pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D, "Sparse_Matrix_Triplet", py::is_final(), " ***************************************************************************\n(final class)")
+                        .def(py::init<>([](
+                        double value = double())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Triplet>();
+                            r_ctor_->value = value;
+                            return r_ctor_;
+                        })
+                        , py::arg("value") = double()
+                        )
+                        .def_readwrite("i", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Triplet::i, "")
+                        .def_readwrite("j", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Triplet::j, "")
+                        .def_readwrite("value", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Triplet::value, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D_ClassSparse_Matrix_Data =
+                        py::class_<Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data>
+                            (pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D, "Sparse_Matrix_Data", py::is_final(), " ***************************************************************************\n(final class)")
+                        .def(py::init<>([](
+                        std::vector<double> values = std::vector<double>())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data>();
+                            r_ctor_->values = values;
+                            return r_ctor_;
+                        })
+                        , py::arg("values") = std::vector<double>()
+                        )
+                        .def_readwrite("size", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data::size, "")
+                        .def_readwrite("rows", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data::rows, "")
+                        .def_readwrite("cols", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data::cols, "")
+                        .def_readwrite("values", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data::values, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D_ClassExact_Solution_Data =
+                        py::class_<Polydim::PDETools::Assembler_Utilities::PCC_2D::Exact_Solution_Data>
+                            (pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D, "Exact_Solution_Data", py::is_final(), " ***************************************************************************\n(final class)")
+                        .def(py::init<>([](
+                        Eigen::VectorXd exact_solution = Eigen::VectorXd(), Eigen::VectorXd exact_solution_strong = Eigen::VectorXd())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Assembler_Utilities::PCC_2D::Exact_Solution_Data>();
+                            r_ctor_->exact_solution = exact_solution;
+                            r_ctor_->exact_solution_strong = exact_solution_strong;
+                            return r_ctor_;
+                        })
+                        , py::arg("exact_solution") = Eigen::VectorXd(), py::arg("exact_solution_strong") = Eigen::VectorXd()
+                        )
+                        .def_readwrite("exact_solution", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Exact_Solution_Data::exact_solution, "")
+                        .def_readwrite("exact_solution_strong", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Exact_Solution_Data::exact_solution_strong, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D_ClassVariational_Operator =
+                        py::class_<Polydim::PDETools::Assembler_Utilities::PCC_2D::Variational_Operator>
+                            (pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D, "Variational_Operator", py::is_final(), " ***************************************************************************\n(final class)")
+                        .def(py::init<>([](
+                        Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data A = Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data(), Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data A_Strong = Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Assembler_Utilities::PCC_2D::Variational_Operator>();
+                            r_ctor_->A = A;
+                            r_ctor_->A_Strong = A_Strong;
+                            return r_ctor_;
+                        })
+                        , py::arg("a") = Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data(), py::arg("a_strong") = Polydim::PDETools::Assembler_Utilities::PCC_2D::Sparse_Matrix_Data()
+                        )
+                        .def_readwrite("a", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Variational_Operator::A, "")
+                        .def_readwrite("a_strong", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Variational_Operator::A_Strong, "")
+                        ;
+
+
+                    auto pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D_ClassPost_Process_Data =
+                        py::class_<Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data>
+                            (pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D, "Post_Process_Data", py::is_final(), " ***************************************************************************\n(final class)")
+                        .def(py::init<>([](
+                        Eigen::VectorXd cell0Ds_numeric = Eigen::VectorXd(), Eigen::VectorXd cell0Ds_exact = Eigen::VectorXd(), Eigen::VectorXd cell2Ds_exact_norm_L2 = Eigen::VectorXd(), Eigen::VectorXd cell2Ds_numeric_norm_L2 = Eigen::VectorXd(), Eigen::VectorXd cell2Ds_error_L2 = Eigen::VectorXd(), double mesh_size = double(), double error_L2 = double(), double exact_norm_L2 = double(), double numeric_norm_L2 = double())
+                        {
+                            auto r_ctor_ = std::make_unique<Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data>();
+                            r_ctor_->cell0Ds_numeric = cell0Ds_numeric;
+                            r_ctor_->cell0Ds_exact = cell0Ds_exact;
+                            r_ctor_->cell2Ds_exact_norm_L2 = cell2Ds_exact_norm_L2;
+                            r_ctor_->cell2Ds_numeric_norm_L2 = cell2Ds_numeric_norm_L2;
+                            r_ctor_->cell2Ds_error_L2 = cell2Ds_error_L2;
+                            r_ctor_->mesh_size = mesh_size;
+                            r_ctor_->error_L2 = error_L2;
+                            r_ctor_->exact_norm_L2 = exact_norm_L2;
+                            r_ctor_->numeric_norm_L2 = numeric_norm_L2;
+                            return r_ctor_;
+                        })
+                        , py::arg("cell0_ds_numeric") = Eigen::VectorXd(), py::arg("cell0_ds_exact") = Eigen::VectorXd(), py::arg("cell2_ds_exact_norm_l2") = Eigen::VectorXd(), py::arg("cell2_ds_numeric_norm_l2") = Eigen::VectorXd(), py::arg("cell2_ds_error_l2") = Eigen::VectorXd(), py::arg("mesh_size") = double(), py::arg("error_l2") = double(), py::arg("exact_norm_l2") = double(), py::arg("numeric_norm_l2") = double()
+                        )
+                        .def_readwrite("cell0_ds_numeric", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::cell0Ds_numeric, "")
+                        .def_readwrite("cell0_ds_exact", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::cell0Ds_exact, "")
+                        .def_readwrite("cell2_ds_exact_norm_l2", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::cell2Ds_exact_norm_L2, "")
+                        .def_readwrite("cell2_ds_numeric_norm_l2", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::cell2Ds_numeric_norm_L2, "")
+                        .def_readwrite("cell2_ds_error_l2", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::cell2Ds_error_L2, "")
+                        .def_readwrite("mesh_size", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::mesh_size, "")
+                        .def_readwrite("error_l2", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::error_L2, "")
+                        .def_readwrite("exact_norm_l2", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::exact_norm_L2, "")
+                        .def_readwrite("numeric_norm_l2", &Polydim::PDETools::Assembler_Utilities::PCC_2D::Post_Process_Data::numeric_norm_L2, "")
+                        ;
+                } // </namespace PCC_2D>
+
+            } // </namespace Assembler_Utilities>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:assembler_PCC_2D_functions_data.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:assembler_PCC_2D_functions.hpp>    ////////////////////
+    // #ifndef __PDETOOLS_ASSEMBLER_assembler_PCC_2D_functions_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace Assembler_Utilities>
+                py::module_ pyNsPolydim_NsPDETools_NsAssembler_Utilities = pyNsPolydim_NsPDETools.def_submodule("assembler_utilities", "namespace Assembler_Utilities");
+                { // <namespace PCC_2D>
+                    py::module_ pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D = pyNsPolydim_NsPDETools_NsAssembler_Utilities.def_submodule("pcc_2_d", "namespace PCC_2D");
+                    pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D.def("assembler_source_term",
+                        Polydim::PDETools::Assembler_Utilities::PCC_2D::assembler_source_term,
+                        py::arg("geometry_utilities"), py::arg("mesh"), py::arg("mesh_geometric_data"), py::arg("dofs_data"), py::arg("reference_element_data"), py::arg("source_term_function"),
+                        "***************************************************************************");
+
+                    pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D.def("assembler_elliptic_operator",
+                        Polydim::PDETools::Assembler_Utilities::PCC_2D::assembler_elliptic_operator,
+                        py::arg("geometry_utilities"), py::arg("mesh"), py::arg("mesh_geometric_data"), py::arg("dofs_data"), py::arg("reference_element_data"), py::arg("diffusion_term_function"),
+                        "***************************************************************************");
+
+                    pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D.def("assembler_strong_solution",
+                        Polydim::PDETools::Assembler_Utilities::PCC_2D::assembler_strong_solution,
+                        py::arg("geometry_utilities"), py::arg("mesh"), py::arg("mesh_geometric_data"), py::arg("mesh_dofs_info"), py::arg("dofs_data"), py::arg("reference_element_data"), py::arg("strong_solution_function"),
+                        "***************************************************************************");
+
+                    pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D.def("assembler_exact_solution",
+                        Polydim::PDETools::Assembler_Utilities::PCC_2D::assembler_exact_solution,
+                        py::arg("geometry_utilities"), py::arg("mesh"), py::arg("mesh_geometric_data"), py::arg("dofs_data"), py::arg("reference_element_data"), py::arg("exact_solution_function"),
+                        "***************************************************************************");
+
+                    pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D.def("assembler_post_process",
+                        Polydim::PDETools::Assembler_Utilities::PCC_2D::assembler_post_process,
+                        py::arg("geometry_utilities"), py::arg("mesh"), py::arg("mesh_geometric_data"), py::arg("dofs_data"), py::arg("reference_element_data"), py::arg("numerical_solution"), py::arg("numerical_solution_strong"), py::arg("exact_solution_function"),
+                        "***************************************************************************");
+                } // </namespace PCC_2D>
+
+            } // </namespace Assembler_Utilities>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:assembler_PCC_2D_functions.hpp>    ////////////////////
+
     // </litgen_pydef> // Autogenerated code end
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  AUTOGENERATED CODE END !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }

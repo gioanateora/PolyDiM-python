@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.polydim.it/images/logo2.png" width="200" alt="Project Logo">
+  <img src="https://www.polydim.it/images/logo_polydim.png" width="200" alt="Project Logo">
 </p>
 
 **PolyDiM** (POLYtopal DIscretization Methods ) is a numerical computational library designed for solving partial differential equations (PDEs) using discretization methods that operate on generic polytopal (polygonal/polyhedral) meshes.

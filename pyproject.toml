@@ -10,7 +10,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pypolydim"
-version = "2.0.7"
+version = "2.0.8"
 description = "Bindings Python for PolyDiM&GeDiM based on pybind11"
 authors = [
     { name = "Gioana Teora", email = "gioana.teora@polito.it" },
@@ -47,7 +47,7 @@ args = [
     "-DENABLE_TETGEN=ON",
     "-DENABLE_VORO=ON",
     "-DPYBIND=ON",
-    "-DCMAKE_PREFIX_PATH=./.venv/lib/python3.12/site-packages/pybind11/share/cmake/pybind11;/opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/pybind11/share/cmake/pybind11;./external/Main_Install/triangle;./external/Main_Install/tetgen;./external/Main_Install/voro"
+    "-DCMAKE_PREFIX_PATH=./.venv/lib/python3.12/site-packages/pybind11/share/cmake/pybind11;/opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/pybind11/share/cmake/pybind11;./external/Main_Install/triangle;./external/Main_Install/tetgen;./external/Main_Install/voro;./external/Main_Install/eigen3"
 ]
 
 [tool.scikit-build.build]
@@ -55,10 +55,12 @@ tool-args = ["-j", "6"]
 
 # Install system library
 [tool.cibuildwheel]
-#build = "cp312-*"
+build = "cp312-*"
 skip = [ "*musllinux*" ]
 before-build = [
-    "cmake -S PolyDiM/gedim/3rd_party_libraries -B external -DCMAKE_BUILD_TYPE=Release -DINSTALL_LAPACK=OFF -DINSTALL_EIGEN3=OFF",
+    "yum install -y blas-devel lapack-devel wget tar",
+    # "(cd /usr/local/src && wget -q https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz && tar -xzf eigen-3.4.0.tar.gz && mkdir -p /usr/local/include/eigen3 && cp -r eigen-3.4.0/Eigen /usr/local/include/eigen3/)",
+    "cmake -S PolyDiM/gedim/3rd_party_libraries -B external -DCMAKE_BUILD_TYPE=Release -DINSTALL_LAPACK=OFF -DINSTALL_EIGEN3=ON",
     "(cd external && make -j 6)"
 ]
 
