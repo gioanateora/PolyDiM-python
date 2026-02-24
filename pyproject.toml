@@ -10,7 +10,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pypolydim"
-version = "2.0.8"
+version = "2.0.10"
 description = "Bindings Python for PolyDiM&GeDiM based on pybind11"
 authors = [
     { name = "Gioana Teora", email = "gioana.teora@polito.it" },
@@ -64,3 +64,10 @@ before-build = [
     "(cd external && make -j 6)"
 ]
 
+[tool.cibuildwheel.macos]
+before-build = [ 
+    "brew install openblas lapack",
+    # "(cd /usr/local/src && wget -q https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz && tar -xzf eigen-3.4.0.tar.gz && mkdir -p /usr/local/include/eigen3 && cp -r eigen-3.4.0/Eigen /usr/local/include/eigen3/)",
+    "cmake -S PolyDiM/gedim/3rd_party_libraries -B external -DCMAKE_BUILD_TYPE=Release -DINSTALL_LAPACK=OFF -DINSTALL_EIGEN3=ON",
+    "(cd external && make -j 6)"
+]
