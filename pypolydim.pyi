@@ -9042,6 +9042,25 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             ) -> None:
             pass
 
+        @overload
+        def fill_mesh3_d(
+            self,
+            cell0_ds: Eigen.MatrixXd,
+            cell3_ds_faces_vertices: List[List[List[int]]],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def fix_cell2_ds_orientation(
+            self,
+            geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        def set_mesh3_d_marker(self, marker: int, mesh: IMeshDAO) -> None:
+            pass
+
         def compute_mesh2_d_cell1_ds(
             self,
             cell0_ds: Eigen.MatrixXd,
@@ -9421,6 +9440,17 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """
             pass
 
+        def create_structured_triangular_mesh(
+            self,
+            rectangle_origin: Eigen.Vector3d,
+            rectangle_base_tangent: Eigen.Vector3d,
+            rectangle_height_tangent: Eigen.Vector3d,
+            base_mesh_curvilinear_coordinates: List[float],
+            height_mesh_curvilinear_coordinates: List[float],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
         def create_parallelepiped_mesh(
             self,
             rectangle_origin: Eigen.Vector3d,
@@ -9543,6 +9573,35 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             faces_triangulation: List[List[int]],
             mesh: IMeshDAO
             ) -> None:
+            pass
+
+        def import_triangular_mesh(
+            self,
+            geometry_utilities: GeometryUtilities,
+            cell0_ds_file_path: str,
+            cell2_ds_file_path: str,
+            marker_file_path: str,
+            separator: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Import triangular 2D mesh (non standard simple format)
+            / \param cell0Ds_file_path cell0Ds coordinates
+            / \param cell2Ds_file_path cell2Ds connectivity
+            / \param marker_file_path markers file
+            """
+            pass
+
+        def import_regn_face_mesh(
+            self,
+            geometry_utilities: GeometryUtilities,
+            node_file_path: str,
+            ele_file_path: str,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Import regn_face 3D mesh (non standard polyhedral format)
+            / \param node_file_path cell0Ds coordinates
+            / \param ele_file_path cell2Ds-cell3Ds connectivity
+            """
             pass
 
         def import_open_volume_mesh(
@@ -10829,10 +10888,18 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             ) -> RefinementUtilities.SplitPolygon_Result:
             pass
 
+        @overload
         def compute_triangle_max_edge_direction(
             self,
             edges_length: Eigen.VectorXd
             ) -> RefinementUtilities.TriangleMaxEdgeDirection:
+            pass
+        @overload
+        def compute_triangle_max_edge_direction(
+            self,
+            triangle_vertices: Eigen.MatrixXd,
+            triangle_edges_length: Eigen.VectorXd
+            ) -> RefinementUtilities.PolygonDirection:
             pass
 
         def compute_polygon_max_diameter_direction(
@@ -18483,6 +18550,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     ) -> Eigen.MatrixXd:
                     pass
 
+                @overload
                 def compute_basis_functions_laplacian_values(
                     self,
                     reference_element_data: FEM_Quadrilateral_PCC_2D_ReferenceElement_Data,
@@ -18500,6 +18568,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
                 @overload
                 def compute_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Quadrilateral_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Quadrilateral_PCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_laplacian_values(
                     self,
                     reference_element_data: FEM_Quadrilateral_PCC_2D_ReferenceElement_Data,
                     local_space: FEM_Quadrilateral_PCC_2D_LocalSpace_Data,
@@ -18850,6 +18927,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     ) -> Eigen.MatrixXd:
                     pass
 
+                @overload
                 def compute_basis_functions_laplacian_values(
                     self,
                     reference_element_data: FEM_Triangle_PCC_2D_ReferenceElement_Data,
@@ -18867,6 +18945,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
                 @overload
                 def compute_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Triangle_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_PCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_laplacian_values(
                     self,
                     reference_element_data: FEM_Triangle_PCC_2D_ReferenceElement_Data,
                     local_space: FEM_Triangle_PCC_2D_LocalSpace_Data,
@@ -18959,8 +19046,6 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 def __init__(self) -> None:
                     pass
 
-
-
             class FEM_PCC_2D_ReferenceElement:
                 """
                 (final class)
@@ -19034,6 +19119,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     ) -> Eigen.MatrixXd:
                     pass
 
+                @overload
                 def compute_basis_functions_laplacian_values(
                     self,
                     reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
@@ -19051,6 +19137,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
                 @overload
                 def compute_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_laplacian_values(
                     self,
                     reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
                     local_space: FEM_PCC_2D_LocalSpace_Data,
@@ -20618,6 +20713,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                         parallelogram = enum.auto() # (= 0)
                         polygon = enum.auto()       # (= 1)
                         ellipse = enum.auto()       # (= 2)
+                        unknown = enum.auto()       # (= 3)
 
                     vertices: Eigen.MatrixXd
                     area: float
@@ -20669,13 +20765,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     csv_importer = enum.auto() # (= 1)  #/< imported csv mesh
 
                 class MeshGenerator_Types_2D(enum.IntEnum):
-                    triangular = enum.auto()       # (= 0)  #/< generated triangular mesh
-                    minimal = enum.auto()          # (= 1)  #/< generated minimal mesh
-                    polygonal = enum.auto()        # (= 2)  #/< generated voronoi polygonal mesh
-                    off_importer = enum.auto()     # (= 3)  #/< imported off mesh
-                    csv_importer = enum.auto()     # (= 4)  #/< imported csv mesh
-                    squared = enum.auto()          # (= 5)  #/< squared mesh
-                    random_distorted = enum.auto() # (= 6)
+                    triangular = enum.auto()                 # (= 0)  #/< generated triangular mesh
+                    minimal = enum.auto()                    # (= 1)  #/< generated minimal mesh
+                    polygonal = enum.auto()                  # (= 2)  #/< generated voronoi polygonal mesh
+                    off_importer = enum.auto()               # (= 3)  #/< imported off mesh
+                    csv_importer = enum.auto()               # (= 4)  #/< imported csv mesh
+                    squared = enum.auto()                    # (= 5)  #/< squared mesh
+                    random_distorted = enum.auto()           # (= 6)  #/< random distorted
+                    triangular_simple_importer = enum.auto() # (= 7)  #/< import 2D triangular mesh
+                    structured_tringular = enum.auto()       # (= 8)
 
                 class MeshGenerator_Types_3D(enum.IntEnum):
                     tetrahedral = enum.auto()  # (= 0)  #/< generated tetrahedral mesh
@@ -20729,6 +20827,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
                 @staticmethod
                 def import_mesh_2_d(
+                    geometry_utilities: Gedim.GeometryUtilities,
                     mesh_utilities: Gedim.MeshUtilities,
                     mesh_type: MeshGenerator_Types_2D,
                     file_path: str,
@@ -20758,8 +20857,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     geometry_utilities: Gedim.GeometryUtilities,
                     mesh_utilities: Gedim.MeshUtilities,
                     mesh: Gedim.MeshMatricesDAO,
-                    mesh_geometric_data_config: Gedim.MeshUtilities.MeshGeometricData2DConfig = Gedim.MeshUtilities.MeshGeometricData2DConfig(
-                            True, True, True, True, True, True, True, True, True, True, True, True, True)
+                    mesh_geometric_data_config: Gedim.MeshUtilities.MeshGeometricData2DConfig = Gedim.MeshUtilities.MeshGeometricData2DConfig(True, True, True, True, True, True, True, True, True, True, True, True, True)
                     ) -> Gedim.MeshUtilities.MeshGeometricData2D:
                     pass
 
@@ -20822,6 +20920,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 def compute_cell_diffusion_matrix(
                     self,
                     diffusion_term_values: Eigen.VectorXd,
+                    trial_basis_functions_derivative_values: List[Eigen.MatrixXd],
+                    test_basis_functions_derivative_values: List[Eigen.MatrixXd],
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_cell_diffusion_matrix(
+                    self,
+                    diffusion_term_values: Eigen.VectorXd,
                     basis_functions_derivative_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
@@ -20836,6 +20944,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     ) -> Eigen.MatrixXd:
                     pass
 
+                @overload
                 def compute_cell_reaction_matrix(
                     self,
                     reaction_term_values: Eigen.VectorXd,
@@ -20844,11 +20953,21 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     ) -> Eigen.MatrixXd:
                     pass
 
+                @overload
+                def compute_cell_reaction_matrix(
+                    self,
+                    reaction_term_values: Eigen.VectorXd,
+                    trial_basis_functions_values: Eigen.MatrixXd,
+                    test_basis_functions_values: Eigen.MatrixXd,
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
                 def compute_cell_advection_matrix(
                     self,
                     advection_term_values: List[Eigen.VectorXd],
-                    basis_functions_values: Eigen.MatrixXd,
-                    basis_functions_derivative_values: List[Eigen.MatrixXd],
+                    test_basis_functions_values: Eigen.MatrixXd,
+                    trial_basis_functions_derivative_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
                     pass
@@ -20857,7 +20976,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 def compute_cell_forcing_term(
                     self,
                     forcing_term_values: Eigen.VectorXd,
-                    basis_functions_values: Eigen.MatrixXd,
+                    test_basis_functions_values: Eigen.MatrixXd,
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.VectorXd:
                     pass
@@ -20866,7 +20985,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 def compute_cell_forcing_term(
                     self,
                     forcing_term_values: List[Eigen.VectorXd],
-                    basis_functions_values: List[Eigen.MatrixXd],
+                    test_basis_functions_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.VectorXd:
                     pass
@@ -21985,16 +22104,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     def __init__(self, values: List[float] = List[float]()) -> None:
                         """Auto-generated default constructor with named params"""
                         pass
-                class Exact_Solution_Data:
+                class Evaluate_Function_On_DOFs_Data:
                     """ ***************************************************************************
                     (final class)
                     """
-                    exact_solution: Eigen.VectorXd
-                    exact_solution_strong: Eigen.VectorXd
+                    function_dofs: Eigen.VectorXd
+                    function_strong: Eigen.VectorXd
                     def __init__(
                         self,
-                        exact_solution: Eigen.VectorXd = Eigen.VectorXd(),
-                        exact_solution_strong: Eigen.VectorXd = Eigen.VectorXd()
+                        function_dofs: Eigen.VectorXd = Eigen.VectorXd(),
+                        function_strong: Eigen.VectorXd = Eigen.VectorXd()
                         ) -> None:
                         """Auto-generated default constructor with named params"""
                         pass
@@ -22002,39 +22121,100 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     """ ***************************************************************************
                     (final class)
                     """
-                    a: Polydim.PDETools.Assembler_Utilities.PCC_2D.Sparse_Matrix_Data
-                    a_strong: Polydim.PDETools.Assembler_Utilities.PCC_2D.Sparse_Matrix_Data
+                    operator_dofs: Polydim.PDETools.Assembler_Utilities.PCC_2D.Sparse_Matrix_Data
+                    operator_strong: Polydim.PDETools.Assembler_Utilities.PCC_2D.Sparse_Matrix_Data
                     def __init__(
                         self,
-                        a: PDETools.Assembler_Utilities.PCC_2D.Sparse_Matrix_Data = PDETools.Assembler_Utilities.PCC_2.Sparse_Matrix_Data(),
-                        a_strong: PDETools.Assembler_Utilities.PCC_2D.Sparse_Matrix_Data = PDETools.Assembler_Utilities.PCC_2.Sparse_Matrix_Data()
+                        operator_dofs: PDETools.Assembler_Utilities.PCC_2D.Sparse_Matrix_Data = PDETools.Assembler_Utilities.PCC_2.Sparse_Matrix_Data(),
+                        operator_strong: PDETools.Assembler_Utilities.PCC_2D.Sparse_Matrix_Data = PDETools.Assembler_Utilities.PCC_2.Sparse_Matrix_Data()
                         ) -> None:
                         """Auto-generated default constructor with named params"""
                         pass
-                class Post_Process_Data:
+                class NS_Operators:
                     """ ***************************************************************************
                     (final class)
                     """
-                    cell0_ds_numeric: Eigen.VectorXd
-                    cell0_ds_exact: Eigen.VectorXd
+                    convective_operator: Variational_Operator
+                    convective_rhs: Eigen.VectorXd
+                    def __init__(
+                        self,
+                        convective_operator: Variational_Operator = Variational_Operator(),
+                        convective_rhs: Eigen.VectorXd = Eigen.VectorXd()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+                class Evaluate_Solution_On_Quadrature_Points_Data:
+                    """ ***************************************************************************
+                    (final class)
+                    """
+                    quadrature_points: Eigen.MatrixXd
+                    quadrature_weigths: Eigen.VectorXd
+                    numeric_solution: Eigen.VectorXd
+                    numeric_gradient_solution: List[Eigen.VectorXd]
+                    exact_solution: Eigen.VectorXd
+                    exact_gradient_solution: List[Eigen.VectorXd]
+                    def __init__(
+                        self,
+                        quadrature_points: Eigen.MatrixXd = Eigen.MatrixXd(),
+                        quadrature_weigths: Eigen.VectorXd = Eigen.VectorXd(),
+                        numeric_solution: Eigen.VectorXd = Eigen.VectorXd(),
+                        exact_solution: Eigen.VectorXd = Eigen.VectorXd()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+                class Post_Process_Data_Cell0Ds:
+                    """ ***************************************************************************
+                    (final class)
+                    """
+                    numeric_solution: Eigen.VectorXd
+                    exact_solution: Eigen.VectorXd
+                    exact_gradient_solution: List[Eigen.VectorXd]
+                    def __init__(
+                        self,
+                        numeric_solution: Eigen.VectorXd = Eigen.VectorXd(),
+                        exact_solution: Eigen.VectorXd = Eigen.VectorXd()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+                class Post_Process_Data_ErrorL2:
+                    """ ***************************************************************************
+                    (final class)
+                    """
                     cell2_ds_exact_norm_l2: Eigen.VectorXd
                     cell2_ds_numeric_norm_l2: Eigen.VectorXd
                     cell2_ds_error_l2: Eigen.VectorXd
-                    mesh_size: float
                     error_l2: float
                     exact_norm_l2: float
                     numeric_norm_l2: float
                     def __init__(
                         self,
-                        cell0_ds_numeric: Eigen.VectorXd = Eigen.VectorXd(),
-                        cell0_ds_exact: Eigen.VectorXd = Eigen.VectorXd(),
                         cell2_ds_exact_norm_l2: Eigen.VectorXd = Eigen.VectorXd(),
                         cell2_ds_numeric_norm_l2: Eigen.VectorXd = Eigen.VectorXd(),
                         cell2_ds_error_l2: Eigen.VectorXd = Eigen.VectorXd(),
-                        mesh_size: float = float(),
                         error_l2: float = float(),
                         exact_norm_l2: float = float(),
                         numeric_norm_l2: float = float()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+                class Post_Process_Data_ErrorH1:
+                    """ ***************************************************************************
+                    (final class)
+                    """
+                    cell2_ds_exact_norm_h1: Eigen.VectorXd
+                    cell2_ds_numeric_norm_h1: Eigen.VectorXd
+                    cell2_ds_error_h1: Eigen.VectorXd
+                    error_h1: float
+                    exact_norm_h1: float
+                    numeric_norm_h1: float
+                    def __init__(
+                        self,
+                        cell2_ds_exact_norm_h1: Eigen.VectorXd = Eigen.VectorXd(),
+                        cell2_ds_numeric_norm_h1: Eigen.VectorXd = Eigen.VectorXd(),
+                        cell2_ds_error_h1: Eigen.VectorXd = Eigen.VectorXd(),
+                        error_h1: float = float(),
+                        exact_norm_h1: float = float(),
+                        numeric_norm_h1: float = float()
                         ) -> None:
                         """Auto-generated default constructor with named params"""
                         pass
@@ -22091,63 +22271,314 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 pass  # (This corresponds to a C++ namespace. All method are static!)
                 """ namespace PCC_2D"""
                 @staticmethod
-                def assembler_source_term(
+                @overload
+                def assemble_source_term(
                     geometry_utilities: Gedim.GeometryUtilities,
                     mesh: Gedim.MeshMatricesDAO,
                     mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
-                    dofs_data: DOFs.DOFsManager.DOFsData,
-                    reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
-                    source_term_function: Callable[[ float , float , float , Eigen.VectorXd ], float]
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    source_term_function: Callable[[ float , float , float ], float]
                     ) -> Eigen.VectorXd:
                     """ ***************************************************************************"""
                     pass
                 @staticmethod
-                def assembler_elliptic_operator(
+                @overload
+                def assemble_source_term(
                     geometry_utilities: Gedim.GeometryUtilities,
                     mesh: Gedim.MeshMatricesDAO,
                     mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
-                    dofs_data: DOFs.DOFsManager.DOFsData,
-                    reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
-                    diffusion_term_function: Callable[[ float , float , float , Eigen.VectorXd ], float]
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    source_term_function: Callable[[ float , float , float , float , List[float]], float]
+                    ) -> Eigen.VectorXd:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                def assemble_source_term_gradients(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    source_term_function: Callable[[ float , float , float , float , List[float] ], List[float]]
+                    ) -> Eigen.VectorXd:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def assemble_elliptic_operator(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    diffusion_term_function: Callable[[ float , float , float ], float],
+                    advection_term_function: Callable[[ float , float , float ], List[float]],
+                    reaction_term_function: Callable[[ float , float , float ], float]
                     ) -> Variational_Operator:
                     """ ***************************************************************************"""
                     pass
                 @staticmethod
-                def assembler_strong_solution(
+                @overload
+                def assemble_diffusion_operator(
                     geometry_utilities: Gedim.GeometryUtilities,
                     mesh: Gedim.MeshMatricesDAO,
                     mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
-                    mesh_dofs_info: DOFs.DOFsManager.MeshDOFsInfo,
-                    dofs_data: DOFs.DOFsManager.DOFsData,
-                    reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    diffusion_term_function: Callable[[ float , float , float ], float]
+                    ) -> Variational_Operator:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def assemble_reaction_operator(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    reaction_term_function: Callable[[ float , float , float ], float]
+                    ) -> Variational_Operator:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def assemble_advection_operator(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    advection_term_function: Callable[[ float , float , float ], List[float]]
+                    ) -> Variational_Operator:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def assemble_elliptic_operator(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    diffusion_term_function: Callable[[ float , float , float , float , List[float]], float],
+                    advection_term_function: Callable[[ float , float , float , float , List[float] ], List[float]],
+                    reaction_term_function: Callable[[ float , float , float , float , List[float]], float]
+                    ) -> Variational_Operator:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def assemble_diffusion_operator(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    diffusion_term_function: Callable[[ float , float , float , float , List[float]], float]
+                    ) -> Variational_Operator:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def assemble_reaction_operator(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    reaction_term_function: Callable[[ float , float , float , float , List[float]], float]
+                    ) -> Variational_Operator:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def assemble_advection_operator(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    advection_term_function: Callable[[ float , float , float , float , List[float] ], List[float]]
+                    ) -> Variational_Operator:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                def assemble_strong_solution(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_mesh_dofs_info: DOFs.DOFsManager.MeshDOFsInfo,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
                     strong_solution_function: Callable[[ int, float , float , float ], float]
                     ) -> Eigen.VectorXd:
                     """ ***************************************************************************"""
                     pass
                 @staticmethod
-                def assembler_exact_solution(
+                def evaluate_function_on_dofs(
                     geometry_utilities: Gedim.GeometryUtilities,
                     mesh: Gedim.MeshMatricesDAO,
                     mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
-                    dofs_data: DOFs.DOFsManager.DOFsData,
-                    reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
-                    exact_solution_function: Callable[[ float , float , float ], float]
-                    ) -> Exact_Solution_Data:
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    evaluation_function: Callable[[ float , float , float ], float]
+                    ) -> Evaluate_Function_On_DOFs_Data:
                     """ ***************************************************************************"""
                     pass
                 @staticmethod
-                def assembler_post_process(
+                def assemble_exact_solution(
                     geometry_utilities: Gedim.GeometryUtilities,
                     mesh: Gedim.MeshMatricesDAO,
                     mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
-                    dofs_data: DOFs.DOFsManager.DOFsData,
-                    reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    exact_solution_function: Callable[[ float , float , float ], float]
+                    ) -> Evaluate_Function_On_DOFs_Data:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                def assemble_weak_term(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_mesh_dofs_info: DOFs.DOFsManager.MeshDOFsInfo,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    weak_term_function: Callable[[ int, float , float , float ], float]
+                    ) -> Eigen.VectorXd:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                def extract_solution_on_cell0_ds(
+                    mesh: Gedim.MeshMatricesDAO,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    exact_solution_function: Callable[[ float , float , float ], float] = None,
+                    exact_gradient_solution_function: Callable[[ float , float , float ], List[float]] = None
+                    ) -> Post_Process_Data_Cell0Ds:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def compute_error_l2(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
                     numerical_solution: Eigen.VectorXd,
                     numerical_solution_strong: Eigen.VectorXd,
                     exact_solution_function: Callable[[ float , float , float ], float]
-                    ) -> Post_Process_Data:
+                    ) -> Post_Process_Data_ErrorL2:
                     """ ***************************************************************************"""
                     pass
+                @staticmethod
+                @overload
+                def compute_error_l2(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd
+                    ) -> Post_Process_Data_ErrorL2:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def compute_error_h1(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    exact_gradient_solution_function: Callable[[ float , float , float ], List[float]]
+                    ) -> Post_Process_Data_ErrorH1:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                @overload
+                def compute_error_h1(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd
+                    ) -> Post_Process_Data_ErrorH1:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                def evaluate_solution_on_quadrature_points(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_solution: Eigen.VectorXd,
+                    numerical_solution_strong: Eigen.VectorXd,
+                    exact_solution_function: Callable[[ float , float , float ], float] = None,
+                    exact_gradient_solution_function: Callable[[ float , float , float ], List[float]] = None
+                    ) -> Evaluate_Solution_On_Quadrature_Points_Data:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                def assemble_ns_operators(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    speed_component_dofs_data: DOFs.DOFsManager.DOFsData,
+                    speed_component_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    numerical_speed_x_solution: Eigen.VectorXd,
+                    numerical_speed_y_solution: Eigen.VectorXd,
+                    numerical_speed_x_solution_strong: Eigen.VectorXd,
+                    numerical_speed_y_solution_strong: Eigen.VectorXd
+                    ) -> NS_Operators:
+                    """ ***************************************************************************"""
+                    pass
+
                 # ***************************************************************************
 
             # </submodule pcc_2_d>
