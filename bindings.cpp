@@ -17026,14 +17026,14 @@ void py_init_module_polydim(py::module &m)
                         py::class_<Polydim::PDETools::Assembler_Utilities::PCC_2D::NS_Operators>
                             (pyNsPolydim_NsPDETools_NsAssembler_Utilities_NsPCC_2D, "NS_Operators", py::is_final(), " ***************************************************************************\n(final class)")
                         .def(py::init<>([](
-                        Variational_Operator convective_operator = Variational_Operator(), Eigen::VectorXd convective_rhs = Eigen::VectorXd())
+                        Polydim::PDETools::Assembler_Utilities::PCC_2D::Variational_Operator convective_operator = Polydim::PDETools::Assembler_Utilities::PCC_2D::Variational_Operator(), Eigen::VectorXd convective_rhs = Eigen::VectorXd())
                         {
                             auto r_ctor_ = std::make_unique<Polydim::PDETools::Assembler_Utilities::PCC_2D::NS_Operators>();
                             r_ctor_->convective_operator = convective_operator;
                             r_ctor_->convective_rhs = convective_rhs;
                             return r_ctor_;
                         })
-                        , py::arg("convective_operator") = Variational_Operator(), py::arg("convective_rhs") = Eigen::VectorXd()
+                        , py::arg("convective_operator") = Polydim::PDETools::Assembler_Utilities::PCC_2D::Variational_Operator(), py::arg("convective_rhs") = Eigen::VectorXd()
                         )
                         .def_readwrite("convective_operator", &Polydim::PDETools::Assembler_Utilities::PCC_2D::NS_Operators::convective_operator, "")
                         .def_readwrite("convective_rhs", &Polydim::PDETools::Assembler_Utilities::PCC_2D::NS_Operators::convective_rhs, "")

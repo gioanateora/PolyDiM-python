@@ -22134,11 +22134,11 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     """ ***************************************************************************
                     (final class)
                     """
-                    convective_operator: Variational_Operator
+                    convective_operator: Polydim.PDETools.Assembler_Utilities.PCC_2D.Variational_Operator
                     convective_rhs: Eigen.VectorXd
                     def __init__(
                         self,
-                        convective_operator: Variational_Operator = Variational_Operator(),
+                        convective_operator: PDETools.Assembler_Utilities.PCC_2D.Variational_Operator = PDETools.Assembler_Utilities.PCC_2.Variational_Operator(),
                         convective_rhs: Eigen.VectorXd = Eigen.VectorXd()
                         ) -> None:
                         """Auto-generated default constructor with named params"""
