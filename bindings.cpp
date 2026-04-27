@@ -7365,23 +7365,23 @@ void py_init_module_polydim(py::module &m)
                 py::class_<Gedim::MapTriangle::MapTriangleData>
                     (pyNsGedim_ClassMapTriangle, "MapTriangleData", py::is_final(), "\n(final class)")
                 .def(py::init<>([](
-                Eigen::Matrix3d B = Eigen::Matrix3d(), Eigen::Matrix3d BInv = Eigen::Matrix3d(), Eigen::Vector3d b = Eigen::Vector3d(), double DetB = double(), double DetBInv = double())
+                Eigen::Matrix3d BMatrix = Eigen::Matrix3d(), Eigen::Matrix3d BMatrixInv = Eigen::Matrix3d(), Eigen::Vector3d b = Eigen::Vector3d(), double DetBMatrix = double(), double DetBMatrixInv = double())
                 {
                     auto r_ctor_ = std::make_unique<Gedim::MapTriangle::MapTriangleData>();
-                    r_ctor_->B = B;
-                    r_ctor_->BInv = BInv;
+                    r_ctor_->BMatrix = BMatrix;
+                    r_ctor_->BMatrixInv = BMatrixInv;
                     r_ctor_->b = b;
-                    r_ctor_->DetB = DetB;
-                    r_ctor_->DetBInv = DetBInv;
+                    r_ctor_->DetBMatrix = DetBMatrix;
+                    r_ctor_->DetBMatrixInv = DetBMatrixInv;
                     return r_ctor_;
                 })
-                , py::arg("b") = Eigen::Matrix3d(), py::arg("b_inv") = Eigen::Matrix3d(), py::arg("b") = Eigen::Vector3d(), py::arg("det_b") = double(), py::arg("det_b_inv") = double()
+                , py::arg("b_matrix") = Eigen::Matrix3d(), py::arg("b_matrix_inv") = Eigen::Matrix3d(), py::arg("b") = Eigen::Vector3d(), py::arg("det_b_matrix") = double(), py::arg("det_b_matrix_inv") = double()
                 )
-                .def_readwrite("b", &Gedim::MapTriangle::MapTriangleData::B, "")
-                .def_readwrite("b_inv", &Gedim::MapTriangle::MapTriangleData::BInv, "")
+                .def_readwrite("b_matrix", &Gedim::MapTriangle::MapTriangleData::BMatrix, "")
+                .def_readwrite("b_matrix_inv", &Gedim::MapTriangle::MapTriangleData::BMatrixInv, "")
                 .def_readwrite("b", &Gedim::MapTriangle::MapTriangleData::b, "")
-                .def_readwrite("det_b", &Gedim::MapTriangle::MapTriangleData::DetB, "")
-                .def_readwrite("det_b_inv", &Gedim::MapTriangle::MapTriangleData::DetBInv, "")
+                .def_readwrite("det_b_matrix", &Gedim::MapTriangle::MapTriangleData::DetBMatrix, "")
+                .def_readwrite("det_b_matrix_inv", &Gedim::MapTriangle::MapTriangleData::DetBMatrixInv, "")
                 ;
         } // end of inner classes & enums of MapTriangle
 
@@ -7394,7 +7394,7 @@ void py_init_module_polydim(py::module &m)
             .def_static("f",
                 &Gedim::MapTriangle::F,
                 py::arg("map_data"), py::arg("x"),
-                "/ Map from the triangle reference element [0,1]x[0,1] to the polygon x = F(x_r) = B * x_r + b\n/ \\param mapData the map data\n/ \\param x points in reference triangle, size 3 x numPoints\n/ \\return the mapped polygon points, size 3 x numPoints")
+                "/ Map from the triangle reference element [0,1]x[0,1] to the polygon x = F(x_r) = BMatrix * x_r + b\n/ \\param mapData the map data\n/ \\param x points in reference triangle, size 3 x numPoints\n/ \\return the mapped polygon points, size 3 x numPoints")
             .def_static("f_inv",
                 &Gedim::MapTriangle::FInv,
                 py::arg("map_data"), py::arg("x"),
@@ -7432,23 +7432,23 @@ void py_init_module_polydim(py::module &m)
                 py::class_<Gedim::MapParallelogram::MapParallelogramData>
                     (pyNsGedim_ClassMapParallelogram, "MapParallelogramData", py::is_final(), "\n(final class)")
                 .def(py::init<>([](
-                Eigen::Matrix3d B = Eigen::Matrix3d(), Eigen::Matrix3d BInv = Eigen::Matrix3d(), Eigen::Vector3d b = Eigen::Vector3d(), double DetB = double(), double DetBInv = double())
+                Eigen::Matrix3d BMatrix = Eigen::Matrix3d(), Eigen::Matrix3d BMatrixInv = Eigen::Matrix3d(), Eigen::Vector3d b = Eigen::Vector3d(), double DetBMatrix = double(), double DetBMatrixInv = double())
                 {
                     auto r_ctor_ = std::make_unique<Gedim::MapParallelogram::MapParallelogramData>();
-                    r_ctor_->B = B;
-                    r_ctor_->BInv = BInv;
+                    r_ctor_->BMatrix = BMatrix;
+                    r_ctor_->BMatrixInv = BMatrixInv;
                     r_ctor_->b = b;
-                    r_ctor_->DetB = DetB;
-                    r_ctor_->DetBInv = DetBInv;
+                    r_ctor_->DetBMatrix = DetBMatrix;
+                    r_ctor_->DetBMatrixInv = DetBMatrixInv;
                     return r_ctor_;
                 })
-                , py::arg("b") = Eigen::Matrix3d(), py::arg("b_inv") = Eigen::Matrix3d(), py::arg("b") = Eigen::Vector3d(), py::arg("det_b") = double(), py::arg("det_b_inv") = double()
+                , py::arg("b_matrix") = Eigen::Matrix3d(), py::arg("b_matrix_inv") = Eigen::Matrix3d(), py::arg("b") = Eigen::Vector3d(), py::arg("det_b_matrix") = double(), py::arg("det_b_matrix_inv") = double()
                 )
-                .def_readwrite("b", &Gedim::MapParallelogram::MapParallelogramData::B, "")
-                .def_readwrite("b_inv", &Gedim::MapParallelogram::MapParallelogramData::BInv, "")
+                .def_readwrite("b_matrix", &Gedim::MapParallelogram::MapParallelogramData::BMatrix, "")
+                .def_readwrite("b_matrix_inv", &Gedim::MapParallelogram::MapParallelogramData::BMatrixInv, "")
                 .def_readwrite("b", &Gedim::MapParallelogram::MapParallelogramData::b, "")
-                .def_readwrite("det_b", &Gedim::MapParallelogram::MapParallelogramData::DetB, "")
-                .def_readwrite("det_b_inv", &Gedim::MapParallelogram::MapParallelogramData::DetBInv, "")
+                .def_readwrite("det_b_matrix", &Gedim::MapParallelogram::MapParallelogramData::DetBMatrix, "")
+                .def_readwrite("det_b_matrix_inv", &Gedim::MapParallelogram::MapParallelogramData::DetBMatrixInv, "")
                 ;
         } // end of inner classes & enums of MapParallelogram
 
@@ -12057,6 +12057,48 @@ void py_init_module_polydim(py::module &m)
 
     } // </namespace Polydim>
     ////////////////////    </generated_from:VEM_PCC_Utilities.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:I_VEM_PCC_2D_ReferenceElement.hpp>    ////////////////////
+    // #ifndef __I_VEM_PCC_2D_ReferenceElement_HPP
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace VEM>
+            py::module_ pyNsPolydim_NsVEM = pyNsPolydim.def_submodule("vem", "namespace VEM");
+            { // <namespace PCC>
+                py::module_ pyNsPolydim_NsVEM_NsPCC = pyNsPolydim_NsVEM.def_submodule("pcc", "namespace PCC");
+                auto pyNsPolydim_NsVEM_NsPCC_ClassVEM_PCC_2D_ReferenceElement_Data =
+                    py::class_<Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data>
+                        (pyNsPolydim_NsVEM_NsPCC, "VEM_PCC_2D_ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def_readwrite("dimension", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("order", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::Order, "")
+                    .def_readwrite("num_dofs0_d", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::NumDofs0D, "")
+                    .def_readwrite("num_dofs1_d", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::NumDofs1D, "")
+                    .def_readwrite("num_dofs2_d", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::NumDofs2D, "")
+                    .def_readwrite("monomials", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::Monomials, "")
+                    .def_readwrite("quadrature", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::Quadrature, "")
+                    .def_readwrite("mesh_geometric_data_config", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::mesh_geometric_data_config, "")
+                    .def(py::init<>())
+                    ;
+
+
+                auto pyNsPolydim_NsVEM_NsPCC_ClassI_VEM_PCC_2D_ReferenceElement =
+                    py::class_<Polydim::VEM::PCC::I_VEM_PCC_2D_ReferenceElement>
+                        (pyNsPolydim_NsVEM_NsPCC, "I_VEM_PCC_2D_ReferenceElement", "")
+                    .def(py::init<>()) // implicit default constructor
+                    .def("create",
+                        &Polydim::VEM::PCC::I_VEM_PCC_2D_ReferenceElement::Create, py::arg("order"))
+                    ;
+            } // </namespace PCC>
+
+        } // </namespace VEM>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:I_VEM_PCC_2D_ReferenceElement.hpp>    ////////////////////
 
 
     ////////////////////    <generated_from:VEM_PCC_2D_ReferenceElement.hpp>    ////////////////////

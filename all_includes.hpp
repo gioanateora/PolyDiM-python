@@ -99,6 +99,7 @@
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_LocalSpace.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_Inertia_LocalSpace.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_Ortho_LocalSpace.hpp"
+#include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/I_VEM_PCC_2D_ReferenceElement.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_ReferenceElement.hpp"
 #include "./PolyDiM/PolyDiM/src/VEM/PCC/2D/VEM_PCC_2D_LocalSpace_Data.hpp"
 

@@ -3643,18 +3643,18 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """
             (final class)
             """
-            b: Eigen.Matrix3d
-            b_inv: Eigen.Matrix3d
+            b_matrix: Eigen.Matrix3d
+            b_matrix_inv: Eigen.Matrix3d
             b: Eigen.Vector3d
-            det_b: float
-            det_b_inv: float
+            det_b_matrix: float
+            det_b_matrix_inv: float
             def __init__(
                 self,
-                b: Eigen.Matrix3d = Eigen.Matrix3d(),
-                b_inv: Eigen.Matrix3d = Eigen.Matrix3d(),
+                b_matrix: Eigen.Matrix3d = Eigen.Matrix3d(),
+                b_matrix_inv: Eigen.Matrix3d = Eigen.Matrix3d(),
                 b: Eigen.Vector3d = Eigen.Vector3d(),
-                det_b: float = float(),
-                det_b_inv: float = float()
+                det_b_matrix: float = float(),
+                det_b_matrix_inv: float = float()
                 ) -> None:
                 """Auto-generated default constructor with named params"""
                 pass
@@ -3671,7 +3671,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
         @staticmethod
         def f(map_data: MapTriangle.MapTriangleData, x: Eigen.MatrixXd) -> Eigen.MatrixXd:
-            """/ Map from the triangle reference element [0,1]x[0,1] to the polygon x = F(x_r) = B * x_r + b
+            """/ Map from the triangle reference element [0,1]x[0,1] to the polygon x = F(x_r) = BMatrix * x_r + b
             / \param mapData the map data
             / \param x points in reference triangle, size 3 x numPoints
             / \return the mapped polygon points, size 3 x numPoints
@@ -3746,18 +3746,18 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """
             (final class)
             """
-            b: Eigen.Matrix3d
-            b_inv: Eigen.Matrix3d
+            b_matrix: Eigen.Matrix3d
+            b_matrix_inv: Eigen.Matrix3d
             b: Eigen.Vector3d
-            det_b: float
-            det_b_inv: float
+            det_b_matrix: float
+            det_b_matrix_inv: float
             def __init__(
                 self,
-                b: Eigen.Matrix3d = Eigen.Matrix3d(),
-                b_inv: Eigen.Matrix3d = Eigen.Matrix3d(),
+                b_matrix: Eigen.Matrix3d = Eigen.Matrix3d(),
+                b_matrix_inv: Eigen.Matrix3d = Eigen.Matrix3d(),
                 b: Eigen.Vector3d = Eigen.Vector3d(),
-                det_b: float = float(),
-                det_b_inv: float = float()
+                det_b_matrix: float = float(),
+                det_b_matrix_inv: float = float()
                 ) -> None:
                 """Auto-generated default constructor with named params"""
                 pass
@@ -12736,6 +12736,74 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
 # </submodule polydim>
 ####################    </generated_from:VEM_PCC_Utilities.hpp>    ####################
+
+
+####################    <generated_from:I_VEM_PCC_2D_ReferenceElement.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __I_VEM_PCC_2D_ReferenceElement_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule vem>
+    class vem:  # Proxy class that introduces typings for the *submodule* vem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace VEM"""
+
+        # <submodule pcc>
+        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace PCC"""
+            class VEM_PCC_2D_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                dimension: int
+                order: int
+                num_dofs0_d: int
+                num_dofs1_d: int
+                num_dofs2_d: int
+
+                monomials: Utilities.Monomials_Data
+                quadrature: Quadrature.VEM_QuadratureData_2D
+
+                mesh_geometric_data_config: Gedim.MeshUtilities.MeshGeometricData2DConfig
+
+                def __init__(self) -> None:
+                    pass
+
+            class I_VEM_PCC_2D_ReferenceElement:
+                def create(self, order: int) -> VEM_PCC_2D_ReferenceElement_Data:
+                    pass
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+
+        # </submodule pcc>
+
+    # </submodule vem>
+
+# </submodule polydim>
+####################    </generated_from:I_VEM_PCC_2D_ReferenceElement.hpp>    ####################
 
 
 ####################    <generated_from:VEM_PCC_2D_ReferenceElement.hpp>    ####################
