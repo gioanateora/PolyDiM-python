@@ -1,4 +1,5 @@
 #include <fstream>
+#include <limits>
 
 #include "./PolyDiM/gedim/GeDiM/src/Mesh/VtkMeshInterface.hpp"
 #include "./PolyDiM/gedim/GeDiM/src/Mesh/MeshDAOImporterFromCsv.hpp"

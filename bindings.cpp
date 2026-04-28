@@ -12084,15 +12084,6 @@ void py_init_module_polydim(py::module &m)
                     .def_readwrite("mesh_geometric_data_config", &Polydim::VEM::PCC::VEM_PCC_2D_ReferenceElement_Data::mesh_geometric_data_config, "")
                     .def(py::init<>())
                     ;
-
-
-                auto pyNsPolydim_NsVEM_NsPCC_ClassI_VEM_PCC_2D_ReferenceElement =
-                    py::class_<Polydim::VEM::PCC::I_VEM_PCC_2D_ReferenceElement>
-                        (pyNsPolydim_NsVEM_NsPCC, "I_VEM_PCC_2D_ReferenceElement", "")
-                    .def(py::init<>()) // implicit default constructor
-                    .def("create",
-                        &Polydim::VEM::PCC::I_VEM_PCC_2D_ReferenceElement::Create, py::arg("order"))
-                    ;
             } // </namespace PCC>
 
         } // </namespace VEM>

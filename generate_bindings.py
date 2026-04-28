@@ -114,7 +114,9 @@ def preprocess(code: str) -> str:
 opts = litgen.LitgenOptions()
 
 opts.srcmlcpp_options.header_filter_preprocessor_regions = True
-#opts.type_replacements.add_replacement("Gedim::IMeshDAO", "Gedim::MeshMatricesDAO")
+
+opts.class_exclude_by_name__regex = r"^I_VEM_PCC_2D_ReferenceElement$"
+opts.srcmlcpp_options.named_number_macros["UINT_MAX"] = 2147483647
 
 opts.class_override_virtual_methods_in_python__regex = "^IMeshDAO$|^MeshMatricesDAO$"
 
