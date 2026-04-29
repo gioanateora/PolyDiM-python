@@ -1054,12 +1054,12 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
                 pass
 
         class MergePolyhedronsInput:
-            none: int = 2147483647                                                                                                                                                                                                        # (C++ static member) # (const)
             class MergeTypes(enum.IntEnum):
                 none = enum.auto()                                                                                                                                                                                                        # (= 0)
                 common = enum.auto()                                                                                                                                                                                                      # (= 1)
                 remove = enum.auto()                                                                                                                                                                                                      # (= 2)
 
+            none: int = 2147483647                                                                                                                                                                                                        # (C++ static member) # (const)
             vertices_type: List[List[Tuple[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypes]
             edges_type: List[List[Tuple[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypes]
             faces_type: List[List[Tuple[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypes]
@@ -21001,6 +21001,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 def compute_cell_diffusion_matrix(
                     self,
                     diffusion_term_values: List[Eigen.VectorXd],
+                    trial_basis_functions_derivative_values: List[Eigen.MatrixXd],
+                    test_basis_functions_derivative_values: List[Eigen.MatrixXd],
+                    quadrature_weights: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_cell_diffusion_matrix(
+                    self,
+                    diffusion_term_values: List[Eigen.VectorXd],
                     basis_functions_derivative_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
@@ -22386,7 +22396,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     test_dofs_data: DOFs.DOFsManager.DOFsData,
                     trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
                     test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
-                    diffusion_term_function: Callable[[ float , float , float ], float],
+                    diffusion_term_function: Callable[[ float , float , float ], List[float]],
                     advection_term_function: Callable[[ float , float , float ], List[float]],
                     reaction_term_function: Callable[[ float , float , float ], float]
                     ) -> Variational_Operator:
@@ -22403,6 +22413,19 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
                     test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
                     diffusion_term_function: Callable[[ float , float , float ], float]
+                    ) -> Variational_Operator:
+                    """ ***************************************************************************"""
+                    pass
+                @staticmethod
+                def assemble_anysotropic_diffusion_operator(
+                    geometry_utilities: Gedim.GeometryUtilities,
+                    mesh: Gedim.MeshMatricesDAO,
+                    mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                    trial_dofs_data: DOFs.DOFsManager.DOFsData,
+                    test_dofs_data: DOFs.DOFsManager.DOFsData,
+                    trial_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    test_reference_element_data: LocalSpace_PCC_2D.ReferenceElement_Data,
+                    diffusion_term_function: Callable[[ float , float , float ], List[float]]
                     ) -> Variational_Operator:
                     """ ***************************************************************************"""
                     pass
