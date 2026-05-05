@@ -14,12 +14,12 @@ class ExportVTKUtilities:
         properties: List[VTPProperty] = []
         if point_data is not None:
             for (key, value) in point_data.items():
-                property = VTPProperty()
-                property.label = key
-                property.data = value
-                property.size = len(value)
-                property.format = VTPProperty.Formats.Cells
-                properties.append(property)
+                vtk_property = VTPProperty()
+                vtk_property.label = key
+                vtk_property.data = value
+                vtk_property.size = len(value)
+                vtk_property.format = VTPProperty.Formats.Cells
+                properties.append(vtk_property)
 
         vtk_utils = VTKUtilities()
         vtk_utils.add_points(coordinates, properties)
@@ -41,21 +41,21 @@ class ExportVTKUtilities:
 
         if point_data is not None:
             for (key, value) in point_data.items():
-                property = VTPProperty()
-                property.label = key
-                property.data = value
-                property.size = len(value)
-                property.format = VTPProperty.Formats.Points
-                properties.append(property)
+                vtk_property = VTPProperty()
+                vtk_property.label = key
+                vtk_property.data = value
+                vtk_property.size = len(value)
+                vtk_property.format = VTPProperty.Formats.Points
+                properties.append(vtk_property)
 
         if cell_data is not None:
             for (key, value) in cell_data.items():
-                property = VTPProperty()
-                property.label = key
-                property.data = value
-                property.size = len(value)
-                property.format = VTPProperty.Formats.Cells
-                properties.append(property)
+                vtk_property = VTPProperty()
+                vtk_property.label = key
+                vtk_property.data = value
+                vtk_property.size = len(value)
+                vtk_property.format = VTPProperty.Formats.Cells
+                properties.append(vtk_property)
 
         vtk_utils = VTKUtilities()
         vtk_utils.add_segments(coordinates, segments, properties)
@@ -70,7 +70,8 @@ class ExportVTKUtilities:
 
         self.export_segments(path_file, coordinates, segments, point_data, cell_data)
 
-    def export_polygons(self, path_file: str, coordinates: npt.NDArray[np.dtype[np.float64]],
+    @staticmethod
+    def export_polygons(path_file: str, coordinates: npt.NDArray[np.dtype[np.float64]],
                         polygons: List[List[int]],
                         point_data: Optional[Dict[str, np.ndarray]] = None,
                         cell_data: Optional[Dict[str, np.ndarray]] = None) -> None:
@@ -79,21 +80,21 @@ class ExportVTKUtilities:
 
         if point_data is not None:
             for (key, value) in point_data.items():
-                property = VTPProperty()
-                property.label = key
-                property.data = value
-                property.size = len(value)
-                property.format = VTPProperty.Formats.Points
-                properties.append(property)
+                vtk_property = VTPProperty()
+                vtk_property.label = key
+                vtk_property.data = value
+                vtk_property.size = len(value)
+                vtk_property.format = VTPProperty.Formats.Points
+                properties.append(vtk_property)
 
         if cell_data is not None:
             for (key, value) in cell_data.items():
-                property = VTPProperty()
-                property.label = key
-                property.data = value
-                property.size = len(value)
-                property.format = VTPProperty.Formats.Cells
-                properties.append(property)
+                vtk_property = VTPProperty()
+                vtk_property.label = key
+                vtk_property.data = value
+                vtk_property.size = len(value)
+                vtk_property.format = VTPProperty.Formats.Cells
+                properties.append(vtk_property)
 
         vtk_utils = VTKUtilities()
         vtk_utils.add_polygons(coordinates, polygons, properties)
@@ -117,21 +118,21 @@ class ExportVTKUtilities:
         properties: List[VTPProperty] = []
         if point_data is not None:
             for (key, value) in point_data.items():
-                property = VTPProperty()
-                property.label = key
-                property.data = value
-                property.size = len(value)
-                property.format = VTPProperty.Formats.Points
-                properties.append(property)
+                vtk_property = VTPProperty()
+                vtk_property.label = key
+                vtk_property.data = value
+                vtk_property.size = len(value)
+                vtk_property.format = VTPProperty.Formats.Points
+                properties.append(vtk_property)
 
         if cell_data is not None:
             for (key, value) in cell_data.items():
-                property = VTPProperty()
-                property.label = key
-                property.data = value
-                property.size = len(value)
-                property.format = VTPProperty.Formats.Cells
-                properties.append(property)
+                vtk_property = VTPProperty()
+                vtk_property.label = key
+                vtk_property.data = value
+                vtk_property.size = len(value)
+                vtk_property.format = VTPProperty.Formats.Cells
+                properties.append(vtk_property)
 
         vtk_utils = VTKUtilities()
         vtk_utils.add_polyhedrons(coordinates, polyhedrons_faces, properties)

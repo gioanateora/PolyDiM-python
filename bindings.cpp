@@ -16970,6 +16970,136 @@ void py_init_module_polydim(py::module &m)
     ////////////////////    </generated_from:LocalSpace_MCC_2D.hpp>    ////////////////////
 
 
+    ////////////////////    <generated_from:LocalSpace_DF_PCC_2D.hpp>    ////////////////////
+    // #ifndef __LocalSpace_DF_PCC_2D_H
+    //
+    // #endif
+    //
+
+    { // <namespace Polydim>
+        py::module_ pyNsPolydim = m.def_submodule("polydim", "namespace Polydim");
+        { // <namespace PDETools>
+            py::module_ pyNsPolydim_NsPDETools = pyNsPolydim.def_submodule("pde_tools", "namespace PDETools");
+            { // <namespace LocalSpace_DF_PCC_2D>
+                py::module_ pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D = pyNsPolydim_NsPDETools.def_submodule("local_space_df_pcc_2_d", "namespace LocalSpace_DF_PCC_2D");
+                auto pyEnumMethodTypes =
+                    py::enum_<Polydim::PDETools::LocalSpace_DF_PCC_2D::MethodTypes>(pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D, "MethodTypes", py::arithmetic(), "")
+                        .value("taylor_hood", Polydim::PDETools::LocalSpace_DF_PCC_2D::MethodTypes::TAYLOR_HOOD, "")
+                        .value("vem_df_pcc_full", Polydim::PDETools::LocalSpace_DF_PCC_2D::MethodTypes::VEM_DF_PCC_FULL, "")
+                        .value("vem_df_pcc_reduced", Polydim::PDETools::LocalSpace_DF_PCC_2D::MethodTypes::VEM_DF_PCC_REDUCED, "");
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D_ClassReferenceElement_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D, "ReferenceElement_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("method_type", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::Method_Type, "")
+                    .def_readwrite("order", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::Order, "")
+                    .def_readwrite("dimension", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::Dimension, "")
+                    .def_readwrite("vem_type", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::VEM_Type, "")
+                    .def_readwrite("vem_velocity_reference_element", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::VEM_Velocity_ReferenceElement, "")
+                    .def_readwrite("vem_velocity_reference_element_data", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::VEM_Velocity_ReferenceElement_Data, "")
+                    .def_readwrite("vem_pressure_reference_element", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::VEM_Pressure_ReferenceElement, "")
+                    .def_readwrite("vem_pressure_reference_element_data", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::VEM_Pressure_ReferenceElement_Data, "")
+                    .def_readwrite("vem_velocity_local_space", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::VEM_Velocity_LocalSpace, "")
+                    .def_readwrite("vem_pressure_local_space", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::VEM_Pressure_LocalSpace, "")
+                    .def_readwrite("fem_reference_element", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::FEM_ReferenceElement, "")
+                    .def_readwrite("fem_reference_element_data", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::FEM_ReferenceElement_Data, "")
+                    .def_readwrite("fem_local_space", &Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data::FEM_LocalSpace, "")
+                    ;
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D_ClassLocalSpace_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D, "LocalSpace_Data", py::is_final(), "\n(final class)")
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("vem_geometry", &Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data::VEM_Geometry, "")
+                    .def_readwrite("vem_velocity_local_space_data", &Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data::VEM_Velocity_LocalSpace_Data, "")
+                    .def_readwrite("vem_pressure_local_space_data", &Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data::VEM_Pressure_LocalSpace_Data, "")
+                    .def_readwrite("fem_geometry", &Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data::FEM_Geometry, "")
+                    .def_readwrite("fem_local_space_data", &Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data::FEM_LocalSpace_Data, "")
+                    ;
+
+
+                auto pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D_ClassPerformance_Data =
+                    py::class_<Polydim::PDETools::LocalSpace_DF_PCC_2D::Performance_Data>
+                        (pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D, "Performance_Data", py::is_final(), "\n(final class)");
+
+                { // inner classes & enums of Performance_Data
+                    auto pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D_ClassPerformance_Data_ClassCell2D_Performance =
+                        py::class_<Polydim::PDETools::LocalSpace_DF_PCC_2D::Performance_Data::Cell2D_Performance>
+                            (pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D_ClassPerformance_Data, "Cell2D_Performance", py::is_final(), "\n(final class)")
+                        .def(py::init<>()) // implicit default constructor
+                        .def_readwrite("num_boundary_quadrature_points", &Polydim::PDETools::LocalSpace_DF_PCC_2D::Performance_Data::Cell2D_Performance::NumBoundaryQuadraturePoints, "")
+                        .def_readwrite("num_internal_quadrature_points", &Polydim::PDETools::LocalSpace_DF_PCC_2D::Performance_Data::Cell2D_Performance::NumInternalQuadraturePoints, "")
+                        .def_readwrite("vem_analysis_data", &Polydim::PDETools::LocalSpace_DF_PCC_2D::Performance_Data::Cell2D_Performance::vem_analysis_data, "")
+                        ;
+                } // end of inner classes & enums of Performance_Data
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D_ClassPerformance_Data
+                    .def(py::init<>()) // implicit default constructor
+                    .def_readwrite("performance_data", &Polydim::PDETools::LocalSpace_DF_PCC_2D::Performance_Data::performance_data, "")
+                    ;
+
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("create_reference_element",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::CreateReferenceElement, py::arg("method_type"), py::arg("method_order"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("set_mesh_do_fs_info",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::SetMeshDOFsInfo, py::arg("reference_element_data"), py::arg("mesh"), py::arg("boundary_info"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("create_local_space",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::CreateLocalSpace, py::arg("geometric_tolerance_1_d"), py::arg("geometric_tolerance_2_d"), py::arg("mesh_geometric_data"), py::arg("cell2_d_index"), py::arg("reference_element_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_basis_functions_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocityBasisFunctionsValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::DF_PCC::ProjectionTypes::Pi0k);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_basis_functions_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data &, const Eigen::MatrixXd &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocityBasisFunctionsValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("points"), py::arg("projection_type") = Polydim::VEM::DF_PCC::ProjectionTypes::Pi0k);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("pressure_basis_functions_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data &>(Polydim::PDETools::LocalSpace_DF_PCC_2D::PressureBasisFunctionsValues), py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("pressure_basis_functions_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data &, const Eigen::MatrixXd &>(Polydim::PDETools::LocalSpace_DF_PCC_2D::PressureBasisFunctionsValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("points"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_basis_functions_derivative_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocityBasisFunctionsDerivativeValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::DF_PCC::ProjectionTypes::PiNabla);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_basis_functions_derivative_values",
+                    py::overload_cast<const Polydim::PDETools::LocalSpace_DF_PCC_2D::ReferenceElement_Data &, const Polydim::PDETools::LocalSpace_DF_PCC_2D::LocalSpace_Data &, const Eigen::MatrixXd &, const Polydim::VEM::DF_PCC::ProjectionTypes &>(Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocityBasisFunctionsDerivativeValues), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("points"), py::arg("projection_type") = Polydim::VEM::DF_PCC::ProjectionTypes::PiNabla);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_basis_functions_divergence_values",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocityBasisFunctionsDivergenceValues, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("internal_quadrature",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::InternalQuadrature, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_basis_functions_values_on_edge",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocityBasisFunctionsValuesOnEdge, py::arg("edge_local_index"), py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("points_curvilinear_coordinates"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_stabilization_matrix",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocityStabilizationMatrix, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("projection_type") = Polydim::VEM::DF_PCC::ProjectionTypes::PiNabla);
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_edge_dofs_coordinates",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocityEdgeDofsCoordinates, py::arg("reference_element_data"), py::arg("local_space_data"), py::arg("edge_local_index"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("velocity_size",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::VelocitySize, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("compute_performance",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::ComputePerformance, py::arg("reference_element_data"), py::arg("local_space_data"));
+
+                pyNsPolydim_NsPDETools_NsLocalSpace_DF_PCC_2D.def("export_velocity_dofs",
+                    Polydim::PDETools::LocalSpace_DF_PCC_2D::export_velocity_dofs, py::arg("geometry_utilities"), py::arg("mesh"), py::arg("mesh_geometric_data"), py::arg("mesh_dofs_info"), py::arg("dofs_data"), py::arg("count_dofs"), py::arg("right_hand_side"), py::arg("solution"), py::arg("solution_strongs"), py::arg("file_path"));
+            } // </namespace LocalSpace_DF_PCC_2D>
+
+        } // </namespace PDETools>
+
+    } // </namespace Polydim>
+    ////////////////////    </generated_from:LocalSpace_DF_PCC_2D.hpp>    ////////////////////
+
+
     ////////////////////    <generated_from:assembler_PCC_2D_functions_data.hpp>    ////////////////////
     // #ifndef __PDETOOLS_ASSEMBLER_assembler_PCC_2D_functions_data_HPP
     //

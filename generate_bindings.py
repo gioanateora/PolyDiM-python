@@ -265,6 +265,7 @@ headers = ["PolyDiM/gedim/GeDiM/src/IO/StringsUtilities.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_2D.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp",
             "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_MCC_2D.hpp",
+            "PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_DF_PCC_2D.hpp",
             "PolyDiM/PolyDiM/src/PDETools/Assembler/assembler_PCC_2D_functions_data.hpp",
             "PolyDiM/PolyDiM/src/PDETools/Assembler/assembler_PCC_2D_functions.hpp"
             ]

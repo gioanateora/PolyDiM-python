@@ -187,6 +187,7 @@
 #include "./PolyDiM/PolyDiM/src/PDETools/Assembler/assembler_PCC_2D_functions_utilities.hpp"
 #include "./PolyDiM/PolyDiM/src/PDETools/Assembler/assembler_PCC_2D_functions_data.hpp"
 #include "./PolyDiM/PolyDiM/src/PDETools/Assembler/assembler_PCC_2D_functions.hpp"
+
 #include "./PolyDiM/PolyDiM/src/PDETools/DOFs/DOFsManager.hpp"
 #include "./PolyDiM/PolyDiM/src/PDETools/Equations/EllipticEquation.hpp"
 #include "./PolyDiM/PolyDiM/src/PDETools/Mesh/MeshMatricesDAO_mesh_connectivity_data.hpp"
@@ -195,3 +196,4 @@
 #include "./PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_2D.hpp"
 #include "./PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp"
 #include "./PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_MCC_2D.hpp"
+#include "./PolyDiM/PolyDiM/src/PDETools/LocalSpace/LocalSpace_DF_PCC_2D.hpp"
