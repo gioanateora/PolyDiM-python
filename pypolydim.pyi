@@ -1060,9 +1060,11 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
                 remove = enum.auto()                                                                                                                                                                                                      # (= 2)
 
             none: int = 2147483647                                                                                                                                                                                                        # (C++ static member) # (const)
-            vertices_type: List[List[Tuple[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypes]
-            edges_type: List[List[Tuple[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypes]
-            faces_type: List[List[Tuple[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypes]
+
+
+            vertices_type: List[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypesList]
+            edges_type: List[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypesList]
+            faces_type: List[Gedim.GeometryUtilities.MergePolyhedronsInput.MergeTypesList]
             common_vertices: List[List[int]]
             common_edges: List[List[int]]
             common_faces: List[List[int]]
@@ -21222,6 +21224,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
                     cells_num_do_fs: List[List[int]]
                     cells_boundary_info: List[List[Polydim.PDETools.DOFs.DOFsManager.MeshDOFsInfo.BoundaryInfo]]
+
                     def __init__(self) -> None:
                         """Auto-generated default constructor"""
                         pass
@@ -22223,7 +22226,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
             def set_mesh_do_fs_info(
                 reference_element_data: ReferenceElement_Data,
                 mesh: Gedim.MeshMatricesDAO,
-                boundary_info: List[Dict[int]
+                boundary_info: List[DOFs.DOFsManager.MeshDOFsInfo.BoundaryMap]
                 ) -> List[DOFs.DOFsManager.MeshDOFsInfo]:
                 pass
 
