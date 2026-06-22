@@ -18,7 +18,7 @@ class ExportVTKUtilities:
                 vtk_property.label = key
                 vtk_property.data = value
                 vtk_property.size = len(value)
-                vtk_property.format = VTPProperty.Formats.Cells
+                vtk_property.format = VTPProperty.Formats.Points
                 properties.append(vtk_property)
 
         vtk_utils = VTKUtilities()

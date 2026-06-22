@@ -6575,6 +6575,14 @@ void py_init_module_polydim(py::module &m)
                 &Gedim::GeometryUtilities::PolarAngle,
                 py::arg("v_prev"), py::arg("v"), py::arg("v_next"), py::arg("norm_v_prev_v"), py::arg("norm_v_next_v"),
                 "/ \\param v_prev the previous point\n/ \\param v the middle point\n/ \\param v_next the next point\n/ \\return the polar angle between the three points, computed as the cross product (v_next-v) x (v_prev-v)\n/ \note positive is convex (counter-clockwise), negative is concave (clockwise), zero is collinear")
+            .def("angle",
+                &Gedim::GeometryUtilities::Angle,
+                py::arg("v_prev"), py::arg("v"), py::arg("v_next"), py::arg("norm_v_prev_v"), py::arg("norm_v_next_v"),
+                "/ \\param v_prev the previous point\n/ \\param v the middle point\n/ \\param v_next the next point\n/ \\return the angle between the three points, computed in radians [-pi,pi] as\n/ atan2((v_next-v) x (v_prev-v),(v_next-v) . (v_prev-v))")
+            .def("angle_radians_to_degree",
+                &Gedim::GeometryUtilities::AngleRadiansToDegree, py::arg("rad_angle"))
+            .def("angle_degree_to_radians",
+                &Gedim::GeometryUtilities::AngleDegreeToRadians, py::arg("deg_angle"))
             .def("point_distance",
                 &Gedim::GeometryUtilities::PointDistance,
                 py::arg("first_point"), py::arg("second_point"),
@@ -9655,7 +9663,7 @@ void py_init_module_polydim(py::module &m)
                 py::class_<Gedim::MeshUtilities::CheckMesh3DConfiguration>
                     (pyNsGedim_ClassMeshUtilities, "CheckMesh3DConfiguration", py::is_final(), "\n(final class)")
                 .def(py::init<>([](
-                bool Cell0D_CheckDuplications = true, bool Cell1D_CheckDuplications = true, bool Cell1D_CheckMeasure = true, bool Cell2D_CheckEdges = true, bool Cell2D_CheckDuplications = true, bool Cell2D_CheckConvexity = true, bool Cell2D_CheckMeasure = true, bool Cell3D_CheckDuplications = true, bool Cell3D_CheckEdges = true, bool Cell3D_CheckEdgesAreActive = true, bool Cell3D_CheckConvexity = true, bool Cell3D_CheckMeasure = true)
+                bool Cell0D_CheckDuplications = true, bool Cell1D_CheckDuplications = true, bool Cell1D_CheckMeasure = true, bool Cell2D_CheckEdges = true, bool Cell2D_CheckDuplications = true, bool Cell2D_CheckConvexity = true, bool Cell2D_CheckMeasure = true, bool Cell3D_CheckDuplications = true, bool Cell3D_CheckEdges = true, bool Cell3D_CheckEdgesAreActive = true, bool Cell3D_CheckConvexity = true, bool Cell3D_CheckMeasure = true, bool Cell3D_CheckFaces = true)
                 {
                     auto r_ctor_ = std::make_unique<Gedim::MeshUtilities::CheckMesh3DConfiguration>();
                     r_ctor_->Cell0D_CheckDuplications = Cell0D_CheckDuplications;
@@ -9670,9 +9678,10 @@ void py_init_module_polydim(py::module &m)
                     r_ctor_->Cell3D_CheckEdgesAreActive = Cell3D_CheckEdgesAreActive;
                     r_ctor_->Cell3D_CheckConvexity = Cell3D_CheckConvexity;
                     r_ctor_->Cell3D_CheckMeasure = Cell3D_CheckMeasure;
+                    r_ctor_->Cell3D_CheckFaces = Cell3D_CheckFaces;
                     return r_ctor_;
                 })
-                , py::arg("cell0_d_check_duplications") = true, py::arg("cell1_d_check_duplications") = true, py::arg("cell1_d_check_measure") = true, py::arg("cell2_d_check_edges") = true, py::arg("cell2_d_check_duplications") = true, py::arg("cell2_d_check_convexity") = true, py::arg("cell2_d_check_measure") = true, py::arg("cell3_d_check_duplications") = true, py::arg("cell3_d_check_edges") = true, py::arg("cell3_d_check_edges_are_active") = true, py::arg("cell3_d_check_convexity") = true, py::arg("cell3_d_check_measure") = true
+                , py::arg("cell0_d_check_duplications") = true, py::arg("cell1_d_check_duplications") = true, py::arg("cell1_d_check_measure") = true, py::arg("cell2_d_check_edges") = true, py::arg("cell2_d_check_duplications") = true, py::arg("cell2_d_check_convexity") = true, py::arg("cell2_d_check_measure") = true, py::arg("cell3_d_check_duplications") = true, py::arg("cell3_d_check_edges") = true, py::arg("cell3_d_check_edges_are_active") = true, py::arg("cell3_d_check_convexity") = true, py::arg("cell3_d_check_measure") = true, py::arg("cell3_d_check_faces") = true
                 )
                 .def_readwrite("cell0_d_check_duplications", &Gedim::MeshUtilities::CheckMesh3DConfiguration::Cell0D_CheckDuplications, "")
                 .def_readwrite("cell1_d_check_duplications", &Gedim::MeshUtilities::CheckMesh3DConfiguration::Cell1D_CheckDuplications, "")
@@ -9686,6 +9695,7 @@ void py_init_module_polydim(py::module &m)
                 .def_readwrite("cell3_d_check_edges_are_active", &Gedim::MeshUtilities::CheckMesh3DConfiguration::Cell3D_CheckEdgesAreActive, "")
                 .def_readwrite("cell3_d_check_convexity", &Gedim::MeshUtilities::CheckMesh3DConfiguration::Cell3D_CheckConvexity, "")
                 .def_readwrite("cell3_d_check_measure", &Gedim::MeshUtilities::CheckMesh3DConfiguration::Cell3D_CheckMeasure, "")
+                .def_readwrite("cell3_d_check_faces", &Gedim::MeshUtilities::CheckMesh3DConfiguration::Cell3D_CheckFaces, "")
                 ;
             auto pyNsGedim_ClassMeshUtilities_ClassCheckMeshGeometricData2DConfiguration =
                 py::class_<Gedim::MeshUtilities::CheckMeshGeometricData2DConfiguration>
@@ -10446,6 +10456,12 @@ void py_init_module_polydim(py::module &m)
                 &Gedim::MeshUtilities::CreateTrianglePlusHangingNodesMesh, py::arg("rectangle_origin"), py::arg("rectangle_base_tangent"), py::arg("rectangle_height_tangent"), py::arg("base_mesh_curvilinear_coordinates"), py::arg("height_mesh_curvilinear_coordinates"), py::arg("number_of_added_vertices_for_each_rectangle"), py::arg("geometry_utilities"), py::arg("mesh"))
             .def("create_rectangle_plus_hanging_nodes_mesh",
                 &Gedim::MeshUtilities::CreateRectanglePlusHangingNodesMesh, py::arg("rectangle_origin"), py::arg("rectangle_base_tangent"), py::arg("rectangle_height_tangent"), py::arg("base_mesh_curvilinear_coordinates"), py::arg("height_mesh_curvilinear_coordinates"), py::arg("number_of_added_vertices_for_each_rectangle"), py::arg("geometry_utilities"), py::arg("mesh"))
+            .def("create_quadrilateral_mesh_from_triangular_mesh",
+                py::overload_cast<const GeometryUtilities &, const Gedim::IMeshDAO &, Gedim::IMeshDAO &>(&Gedim::MeshUtilities::CreateQuadrilateralMeshFromTriangularMesh, py::const_),
+                py::arg("geometry_utilities"), py::arg("triangular_mesh"), py::arg("mesh"),
+                "/ \\brief Create a quadrilateral mesh starting from a triangular mesh: the mesh is created by dividing triangles\n/ intro 3 quadrilaterals obtained by connecting the centroid to edge midpoints")
+            .def("create_quadrilateral_mesh_from_triangular_mesh",
+                py::overload_cast<const GeometryUtilities &, const Eigen::MatrixXd &, const double &, Gedim::IMeshDAO &>(&Gedim::MeshUtilities::CreateQuadrilateralMeshFromTriangularMesh, py::const_), py::arg("geometry_utilities"), py::arg("polygon_vertices"), py::arg("max_triangle_area"), py::arg("mesh"))
             .def("create_triangular_mesh",
                 &Gedim::MeshUtilities::CreateTriangularMesh,
                 py::arg("polygon_vertices"), py::arg("max_triangle_area"), py::arg("mesh"), py::arg("options") = "-QDzpqnea",
@@ -11263,6 +11279,179 @@ void py_init_module_polydim(py::module &m)
             ;
     } // </namespace Gedim>
     ////////////////////    </generated_from:SphereMeshUtilities.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:TetgenInterface.hpp>    ////////////////////
+    // #ifndef __TetgenInterface_H
+    //
+    // #endif
+
+    { // <namespace Gedim>
+        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
+        auto pyNsGedim_ClassTetgenInterface =
+            py::class_<Gedim::TetgenInterface>
+                (pyNsGedim, "TetgenInterface", py::is_final(), "/ \\brief The Tetgen Interface\n/ \\see http://wias-berlin.de/software/tetgen/files/tetcall.cxx\n(final class)");
+
+        { // inner classes & enums of TetgenInterface
+            auto pyNsGedim_ClassTetgenInterface_ClassRegion =
+                py::class_<Gedim::TetgenInterface::Region>
+                    (pyNsGedim_ClassTetgenInterface, "Region", "")
+                .def(py::init<>([](
+                int id = int(), Eigen::Vector3d centroid = Eigen::Vector3d(), double max_volume = double())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::TetgenInterface::Region>();
+                    r_ctor_->id = id;
+                    r_ctor_->centroid = centroid;
+                    r_ctor_->max_volume = max_volume;
+                    return r_ctor_;
+                })
+                , py::arg("id") = int(), py::arg("centroid") = Eigen::Vector3d(), py::arg("max_volume") = double()
+                )
+                .def_readwrite("id", &Gedim::TetgenInterface::Region::id, "unique id of the region")
+                .def_readwrite("centroid", &Gedim::TetgenInterface::Region::centroid, "internal point of the region")
+                .def_readwrite("max_volume", &Gedim::TetgenInterface::Region::max_volume, "default -1.0")
+                ;
+        } // end of inner classes & enums of TetgenInterface
+
+        pyNsGedim_ClassTetgenInterface
+            .def(py::init<>())
+            .def("create_delaunay",
+                &Gedim::TetgenInterface::CreateDelaunay, py::arg("points"), py::arg("points_marker"), py::arg("mesh"))
+            .def("create_mesh",
+                py::overload_cast<const Eigen::MatrixXd &, const Eigen::MatrixXi &, const std::vector<Eigen::MatrixXi> &, const double &, IMeshDAO &, const std::string &>(&Gedim::TetgenInterface::CreateMesh, py::const_), py::arg("polyhedron_vertices"), py::arg("polyhedron_edges"), py::arg("polyhedron_faces"), py::arg("max_tetrahedron_volume"), py::arg("mesh"), py::arg("tetgen_options") = "Qpqfezna")
+            .def("create_mesh",
+                py::overload_cast<const Eigen::MatrixXd &, const std::vector<std::vector<unsigned int>> &, const double &, IMeshDAO &, const std::string &>(&Gedim::TetgenInterface::CreateMesh, py::const_), py::arg("points"), py::arg("facets"), py::arg("max_tetrahedron_volume"), py::arg("mesh"), py::arg("tetgen_options") = "Qpqfezna")
+            .def("create_mesh",
+                py::overload_cast<const Eigen::MatrixXd &, const std::vector<std::vector<unsigned int>> &, const std::vector<Gedim::TetgenInterface::Region> &, IMeshDAO &, const std::string &>(&Gedim::TetgenInterface::CreateMesh, py::const_), py::arg("points"), py::arg("facets"), py::arg("regions"), py::arg("mesh"), py::arg("tetgen_options") = "QpqfeznaA")
+            ;
+    } // </namespace Gedim>
+    ////////////////////    </generated_from:TetgenInterface.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:TriangleInterface.hpp>    ////////////////////
+    // #ifndef __TriangleInterface_H
+    //
+    // #endif
+
+    { // <namespace Gedim>
+        py::module_ pyNsGedim = m.def_submodule("gedim", "namespace Gedim");
+        auto pyNsGedim_ClassTriangleInterface =
+            py::class_<Gedim::TriangleInterface>
+                (pyNsGedim, "TriangleInterface", py::is_final(), "\n(final class)")
+            .def(py::init<>())
+            .def("export_mesh",
+                &Gedim::TriangleInterface::ExportMesh, py::arg("polygon_vertices"), py::arg("max_triangle_area"), py::arg("folder_name"), py::arg("file_name"), py::arg("triangle_options") = "-QDzpqnea")
+            .def("create_mesh",
+                &Gedim::TriangleInterface::CreateMesh, py::arg("polygon_vertices"), py::arg("max_triangle_area"), py::arg("mesh"), py::arg("triangle_options") = "-QDzpqnea")
+            ;
+    } // </namespace Gedim>
+    ////////////////////    </generated_from:TriangleInterface.hpp>    ////////////////////
+
+
+    ////////////////////    <generated_from:VoroInterface.hpp>    ////////////////////
+    // #ifndef __VoroInterface_H
+    //
+
+    m.def("generate_voronoi_tassellations2_d",
+        py::overload_cast<const Eigen::MatrixXd &, const unsigned int &, const unsigned int &, Gedim::IMeshDAO &, const unsigned int>(GenerateVoronoiTassellations2D), py::arg("polygon_vertices"), py::arg("num_points"), py::arg("num_iterations"), py::arg("mesh"), py::arg("random_seed") = static_cast<unsigned int>(time(nullptr));
+
+    m.def("generate_voronoi_tassellations2_d",
+        py::overload_cast<const Eigen::MatrixXd &, const unsigned int &, Eigen::MatrixXd &, Gedim::IMeshDAO &>(GenerateVoronoiTassellations2D), py::arg("polygon_vertices"), py::arg("num_iterations"), py::arg("voronoi_points"), py::arg("mesh"));
+
+    m.def("generate_voronoi_tassellations3_d",
+        GenerateVoronoiTassellations3D, py::arg("domain_vertices"), py::arg("domain_edges"), py::arg("domain_faces"), py::arg("num_iterations"), py::arg("voronoi_points"), py::arg("mesh"));
+    // #endif
+    //
+
+    { // <namespace Gedim>
+        py::module_ pyNsGedim = m.def_submodule("gedim", "");
+        auto pyNsGedim_ClassVoroInterface =
+            py::class_<Gedim::VoroInterface>
+                (pyNsGedim, "VoroInterface", py::is_final(), "\n(final class)");
+
+        { // inner classes & enums of VoroInterface
+            auto pyNsGedim_ClassVoroInterface_ClassCell0D =
+                py::class_<Gedim::VoroInterface::Cell0D>
+                    (pyNsGedim_ClassVoroInterface, "Cell0D", "")
+                .def_readonly("coordinates", &Gedim::VoroInterface::Cell0D::coordinates, "")
+                .def_readwrite("marker", &Gedim::VoroInterface::Cell0D::marker, "")
+                .def_readwrite("active", &Gedim::VoroInterface::Cell0D::active, "")
+                .def_readwrite("neighbors_1_d", &Gedim::VoroInterface::Cell0D::neighbors_1D, "")
+                .def_readwrite("neighbors_2_d", &Gedim::VoroInterface::Cell0D::neighbors_2D, "")
+                .def(py::init<const Eigen::VectorXd &>(),
+                    py::arg("coordinates"))
+                ;
+            auto pyNsGedim_ClassVoroInterface_ClassCell1D =
+                py::class_<Gedim::VoroInterface::Cell1D>
+                    (pyNsGedim_ClassVoroInterface, "Cell1D", "")
+                .def(py::init<>([](
+                bool active = true)
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::VoroInterface::Cell1D>();
+                    r_ctor_->active = active;
+                    return r_ctor_;
+                })
+                , py::arg("active") = true
+                )
+                .def_readwrite("marker", &Gedim::VoroInterface::Cell1D::marker, "")
+                .def_readwrite("origin", &Gedim::VoroInterface::Cell1D::origin, "")
+                .def_readwrite("end", &Gedim::VoroInterface::Cell1D::end, "")
+                .def_readwrite("active", &Gedim::VoroInterface::Cell1D::active, "")
+                .def_readwrite("neighbors_2_d", &Gedim::VoroInterface::Cell1D::neighbors_2D, "")
+                ;
+            auto pyNsGedim_ClassVoroInterface_ClassCell2D =
+                py::class_<Gedim::VoroInterface::Cell2D>
+                    (pyNsGedim_ClassVoroInterface, "Cell2D", "")
+                .def(py::init<>([](
+                bool active = true, std::vector<int> neighbors_of_related_3D_cells = std::vector<int>())
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::VoroInterface::Cell2D>();
+                    r_ctor_->active = active;
+                    r_ctor_->neighbors_of_related_3D_cells = neighbors_of_related_3D_cells;
+                    return r_ctor_;
+                })
+                , py::arg("active") = true, py::arg("neighbors_of_related_3_d_cells") = std::vector<int>()
+                )
+                .def_readwrite("marker", &Gedim::VoroInterface::Cell2D::marker, "")
+                .def_readwrite("vertices", &Gedim::VoroInterface::Cell2D::vertices, "")
+                .def_readwrite("edges", &Gedim::VoroInterface::Cell2D::edges, "")
+                .def_readwrite("active", &Gedim::VoroInterface::Cell2D::active, "")
+                .def_readwrite("neighbors_of_related_3_d_cells", &Gedim::VoroInterface::Cell2D::neighbors_of_related_3D_cells, "only positive ones")
+                ;
+            auto pyNsGedim_ClassVoroInterface_ClassCell3D =
+                py::class_<Gedim::VoroInterface::Cell3D>
+                    (pyNsGedim_ClassVoroInterface, "Cell3D", "")
+                .def(py::init<>([](
+                std::vector<int> neighbors = std::vector<int>(), bool active = true)
+                {
+                    auto r_ctor_ = std::make_unique<Gedim::VoroInterface::Cell3D>();
+                    r_ctor_->neighbors = neighbors;
+                    r_ctor_->active = active;
+                    return r_ctor_;
+                })
+                , py::arg("neighbors") = std::vector<int>(), py::arg("active") = true
+                )
+                .def_readwrite("marker", &Gedim::VoroInterface::Cell3D::marker, "")
+                .def_readwrite("vertices", &Gedim::VoroInterface::Cell3D::vertices, "")
+                .def_readwrite("edges", &Gedim::VoroInterface::Cell3D::edges, "")
+                .def_readwrite("faces", &Gedim::VoroInterface::Cell3D::faces, "")
+                .def_readwrite("neighbors", &Gedim::VoroInterface::Cell3D::neighbors, "")
+                .def_readwrite("active", &Gedim::VoroInterface::Cell3D::active, "")
+                ;
+        } // end of inner classes & enums of VoroInterface
+
+        pyNsGedim_ClassVoroInterface
+            .def(py::init<const Gedim::GeometryUtilities &>(),
+                py::arg("geometry_utilities"))
+            .def("generate_random_points",
+                &Gedim::VoroInterface::GenerateRandomPoints, py::arg("domain_vertices"), py::arg("num_points"), py::arg("random_seed") = static_cast<unsigned int>(time(nullptr))
+            ;
+
+
+        pyNsGedim.def("generate_voronoi_tassellations3_d",
+            Gedim::GenerateVoronoiTassellations3D, py::arg("polyhedron_vertices"), py::arg("polyhedron_edges"), py::arg("polyhedron_faces"), py::arg("num_points"), py::arg("num_iterations"), py::arg("mesh"), py::arg("random_seed") = static_cast<unsigned int>(time(nullptr));
+    } // </namespace Gedim>
+    ////////////////////    </generated_from:VoroInterface.hpp>    ////////////////////
 
 
     ////////////////////    <generated_from:Quadrature_Gauss2D_Triangle.hpp>    ////////////////////
@@ -16351,13 +16540,13 @@ void py_init_module_polydim(py::module &m)
                     .def("compute_polynomials_dofs",
                         &Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputePolynomialsDofs, py::arg("reference_element_data"), py::arg("internal_points"), py::arg("diameter"), py::arg("local_space"))
                     .def("compute_basis_functions_values",
-                        py::overload_cast<const ZFEM_PCC_2D_LocalSpace_Data &>(&Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"))
+                        py::overload_cast<const Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace_Data &>(&Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("local_space"))
                     .def("compute_basis_functions_derivative_values",
-                        py::overload_cast<const ZFEM_PCC_2D_LocalSpace_Data &>(&Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("local_space"))
+                        py::overload_cast<const Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace_Data &>(&Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("local_space"))
                     .def("compute_basis_functions_values",
-                        py::overload_cast<const ZFEM_PCC_2D_ReferenceElement_Data &, const ZFEM_PCC_2D_LocalSpace_Data &, const std::vector<Eigen::MatrixXd> &>(&Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                        py::overload_cast<const Polydim::ZFEM::PCC::ZFEM_PCC_2D_ReferenceElement_Data &, const Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace_Data &, const std::vector<Eigen::MatrixXd> &>(&Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeBasisFunctionsValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
                     .def("compute_basis_functions_derivative_values",
-                        py::overload_cast<const ZFEM_PCC_2D_ReferenceElement_Data &, const ZFEM_PCC_2D_LocalSpace_Data &, const std::vector<Eigen::MatrixXd> &>(&Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
+                        py::overload_cast<const Polydim::ZFEM::PCC::ZFEM_PCC_2D_ReferenceElement_Data &, const Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace_Data &, const std::vector<Eigen::MatrixXd> &>(&Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeBasisFunctionsDerivativeValues, py::const_), py::arg("reference_element_data"), py::arg("local_space"), py::arg("points"))
                     .def("compute_values_on_edge",
                         &Polydim::ZFEM::PCC::ZFEM_PCC_2D_LocalSpace::ComputeValuesOnEdge, py::arg("reference_element_data"), py::arg("local_space"), py::arg("points_curvilinear_coordinates"))
                     ;
@@ -16472,7 +16661,8 @@ void py_init_module_polydim(py::module &m)
                             .value("squared", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::Squared, "/< squared mesh")
                             .value("random_distorted", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::RandomDistorted, "/< random distorted")
                             .value("triangular_simple_importer", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::TriangularSimpleImporter, "/< import 2D triangular mesh")
-                            .value("structured_tringular", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::StructuredTringular, "");
+                            .value("structured_triangular", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::StructuredTriangular, "/<")
+                            .value("quad_from_triangular", Polydim::PDETools::Mesh::PDE_Mesh_Utilities::MeshGenerator_Types_2D::QuadFromTriangular, "/< generate quadrilateral mesh starting fromt triangular");
 
 
                     auto pyEnumMeshGenerator_Types_3D =

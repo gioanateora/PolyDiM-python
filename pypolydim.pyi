@@ -1246,6 +1246,28 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """
             pass
 
+        def angle(
+            self,
+            v_prev: Eigen.Vector3d,
+            v: Eigen.Vector3d,
+            v_next: Eigen.Vector3d,
+            norm_v_prev_v: float,
+            norm_v_next_v: float
+            ) -> float:
+            """/ \param v_prev the previous point
+            / \param v the middle point
+            / \param v_next the next point
+            / \return the angle between the three points, computed in radians [-pi,pi] as
+            / atan2((v_next-v) x (v_prev-v),(v_next-v) . (v_prev-v))
+            """
+            pass
+
+        def angle_radians_to_degree(self, rad_angle: float) -> float:
+            pass
+
+        def angle_degree_to_radians(self, deg_angle: float) -> float:
+            pass
+
         def point_distance(
             self,
             first_point: Eigen.Vector3d,
@@ -8322,6 +8344,7 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             cell3_d_check_edges_are_active: bool = True
             cell3_d_check_convexity: bool = True
             cell3_d_check_measure: bool = True
+            cell3_d_check_faces: bool = True
             def __init__(
                 self,
                 cell0_d_check_duplications: bool = True,
@@ -8335,7 +8358,8 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
                 cell3_d_check_edges: bool = True,
                 cell3_d_check_edges_are_active: bool = True,
                 cell3_d_check_convexity: bool = True,
-                cell3_d_check_measure: bool = True
+                cell3_d_check_measure: bool = True,
+                cell3_d_check_faces: bool = True
                 ) -> None:
                 """Auto-generated default constructor with named params"""
                 pass
@@ -9488,6 +9512,28 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             height_mesh_curvilinear_coordinates: List[float],
             number_of_added_vertices_for_each_rectangle: List[int],
             geometry_utilities: GeometryUtilities,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        @overload
+        def create_quadrilateral_mesh_from_triangular_mesh(
+            self,
+            geometry_utilities: GeometryUtilities,
+            triangular_mesh: IMeshDAO,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ \brief Create a quadrilateral mesh starting from a triangular mesh: the mesh is created by dividing triangles
+            / intro 3 quadrilaterals obtained by connecting the centroid to edge midpoints
+            """
+            pass
+
+        @overload
+        def create_quadrilateral_mesh_from_triangular_mesh(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polygon_vertices: Eigen.MatrixXd,
+            max_triangle_area: float,
             mesh: IMeshDAO
             ) -> None:
             pass
@@ -11183,6 +11229,287 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
 # </submodule gedim>
 ####################    </generated_from:SphereMeshUtilities.hpp>    ####################
+
+
+####################    <generated_from:TetgenInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __TetgenInterface_H
+#
+
+
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class TetgenInterface:
+        """/ \brief The Tetgen Interface
+        / \see http://wias-berlin.de/software/tetgen/files/tetcall.cxx
+        (final class)
+        """
+        class Region:
+            id: int                   # unique id of the region
+            centroid: Eigen.Vector3d  # internal point of the region
+            max_volume: float         # default -1.0
+            def __init__(
+                self,
+                id: int = int(),
+                centroid: Eigen.Vector3d = Eigen.Vector3d(),
+                max_volume: float = float()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self) -> None:
+            pass
+
+        def create_delaunay(
+            self,
+            points: Eigen.MatrixXd,
+            points_marker: List[int],
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        @overload
+        def create_mesh(
+            self,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_faces: List[Eigen.MatrixXi],
+            max_tetrahedron_volume: float,
+            mesh: IMeshDAO,
+            tetgen_options: str = "Qpqfezna"
+            ) -> None:
+            pass
+
+        @overload
+        def create_mesh(
+            self,
+            points: Eigen.MatrixXd,
+            facets: List[List[int]],
+            max_tetrahedron_volume: float,
+            mesh: IMeshDAO,
+            tetgen_options: str = "Qpqfezna"
+            ) -> None:
+            pass
+
+        @overload
+        def create_mesh(
+            self,
+            points: Eigen.MatrixXd,
+            facets: List[List[int]],
+            regions: List[TetgenInterface.Region],
+            mesh: IMeshDAO,
+            tetgen_options: str = "QpqfeznaA"
+            ) -> None:
+            pass
+
+
+# </submodule gedim>
+####################    </generated_from:TetgenInterface.hpp>    ####################
+
+
+####################    <generated_from:TriangleInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __TriangleInterface_H
+#
+
+
+
+
+
+# #endif
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
+    class TriangleInterface:
+        """
+        (final class)
+        """
+        def __init__(self) -> None:
+            pass
+
+        def export_mesh(
+            self,
+            polygon_vertices: Eigen.MatrixXd,
+            max_triangle_area: float,
+            folder_name: str,
+            file_name: str,
+            triangle_options: str = "-QDzpqnea"
+            ) -> None:
+            pass
+
+        def create_mesh(
+            self,
+            polygon_vertices: Eigen.MatrixXd,
+            max_triangle_area: float,
+            mesh: IMeshDAO,
+            triangle_options: str = "-QDzpqnea"
+            ) -> None:
+            pass
+
+# </submodule gedim>
+####################    </generated_from:TriangleInterface.hpp>    ####################
+
+
+####################    <generated_from:VoroInterface.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __VoroInterface_H
+#
+
+
+
+
+
+
+@overload
+def generate_voronoi_tassellations2_d(
+    polygon_vertices: Eigen.MatrixXd,
+    num_points: int,
+    num_iterations: int,
+    mesh: gedim.IMeshDAO,
+    random_seed: int = static_cast<int>(time(None)
+    ) -> None:
+    pass
+
+@overload
+def generate_voronoi_tassellations2_d(
+    polygon_vertices: Eigen.MatrixXd,
+    num_iterations: int,
+    voronoi_points: Eigen.MatrixXd,
+    mesh: gedim.IMeshDAO
+    ) -> None:
+    pass
+
+def generate_voronoi_tassellations3_d(
+    domain_vertices: Eigen.MatrixXd,
+    domain_edges: Eigen.MatrixXi,
+    domain_faces: List[Eigen.MatrixXi],
+    num_iterations: int,
+    voronoi_points: Eigen.MatrixXd,
+    mesh: gedim.IMeshDAO
+    ) -> None:
+    pass
+
+# namespace Gedim
+
+# #endif
+#
+
+# <submodule gedim>
+class gedim:  # Proxy class that introduces typings for the *submodule* gedim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    class VoroInterface:
+        """
+        (final class)
+        """
+        class Cell0D:
+            coordinates: Eigen.VectorXd                # (const)
+            marker: int
+            active: bool = True
+            neighbors_1_d: List[int]
+            neighbors_2_d: List[int]
+
+            def __init__(self, coordinates: Eigen.VectorXd) -> None:
+                pass
+
+        class Cell1D:
+            marker: int
+            origin: int
+            end: int
+            active: bool = True
+            neighbors_2_d: List[int]
+            def __init__(self, active: bool = True) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Cell2D:
+            marker: int
+            vertices: List[int]
+            edges: List[int]
+            active: bool = True
+            neighbors_of_related_3_d_cells: List[int]  # only positive ones
+            def __init__(
+                self,
+                active: bool = True,
+                neighbors_of_related_3_d_cells: List[int] = List[int]()
+                ) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        class Cell3D:
+            marker: int
+            vertices: List[int]
+            edges: std.set[int]
+            faces: List[int]
+            neighbors: List[int]
+            active: bool = True
+            def __init__(self, neighbors: List[int] = List[int](), active: bool = True) -> None:
+                """Auto-generated default constructor with named params"""
+                pass
+
+        def __init__(self, geometry_utilities: GeometryUtilities) -> None:
+            pass
+
+        def generate_random_points(
+            self,
+            domain_vertices: Eigen.MatrixXd,
+            num_points: int,
+            random_seed: int = static_cast<int>(time(None)
+            ) -> Eigen.MatrixXd:
+            pass
+
+    @staticmethod
+    def generate_voronoi_tassellations3_d(
+        polyhedron_vertices: Eigen.MatrixXd,
+        polyhedron_edges: Eigen.MatrixXi,
+        polyhedron_faces: List[Eigen.MatrixXi],
+        num_points: int,
+        num_iterations: int,
+        mesh: IMeshDAO,
+        random_seed: int = static_cast<int>(time(None)
+        ) -> None:
+        pass
+
+# </submodule gedim>
+####################    </generated_from:VoroInterface.hpp>    ####################
 
 
 ####################    <generated_from:Quadrature_Gauss2D_Triangle.hpp>    ####################
@@ -21165,7 +21492,8 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     squared = enum.auto()                    # (= 5)  #/< squared mesh
                     random_distorted = enum.auto()           # (= 6)  #/< random distorted
                     triangular_simple_importer = enum.auto() # (= 7)  #/< import 2D triangular mesh
-                    structured_tringular = enum.auto()       # (= 8)
+                    structured_triangular = enum.auto()      # (= 8)  #/<
+                    quad_from_triangular = enum.auto()       # (= 9)  #/< generate quadrilateral mesh starting fromt triangular
 
                 class MeshGenerator_Types_3D(enum.IntEnum):
                     tetrahedral = enum.auto()  # (= 0)  #/< generated tetrahedral mesh
