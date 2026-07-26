@@ -19,11 +19,12 @@ class assembler_utilities:
 
     class LocalMatrixToGlobalMatrixDOFsData:
 
-        def __init__(self) -> None:
-            self.do_fs_data_indices: List[polydim.pde_tools.do_fs.DOFsManager.CellsDOFsIndicesData]
-            self.local_offsets: List[int] = []
-            self.global_offsets_do_fs: List[int] = []
-            self.global_offsets_strongs: List[int] = []
+        def __init__(self, do_fs_data_indices: List[polydim.pde_tools.do_fs.DOFsManager.CellsDOFsIndicesData], local_offsets: List[int],
+                     global_offsets_do_fs: List[int], global_offsets_strongs: List[int]) -> None:
+            self.do_fs_data_indices = do_fs_data_indices
+            self.local_offsets = local_offsets
+            self.global_offsets_do_fs = global_offsets_do_fs
+            self.global_offsets_strongs = global_offsets_strongs
 
     class CountDOFsData:
 
@@ -36,9 +37,9 @@ class assembler_utilities:
 
     class LocalCountDOFsData:
 
-        def __init__(self) -> None:
-            self.num_total_do_fs: int = 0
-            self.offset_do_fs: List[int] = []
+        def __init__(self, num_total_do_fs: int, offset_do_fs: List[int]) -> None:
+            self.num_total_do_fs: int = num_total_do_fs
+            self.offset_do_fs: List[int] = offset_do_fs
 
     def count_do_fs(self, do_fs_data: List[polydim.pde_tools.do_fs.DOFsManager.DOFsData]) -> CountDOFsData:
 
@@ -64,14 +65,20 @@ class assembler_utilities:
     def local_count_do_fs(self, dimension: int, cell_index: int,
                           do_fs_data: List[polydim.pde_tools.do_fs.DOFsManager.DOFsData]) -> LocalCountDOFsData:
 
-        data = self.LocalCountDOFsData()
+        # lengths = np.array([len(d.cells_global_do_fs[dimension][cell_index]) for d in do_fs_data])
+        # cum_sum = np.cumsum(lengths)
+        # num_total_do_fs = cum_sum[-1]
+        # offset_do_fs = np.concatenate(([0], cum_sum[:-1])).tolist()
 
-        lengths = np.array([len(d.cells_global_do_fs[dimension][cell_index]) for d in do_fs_data])
-        cum_sum = np.cumsum(lengths)
-        data.num_total_do_fs = cum_sum[-1]
-        data.offset_do_fs = np.concatenate(([0], cum_sum[:-1])).tolist()
+        num_total_do_fs = 0
+        offset_do_fs = [0]
+        for d in range(len(do_fs_data)):
+            val = do_fs_data[d].cells_global_number_do_fs[dimension][cell_index] + do_fs_data[d].cells_global_number_strongs[dimension][cell_index]
+            num_total_do_fs += val
+            if d > 0:
+                offset_do_fs.append(val + offset_do_fs[d - 1])
 
-        return data
+        return self.LocalCountDOFsData(num_total_do_fs, offset_do_fs)
 
     @staticmethod
     def global_solution_to_local_solution(dimension: int,
@@ -88,14 +95,14 @@ class assembler_utilities:
         num_dof_handler = len(do_fs_data_indices)
         for h in range(num_dof_handler):
 
-            local_dof_i = np.array(do_fs_data_indices[h].cells_do_fs_local_index[cell_index]) + local_count_do_fs.offset_do_fs[h]
-            local_strong_i = np.array(do_fs_data_indices[h].cells_strongs_local_index[cell_index]) + local_count_do_fs.offset_do_fs[h]
+            local_dof_i = np.array(do_fs_data_indices[h].cells_do_fs_local_index[cell_index], dtype=np.int64) + local_count_do_fs.offset_do_fs[h]
+            local_strong_i = np.array(do_fs_data_indices[h].cells_strongs_local_index[cell_index], dtype=np.int64) + local_count_do_fs.offset_do_fs[h]
 
-            global_dof_i = np.array(do_fs_data_indices[h].cells_do_fs_global_index[cell_index]) + count_do_fs.offset_do_fs[h]
-            global_strong_i = np.array(do_fs_data_indices[h].cells_strongs_global_index[cell_index]) + count_do_fs.offset_strongs[h]
+            global_dof_i = np.array(do_fs_data_indices[h].cells_do_fs_global_index[cell_index], dtype=np.int64) + count_do_fs.offset_do_fs[h]
+            global_strong_i = np.array(do_fs_data_indices[h].cells_strongs_global_index[cell_index], dtype=np.int64) + count_do_fs.offset_strongs[h]
 
-            local_solution_do_fs[local_dof_i.tolist()] = global_solution_do_fs[global_dof_i.tolist()]
-            local_solution_do_fs[local_strong_i.tolist()] = global_solution_strongs[global_strong_i.tolist()]
+            local_solution_do_fs[local_dof_i] = global_solution_do_fs[global_dof_i]
+            local_solution_do_fs[local_strong_i] = global_solution_strongs[global_strong_i]
 
         return local_solution_do_fs
 
