@@ -1,5 +1,5 @@
 import litgen
-import re
+import re, pathlib
 
 
 definitions: dict[str, bool] = {"pybind": True}
@@ -280,3 +280,15 @@ litgen.write_generated_code_for_files(
     output_cpp_pydef_file="bindings.cpp",
     output_stub_pyi_file="pypolydim.pyi",
 )
+
+p = pathlib.Path("./bindings.cpp")   # aggiusta il path
+src = p.read_text()
+
+BAD = re.compile(r'(?<!\\)\\(oplus|nabla)')
+
+def fix(line):
+    if any(m in line for m in ('\\f$', '@brief', '@param', '@return', 'mathbb', 'mathcal')):
+        return BAD.sub(r'\\\\\1', line)
+    return line
+
+p.write_text("\n".join(fix(l) for l in src.split("\n")))
