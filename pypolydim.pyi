@@ -3412,6 +3412,20 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """
             pass
 
+        def change_polyhedron_face_orientation(
+            self,
+            polyhedron: GeometryUtilities.Polyhedron,
+            face_index: int
+            ) -> Eigen.MatrixXi:
+            pass
+        def change_polyhedron_faces_orientation(
+            self,
+            polyhedron: GeometryUtilities.Polyhedron,
+            faces_normal_direction: List[bool]
+            ) -> List[Eigen.MatrixXi]:
+            """/ \brief Change Polyhedron Face Orientation if face_normal_direction is False"""
+            pass
+
 
 # </submodule gedim>
 ####################    </generated_from:GeometryUtilities.hpp>    ####################
@@ -9686,6 +9700,14 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             """/ \brief Export 2D mesh to OFF file"""
             pass
 
+        def import_wavefront_obj(self, off_file_path: str, mesh: IMeshDAO) -> None:
+            """/ \brief Import 2D mesh from OBJ file"""
+            pass
+
+        def export_mesh_to_wavefront_obj(self, mesh: IMeshDAO, off_file_path: str) -> None:
+            """/ \brief Export 2D mesh to OBJ file"""
+            pass
+
         def change_polygon_mesh_markers(
             self,
             polygon_vertices: Eigen.MatrixXd,
@@ -10253,6 +10275,14 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             pass
 
         def collapse_cell1_d(self, cell1_d_index: int, mesh: IMeshDAO) -> bool:
+            pass
+
+        def mesh3_d_from_polyhedra(
+            self,
+            geometry_utilities: GeometryUtilities,
+            polyhedra: List[GeometryUtilities.Polyhedron],
+            mesh: IMeshDAO
+            ) -> None:
             pass
 
 
@@ -11399,43 +11429,13 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
 
 
 
-@overload
-def generate_voronoi_tassellations2_d(
-    polygon_vertices: Eigen.MatrixXd,
-    num_points: int,
-    num_iterations: int,
-    mesh: gedim.IMeshDAO,
-    random_seed: int = static_cast<int>(time(None)
-    ) -> None:
-    pass
-
-@overload
-def generate_voronoi_tassellations2_d(
-    polygon_vertices: Eigen.MatrixXd,
-    num_iterations: int,
-    voronoi_points: Eigen.MatrixXd,
-    mesh: gedim.IMeshDAO
-    ) -> None:
-    pass
-
-def generate_voronoi_tassellations3_d(
-    domain_vertices: Eigen.MatrixXd,
-    domain_edges: Eigen.MatrixXi,
-    domain_faces: List[Eigen.MatrixXi],
-    num_iterations: int,
-    voronoi_points: Eigen.MatrixXd,
-    mesh: gedim.IMeshDAO
-    ) -> None:
-    pass
-
-# namespace Gedim
-
 # #endif
 #
 
 # <submodule gedim>
 class gedim:  # Proxy class that introduces typings for the *submodule* gedim
     pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Gedim"""
     class VoroInterface:
         """
         (final class)
@@ -11492,21 +11492,90 @@ class gedim:  # Proxy class that introduces typings for the *submodule* gedim
             self,
             domain_vertices: Eigen.MatrixXd,
             num_points: int,
-            random_seed: int = static_cast<int>(time(None)
+            random_seed: int = Utilities.RandomSeed()
             ) -> Eigen.MatrixXd:
+            """/ @brief Generate a set of random points inside a parallelepipedal/parallelogram domain.
+            /
+            / The function generates @p numPoints points uniformly distributed inside the
+            / domain defined by @p domainVertices.
+            /
+            / @param domainVertices Matrix 3 x NumVertices containing the coordinates of the domain vertices.
+            / @param numPoints Number of random points to generate.
+            / @param random_seed Seed used to initialize the random number generator.
+            / @return Matrix containing the generated points, with one point per column.
+            """
             pass
 
-    @staticmethod
-    def generate_voronoi_tassellations3_d(
-        polyhedron_vertices: Eigen.MatrixXd,
-        polyhedron_edges: Eigen.MatrixXi,
-        polyhedron_faces: List[Eigen.MatrixXi],
-        num_points: int,
-        num_iterations: int,
-        mesh: IMeshDAO,
-        random_seed: int = static_cast<int>(time(None)
-        ) -> None:
-        pass
+        @overload
+        def generate_voronoi_tassellations2_d(
+            self,
+            polygon_vertices: Eigen.MatrixXd,
+            num_points: int,
+            num_iterations: int,
+            mesh: IMeshDAO,
+            random_seed: int = Utilities.RandomSeed()
+            ) -> None:
+            pass
+
+        #/ @brief Generate a 2D centroidal Voronoi tessellation from prescribed seeds.
+        #/ The function computes a centroidal Voronoi tessellation inside the input
+        #/ parallelogram using the points contained in @p VoronoiPoints as initial seeds.
+        #/ The seed positions are updated during the iterative relaxation process.
+        #/ On output, @p VoronoiPoints contains the final seed positions.
+        #/ @param polygonVertices Vertices of the bounding polygon.
+        #/ @param numIterations Number of centroidal relaxation iterations.
+        #/ @param VoronoiPoints Input/output matrix containing the Voronoi seed
+        #/                      coordinates.
+        #/ @param mesh Mesh object where the generated tessellation is stored.
+
+        @overload
+        def generate_voronoi_tassellations2_d(
+            self,
+            polygon_vertices: Eigen.MatrixXd,
+            num_iterations: int,
+            voronoi_points: Eigen.MatrixXd,
+            mesh: IMeshDAO
+            ) -> None:
+            pass
+
+        @overload
+        def generate_voronoi_tassellations3_d(
+            self,
+            polyhedron_vertices: Eigen.MatrixXd,
+            polyhedron_edges: Eigen.MatrixXi,
+            polyhedron_faces: List[Eigen.MatrixXi],
+            num_points: int,
+            num_iterations: int,
+            mesh: IMeshDAO,
+            random_seed: int = Utilities.RandomSeed()
+            ) -> None:
+            pass
+
+        @overload
+        def generate_voronoi_tassellations3_d(
+            self,
+            domain_vertices: Eigen.MatrixXd,
+            domain_edges: Eigen.MatrixXi,
+            domain_faces: List[Eigen.MatrixXi],
+            num_iterations: int,
+            voronoi_points: Eigen.MatrixXd,
+            mesh: IMeshDAO
+            ) -> None:
+            """/ @brief Generate a 3D centroidal Voronoi tessellation from prescribed seeds.
+            / The function computes a centroidal Voronoi tessellation inside the input
+            / parallelepiped using the points contained in @p VoronoiPoints as initial seeds.
+            / The seed positions are updated during the iterative relaxation process.
+            / On output, @p VoronoiPoints contains the final seed positions.
+            / @param domain_vertices Vertices of the bounding polyhedron.
+            / @param domain_edges Edge connectivity of the bounding polyhedron.
+            / @param domain_faces Face connectivity of the bounding polyhedron.
+            / @param num_iterations Number of centroidal relaxation iterations.
+            / @param VoronoiPoints Input/output matrix containing the Voronoi seed
+            /                      coordinates.
+            / @param mesh Mesh object where the generated tessellation is stored.
+            """
+            pass
+
 
 # </submodule gedim>
 ####################    </generated_from:VoroInterface.hpp>    ####################
@@ -11899,20 +11968,56 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
             def lagrange_1_d_coefficients(
                 interpolation_points_x: Eigen.VectorXd
                 ) -> Eigen.VectorXd:
+                """/ @brief Compute the barycentric weights of the 1D Lagrange basis.
+                /
+                / Returns the weights \f$w_i = \dfrac{1}{\prod_{j \neq i} (x_i - x_j)}\f$ associated
+                / with the interpolation nodes \f$\{x_i\}\f$. These are computed once and reused by
+                / Lagrange_1D_values() and Lagrange_1D_derivative_values() to evaluate the basis and
+                / its derivatives efficiently.
+                /
+                / @param interpolation_points_x Interpolation nodes \f$\{x_i\}\f$.
+                / @return The vector of barycentric weights \f$w_i\f$ (empty if no nodes are given).
+                """
                 pass
+
             @staticmethod
             def lagrange_1_d_values(
                 interpolation_points_x: Eigen.VectorXd,
                 lagrange_1_d_coefficients: Eigen.VectorXd,
                 evaluation_points_x: Eigen.VectorXd
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the 1D Lagrange basis functions at given points.
+                /
+                / Computes \f$\ell_i(x) = w_i \prod_{j \neq i} (x - x_j)\f$ for every evaluation point
+                / \f$x\f$ and every basis function \f$\ell_i\f$, where \f$w_i\f$ are the precomputed
+                / barycentric weights. With a single interpolation node the basis reduces to the constant \f$1\f$.
+                /
+                / @param interpolation_points_x   Interpolation nodes \f$\{x_i\}\f$.
+                / @param lagrange_1D_coefficients Barycentric weights from Lagrange_1D_coefficients().
+                / @param evaluation_points_x      Points at which to evaluate the basis.
+                / @return A \f$N_{\text{eval}} \times N_{\text{nodes}}\f$ matrix whose \f$(p, i)\f$ entry
+                /         is \f$\ell_i\f$ evaluated at the \f$p\f$-th point.
+                """
                 pass
+
             @staticmethod
             def lagrange_1_d_derivative_values(
                 interpolation_points_x: Eigen.VectorXd,
                 lagrange_1_d_coefficients: Eigen.VectorXd,
                 evaluation_points_x: Eigen.VectorXd
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the derivatives of the 1D Lagrange basis functions at given points.
+                /
+                / Computes \f$\ell_i'(x) = w_i \sum_{j \neq i} \prod_{k \neq i,\,j} (x - x_k)\f$ (product
+                / rule applied to Lagrange_1D_values()) for every evaluation point and every basis
+                / function. With a single interpolation node the derivative is identically zero.
+                /
+                / @param interpolation_points_x   Interpolation nodes \f$\{x_i\}\f$.
+                / @param lagrange_1D_coefficients Barycentric weights from Lagrange_1D_coefficients().
+                / @param evaluation_points_x      Points at which to evaluate the derivatives.
+                / @return A \f$N_{\text{eval}} \times N_{\text{nodes}}\f$ matrix whose \f$(p, i)\f$ entry
+                /         is \f$\ell_i'\f$ evaluated at the \f$p\f$-th point.
+                """
                 pass
 
 
@@ -12347,6 +12452,21 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
             (final class)
             """
             def compute(self, polynomial_degree: int) -> GBasis_Data:
+                """/ @brief Build the vector polynomial G-basis of a given degree.
+                /
+                / Assembles all quantities needed to represent the vector polynomial space
+                / \f$[\mathbb{P}_k]^2\f$ through its decomposition
+                / \f$\mathcal{G}_k^\nabla \oplus \mathcal{G}_k^\oplus\f$, where
+                / \f$\mathcal{G}_k^\nabla = \nabla \mathbb{P}_{k+1}\f$ and
+                / \f$\mathcal{G}_k^\oplus = \boldsymbol{x}^{\perp}\,\mathbb{P}_{k-1}\f$
+                / with \f$\boldsymbol{x}^{\perp} = (x_2, -x_1)\f$.
+                /
+                / @param polynomial_degree Maximum polynomial degree \f$k\f$ of the basis.
+                / @return A fully populated Polydim::Utilities::GBasis_Data structure, including the
+                /         space dimensions (\f$N_k\f$, \f$N_{k-1}\f$, \f$N_{k+1}\f$, and the sizes of the
+                /         \f$\mathcal{G}^\oplus\f$ and \f$\mathcal{G}^\nabla\f$ blocks), the exponent
+                /         matrix, and the vector-decomposition maps.
+                """
                 pass
 
             def vander_g_big_o_plus(
@@ -12354,6 +12474,26 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 data: GBasis_Data,
                 vander: Eigen.MatrixXd
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the Vandermonde matrix of the \f$\mathcal{G}_k^\oplus\f$ block.
+                /
+                / Builds the two Cartesian components of the Vandermonde matrix of
+                / \f$\mathcal{G}_k^\oplus = \boldsymbol{x}^{\perp}\,\mathbb{P}_{k-1}\f$,
+                / obtained by multiplying each scalar monomial of \f$\mathbb{P}_{k-1}\f$ by
+                / \f$\boldsymbol{x}^{\perp} = (x_2, -x_1)\f$. Concretely, the first
+                / \f$N_{k-1}\f$ columns of @p vander (the \f$\mathbb{P}_{k-1}\f$ monomials)
+                / are scaled column-wise by \f$x_2\f$ for the first component and by
+                / \f$-x_1\f$ for the second, where \f$x_1\f$ and \f$x_2\f$ are the linear
+                / monomials stored in columns 1 and 2 of @p vander.
+                /
+                / @param data   Precomputed G-basis data; only @c Nkm1 (\f$N_{k-1}\f$) is used here.
+                / @param vander Vandermonde matrix of the scalar monomial basis evaluated at the
+                /               evaluation points (one row per point); column 1 holds \f$x_1\f$,
+                /               column 2 holds \f$x_2\f$, and the leading \f$N_{k-1}\f$ columns hold
+                /               the \f$\mathbb{P}_{k-1}\f$ monomials.
+                / @return A vector of two `Eigen::MatrixXd` (x- and y-components), each of size
+                /         @c vander.rows() \f$\times\f$ @c data.Nkm1, forming the Vandermonde matrix
+                /         of \f$\mathcal{G}_k^\oplus\f$.
+                """
                 pass
             def __init__(self) -> None:
                 """Autogenerated default constructor"""
@@ -12399,6 +12539,21 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
             (final class)
             """
             def compute(self, polynomial_degree: int) -> GBasis_Data:
+                """/ @brief Build the vector polynomial G-basis of a given degree in 3D.
+                /
+                / Assembles all quantities needed to represent the vector polynomial space
+                / \f$[\mathbb{P}_k]^3\f$ through its decomposition
+                / \f$\mathcal{G}_k^\nabla \oplus \mathcal{G}_k^\oplus\f$, where
+                / \f$\mathcal{G}_k^\nabla = \nabla \mathbb{P}_{k+1}\f$ and
+                / \f$\mathcal{G}_k^\oplus = \boldsymbol{x} \times [\mathbb{P}_{k-1}]^3\f$.
+                / The \f$\mathcal{G}^\oplus\f$ block is stored in three parts of widths
+                / @c DimFirstBasis, @c Nkm1 and @c Nkm1 (total \f$\dim\mathcal{G}_k^\oplus = \f$
+                / @c DimFirstBasis @c + @c 2*Nkm1).
+                /
+                / @param polynomial_degree Maximum polynomial degree \f$k\f$ of the basis.
+                / @return A fully populated Polydim::Utilities::GBasis_Data structure (space
+                /         dimensions, exponent matrix, and the four-block vector-decomposition maps).
+                """
                 pass
 
             def vander_g_big_o_plus(
@@ -12406,9 +12561,37 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 data: GBasis_Data,
                 vander: Eigen.MatrixXd
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the Vandermonde matrix of the \f$\mathcal{G}_k^\oplus\f$ block.
+                /
+                / Builds the three Cartesian components (x, y, z) of the Vandermonde matrix of
+                / \f$\mathcal{G}_k^\oplus = \boldsymbol{x} \times [\mathbb{P}_{k-1}]^3\f$,
+                / evaluated at the points whose scalar monomial values are provided in @p vander.
+                /
+                / @param data   Precomputed G-basis data (@c DimFirstBasis and @c Nkm1 are used here).
+                / @param vander Vandermonde matrix of the scalar monomial basis evaluated at the
+                /               evaluation points (one row per point), from which the linear
+                /               monomials \f$x_1, x_2, x_3\f$ and the \f$\mathbb{P}_{k-1}\f$
+                /               monomials are extracted.
+                / @return A vector of three `Eigen::MatrixXd` (x-, y- and z-components), each of size
+                /         @c vander.rows() \f$\times\f$ (@c data.DimFirstBasis @c + @c 2*data.Nkm1),
+                /         forming the Vandermonde matrix of \f$\mathcal{G}_k^\oplus\f$.
+                """
                 pass
 
             def vector_decomposition(self, data: GBasis_Data) -> List[List[Eigen.MatrixXd]]:
+                """/ @brief Assemble the vector decomposition into a two-block (\f$\nabla\f$, \f$\oplus\f$) form.
+                /
+                / Repackages the internal four-block storage of @p data into a compact
+                / per-component representation. For each of the three Cartesian components,
+                / the result holds two matrices: the gradient block
+                / \f$\mathcal{G}_k^\nabla\f$ (size \f$N_k \times N_{k+1}\f$) and the full
+                / \f$\mathcal{G}_k^\oplus\f$ block, obtained by horizontally concatenating the
+                / three stored sub-blocks into a single \f$N_k \times (\text{DimFirstBasis} + 2N_{k-1})\f$ matrix.
+                /
+                / @param data Precomputed G-basis data containing the four-block @c VectorDecomposition.
+                / @return A `std::vector` of three components, each a pair of `Eigen::MatrixXd`:
+                /         index 0 is the \f$\nabla\f$ block, index 1 is the assembled \f$\oplus\f$ block.
+                """
                 pass
             def __init__(self) -> None:
                 """Autogenerated default constructor"""
@@ -12749,7 +12932,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
         """ namespace Utilities"""
 
         class Inertia_Data:
-            """
+            """/ @brief Affine map data aligning a polytope with its principal axes of inertia.
+            /
+            / Encodes the affine change of coordinates
+            / \f$\boldsymbol{x} = F\,\hat{\boldsymbol{x}} + \boldsymbol{t}\f$ (physical
+            / \f$\leftrightarrow\f$ reference/inertia frame), where the reference frame is
+            / isotropic and aligned with the element's principal axes of inertia. The mapping
+            / is used to improve the conditioning of the monomial basis in inertia-based local spaces.
             (final class)
             """
             fmatrix: Eigen.Matrix3d
@@ -12781,6 +12970,26 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 triangulation_vertices: List[Eigen.Matrix3d],
                 inertia_data: Inertia_Data
                 ) -> None:
+                """/ @brief Compute the inertia mapping of a polygon (2D).
+                /
+                / Constructs the affine map that sends the polygon onto an isotropic reference
+                / configuration aligned with its principal axes of inertia. The element is first
+                / rescaled by its diameter and translated to the centroid; the polygon mass
+                / (second-moment) matrix is then assembled from the triangulation and
+                / diagonalized (self-adjoint eigensolver), and its eigenpairs define a whitening
+                / transform that normalizes and aligns the principal directions; a final diameter
+                / rescaling is applied. The resulting map, its inverse, translation, Jacobian
+                / magnitude and orientation sign are stored in @p inertia_data.
+                /
+                / @param geometryUtilities      GeDiM helper providing polygon mass and diameter.
+                / @param vertices               Polygon vertices (one per column).
+                / @param centroid               Polygon centroid.
+                / @param diameter               Polygon diameter \f$h_E\f$ (initial rescaling factor).
+                / @param triangulation_vertices Sub-triangulation of the polygon (per-triangle vertices),
+                /                               used to compute the mass matrix.
+                / @param[out] inertia_data      Resulting affine-map data (see Inertia_Data).
+                / @throws std::runtime_error if the inertia (mass) matrix is singular.
+                """
                 pass
 
             def inertia_mapping3_d(
@@ -12792,6 +13001,23 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 tetrahedrons_vertices: List[Eigen.MatrixXd],
                 inertia_data: Inertia_Data
                 ) -> None:
+                """/ @brief Compute the inertia mapping of a polyhedron (3D).
+                /
+                / Three-dimensional counterpart of InertiaMapping2D(): builds the affine map that
+                / aligns the polyhedron with its principal axes of inertia and normalizes it to an
+                / isotropic reference configuration, starting from a tetrahedral decomposition used
+                / to assemble the mass (second-moment) matrix. The map, its inverse, translation,
+                / Jacobian magnitude and orientation sign are stored in @p inertia_data.
+                /
+                / @param geometryUtilities     GeDiM helper providing polyhedron mass and diameter.
+                / @param vertices              Polyhedron vertices (one per column).
+                / @param centroid              Polyhedron centroid.
+                / @param diameter              Polyhedron diameter \f$h_E\f$ (initial rescaling factor).
+                / @param tetrahedrons_vertices Tetrahedral decomposition of the polyhedron (per-tetrahedron vertices),
+                /                              used to compute the mass matrix.
+                / @param[out] inertia_data     Resulting affine-map data (see Inertia_Data).
+                / @throws std::runtime_error if the inertia (mass) matrix is singular.
+                """
                 pass
             def __init__(self) -> None:
                 """Auto-generated default constructor"""
@@ -18658,11 +18884,20 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
             """ namespace PCC"""
 
             class FEM_PCC_1D_Types(enum.IntEnum):
+                """/ @brief Node distribution used to build the 1D PCC (primal/continuous) Lagrange reference element.
+                /
+                / Selects how the interpolation nodes (and hence the degree-of-freedom positions) are laid out
+                / on the reference segment for orders greater than zero.
+                """
                 equispaced = enum.auto()    # (= 0)
                 gauss_lobatto = enum.auto() # (= 1)
 
             class FEM_PCC_1D_ReferenceElement_Data:
-                """
+                """/ @brief Reference element data for a 1D PCC finite element.
+                /
+                / Stores the topological and polynomial information, the degree-of-freedom positions on the
+                / reference segment, the Lagrange interpolation coefficients and the precomputed basis function
+                / (and derivative) values at the reference quadrature points.
                 (final class)
                 """
                 dimension: int
@@ -18690,7 +18925,10 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class FEM_PCC_1D_ReferenceElement:
-                """
+                """/ @brief Factory that builds the reference element data for a 1D PCC finite element.
+                /
+                / Also exposes helpers to evaluate the linear (barycentric) coordinates and the Lagrange basis
+                / functions and their derivatives at arbitrary points on the reference segment.
                 (final class)
                 """
                 def create(
@@ -20859,11 +21097,21 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
         class mcc:  # Proxy class that introduces typings for the *submodule* mcc
             pass  # (This corresponds to a C++ namespace. All method are static!)
             """ namespace MCC"""
+
             class FEM_MCC_2D_Types(enum.IntEnum):
-                rt_triangle = enum.auto() # (= 0)
+                """/ @brief Enumeration of the available 2D mixed (velocity/pressure) finite element types.
+                /
+                / Each value identifies a concrete local space implementation that can be built on a
+                / two-dimensional element for the mixed MCC formulation.
+                """
+                rt_triangle = enum.auto() # (= 0)  #/< Raviart-Thomas element defined on a triangle.
 
             class FEM_MCC_2D_Polygon_Geometry:
-                """
+                """/ @brief Geometric description of a polygon on which a 2D MCC local space is constructed.
+                /
+                / Collects the vertices together with the per-edge metric quantities (lengths, tangents,
+                / normals and orientations) required to assemble the local mixed finite element space and
+                / to enforce the H(div) degrees of freedom on the polygon boundary.
                 (final class)
                 """
                 tolerance1_d: float
@@ -20888,14 +21136,18 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class FEM_Triangle_RT_MCC_2D_LocalSpace_Data:
-                """
+                """/ @brief Local space data for a Raviart-Thomas (RT) triangular element in the 2D MCC formulation.
+                /
+                / Holds everything needed to evaluate the RT velocity/pressure basis on a single triangle:
+                / the reference-to-physical mapping, the polynomial order, the basis function counts and the
+                / quadrature rules used on the element interior and on its boundary.
                 (final class)
                 """
                 map_data: Gedim.MapTriangle.MapTriangleData
 
                 order: int
-                num_velocity_basis_functions: int
-                num_pressure_basis_functions: int
+                num_velocity_basis_functions: int  #/< Number of velocity (H(div)) basis functions on the element.
+                num_pressure_basis_functions: int  #/< Number of pressure (L2) basis functions on the element.
                 edges_direction: List[bool]
 
                 internal_quadrature: Gedim.Quadrature.QuadratureData
@@ -20910,7 +21162,11 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class FEM_MCC_2D_LocalSpace_Data:
-                """
+                """/ @brief Aggregated local space data for a 2D MCC element.
+                /
+                / Wraps the concrete element-specific data (currently the RT triangle local space) together
+                / with the selected @ref FEM_MCC_2D_Types and the quadrature rules and basis function counts
+                / exposed to the assembler, providing a uniform interface regardless of the underlying element type.
                 (final class)
                 """
                 rt_triangle_local_space_data: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_LocalSpace_Data
@@ -20975,7 +21231,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
             """ namespace MCC"""
 
             class FEM_MCC_2D_LocalSpace:
-                """
+                """/ @brief Local space for a 2D mixed (velocity/pressure) MCC finite element.
+                /
+                / Provides a uniform, type-agnostic interface to build the local space on a polygon and to
+                / evaluate the velocity basis functions, their divergence and the pressure basis functions.
+                / Each public method dispatches on @ref FEM_MCC_2D_LocalSpace_Data::fem_type and forwards the
+                / call to the concrete element implementation (currently only the Raviart-Thomas triangle,
+                / @ref FEM_Triangle_RT_MCC_2D_LocalSpace); an unsupported type raises a std::runtime_error.
                 (final class)
                 """
                 def create_local_space(
@@ -20983,6 +21245,11 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
                     polygon: FEM_MCC_2D_Polygon_Geometry
                     ) -> FEM_MCC_2D_LocalSpace_Data:
+                    """/ @brief Builds the local space on a given polygon.
+                    / @param reference_element_data Reference element data selecting the finite element type and its parameters.
+                    / @param polygon Geometric description of the physical polygon on which the space is built.
+                    / @return The assembled local space data, including quadrature rules and basis function counts.
+                    """
                     pass
 
                 @overload
@@ -20991,6 +21258,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
                     local_space: FEM_MCC_2D_LocalSpace_Data
                     ) -> List[Eigen.MatrixXd]:
+                    """/ @brief Evaluates the (vector-valued) velocity basis functions at the local space internal quadrature points.
+                    / @param reference_element_data Reference element data for the selected finite element type.
+                    / @param local_space Local space data previously built with @ref CreateLocalSpace.
+                    / @return One matrix per spatial component; each matrix holds a basis function per column evaluated at the
+                    / quadrature points (rows).
+                    / @throws std::runtime_error if the finite element type is not supported.
+                    """
                     pass
 
                 @overload
@@ -20999,6 +21273,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
                     local_space: FEM_MCC_2D_LocalSpace_Data
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Evaluates the (scalar) pressure basis functions at the local space internal quadrature points.
+                    / @param reference_element_data Reference element data for the selected finite element type.
+                    / @param local_space Local space data previously built with @ref CreateLocalSpace.
+                    / @return A matrix holding a basis function per column evaluated at the quadrature points (rows).
+                    / @throws std::runtime_error if the finite element type is not supported.
+                    """
                     pass
 
                 @overload
@@ -21007,6 +21287,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     reference_element_data: FEM_MCC_2D_ReferenceElement_Data,
                     local_space: FEM_MCC_2D_LocalSpace_Data
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Evaluates the divergence of the velocity basis functions at the local space internal quadrature points.
+                    / @param reference_element_data Reference element data for the selected finite element type.
+                    / @param local_space Local space data previously built with @ref CreateLocalSpace.
+                    / @return A matrix holding the divergence of a basis function per column evaluated at the quadrature points
+                    / (rows).
+                    / @throws std::runtime_error if the finite element type is not supported.
+                    """
                     pass
 
                 @overload
@@ -21016,6 +21303,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     local_space: FEM_MCC_2D_LocalSpace_Data,
                     points: Eigen.MatrixXd
                     ) -> List[Eigen.MatrixXd]:
+                    """/ @brief Evaluates the (vector-valued) velocity basis functions at a user-provided set of points.
+                    / @param reference_element_data Reference element data for the selected finite element type.
+                    / @param local_space Local space data previously built with @ref CreateLocalSpace.
+                    / @param points Evaluation points, stored one point per column.
+                    / @return One matrix per spatial component; each matrix holds a basis function per column evaluated at the given
+                    / points (rows).
+                    / @throws std::runtime_error if the finite element type is not supported.
+                    """
                     pass
 
                 @overload
@@ -21025,6 +21320,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     local_space: FEM_MCC_2D_LocalSpace_Data,
                     points: Eigen.MatrixXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Evaluates the (scalar) pressure basis functions at a user-provided set of points.
+                    / @param reference_element_data Reference element data for the selected finite element type.
+                    / @param local_space Local space data previously built with @ref CreateLocalSpace.
+                    / @param points Evaluation points, stored one point per column.
+                    / @return A matrix holding a basis function per column evaluated at the given points (rows).
+                    / @throws std::runtime_error if the finite element type is not supported.
+                    """
                     pass
 
                 @overload
@@ -21034,6 +21336,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     local_space: FEM_MCC_2D_LocalSpace_Data,
                     points: Eigen.MatrixXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Evaluates the divergence of the velocity basis functions at a user-provided set of points.
+                    / @param reference_element_data Reference element data for the selected finite element type.
+                    / @param local_space Local space data previously built with @ref CreateLocalSpace.
+                    / @param points Evaluation points, stored one point per column.
+                    / @return A matrix holding the divergence of a basis function per column evaluated at the given points (rows).
+                    / @throws std::runtime_error if the finite element type is not supported.
+                    """
                     pass
                 def __init__(self) -> None:
                     """Autogenerated default constructor"""
@@ -21291,7 +21600,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
             """ namespace PCC"""
 
             class ZFEM_PCC_2D_LocalSpace:
-                """
+                """/ @brief This local space implements \cite zfem
                 (final class)
                 """
                 def polygon_fine_nodes(
@@ -21410,49 +21719,60 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
             pass  # (This corresponds to a C++ namespace. All method are static!)
             """ namespace Mesh"""
 
+            #/ @brief Domain definitions and mesh generation/import helpers for PDE problems.
+            #/
+            #/ This namespace bridges the abstract computational domains used by the examples
+            #/ (@ref PDE_Domain_1D, @ref PDE_Domain_2D, @ref PDE_Domain_3D) to the GeDiM mesh
+            #/ generators and importers. It offers a uniform, dimension-templated way to create a
+            #/ mesh from a domain, import one from file, and precompute the per-cell geometric
+            #/ data required by the local spaces. Optional generators throw at run time when the
+            #/ corresponding third-party library (Triangle, Voro++, TetGen) is not enabled.
+
             # <submodule pde_mesh_utilities>
             class pde_mesh_utilities:  # Proxy class that introduces typings for the *submodule* pde_mesh_utilities
                 pass  # (This corresponds to a C++ namespace. All method are static!)
                 """ namespace PDE_Mesh_Utilities"""
+
                 class PDE_Domain_1D:
-                    """
+                    """/ @brief One-dimensional computational domain (a segment).
                     (final class)
                     """
-                    vertices: Eigen.MatrixXd
-                    length: float
+                    vertices: Eigen.MatrixXd  #/< Segment endpoints (one per column).
+                    length: float             #/< Length of the segment.
                     def __init__(self) -> None:
                         """Autogenerated default constructor"""
                         pass
 
                 class PDE_Domain_2D:
-                    """
+                    """/ @brief Two-dimensional computational domain.
                     (final class)
                     """
                     class Domain_Shape_Types(enum.IntEnum):
-                        parallelogram = enum.auto() # (= 0)
-                        polygon = enum.auto()       # (= 1)
-                        ellipse = enum.auto()       # (= 2)
-                        unknown = enum.auto()       # (= 3)
+                        """/ @brief Shape family of a 2D domain."""
+                        parallelogram = enum.auto()                                                        # (= 0)  #/< Parallelogram (enables structured meshes).
+                        polygon = enum.auto()                                                              # (= 1)  #/< Generic polygon.
+                        ellipse = enum.auto()                                                              # (= 2)  #/< Ellipse (uses the radius/center/rotation fields).
+                        unknown = enum.auto()                                                              # (= 3)  #/< Unspecified shape.
 
-                    vertices: Eigen.MatrixXd
-                    area: float
+                    vertices: Eigen.MatrixXd                                                               #/< Domain vertices (one per column); boundary polygon for polygonal shapes.
+                    area: float                                                                            #/< Area of the domain.
 
                     # Ellipse type
-                    radius_1: float
-                    radius_2: float
-                    center: Eigen.Vector3d
-                    rotation_angle: Eigen.Vector3d
+                    radius_1: float                                                                        #/< First semi-axis (ellipse shape only).
+                    radius_2: float                                                                        #/< Second semi-axis (ellipse shape only).
+                    center: Eigen.Vector3d                                                                 #/< Center of the ellipse (ellipse shape only).
+                    rotation_angle: Eigen.Vector3d                                                         #/< Rotation of the ellipse (ellipse shape only).
 
-                    shape_type: Polydim.PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_2D.Domain_Shape_Types
+                    shape_type: Polydim.PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_2D.Domain_Shape_Types  #/< Domain shape family.
                     def __init__(self) -> None:
                         """Autogenerated default constructor"""
                         pass
 
                 class PDE_Time_Domain_2D:
-                    """
+                    """/ @brief Space–time domain for a 2D time-dependent problem.
                     (final class)
                     """
-                    time_domain: List[float]
+                    time_domain: List[float]  #/< Time interval \f$[t_0, t_1]\f$.
                     spatial_domain: Polydim.PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_2D
                     def __init__(
                         self,
@@ -21462,18 +21782,18 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                         pass
 
                 class PDE_Domain_3D:
-                    """
+                    """/ @brief Three-dimensional computational domain.
                     (final class)
                     """
                     class Domain_Shape_Types(enum.IntEnum):
-                        parallelepiped = enum.auto() # (= 0)
-                        polygon = enum.auto()        # (= 1)
+                        parallelepiped = enum.auto()                                                       # (= 0)
+                        polygon = enum.auto()                                                              # (= 1)
 
-                    vertices: Eigen.MatrixXd
-                    edges: Eigen.MatrixXi
-                    faces: List[Eigen.MatrixXi]
-                    volume: float
-                    shape_type: Polydim.PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_3D.Domain_Shape_Types
+                    vertices: Eigen.MatrixXd                                                               #/< Domain vertices (one per column).
+                    edges: Eigen.MatrixXi                                                                  #/< Domain edges (vertex-index pairs).
+                    faces: List[Eigen.MatrixXi]                                                            #/< Domain faces (per-face vertex/edge indices).
+                    volume: float                                                                          #/< Volume of the domain.
+                    shape_type: Polydim.PDETools.Mesh.PDE_Mesh_Utilities.PDE_Domain_3D.Domain_Shape_Types  #/< Domain shape family.
                     def __init__(self) -> None:
                         """Autogenerated default constructor"""
                         pass
@@ -21513,6 +21833,20 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     max_relative_length: float,
                     mesh: Gedim.MeshMatricesDAO
                     ) -> None:
+                    """/ @brief Generate a 1D mesh on a segment domain.
+                    /
+                    / Fills @p mesh with a segment discretization according to @p mesh_type. The
+                    / @c Minimal generator produces a single-element mesh, while @c Equispaced subdivides
+                    / the segment into cells whose relative length does not exceed @p max_relative_length.
+                    /
+                    / @param geometry_utilities   GeDiM geometry helper.
+                    / @param mesh_utilities       GeDiM mesh helper.
+                    / @param mesh_type            Generator to use.
+                    / @param pde_domain           Segment domain.
+                    / @param max_relative_length  Target cell length relative to the segment (Equispaced only).
+                    / @param[out] mesh            Resulting mesh.
+                    / @throws std::runtime_error if @p mesh_type is not a supported 1D generator.
+                    """
                     pass
 
                 @staticmethod
@@ -21524,6 +21858,23 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     max_relative_area: float,
                     mesh: Gedim.MeshMatricesDAO
                     ) -> None:
+                    """/ @brief Generate a 2D mesh on a polygonal/parallelogram domain.
+                    /
+                    / Fills @p mesh according to @p mesh_type: unstructured triangular (Triangle),
+                    / Voronoi polygonal (Voro++), single-polygon minimal, structured squared/triangular
+                    / grids, randomly distorted quadrilaterals, or quadrilaterals from a triangular mesh.
+                    / Structured generators require a @c Parallelogram domain. Cell size is controlled by
+                    / @p max_relative_area (target cell area relative to the domain area).
+                    /
+                    / @param geometry_utilities GeDiM geometry helper.
+                    / @param mesh_utilities     GeDiM mesh helper.
+                    / @param mesh_type          Generator to use.
+                    / @param pde_domain         2D domain.
+                    / @param max_relative_area  Target cell area relative to the domain area.
+                    / @param[out] mesh          Resulting mesh.
+                    / @throws std::runtime_error if @p mesh_type is unsupported, a required library
+                    /         (Triangle, Voro++) is disabled, or a structured generator is used on a non-parallelogram domain.
+                    """
                     pass
 
                 @staticmethod
@@ -21535,6 +21886,22 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     max_relative_volume: float,
                     mesh: Gedim.MeshMatricesDAO
                     ) -> None:
+                    """/ @brief Generate a 3D mesh on a polyhedral/parallelepiped domain.
+                    /
+                    / Fills @p mesh according to @p mesh_type: unstructured tetrahedral (TetGen), Voronoi
+                    / polyhedral (Voro++), single-polyhedron minimal, or structured cubic grid. The cubic
+                    / generator requires a @c Parallelepiped domain. Cell size is controlled by
+                    / @p max_relative_volume (target cell volume relative to the domain volume).
+                    /
+                    / @param geometry_utilities  GeDiM geometry helper.
+                    / @param mesh_utilities      GeDiM mesh helper.
+                    / @param mesh_type           Generator to use.
+                    / @param pde_domain          3D domain (vertices, edges and faces).
+                    / @param max_relative_volume Target cell volume relative to the domain volume.
+                    / @param[out] mesh           Resulting mesh.
+                    / @throws std::runtime_error if @p mesh_type is unsupported, a required library
+                    /         (TetGen, Voro++) is disabled, or the cubic generator is used on a non-parallelepiped domain.
+                    """
                     pass
 
                 @staticmethod
@@ -21543,6 +21910,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     file_path: str,
                     mesh: Gedim.MeshMatricesDAO
                     ) -> None:
+                    """/ @brief Import a 1D mesh from file.
+                    /
+                    / @param mesh_type  Importer to use (currently @c CsvImporter).
+                    / @param file_path  Path to the mesh folder/file.
+                    / @param[out] mesh  Resulting mesh.
+                    / @throws std::runtime_error if @p mesh_type is not a supported 1D importer.
+                    """
                     pass
 
                 @staticmethod
@@ -21553,6 +21927,18 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     file_path: str,
                     mesh: Gedim.MeshMatricesDAO
                     ) -> None:
+                    """/ @brief Import a 2D mesh from file.
+                    /
+                    / Supports CSV import (GeDiM cell files), Object File Format (OFF), and a simple
+                    / triangular-mesh importer reading @c Cell0Ds / @c Cell2Ds / @c Cell2DsMarker CSV files.
+                    /
+                    / @param geometry_utilities GeDiM geometry helper.
+                    / @param mesh_utilities     GeDiM mesh helper.
+                    / @param mesh_type          Importer to use.
+                    / @param file_path          Path to the mesh folder/file.
+                    / @param[out] mesh          Resulting mesh.
+                    / @throws std::runtime_error if @p mesh_type is not a supported 2D importer.
+                    """
                     pass
 
                 @staticmethod
@@ -21562,6 +21948,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     file_path: str,
                     mesh: Gedim.MeshMatricesDAO
                     ) -> None:
+                    """/ @brief Import a 3D mesh from file.
+                    /
+                    / Supports CSV import (GeDiM cell files), OpenVolumeMesh (OVM), and VTK import.
+                    /
+                    / @param mesh_utilities GeDiM mesh helper.
+                    / @param mesh_type      Importer to use.
+                    / @param file_path      Path to the mesh folder/file.
+                    / @param[out] mesh      Resulting mesh.
+                    / @throws std::runtime_error if @p mesh_type is not a supported 3D importer.
+                    """
                     pass
 
                 @staticmethod
@@ -21570,6 +21966,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     mesh_utilities: Gedim.MeshUtilities,
                     mesh: Gedim.MeshMatricesDAO
                     ) -> Gedim.MeshUtilities.MeshGeometricData1D:
+                    """/ @brief Precompute the per-cell geometric data of a 1D mesh.
+                    /
+                    / @param geometry_utilities GeDiM geometry helper.
+                    / @param mesh_utilities     GeDiM mesh helper.
+                    / @param mesh               Input mesh.
+                    / @return The 1D geometric data required by the local spaces.
+                    """
                     pass
 
                 @staticmethod
@@ -21579,6 +21982,17 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     mesh: Gedim.MeshMatricesDAO,
                     mesh_geometric_data_config: Gedim.MeshUtilities.MeshGeometricData2DConfig = Gedim.MeshUtilities.MeshGeometricData2DConfig(True, True, True, True, True, True, True, True, True, True, True, True, True)
                     ) -> Gedim.MeshUtilities.MeshGeometricData2D:
+                    """/ @brief Precompute the per-cell geometric data of a 2D mesh.
+                    /
+                    / All cells are treated as generic (possibly concave) polygons. The set of geometric
+                    / quantities to compute is controlled by @p mesh_geometric_data_config (all enabled by default).
+                    /
+                    / @param geometry_utilities         GeDiM geometry helper.
+                    / @param mesh_utilities             GeDiM mesh helper.
+                    / @param mesh                       Input mesh.
+                    / @param mesh_geometric_data_config Which geometric quantities to precompute.
+                    / @return The 2D geometric data required by the local spaces.
+                    """
                     pass
 
                 @staticmethod
@@ -21586,6 +22000,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     geometry_utilities: Gedim.GeometryUtilities,
                     mesh: Gedim.MeshMatricesDAO
                     ) -> Gedim.MeshUtilities.MeshGeometricData3D:
+                    """/ @brief Precompute the per-cell geometric data of a 3D mesh.
+                    /
+                    / Computes the 2D-cell/3D-cell neighbour connectivity before assembling the geometric data.
+                    /
+                    / @param geometry_utilities GeDiM geometry helper.
+                    / @param[in,out] mesh       Input mesh (neighbour connectivity is computed in place).
+                    / @return The 3D geometric data required by the local spaces.
+                    """
                     pass
 
             # </submodule pde_mesh_utilities>
@@ -21644,6 +22066,18 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     test_basis_functions_derivative_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Local diffusion matrix with a scalar diffusion coefficient (Petrov–Galerkin).
+                    /
+                    / Computes \f$\int_E \mu\, \nabla u \cdot \nabla v\f$ by summing the products of the
+                    / trial and test derivatives over the spatial directions, weighted by the scalar
+                    / diffusion field \f$\mu\f$ and the quadrature weights.
+                    /
+                    / @param diffusion_term_values                    Scalar diffusion coefficient \f$\mu\f$ at the quadrature points.
+                    / @param trial_basis_functions_derivative_values  Trial-space derivatives, one matrix per spatial direction.
+                    / @param test_basis_functions_derivative_values   Test-space derivatives, one matrix per spatial direction.
+                    / @param quadrature_weights                       Quadrature weights.
+                    / @return The local diffusion matrix (test DOFs \f$\times\f$ trial DOFs).
+                    """
                     pass
 
                 @overload
@@ -21653,6 +22087,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     basis_functions_derivative_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Local diffusion matrix with a scalar diffusion coefficient (Galerkin).
+                    /
+                    / Galerkin specialization of the Petrov–Galerkin overload, using the same basis
+                    / for trial and test spaces: \f$\int_E \mu\, \nabla u \cdot \nabla v\f$.
+                    /
+                    / @param diffusion_term_values           Scalar diffusion coefficient \f$\mu\f$ at the quadrature points.
+                    / @param basis_functions_derivative_values Basis-function derivatives, one matrix per spatial direction.
+                    / @param quadrature_weights              Quadrature weights.
+                    / @return The local diffusion matrix.
+                    """
                     pass
 
                 @overload
@@ -21663,6 +22107,20 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     test_basis_functions_derivative_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Local diffusion matrix with a full diffusion tensor (Petrov–Galerkin).
+                    /
+                    / Computes \f$\int_E (\mathbf{K}\, \nabla u) \cdot \nabla v\f$ for a full
+                    / (up to \f$3\times 3\f$) diffusion tensor \f$\mathbf{K}\f$, summing over both
+                    / derivative directions. The tensor is passed in column-major order, i.e. the
+                    / entry \f$K_{d_1 d_2}\f$ is stored at index \f$d_1 + 3\,d_2\f$.
+                    /
+                    / @param diffusion_term_values                    Diffusion tensor entries \f$K_{d_1 d_2}\f$ (column-major, length
+                    / 9) at the quadrature points.
+                    / @param trial_basis_functions_derivative_values  Trial-space derivatives, one matrix per spatial direction.
+                    / @param test_basis_functions_derivative_values   Test-space derivatives, one matrix per spatial direction.
+                    / @param quadrature_weights                       Quadrature weights.
+                    / @return The local diffusion matrix (test DOFs \f$\times\f$ trial DOFs).
+                    """
                     pass
 
                 @overload
@@ -21672,6 +22130,17 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     basis_functions_derivative_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Local diffusion matrix with a full diffusion tensor (Galerkin).
+                    /
+                    / Galerkin specialization of the tensor Petrov–Galerkin overload:
+                    / \f$\int_E (\mathbf{K}\, \nabla u) \cdot \nabla v\f$ with a shared basis.
+                    /
+                    / @param diffusion_term_values           Diffusion tensor entries (column-major, length 9) at the quadrature
+                    / points.
+                    / @param basis_functions_derivative_values Basis-function derivatives, one matrix per spatial direction.
+                    / @param quadrature_weights              Quadrature weights.
+                    / @return The local diffusion matrix.
+                    """
                     pass
 
                 @overload
@@ -21681,6 +22150,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     basis_functions_values: Eigen.MatrixXd,
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Local reaction (mass-like) matrix (Galerkin).
+                    /
+                    / Computes \f$\int_E \sigma\, u\, v\f$ with reaction coefficient \f$\sigma\f$,
+                    / using the same basis for trial and test spaces.
+                    /
+                    / @param reaction_term_values   Reaction coefficient \f$\sigma\f$ at the quadrature points.
+                    / @param basis_functions_values Basis-function values at the quadrature points.
+                    / @param quadrature_weights     Quadrature weights.
+                    / @return The local reaction matrix.
+                    """
                     pass
 
                 @overload
@@ -21691,6 +22170,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     test_basis_functions_values: Eigen.MatrixXd,
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Local reaction (mass-like) matrix (Petrov–Galerkin).
+                    /
+                    / Computes \f$\int_E \sigma\, u\, v\f$ with distinct trial and test spaces.
+                    /
+                    / @param reaction_term_values         Reaction coefficient \f$\sigma\f$ at the quadrature points.
+                    / @param trial_basis_functions_values Trial-space values at the quadrature points.
+                    / @param test_basis_functions_values  Test-space values at the quadrature points.
+                    / @param quadrature_weights           Quadrature weights.
+                    / @return The local reaction matrix (test DOFs \f$\times\f$ trial DOFs).
+                    """
                     pass
 
                 def compute_cell_advection_matrix(
@@ -21700,6 +22189,19 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     trial_basis_functions_derivative_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.MatrixXd:
+                    """/ @brief Local advection matrix (Petrov–Galerkin).
+                    /
+                    / Computes \f$\int_E (\boldsymbol{\beta} \cdot \nabla u)\, v\f$ for an advection
+                    / field \f$\boldsymbol{\beta}\f$ (up to 3 components), pairing the test-function
+                    / values with the trial-function derivatives summed over the spatial directions.
+                    /
+                    / @param advection_term_values                    Advection field components \f$\beta_d\f$ at the quadrature
+                    / points.
+                    / @param test_basis_functions_values              Test-space values at the quadrature points.
+                    / @param trial_basis_functions_derivative_values  Trial-space derivatives, one matrix per spatial direction.
+                    / @param quadrature_weights                       Quadrature weights.
+                    / @return The local advection matrix (test DOFs \f$\times\f$ trial DOFs).
+                    """
                     pass
 
                 @overload
@@ -21709,6 +22211,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     test_basis_functions_values: Eigen.MatrixXd,
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.VectorXd:
+                    """/ @brief Local forcing term for a scalar problem.
+                    /
+                    / Computes \f$\int_E f\, v\f$ with scalar source \f$f\f$.
+                    /
+                    / @param forcing_term_values         Source term \f$f\f$ at the quadrature points.
+                    / @param test_basis_functions_values Test-space values at the quadrature points.
+                    / @param quadrature_weights          Quadrature weights.
+                    / @return The local right-hand-side vector.
+                    """
                     pass
 
                 @overload
@@ -21718,6 +22229,17 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     test_basis_functions_values: List[Eigen.MatrixXd],
                     quadrature_weights: Eigen.VectorXd
                     ) -> Eigen.VectorXd:
+                    """/ @brief Local forcing term for a vector-valued problem.
+                    /
+                    / Computes \f$\int_E \boldsymbol{f} \cdot \boldsymbol{v}\f$ for a vector source
+                    / \f$\boldsymbol{f}\f$ (up to 3 components), summing the contribution of each
+                    / component with its corresponding test-function component.
+                    /
+                    / @param forcing_term_values         Source components \f$f_d\f$ at the quadrature points.
+                    / @param test_basis_functions_values Test-space values per component, one matrix per direction.
+                    / @param quadrature_weights          Quadrature weights.
+                    / @return The local right-hand-side vector.
+                    """
                     pass
                 def __init__(self) -> None:
                     """Auto-generated default constructor"""
@@ -21856,20 +22378,32 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
 
             class DOFsManager:
+                """/ @brief Builds and manages the degrees of freedom (DOFs) of a discrete space over a mesh.
+                /
+                / Given per-entity DOF counts and boundary information, the DOFsManager assigns local
+                / and global indices to the DOFs living on the mesh entities (vertices, edges, faces,
+                / cells), distinguishing free DOFs from strongly-imposed (Dirichlet) ones, and builds
+                / the per-cell local-to-global maps used during assembly. The dimension-specific
+                / routines are templated on a mesh connectivity type constrained by the
+                / @ref is_mesh_connectivity_class_0D "is_mesh_connectivity_class_*" concepts; a
+                / @c PYBIND build path replaces the concept/template machinery for the Python bindings.
+                """
                 class MeshDOFsInfo:
                     """
                     (final class)
                     """
+
                     class BoundaryInfo:
+                        """/ @brief Boundary classification attached to a mesh entity."""
                         class BoundaryTypes(enum.IntEnum):
                             unknwon = enum.auto() # (= 0)
-                            strong = enum.auto()  # (= 1)
-                            weak = enum.auto()    # (= 2)
-                            robin = enum.auto()   # (= 4)
-                            none = enum.auto()    # (= 3)
+                            strong = enum.auto()  # (= 1)  #/< Strongly imposed (e.g. Dirichlet for PCC) DOFs.
+                            weak = enum.auto()    # (= 2)  #/< Weakly imposed (e.g. Neumann for PCC) DOFs.
+                            robin = enum.auto()   # (= 4)  #/< Robin boundary condition.
+                            none = enum.auto()    # (= 3)  #/< Interior entity (no boundary condition).
 
                         type: Polydim.PDETools.DOFs.DOFsManager.MeshDOFsInfo.BoundaryInfo.BoundaryTypes
-                        marker: int
+                        marker: int               #/< Mesh marker the classification was derived from.
                         def __init__(
                             self,
                             type: PDETools.DOFs.DOFsManager.MeshDOFsInfo.BoundaryInfo.BoundaryTypes = PDETools.DOFs.DOFsManager.MeshDOFsInfo.BoundaryInfo.BoundaryTypes()
@@ -21877,7 +22411,9 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                             """Auto-generated default constructor with named params"""
                             pass
 
+                    #/ @brief Number of DOFs on each cell, per entity dimension (index 0..3).
                     cells_num_do_fs: List[List[int]]
+                    #/ @brief Boundary classification of each cell, per entity dimension (index 0..3).
                     cells_boundary_info: List[List[Polydim.PDETools.DOFs.DOFsManager.MeshDOFsInfo.BoundaryInfo]]
 
                     def __init__(self) -> None:
@@ -21886,7 +22422,10 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
 
                 class ConstantDOFsInfo:
-                    """
+                    """/ @brief DOF specification that is constant across all entities of each dimension.
+                    /
+                    / Used to build a @ref MeshDOFsInfo when every entity of a given dimension carries
+                    / the same number of DOFs, with boundary classification resolved per marker.
                     (final class)
                     """
                     num_do_fs: List[int]
@@ -21896,7 +22435,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                         pass
 
                 class DOFsData:
-                    """
+                    """/ @brief Full DOF numbering produced for a mesh: local/global indices and aggregate counts.
                     (final class)
                     """
                     class DOF:
@@ -21909,7 +22448,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                             dof = enum.auto()     # (= 2)
 
                         type: Polydim.PDETools.DOFs.DOFsManager.DOFsData.DOF.Types
-                        global_index: int
+                        global_index: int         #/< Global index within the free or strong numbering.
                         def __init__(
                             self,
                             type: PDETools.DOFs.DOFsManager.DOFsData.DOF.Types = PDETools.DOFs.DOFsManager.DOFsData.DOF.Types()
@@ -21918,15 +22457,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                             pass
 
                     class GlobalCell_DOF:
-                        dimension: int
-                        cell_index: int
-                        dof_index: int
+                        dimension: int            #/< Entity dimension (0..3) hosting the DOF.
+                        cell_index: int           #/< Index of the hosting entity.
+                        dof_index: int            #/< Local DOF index within that entity.
                         def __init__(self) -> None:
                             """Auto-generated default constructor"""
                             pass
 
                     number_do_fs: int
-                    number_internal_do_fs: int
+                    number_internal_do_fs: int    #/< Number of interior free DOFs.
                     number_boundary_do_fs: int
                     number_strongs: int
                     cells_do_fs: List[List[List[Polydim.PDETools.DOFs.DOFsManager.DOFsData.DOF]]]
@@ -21946,7 +22485,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                         pass
 
                 class CellsDOFsIndicesData:
-                    """
+                    """/ @brief Flattened local/global index lists (free DOFs and strongs) for each cell.
                     (final class)
                     """
                     cells_do_fs_local_index: List[List[int]]
@@ -22009,6 +22548,10 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     self,
                     mesh_do_fs_info: DOFsManager.MeshDOFsInfo
                     ) -> DOFsManager.DOFsData:
+                    """/ @brief Build the DOF numbering for a 0D problem.
+                    / @param meshDOFsInfo Mesh DOF layout.
+                    / @return The DOF numbering (vertices only).
+                    """
                     pass
 
                 #  ------------------------------------------------------------------------
@@ -22019,6 +22562,11 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     mesh_do_fs_info: DOFsManager.MeshDOFsInfo,
                     mesh: Mesh.MeshMatricesDAO_mesh_connectivity_data
                     ) -> DOFsManager.DOFsData:
+                    """/ @brief Build the DOF numbering for a 1D problem (vertices and edges).
+                    / @param meshDOFsInfo Mesh DOF layout.
+                    / @param mesh         Mesh connectivity.
+                    / @return The DOF numbering (0D–1D).
+                    """
                     pass
                 #      </template specializations for function CreateDOFs_1D>
                 #  ------------------------------------------------------------------------
@@ -22031,6 +22579,11 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     mesh_do_fs_info: DOFsManager.MeshDOFsInfo,
                     mesh: Mesh.MeshMatricesDAO_mesh_connectivity_data
                     ) -> DOFsManager.DOFsData:
+                    """/ @brief Build the DOF numbering for a 2D problem (vertices, edges and cells).
+                    / @param meshDOFsInfo Mesh DOF layout.
+                    / @param mesh         Mesh connectivity.
+                    / @return The DOF numbering (0D–2D).
+                    """
                     pass
                 #      </template specializations for function CreateDOFs_2D>
                 #  ------------------------------------------------------------------------
@@ -22043,6 +22596,11 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     mesh_do_fs_info: DOFsManager.MeshDOFsInfo,
                     mesh: Mesh.MeshMatricesDAO_mesh_connectivity_data
                     ) -> DOFsManager.DOFsData:
+                    """/ @brief Build the DOF numbering for a 3D problem (vertices, edges, faces and cells).
+                    / @param meshDOFsInfo Mesh DOF layout.
+                    / @param mesh         Mesh connectivity.
+                    / @return The DOF numbering (0D–3D).
+                    """
                     pass
                 #      </template specializations for function CreateDOFs_3D>
                 #  ------------------------------------------------------------------------
@@ -22052,6 +22610,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     dofs: DOFsManager.DOFsData,
                     dim: int
                     ) -> DOFsManager.CellsDOFsIndicesData:
+                    """/ @brief Extract per-cell local/global index lists for free DOFs and strongs.
+                    /
+                    / Flattens the assembled DOF locators of @p dofs into, for each cell of dimension
+                    / @p dim, the local and global index lists of its free DOFs and of its
+                    / strongly-imposed DOFs (see @ref CellsDOFsIndicesData).
+                    /
+                    / @param dofs DOF numbering produced by one of the @c CreateDOFs_* methods.
+                    / @param dim  Dimension of the cells to index (0..3).
+                    / @return The per-cell index lists.
+                    """
                     pass
                 def __init__(self) -> None:
                     """Autogenerated default constructor"""
@@ -22095,23 +22663,38 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
         pass  # (This corresponds to a C++ namespace. All method are static!)
         """ namespace PDETools"""
 
+        #/ @brief Unified interface to the 2D primal conforming (PCC) local spaces.
+        #/
+        #/ This namespace provides a single, method-agnostic API for building and
+        #/ evaluating the local (per-cell) discrete space of a scalar primal problem in 2D,
+        #/ hiding the differences between the finite element (FEM), virtual element (VEM,
+        #/ including its inertia-based and orthogonalized variants), and Zipped FEM (ZFEM)
+        #/ backends. The active backend is selected through MethodTypes; the free functions
+        #/ dispatch to the corresponding implementation, so that assemblers can be written
+        #/ once and reused across methods.
+
         # <submodule local_space_pcc_2_d>
         class local_space_pcc_2_d:  # Proxy class that introduces typings for the *submodule* local_space_pcc_2_d
             pass  # (This corresponds to a C++ namespace. All method are static!)
             """ namespace LocalSpace_PCC_2D"""
             class MethodTypes(enum.IntEnum):
-                fem_pcc = enum.auto()         # (= 0)
-                vem_pcc = enum.auto()         # (= 1)
-                vem_pcc_inertia = enum.auto() # (= 2)
-                vem_pcc_ortho = enum.auto()   # (= 3)
-                zfem_pcc = enum.auto()        # (= 4)
+                """/ @brief Discretization method for the 2D PCC local space."""
+                fem_pcc = enum.auto()         # (= 0)  #/< Finite Element Method. \cite BrennerScott
+                vem_pcc = enum.auto()         # (= 1)  #/< Virtual Element Method (standard monomial basis). \cite LBe16
+                vem_pcc_inertia = enum.auto() # (= 2)  #/< VEM with an inertia-based (principal-axes) monomial basis. \cite Teora2024
+                vem_pcc_ortho = enum.auto()   # (= 3)  #/< VEM with an \f$L^2\f$-orthonormalized monomial basis. \cite Mascotto2018
+                zfem_pcc = enum.auto()        # (= 4)  #/< Zipped Finite Element Method. \cite zfem
 
             class ReferenceElement_Data:
-                """
+                """/ @brief Method-specific reference-element data for the 2D PCC local space.
+                /
+                / Holds the selected method and polynomial order together with the reference-element
+                / and local-space handles of the active backend. Only the members belonging to
+                / @ref Method_Type are populated; the others remain unset.
                 (final class)
                 """
-                method_type: Polydim.PDETools.LocalSpace_PCC_2D.MethodTypes
-                order: int
+                method_type: Polydim.PDETools.LocalSpace_PCC_2D.MethodTypes  #/< Selected discretization method.
+                order: int                                                   #/< Polynomial order of the space.
 
                 vem_reference_element: Polydim.VEM.PCC.I_VEM_PCC_2D_ReferenceElement
                 vem_reference_element_data: Polydim.VEM.PCC.VEM_PCC_2D_ReferenceElement_Data
@@ -22130,7 +22713,10 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class LocalSpace_Data:
-                """
+                """/ @brief Per-cell local-space data for the 2D PCC local space.
+                /
+                / Stores the polygon geometry and the computed local-space data for the active
+                / backend; only the members of the selected method are populated.
                 (final class)
                 """
                 vem_geometry: Polydim.VEM.PCC.VEM_PCC_2D_Polygon_Geometry
@@ -22146,7 +22732,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class Performance_Data:
-                """
+                """/ @brief Performance metrics collected on a single 2D cell.
                 (final class)
                 """
                 class Cell2D_Performance:
@@ -22171,12 +22757,30 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 method_type: MethodTypes,
                 method_order: int
                 ) -> ReferenceElement_Data:
+                """/ @brief Create the reference element for the chosen method and order.
+                /
+                / Factory that instantiates the backend-specific reference element and populates the
+                / corresponding members of the returned @ref ReferenceElement_Data.
+                /
+                / @param method_type  Discretization method to use.
+                / @param method_order Polynomial order of the space.
+                / @return The initialized reference-element data.
+                """
                 pass
 
             @staticmethod
             def mesh_geometric_data_configiguration(
                 reference_element_data: ReferenceElement_Data
                 ) -> Gedim.MeshUtilities.MeshGeometricData2DConfig:
+                """/ @brief Geometric-data configuration required by the selected method.
+                /
+                / Returns the GeDiM mesh geometric-data configuration (which geometric quantities must
+                / be precomputed on each cell) needed by the active backend.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @return The mesh geometric-data configuration.
+                / @note The spelling of this function name (@c MeshGeometricDataConfigiguration) is preserved from the source.
+                """
                 pass
 
             @staticmethod
@@ -22185,6 +22789,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 mesh: Gedim.MeshMatricesDAO,
                 boundary_info: Dict[int, DOFs.DOFsManager.MeshDOFsInfo.BoundaryInfo]
                 ) -> DOFs.DOFsManager.MeshDOFsInfo:
+                """/ @brief Build the degrees-of-freedom layout over the mesh.
+                /
+                / Determines how the DOFs of the chosen space are distributed over mesh entities
+                / (vertices, edges, cells) and marks boundary DOFs according to @p boundary_info.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param mesh                   Mesh data access object.
+                / @param boundary_info          Per-marker boundary information (Dirichlet/Neumann, etc.).
+                / @return The mesh DOFs layout information.
+                """
                 pass
 
             @staticmethod
@@ -22195,6 +22809,19 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 cell2_d_index: int,
                 reference_element_data: ReferenceElement_Data
                 ) -> LocalSpace_Data:
+                """/ @brief Build the local space on a given cell.
+                /
+                / Computes the backend-specific local-space data on cell @p cell2D_index from the
+                / precomputed mesh geometric data, returning the @ref LocalSpace_Data used by all
+                / subsequent evaluation routines.
+                /
+                / @param geometric_tolerance_1D Geometric tolerance for 1D (edge) operations.
+                / @param geometric_tolerance_2D Geometric tolerance for 2D (polygon) operations.
+                / @param mesh_geometric_data    Precomputed geometric data of the mesh.
+                / @param cell2D_index           Index of the 2D cell to process.
+                / @param reference_element_data Reference-element data describing the method.
+                / @return The computed local-space data for the cell.
+                """
                 pass
 
             @staticmethod
@@ -22204,6 +22831,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.PCC.ProjectionTypes = VEM.PCC.ProjectionTypes.pi0km1
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM/ZFEM); defaults to \f$\Pi^0_{k-1}\f$.
+                / @return A (quadrature points \f$\times\f$ local DOFs) matrix of basis-function values.
+                """
                 pass
 
             @staticmethod
@@ -22214,6 +22848,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 points: Eigen.MatrixXd,
                 projection_type: VEM.PCC.ProjectionTypes = VEM.PCC.ProjectionTypes.pi0km1
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the basis functions at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @param projectionType         VEM projection operator to apply (ignored by FEM/ZFEM); defaults to \f$\Pi^0_{k-1}\f$.
+                / @return A (points \f$\times\f$ local DOFs) matrix of basis-function values.
+                """
                 pass
 
             @staticmethod
@@ -22223,6 +22865,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 points_curvilinear_coordinates: Eigen.MatrixXd
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the basis functions on a given edge.
+                /
+                / @param edge_local_index           Local index of the edge within the cell.
+                / @param reference_element_data     Reference-element data describing the method.
+                / @param local_space_data           Local-space data for the cell.
+                / @param pointsCurvilinearCoordinates Evaluation points on the edge, in curvilinear coordinates.
+                / @return A matrix of edge basis-function values at the requested points.
+                """
                 pass
 
             @staticmethod
@@ -22232,6 +22882,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.PCC.ProjectionTypes = VEM.PCC.ProjectionTypes.pi0km1_der
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the basis-function derivatives at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM/ZFEM); defaults to the derivative
+                / projection \f$\Pi^0_{k-1}\f$.
+                / @return One (quadrature points \f$\times\f$ local DOFs) matrix per spatial direction.
+                """
                 pass
 
             @staticmethod
@@ -22242,6 +22900,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 points: Eigen.MatrixXd,
                 projection_type: VEM.PCC.ProjectionTypes = VEM.PCC.ProjectionTypes.pi0km1_der
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the basis-function derivatives at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @param projectionType         VEM projection operator to apply (ignored by FEM/ZFEM); defaults to the derivative
+                / projection \f$\Pi^0_{k-1}\f$.
+                / @return One (points \f$\times\f$ local DOFs) matrix per spatial direction.
+                """
                 pass
 
             @staticmethod
@@ -22250,6 +22917,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.PCC.ProjectionTypes = VEM.PCC.ProjectionTypes.pi0km1_der
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the basis-function Laplacians at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM/ZFEM); defaults to the derivative
+                / projection \f$\Pi^0_{k-1}\f$.
+                / @return A (quadrature points \f$\times\f$ local DOFs) matrix of Laplacian values.
+                """
                 pass
 
             @staticmethod
@@ -22258,6 +22933,18 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.PCC.ProjectionTypes = VEM.PCC.ProjectionTypes.pi_nabla
                 ) -> Eigen.MatrixXd:
+                """/ @brief Compute the (VEM) stabilization matrix of the local space.
+                /
+                / Returns the stabilization term that complements the consistency part of the VEM
+                / bilinear form; for FEM/ZFEM, where no stabilization is required, the term is empty
+                / or zero as appropriate.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         Projection used to define the stabilization; defaults to the energy projection
+                / \f$\Pi^\nabla\f$.
+                / @return The local stabilization matrix.
+                """
                 pass
 
             @staticmethod
@@ -22266,6 +22953,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 edge_local_index: int
                 ) -> Eigen.MatrixXd:
+                """/ @brief Coordinates of the DOFs associated with a given edge.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @return The physical coordinates of the edge DOFs (one per column).
+                """
                 pass
 
             @staticmethod
@@ -22273,6 +22967,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Coordinates (and weights) of the internal DOFs of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return Quadrature-like data holding the internal-DOF coordinates and weights.
+                """
                 pass
 
             @staticmethod
@@ -22282,6 +22982,17 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 values_at_dofs: Eigen.VectorXd,
                 internal_dofs_coordinates: Gedim.Quadrature.QuadratureData
                 ) -> Eigen.VectorXd:
+                """/ @brief Compute the internal DOF values of a function.
+                /
+                / Given the function values sampled at the internal-DOF coordinates, returns the
+                / corresponding internal degrees of freedom (e.g. the interior moments for VEM).
+                /
+                / @param reference_element_data    Reference-element data describing the method.
+                / @param local_space_data          Local-space data for the cell.
+                / @param values_at_dofs            Function values at the internal-DOF coordinates.
+                / @param internal_dofs_coordinates Internal-DOF coordinates/weights from InternalDofsCoordinates().
+                / @return The vector of internal degrees of freedom.
+                """
                 pass
 
             @staticmethod
@@ -22289,6 +23000,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Internal quadrature rule of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The internal quadrature points and weights used for volume integration.
+                """
                 pass
 
             @staticmethod
@@ -22296,6 +23013,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> int:
+                """/ @brief Number of local degrees of freedom of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The local-space dimension (number of local DOFs).
+                """
                 pass
 
             @staticmethod
@@ -22303,6 +23026,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Performance_Data:
+                """/ @brief Compute the per-cell performance metrics of the local space.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The collected @ref Performance_Data (quadrature counts and method-specific analysis).
+                """
                 pass
 
             @staticmethod
@@ -22317,6 +23046,21 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 solution_strongs: Gedim.IArray,
                 file_path: str
                 ) -> None:
+                """/ @brief Export the DOFs and solution fields to file for visualization.
+                /
+                / Writes the right-hand side, the computed solution and the strongly-imposed
+                / (Dirichlet) solution over the mesh DOFs to @p file_path, for post-processing.
+                /
+                / @param geometry_utilities  GeDiM geometry helper.
+                / @param mesh                Mesh data access object.
+                / @param mesh_geometric_data Precomputed geometric data of the mesh.
+                / @param mesh_dofs_info      Mesh DOFs layout information.
+                / @param dofs_data           DOF numbering/data.
+                / @param right_hand_side     Right-hand-side vector.
+                / @param solution            Computed solution over the free DOFs.
+                / @param solution_strongs    Values of the strongly-imposed (Dirichlet) DOFs.
+                / @param file_path           Output file path.
+                """
                 pass
 
 
@@ -22358,15 +23102,24 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
         pass  # (This corresponds to a C++ namespace. All method are static!)
         """ namespace PDETools"""
 
+        #/ @brief Unified interface to the 3D primal conforming (PCC) local spaces.
+        #/
+        #/ This namespace provides a single, method-agnostic API for building and
+        #/ evaluating the local (per-cell) discrete space of a scalar primal problem in 3D,
+        #/ hiding the differences between the finite element (FEM), virtual element (VEM,
+        #/ including its inertia-based and orthogonalized variants); the free functions
+        #/ dispatch to the corresponding implementation, so that assemblers can be written
+        #/ once and reused across methods.
+
         # <submodule local_space_pcc_3_d>
         class local_space_pcc_3_d:  # Proxy class that introduces typings for the *submodule* local_space_pcc_3_d
             pass  # (This corresponds to a C++ namespace. All method are static!)
             """ namespace LocalSpace_PCC_3D"""
             class MethodTypes(enum.IntEnum):
-                fem_pcc = enum.auto()         # (= 0)
-                vem_pcc = enum.auto()         # (= 1)
-                vem_pcc_inertia = enum.auto() # (= 2)
-                vem_pcc_ortho = enum.auto()   # (= 3)
+                fem_pcc = enum.auto()         # (= 0)  #/< Finite Element Method. \cite BrennerScott
+                vem_pcc = enum.auto()         # (= 1)  #/< Virtual Element Method (standard monomial basis). \cite LBe16
+                vem_pcc_inertia = enum.auto() # (= 2)  #/< VEM with an inertia-based (principal-axes) monomial basis. \cite Teora2024
+                vem_pcc_ortho = enum.auto()   # (= 3)  #/< VEM with an \f$L^2\f$-orthonormalized monomial basis. \cite DassiMascotto2018
 
             class ReferenceElement_Data:
                 """
@@ -22576,20 +23329,35 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
         pass  # (This corresponds to a C++ namespace. All method are static!)
         """ namespace PDETools"""
 
+        #/ @brief Unified interface to the 2D mixed conforming (MCC) local spaces.
+        #/
+        #/ This namespace provides a single, method-agnostic API for building and evaluating
+        #/ the coupled velocity(flux)/pressure local spaces of a 2D mixed formulation (e.g. of
+        #/ an elliptic/Darcy problem). It hides the differences between the mixed virtual
+        #/ element method (VEM MCC), in its several orthogonalized/partial variants, and the
+        #/ Raviart–Thomas finite element (FEM RT). The active backend is selected through
+        #/ MethodTypes; the free functions dispatch accordingly, so assemblers can be written
+        #/ once and reused across methods.
+
         # <submodule local_space_mcc_2_d>
         class local_space_mcc_2_d:  # Proxy class that introduces typings for the *submodule* local_space_mcc_2_d
             pass  # (This corresponds to a C++ namespace. All method are static!)
             """ namespace LocalSpace_MCC_2D"""
             class MethodTypes(enum.IntEnum):
-                vem_mcc = enum.auto()                  # (= 1)
-                vem_mcc_partial = enum.auto()          # (= 2)
-                vem_mcc_ortho = enum.auto()            # (= 3)
-                vem_mcc_edge_ortho = enum.auto()       # (= 4)
-                vem_mcc_ortho_edge_ortho = enum.auto() # (= 5)
-                fem_rt_mcc = enum.auto()               # (= 6)
+                """/ @brief Discretization method for the 2D MCC velocity/pressure pair."""
+                vem_mcc = enum.auto()                  # (= 1)  #/< Mixed VEM (standard basis). \cite secondMixed
+                vem_mcc_partial = enum.auto()          # (= 2)  #/< Mixed VEM with a partially computed velocity space.
+                vem_mcc_ortho = enum.auto()            # (= 3)  #/< Mixed VEM with an orthonormalized internal basis.
+                vem_mcc_edge_ortho = enum.auto()       # (= 4)  #/< Mixed VEM with an orthonormalized edge basis. \cite Teora2023
+                vem_mcc_ortho_edge_ortho = enum.auto() # (= 5)  #/< Mixed VEM with both internal and edge orthonormalization. \cite Teora2023
+                fem_rt_mcc = enum.auto()               # (= 6)  #/< Raviart–Thomas finite element.
 
             class ReferenceElement_Data:
-                """
+                """/ @brief Method-specific reference-element data for the 2D MCC local space.
+                /
+                / Holds the selected method and polynomial order together with the velocity and
+                / pressure reference-element / local-space handles of the active backend. Only the
+                / members belonging to @ref Method_Type are populated.
                 (final class)
                 """
                 method_type: Polydim.PDETools.LocalSpace_MCC_2D.MethodTypes
@@ -22612,7 +23380,10 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class LocalSpace_Data:
-                """
+                """/ @brief Per-cell local-space data for the 2D MCC local space.
+                /
+                / Stores the polygon geometry and the computed velocity/pressure local-space data for
+                / the active backend; only the members of the selected method are populated.
                 (final class)
                 """
                 vem_geometry: Polydim.VEM.MCC.VEM_MCC_2D_Polygon_Geometry
@@ -22626,7 +23397,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class Performance_Data:
-                """
+                """/ @brief Per-cell performance metrics for the 2D MCC local space.
                 (final class)
                 """
                 class Cell2D_Performance:
@@ -22650,12 +23421,30 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 method_type: MethodTypes,
                 method_order: int
                 ) -> ReferenceElement_Data:
+                """/ @brief Create the velocity/pressure reference elements for the chosen method and order.
+                /
+                / Factory that instantiates the backend-specific reference elements and populates the
+                / corresponding members of the returned @ref ReferenceElement_Data.
+                /
+                / @param method_type  Discretization method to use.
+                / @param method_order Polynomial order of the space.
+                / @return The initialized reference-element data.
+                """
                 pass
 
             @staticmethod
             def reference_element_num_do_fs(
                 reference_element_data: ReferenceElement_Data
                 ) -> List[List[int]]:
+                """/ @brief Number of reference-element DOFs per mesh-entity type, for velocity and pressure.
+                /
+                / Returns, for each of the two fields, the number of degrees of freedom associated
+                / with the four mesh-entity categories (e.g. vertices, edges, internal, and the
+                / remaining entity slot), as used to lay out the DOFs.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @return A 2\f$\times\f$4 array of DOF counts (row 0: velocity, row 1: pressure).
+                """
                 pass
 
             @staticmethod
@@ -22666,6 +23455,18 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 cell2_d_index: int,
                 reference_element_data: ReferenceElement_Data
                 ) -> LocalSpace_Data:
+                """/ @brief Build the coupled velocity/pressure local space on a given cell.
+                /
+                / Computes the backend-specific velocity and pressure local-space data on cell
+                / @p cell2D_index from the precomputed mesh geometric data.
+                /
+                / @param geometric_tolerance_1D Geometric tolerance for 1D (edge) operations.
+                / @param geometric_tolerance_2D Geometric tolerance for 2D (polygon) operations.
+                / @param mesh_geometric_data    Precomputed geometric data of the mesh.
+                / @param cell2D_index           Index of the 2D cell to process.
+                / @param reference_element_data Reference-element data describing the method.
+                / @return The computed local-space data for the cell.
+                """
                 pass
 
             @staticmethod
@@ -22675,6 +23476,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the (vector) velocity/flux basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
+                / @return One (quadrature points \f$\times\f$ velocity DOFs) matrix per velocity component.
+                """
                 pass
 
             @staticmethod
@@ -22682,6 +23490,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the (scalar) pressure basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return A (quadrature points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
+                """
                 pass
 
             @staticmethod
@@ -22689,6 +23503,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the velocity/flux divergence at the internal quadrature points.
+                /
+                / Returns \f$\nabla \cdot \boldsymbol{u}\f$ for each velocity basis function, as used
+                / in the divergence (velocity–pressure coupling) term of the mixed formulation.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return A (quadrature points \f$\times\f$ velocity DOFs) matrix of divergence values.
+                """
                 pass
 
             @staticmethod
@@ -22697,6 +23520,16 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
                 ) -> Eigen.MatrixXd:
+                """/ @brief Compute the (VEM) stabilization matrix of the velocity local space.
+                /
+                / Returns the stabilization term complementing the consistency part of the mixed VEM
+                / velocity bilinear form; empty/zero for the Raviart–Thomas FEM.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         Projection used to define the stabilization; defaults to \f$\Pi^0_k\f$.
+                / @return The local stabilization matrix.
+                """
                 pass
 
             @staticmethod
@@ -22705,6 +23538,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 edge_local_index: int
                 ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Coordinates (and weights) of the velocity DOFs on a given edge.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @return Quadrature-like data holding the edge-DOF coordinates and weights.
+                """
                 pass
 
             @staticmethod
@@ -22715,6 +23555,19 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 edge_dofs_coordinates: Gedim.Quadrature.QuadratureData,
                 strong_values: Eigen.VectorXd
                 ) -> Eigen.VectorXd:
+                """/ @brief Compute the edge velocity DOFs from strongly-imposed boundary values.
+                /
+                / Evaluates the degrees of freedom associated with an edge (the normal-flux moments)
+                / from the boundary data sampled at the edge-DOF coordinates, e.g. to strongly impose
+                / Neumann/essential conditions of the mixed problem.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @param edge_dofs_coordinates  Edge-DOF coordinates/weights from EdgeDofsCoordinates().
+                / @param strong_values          Boundary values sampled at the edge-DOF coordinates.
+                / @return The vector of edge velocity DOFs.
+                """
                 pass
 
             @staticmethod
@@ -22724,6 +23577,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 edge_quadrature_points: Eigen.MatrixXd
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the velocity basis functions on a given edge.
+                /
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_quadrature_points Evaluation points on the edge.
+                / @return A matrix of velocity edge basis-function values at the requested points.
+                """
                 pass
 
             @staticmethod
@@ -22734,6 +23595,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 points: Eigen.MatrixXd,
                 projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the (vector) velocity/flux basis functions at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
+                / @return One (points \f$\times\f$ velocity DOFs) matrix per velocity component.
+                """
                 pass
 
             @staticmethod
@@ -22742,12 +23611,24 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 edge_local_index: int
                 ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Quadrature rule on a given (physical) edge of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @return The edge quadrature points and weights.
+                """
                 pass
 
             @staticmethod
             def edge_reference_quadrature(
                 reference_element_data: ReferenceElement_Data
                 ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Quadrature rule on the reference edge.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @return The quadrature points and weights on the reference edge, independent of the cell.
+                """
                 pass
 
             @staticmethod
@@ -22755,6 +23636,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Internal quadrature rule of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The internal quadrature points and weights used for volume integration.
+                """
                 pass
 
             @staticmethod
@@ -22762,6 +23649,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> int:
+                """/ @brief Number of local velocity degrees of freedom of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The velocity local-space dimension (number of local velocity DOFs).
+                """
                 pass
 
             @staticmethod
@@ -22769,6 +23662,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Performance_Data:
+                """/ @brief Compute the per-cell performance metrics of the local space.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The collected @ref Performance_Data (quadrature counts and VEM analysis).
+                """
                 pass
 
 
@@ -22810,17 +23709,32 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
         pass  # (This corresponds to a C++ namespace. All method are static!)
         """ namespace PDETools"""
 
+        #/ @brief Unified interface to the 2D divergence-free primal conforming (DF_PCC) local spaces.
+        #/
+        #/ This namespace provides a single, method-agnostic API for building and evaluating
+        #/ the coupled velocity/pressure local spaces of a 2D incompressible (divergence-free)
+        #/ vector problem — e.g. Stokes, Navier–Stokes or Brinkman flow. It hides the
+        #/ differences between a Taylor–Hood finite element pair and the divergence-free
+        #/ virtual element method (VEM DF), in its full and reduced variants. The active
+        #/ backend is selected through MethodTypes; the free functions dispatch accordingly,
+        #/ so assemblers can be written once and reused across methods.
+
         # <submodule local_space_df_pcc_2_d>
         class local_space_df_pcc_2_d:  # Proxy class that introduces typings for the *submodule* local_space_df_pcc_2_d
             pass  # (This corresponds to a C++ namespace. All method are static!)
             """ namespace LocalSpace_DF_PCC_2D"""
             class MethodTypes(enum.IntEnum):
-                taylor_hood = enum.auto()        # (= 0)
-                vem_df_pcc_full = enum.auto()    # (= 1)
-                vem_df_pcc_reduced = enum.auto() # (= 2)
+                """/ @brief Discretization method for the 2D DF_PCC velocity/pressure pair."""
+                taylor_hood = enum.auto()        # (= 0)  #/< Taylor–Hood finite element velocity/pressure pair.
+                vem_df_pcc_full = enum.auto()    # (= 1)  #/< Divergence-free VEM, full velocity space. \cite DaVeigaLovadina2017
+                vem_df_pcc_reduced = enum.auto() # (= 2)  #/< Divergence-free VEM, reduced velocity space. \cite DaVeigaLovadina2017
 
             class ReferenceElement_Data:
-                """
+                """/ @brief Method-specific reference-element data for the 2D DF_PCC local space.
+                /
+                / Holds the selected method, polynomial order and spatial dimension together with the
+                / velocity and pressure reference-element / local-space handles of the active backend.
+                / Only the members belonging to @ref Method_Type are populated.
                 (final class)
                 """
                 method_type: Polydim.PDETools.LocalSpace_DF_PCC_2D.MethodTypes
@@ -22843,7 +23757,10 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class LocalSpace_Data:
-                """
+                """/ @brief Per-cell local-space data for the 2D DF_PCC local space.
+                /
+                / Stores the polygon geometry and the computed velocity/pressure local-space data for
+                / the active backend; only the members of the selected method are populated.
                 (final class)
                 """
                 vem_geometry: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Polygon_Geometry
@@ -22857,7 +23774,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                     pass
 
             class Performance_Data:
-                """
+                """/ @brief Per-cell performance metrics for the 2D DF_PCC local space.
                 (final class)
                 """
                 class Cell2D_Performance:
@@ -22881,6 +23798,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 method_type: MethodTypes,
                 method_order: int
                 ) -> ReferenceElement_Data:
+                """/ @brief Create the velocity/pressure reference elements for the chosen method and order.
+                /
+                / Factory that instantiates the backend-specific reference elements and populates the
+                / corresponding members of the returned @ref ReferenceElement_Data.
+                /
+                / @param method_type  Discretization method to use.
+                / @param method_order Polynomial order of the velocity space.
+                / @return The initialized reference-element data.
+                """
                 pass
 
             @staticmethod
@@ -22889,6 +23815,17 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 mesh: Gedim.MeshMatricesDAO,
                 boundary_info: List[DOFs.DOFsManager.MeshDOFsInfo.BoundaryMap]
                 ) -> List[DOFs.DOFsManager.MeshDOFsInfo]:
+                """/ @brief Build the DOF layout over the mesh for the velocity and pressure fields.
+                /
+                / Determines how the DOFs of the coupled spaces are distributed over mesh entities and
+                / marks boundary DOFs from @p boundary_info. The returned vector holds one
+                / MeshDOFsInfo per field (velocity and pressure).
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param mesh                   Mesh data access object.
+                / @param boundary_info          Per-field boundary maps (index 0: velocity, index 1: pressure).
+                / @return One mesh DOFs layout per field.
+                """
                 pass
 
             @staticmethod
@@ -22899,6 +23836,18 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 cell2_d_index: int,
                 reference_element_data: ReferenceElement_Data
                 ) -> LocalSpace_Data:
+                """/ @brief Build the coupled velocity/pressure local space on a given cell.
+                /
+                / Computes the backend-specific velocity and pressure local-space data on cell
+                / @p cell2D_index from the precomputed mesh geometric data.
+                /
+                / @param geometric_tolerance_1D Geometric tolerance for 1D (edge) operations.
+                / @param geometric_tolerance_2D Geometric tolerance for 2D (polygon) operations.
+                / @param mesh_geometric_data    Precomputed geometric data of the mesh.
+                / @param cell2D_index           Index of the 2D cell to process.
+                / @param reference_element_data Reference-element data describing the method.
+                / @return The computed local-space data for the cell.
+                """
                 pass
 
             @staticmethod
@@ -22908,6 +23857,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi0k
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the (vector) velocity basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
+                / @return One (quadrature points \f$\times\f$ velocity DOFs) matrix per velocity component.
+                """
                 pass
 
             @staticmethod
@@ -22918,6 +23874,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 points: Eigen.MatrixXd,
                 projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi0k
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the (vector) velocity basis functions at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
+                / @return One (points \f$\times\f$ velocity DOFs) matrix per velocity component.
+                """
                 pass
 
             @staticmethod
@@ -22926,6 +23890,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the (scalar) pressure basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return A (quadrature points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
+                """
                 pass
 
             @staticmethod
@@ -22935,6 +23905,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 points: Eigen.MatrixXd
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the (scalar) pressure basis functions at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @return A (points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
+                """
                 pass
 
             @staticmethod
@@ -22944,6 +23921,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the velocity basis-function derivatives at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to the energy projection
+                / \f$\Pi^\nabla\f$.
+                / @return The velocity gradient components (one matrix per derivative/component pair).
+                """
                 pass
 
             @staticmethod
@@ -22954,6 +23939,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 points: Eigen.MatrixXd,
                 projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
                 ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the velocity basis-function derivatives at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to the energy projection
+                / \f$\Pi^\nabla\f$.
+                / @return The velocity gradient components (one matrix per derivative/component pair).
+                """
                 pass
 
             @staticmethod
@@ -22961,6 +23955,15 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the velocity divergence at the internal quadrature points.
+                /
+                / Returns \f$\nabla \cdot \boldsymbol{u}\f$ for each velocity basis function; for the
+                / divergence-free VEM this quantity is exactly represented.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return A (quadrature points \f$\times\f$ velocity DOFs) matrix of divergence values.
+                """
                 pass
 
             @staticmethod
@@ -22968,6 +23971,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Internal quadrature rule of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The internal quadrature points and weights used for volume integration.
+                """
                 pass
 
             @staticmethod
@@ -22977,6 +23986,14 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 points_curvilinear_coordinates: Eigen.MatrixXd
                 ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the velocity basis functions on a given edge.
+                /
+                / @param edge_local_index             Local index of the edge within the cell.
+                / @param reference_element_data       Reference-element data describing the method.
+                / @param local_space_data             Local-space data for the cell.
+                / @param pointsCurvilinearCoordinates Evaluation points on the edge, in curvilinear coordinates.
+                / @return A matrix of velocity edge basis-function values at the requested points.
+                """
                 pass
 
             @staticmethod
@@ -22985,6 +24002,17 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
                 ) -> Eigen.MatrixXd:
+                """/ @brief Compute the (VEM) velocity stabilization matrix of the local space.
+                /
+                / Returns the stabilization term complementing the consistency part of the VEM
+                / velocity bilinear form; empty/zero for the Taylor–Hood FEM pair.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         Projection used to define the stabilization; defaults to the energy projection
+                / \f$\Pi^\nabla\f$.
+                / @return The local velocity stabilization matrix.
+                """
                 pass
 
             @staticmethod
@@ -22993,6 +24021,13 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 local_space_data: LocalSpace_Data,
                 edge_local_index: int
                 ) -> Eigen.MatrixXd:
+                """/ @brief Coordinates of the velocity DOFs associated with a given edge.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @return The physical coordinates of the edge velocity DOFs (one per column).
+                """
                 pass
 
             @staticmethod
@@ -23000,6 +24035,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> int:
+                """/ @brief Number of local velocity degrees of freedom of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The velocity local-space dimension (number of local velocity DOFs).
+                """
                 pass
 
             @staticmethod
@@ -23007,6 +24048,12 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 reference_element_data: ReferenceElement_Data,
                 local_space_data: LocalSpace_Data
                 ) -> Performance_Data:
+                """/ @brief Compute the per-cell performance metrics of the local space.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The collected @ref Performance_Data (quadrature counts and VEM analysis).
+                """
                 pass
 
             @staticmethod
@@ -23022,6 +24069,23 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
                 solution_strongs: Gedim.IArray,
                 file_path: str
                 ) -> None:
+                """/ @brief Export the velocity DOFs and solution fields to file for visualization.
+                /
+                / Writes the right-hand side, the computed solution and the strongly-imposed
+                / (Dirichlet) solution over the velocity DOFs to @p file_path, for post-processing.
+                / The DOF layout and counts are provided per field.
+                /
+                / @param geometry_utilities  GeDiM geometry helper.
+                / @param mesh                Mesh data access object.
+                / @param mesh_geometric_data Precomputed geometric data of the mesh.
+                / @param mesh_dofs_info      Per-field mesh DOFs layout information.
+                / @param dofs_data           Per-field DOF numbering/data.
+                / @param count_dofs          Aggregated DOF counts across fields.
+                / @param right_hand_side     Right-hand-side vector.
+                / @param solution            Computed solution over the free DOFs.
+                / @param solution_strongs    Values of the strongly-imposed (Dirichlet) DOFs.
+                / @param file_path           Output file path.
+                """
                 pass
 
 

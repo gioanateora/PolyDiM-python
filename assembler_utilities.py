@@ -3,6 +3,7 @@ from scipy.sparse import coo_array
 from typing import List, Optional
 from pypolydim import polydim
 
+
 class assembler_utilities:
 
     class SparseMatrix:
@@ -19,7 +20,8 @@ class assembler_utilities:
 
     class LocalMatrixToGlobalMatrixDOFsData:
 
-        def __init__(self, do_fs_data_indices: List[polydim.pde_tools.do_fs.DOFsManager.CellsDOFsIndicesData], local_offsets: List[int],
+        def __init__(self, do_fs_data_indices: List[polydim.pde_tools.do_fs.DOFsManager.CellsDOFsIndicesData],
+                     local_offsets: List[int],
                      global_offsets_do_fs: List[int], global_offsets_strongs: List[int]) -> None:
             self.do_fs_data_indices = do_fs_data_indices
             self.local_offsets = local_offsets
@@ -65,25 +67,23 @@ class assembler_utilities:
     def local_count_do_fs(self, dimension: int, cell_index: int,
                           do_fs_data: List[polydim.pde_tools.do_fs.DOFsManager.DOFsData]) -> LocalCountDOFsData:
 
-        # lengths = np.array([len(d.cells_global_do_fs[dimension][cell_index]) for d in do_fs_data])
-        # cum_sum = np.cumsum(lengths)
-        # num_total_do_fs = cum_sum[-1]
-        # offset_do_fs = np.concatenate(([0], cum_sum[:-1])).tolist()
-
         num_total_do_fs = 0
         offset_do_fs = [0]
         for d in range(len(do_fs_data)):
-            val = do_fs_data[d].cells_global_number_do_fs[dimension][cell_index] + do_fs_data[d].cells_global_number_strongs[dimension][cell_index]
-            num_total_do_fs += val
+
             if d > 0:
-                offset_do_fs.append(val + offset_do_fs[d - 1])
+                offset_do_fs.append(num_total_do_fs)
+
+            num_total_do_fs += do_fs_data[d].cells_global_number_do_fs[dimension][cell_index] + \
+                               do_fs_data[d].cells_global_number_strongs[dimension][cell_index]
 
         return self.LocalCountDOFsData(num_total_do_fs, offset_do_fs)
 
     @staticmethod
     def global_solution_to_local_solution(dimension: int,
                                           cell_index: int,
-                                          do_fs_data_indices: List[polydim.pde_tools.do_fs.DOFsManager.CellsDOFsIndicesData],
+                                          do_fs_data_indices: List[
+                                              polydim.pde_tools.do_fs.DOFsManager.CellsDOFsIndicesData],
                                           count_do_fs: CountDOFsData,
                                           local_count_do_fs: LocalCountDOFsData,
                                           global_solution_do_fs: np.ndarray,
@@ -91,15 +91,17 @@ class assembler_utilities:
 
         local_solution_do_fs = np.zeros(local_count_do_fs.num_total_do_fs)
 
-
         num_dof_handler = len(do_fs_data_indices)
         for h in range(num_dof_handler):
+            local_dof_i = np.array(do_fs_data_indices[h].cells_do_fs_local_index[cell_index], dtype=np.int64) + \
+                          local_count_do_fs.offset_do_fs[h]
+            local_strong_i = np.array(do_fs_data_indices[h].cells_strongs_local_index[cell_index], dtype=np.int64) + \
+                             local_count_do_fs.offset_do_fs[h]
 
-            local_dof_i = np.array(do_fs_data_indices[h].cells_do_fs_local_index[cell_index], dtype=np.int64) + local_count_do_fs.offset_do_fs[h]
-            local_strong_i = np.array(do_fs_data_indices[h].cells_strongs_local_index[cell_index], dtype=np.int64) + local_count_do_fs.offset_do_fs[h]
-
-            global_dof_i = np.array(do_fs_data_indices[h].cells_do_fs_global_index[cell_index], dtype=np.int64) + count_do_fs.offset_do_fs[h]
-            global_strong_i = np.array(do_fs_data_indices[h].cells_strongs_global_index[cell_index], dtype=np.int64) + count_do_fs.offset_strongs[h]
+            global_dof_i = np.array(do_fs_data_indices[h].cells_do_fs_global_index[cell_index], dtype=np.int64) + \
+                           count_do_fs.offset_do_fs[h]
+            global_strong_i = np.array(do_fs_data_indices[h].cells_strongs_global_index[cell_index], dtype=np.int64) + \
+                              count_do_fs.offset_strongs[h]
 
             local_solution_do_fs[local_dof_i] = global_solution_do_fs[global_dof_i]
             local_solution_do_fs[local_strong_i] = global_solution_strongs[global_strong_i]
@@ -145,13 +147,16 @@ class assembler_utilities:
                 trial_local_offset = trial_functions_do_fs_data.local_offsets[trial_f]
                 trial_global_offset_strongs = trial_functions_do_fs_data.global_offsets_strongs[trial_f]
 
-
                 # Trial slicing indices
-                global_dof_j = np.array(trial_do_fs_data.cells_do_fs_global_index[cell_index], dtype=np.int64) + trial_global_offset_do_fs
-                local_dof_j = np.array(trial_do_fs_data.cells_do_fs_local_index[cell_index], dtype=np.int64) + trial_local_offset
+                global_dof_j = np.array(trial_do_fs_data.cells_do_fs_global_index[cell_index],
+                                        dtype=np.int64) + trial_global_offset_do_fs
+                local_dof_j = np.array(trial_do_fs_data.cells_do_fs_local_index[cell_index],
+                                       dtype=np.int64) + trial_local_offset
 
-                global_strong_j = np.array(trial_do_fs_data.cells_strongs_global_index[cell_index], dtype=np.int64) + trial_global_offset_strongs
-                local_strong_j = np.array(trial_do_fs_data.cells_strongs_local_index[cell_index], dtype=np.int64) + trial_local_offset
+                global_strong_j = np.array(trial_do_fs_data.cells_strongs_global_index[cell_index],
+                                           dtype=np.int64) + trial_global_offset_strongs
+                local_strong_j = np.array(trial_do_fs_data.cells_strongs_local_index[cell_index],
+                                          dtype=np.int64) + trial_local_offset
 
                 loc_a_dof_dof = local_lhs[np.ix_(local_dof_i, local_dof_j)].ravel(order='C').tolist()
                 global_dof_dof_i = np.repeat(global_dof_i, len(global_dof_j)).tolist()
@@ -162,7 +167,6 @@ class assembler_utilities:
                 global_lhs_do_fs.data.extend(loc_a_dof_dof)
 
                 if len(local_strong_j) > 0:
-
                     loc_a_dof_strong = local_lhs[np.ix_(local_dof_i, local_strong_j)].ravel(order='C').tolist()
 
                     global_dof_strong_i = np.repeat(global_dof_i, len(global_strong_j)).tolist()
