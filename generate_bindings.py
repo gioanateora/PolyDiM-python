@@ -276,17 +276,17 @@ headers = ["./PolyDiM/gedim/GeDiM-core/src/Geometry/GeometryUtilities.hpp",
            "./PolyDiM/PolyDiM-core/src/ZFEM/PCC/2D/ZFEM_PCC_2D_LocalSpace.hpp",
            "./PolyDiM/PolyDiM-core/src/ZFEM/PCC/2D/ZFEM_PCC_2D_LocalSpace.cpp",
            "./PolyDiM/PolyDiM-core/src/PDETools/Equations/EllipticEquation.hpp",
+           "./PolyDiM/PolyDiM-core/src/PDETools/Mesh/MeshMatricesDAO_mesh_connectivity_data.hpp",
+           "./PolyDiM/PolyDiM-core/src/PDETools/Mesh/PDE_Mesh_Utilities.hpp",
+           "./PolyDiM/PolyDiM-core/src/PDETools/DOFs/DOFsManager.hpp",
            "./PolyDiM/PolyDiM-core/src/PDETools/LocalSpace/LocalSpace_DF_PCC_2D.hpp",
            "./PolyDiM/PolyDiM-core/src/PDETools/LocalSpace/LocalSpace_MCC_2D.hpp",
            "./PolyDiM/PolyDiM-core/src/PDETools/LocalSpace/LocalSpace_PCC_2D.hpp",
            "./PolyDiM/PolyDiM-core/src/PDETools/LocalSpace/LocalSpace_PCC_3D.hpp",
-           "./PolyDiM/PolyDiM-core/src/PDETools/Mesh/MeshMatricesDAO_mesh_connectivity_data.hpp",
-           "./PolyDiM/PolyDiM-core/src/PDETools/Mesh/PDE_Mesh_Utilities.hpp"
-           "./PolyDiM/PolyDiM-core/src/PDETools/DOFs/DOFsManager.hpp",
            "./PolyDiM/PolyDiM-core/src/PDETools/Assembler/assembler_PCC_2D_functions_data.hpp",
-           "./PolyDiM/PolyDiM-core/src/PDETools/Assembler/assembler_PCC_2D_functions_utilities.hpp",
            "./PolyDiM/PolyDiM-core/src/PDETools/Assembler/assembler_PCC_2D_functions.hpp",
-           "./PolyDiM/PolyDiM-core/src/PDETools/Assembler/Assembler_Utilities.hpp"
+           # "./PolyDiM/PolyDiM-core/src/PDETools/Assembler/assembler_PCC_2D_functions_utilities.hpp",
+           # "./PolyDiM/PolyDiM-core/src/PDETools/Assembler/Assembler_Utilities.hpp"
             ]
 
 # Stampa a console:
