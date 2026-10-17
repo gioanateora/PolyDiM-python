@@ -43,9 +43,10 @@ class assembler_utilities:
             self.num_total_do_fs: int = num_total_do_fs
             self.offset_do_fs: List[int] = offset_do_fs
 
-    def count_do_fs(self, do_fs_data: List[polydim.pde_tools.do_fs.DOFsManager.DOFsData]) -> CountDOFsData:
+    @staticmethod
+    def count_do_fs(do_fs_data: List[polydim.pde_tools.do_fs.DOFsManager.DOFsData]) -> CountDOFsData:
 
-        data = self.CountDOFsData()
+        data = assembler_utilities.CountDOFsData()
         data.num_total_do_fs = do_fs_data[0].number_do_fs
         data.num_total_strongs = do_fs_data[0].number_strongs
         data.num_total_boundary_do_fs = do_fs_data[0].number_boundary_do_fs
@@ -64,7 +65,8 @@ class assembler_utilities:
 
         return data
 
-    def local_count_do_fs(self, dimension: int, cell_index: int,
+    @staticmethod
+    def local_count_do_fs(dimension: int, cell_index: int,
                           do_fs_data: List[polydim.pde_tools.do_fs.DOFsManager.DOFsData]) -> LocalCountDOFsData:
 
         num_total_do_fs = 0
@@ -77,7 +79,7 @@ class assembler_utilities:
             num_total_do_fs += do_fs_data[d].cells_global_number_do_fs[dimension][cell_index] + \
                                do_fs_data[d].cells_global_number_strongs[dimension][cell_index]
 
-        return self.LocalCountDOFsData(num_total_do_fs, offset_do_fs)
+        return assembler_utilities.LocalCountDOFsData(num_total_do_fs, offset_do_fs)
 
     @staticmethod
     def global_solution_to_local_solution(dimension: int,

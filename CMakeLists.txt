@@ -114,18 +114,24 @@ endif()
 
 # Insert Sources
 #############################################################################################
-add_subdirectory(PolyDiM/PolyDiM/src)
+add_subdirectory(PolyDiM/gedim/GeDiM-core/src)
+
+list(APPEND pypolydim_sources ${gedim_src_sources})
+list(APPEND pypolydim_headers ${gedim_src_headers})
+list(APPEND pypolydim_includes ${gedim_src_includes})
+
+add_subdirectory(PolyDiM/gedim/3rd_party_libraries/src)
+
+list(APPEND pypolydim_sources ${3rd_party_libraries_src_sources})
+list(APPEND pypolydim_headers ${3rd_party_libraries_src_headers})
+list(APPEND pypolydim_includes ${3rd_party_libraries_src_includes})
+
+add_subdirectory(PolyDiM/PolyDiM-core/src)
 
 list(APPEND pypolydim_sources ${polydim_src_sources})
 list(APPEND pypolydim_headers ${polydim_src_headers})
 list(APPEND pypolydim_includes ${polydim_src_includes})
 
-
-add_subdirectory(PolyDiM/gedim/GeDiM/src)
-
-list(APPEND pypolydim_sources ${gedim_src_sources})
-list(APPEND pypolydim_headers ${gedim_src_headers})
-list(APPEND pypolydim_includes ${gedim_src_includes})
 
 # Create public headers
 ###############################################################################################
