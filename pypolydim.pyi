@@ -14985,369 +14985,6 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 ####################    </generated_from:FEM_PCC_1D_ReferenceElement.hpp>    ####################
 
 
-####################    <generated_from:FEM_PCC_2D_LocalSpace_Data.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
-
-# #ifndef __FEM_PCC_2D_LocalSpace_Data_HPP
-#
-
-
-
-# #endif
-#
-
-# <submodule polydim>
-class polydim:  # Proxy class that introduces typings for the *submodule* polydim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Polydim"""
-
-    # <submodule fem>
-    class fem:  # Proxy class that introduces typings for the *submodule* fem
-        pass  # (This corresponds to a C++ namespace. All method are static!)
-        """ namespace FEM"""
-
-        # <submodule pcc>
-        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
-            pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace PCC"""
-            class FEM_PCC_2D_Types(enum.IntEnum):
-                triangle = enum.auto()      # (= 0)
-                quadrilateral = enum.auto() # (= 1)
-
-            class QuadrilateralType(enum.IntEnum):
-                parallelogram = enum.auto() # (= 0)
-                generic = enum.auto()       # (= 1)
-
-            class FEM_PCC_2D_Polygon_Geometry:
-                """
-                (final class)
-                """
-                tolerance1_d: float
-                tolerance2_d: float
-
-                vertices: Eigen.MatrixXd
-                edges_direction: List[bool]
-                edges_tangent: Eigen.MatrixXd
-                edges_length: Eigen.VectorXd
-                def __init__(
-                    self,
-                    tolerance1_d: float = float(),
-                    tolerance2_d: float = float(),
-                    vertices: Eigen.MatrixXd = Eigen.MatrixXd(),
-                    edges_direction: List[bool] = List[bool](),
-                    edges_tangent: Eigen.MatrixXd = Eigen.MatrixXd(),
-                    edges_length: Eigen.VectorXd = Eigen.VectorXd()
-                    ) -> None:
-                    """Auto-generated default constructor with named params"""
-                    pass
-
-            class FEM_Triangle_PCC_2D_LocalSpace_Data:
-                """
-                (final class)
-                """
-                map_data: Gedim.MapTriangle.MapTriangleData
-                b_lap: Eigen.Matrix3d
-                order: int
-                number_of_basis_functions: int
-                num_boundary_basis_functions: int
-                num_internal_basis_functions: int
-                dofs: Eigen.MatrixXd
-                dofs_mesh_order: List[int]
-                dof0_ds_index: List[int]
-                dof1_ds_index: List[int]
-                dof2_ds_index: List[int]
-                internal_quadrature: Gedim.Quadrature.QuadratureData
-                boundary_quadrature: List[Gedim.Quadrature.QuadratureData]
-                def __init__(
-                    self,
-                    map_data: Gedim.MapTriangle.MapTriangleData = Gedim.MapTriangle.MapTriangleData(),
-                    b_lap: Eigen.Matrix3d = Eigen.Matrix3d(),
-                    dofs: Eigen.MatrixXd = Eigen.MatrixXd(),
-                    internal_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
-                    boundary_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData]()
-                    ) -> None:
-                    """Auto-generated default constructor with named params"""
-                    pass
-
-            class FEM_Quadrilateral_PCC_2D_LocalSpace_Data:
-                """
-                (final class)
-                """
-                vertices: Eigen.MatrixXd
-                map_data: Gedim.MapParallelogram.MapParallelogramData
-                b_lap: Eigen.Matrix3d
-                order: int
-                number_of_basis_functions: int
-                dofs: Eigen.MatrixXd
-                dofs_mesh_order: List[int]
-                dof0_ds_index: List[int]
-                dof1_ds_index: List[int]
-                dof2_ds_index: List[int]
-                internal_quadrature: Gedim.Quadrature.QuadratureData
-                boundary_quadrature: List[Gedim.Quadrature.QuadratureData]
-                quadrilateral_type: Polydim.FEM.PCC.QuadrilateralType
-                def __init__(
-                    self,
-                    vertices: Eigen.MatrixXd = Eigen.MatrixXd(),
-                    map_data: Gedim.MapParallelogram.MapParallelogramData = Gedim.MapParallelogram.MapParallelogramData(),
-                    b_lap: Eigen.Matrix3d = Eigen.Matrix3d(),
-                    dofs: Eigen.MatrixXd = Eigen.MatrixXd(),
-                    internal_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
-                    boundary_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData](),
-                    quadrilateral_type: FEM.PCC.QuadrilateralType = FEM.PCC.QuadrilateralType()
-                    ) -> None:
-                    """Auto-generated default constructor with named params"""
-                    pass
-
-            class FEM_PCC_2D_LocalSpace_Data:
-                """
-                (final class)
-                """
-                triangle_local_space_data: Polydim.FEM.PCC.FEM_Triangle_PCC_2D_LocalSpace_Data
-                quadrilateral_local_space_data: Polydim.FEM.PCC.FEM_Quadrilateral_PCC_2D_LocalSpace_Data
-                fem_type: Polydim.FEM.PCC.FEM_PCC_2D_Types
-
-                internal_quadrature: Gedim.Quadrature.QuadratureData
-                boundary_quadrature: List[Gedim.Quadrature.QuadratureData]
-                number_of_basis_functions: int
-                def __init__(
-                    self,
-                    triangle_local_space_data: FEM.PCC.FEM_Triangle_PCC_2D_LocalSpace_Data = FEM.PCC.FEM_Triangle_PCC_2D_LocalSpace_Data(),
-                    quadrilateral_local_space_data: FEM.PCC.FEM_Quadrilateral_PCC_2D_LocalSpace_Data = FEM.PCC.FEM_Quadrilateral_PCC_2D_LocalSpace_Data(),
-                    fem_type: FEM.PCC.FEM_PCC_2D_Types = FEM.PCC.FEM_PCC_2D_Types(),
-                    internal_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
-                    boundary_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData]()
-                    ) -> None:
-                    """Auto-generated default constructor with named params"""
-                    pass
-
-
-        # </submodule pcc>
-
-    # </submodule fem>
-
-# </submodule polydim>
-####################    </generated_from:FEM_PCC_2D_LocalSpace_Data.hpp>    ####################
-
-
-####################    <generated_from:FEM_PCC_2D_LocalSpace.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
-
-# #ifndef __FEM_PCC_2D_LocalSpace_HPP
-#
-
-
-
-# #endif
-#
-
-# <submodule polydim>
-class polydim:  # Proxy class that introduces typings for the *submodule* polydim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Polydim"""
-
-    # <submodule fem>
-    class fem:  # Proxy class that introduces typings for the *submodule* fem
-        pass  # (This corresponds to a C++ namespace. All method are static!)
-        """ namespace FEM"""
-
-        # <submodule pcc>
-        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
-            pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace PCC"""
-
-            class FEM_PCC_2D_LocalSpace:
-                """
-                (final class)
-                """
-                def create_local_space(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    polygon: FEM_PCC_2D_Polygon_Geometry
-                    ) -> FEM_PCC_2D_LocalSpace_Data:
-                    pass
-
-                @overload
-                def compute_basis_functions_values(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                @overload
-                def compute_basis_functions_laplacian_values(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                @overload
-                def compute_basis_functions_derivative_values(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data
-                    ) -> List[Eigen.MatrixXd]:
-                    pass
-
-                @overload
-                def compute_basis_functions_values(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data,
-                    points: Eigen.MatrixXd
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                @overload
-                def compute_basis_functions_laplacian_values(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data,
-                    points: Eigen.MatrixXd
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                @overload
-                def compute_basis_functions_derivative_values(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data,
-                    points: Eigen.MatrixXd
-                    ) -> List[Eigen.MatrixXd]:
-                    pass
-
-                @overload
-                def compute_basis_functions_values_on_edge(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                @overload
-                def compute_basis_functions_values_on_edge(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data,
-                    points_curvilinear_coordinates: Eigen.VectorXd
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                def edge_do_fs_coordinates(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data,
-                    edge_local_index: int
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                def internal_do_fs_coordinates(
-                    self,
-                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
-                    local_space: FEM_PCC_2D_LocalSpace_Data
-                    ) -> Eigen.MatrixXd:
-                    pass
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-        # </submodule pcc>
-
-    # </submodule fem>
-
-# </submodule polydim>
-####################    </generated_from:FEM_PCC_2D_LocalSpace.hpp>    ####################
-
-
-####################    <generated_from:FEM_PCC_2D_ReferenceElement.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
-
-# #ifndef __FEM_PCC_2D_ReferenceElement_HPP
-#
-
-
-
-# #endif
-#
-
-# <submodule polydim>
-class polydim:  # Proxy class that introduces typings for the *submodule* polydim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Polydim"""
-
-    # <submodule fem>
-    class fem:  # Proxy class that introduces typings for the *submodule* fem
-        pass  # (This corresponds to a C++ namespace. All method are static!)
-        """ namespace FEM"""
-
-        # <submodule pcc>
-        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
-            pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace PCC"""
-            class FEM_PCC_2D_ReferenceElement_Data:
-                """
-                (final class)
-                """
-                dimension: int
-                order: int
-                num_dofs0_d: int
-                num_dofs1_d: int
-                triangle_reference_element_data: Polydim.FEM.PCC.FEM_Triangle_PCC_2D_ReferenceElement_Data
-                quadrilateral_reference_element_data: Polydim.FEM.PCC.FEM_Quadrilateral_PCC_2D_ReferenceElement_Data
-
-                mesh_geometric_data_config: Gedim.MeshUtilities.MeshGeometricData2DConfig
-
-                def __init__(self) -> None:
-                    pass
-
-            class FEM_PCC_2D_ReferenceElement:
-                """
-                (final class)
-                """
-
-                def __init__(self) -> None:
-                    pass
-
-                def create(self, order: int) -> FEM_PCC_2D_ReferenceElement_Data:
-                    pass
-
-        # </submodule pcc>
-
-    # </submodule fem>
-
-# </submodule polydim>
-####################    </generated_from:FEM_PCC_2D_ReferenceElement.hpp>    ####################
-
-
 ####################    <generated_from:FEM_Quadrilateral_PCC_2D_LocalSpace.hpp>    ####################
 # _LICENSE_HEADER_
 #
@@ -15848,6 +15485,369 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 ####################    </generated_from:FEM_Triangle_PCC_2D_ReferenceElement.hpp>    ####################
 
 
+####################    <generated_from:FEM_PCC_2D_ReferenceElement.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_PCC_2D_ReferenceElement_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule pcc>
+        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace PCC"""
+            class FEM_PCC_2D_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                dimension: int
+                order: int
+                num_dofs0_d: int
+                num_dofs1_d: int
+                triangle_reference_element_data: Polydim.FEM.PCC.FEM_Triangle_PCC_2D_ReferenceElement_Data
+                quadrilateral_reference_element_data: Polydim.FEM.PCC.FEM_Quadrilateral_PCC_2D_ReferenceElement_Data
+
+                mesh_geometric_data_config: Gedim.MeshUtilities.MeshGeometricData2DConfig
+
+                def __init__(self) -> None:
+                    pass
+
+            class FEM_PCC_2D_ReferenceElement:
+                """
+                (final class)
+                """
+
+                def __init__(self) -> None:
+                    pass
+
+                def create(self, order: int) -> FEM_PCC_2D_ReferenceElement_Data:
+                    pass
+
+        # </submodule pcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_PCC_2D_ReferenceElement.hpp>    ####################
+
+
+####################    <generated_from:FEM_PCC_2D_LocalSpace_Data.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_PCC_2D_LocalSpace_Data_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule pcc>
+        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace PCC"""
+            class FEM_PCC_2D_Types(enum.IntEnum):
+                triangle = enum.auto()      # (= 0)
+                quadrilateral = enum.auto() # (= 1)
+
+            class QuadrilateralType(enum.IntEnum):
+                parallelogram = enum.auto() # (= 0)
+                generic = enum.auto()       # (= 1)
+
+            class FEM_PCC_2D_Polygon_Geometry:
+                """
+                (final class)
+                """
+                tolerance1_d: float
+                tolerance2_d: float
+
+                vertices: Eigen.MatrixXd
+                edges_direction: List[bool]
+                edges_tangent: Eigen.MatrixXd
+                edges_length: Eigen.VectorXd
+                def __init__(
+                    self,
+                    tolerance1_d: float = float(),
+                    tolerance2_d: float = float(),
+                    vertices: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    edges_direction: List[bool] = List[bool](),
+                    edges_tangent: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    edges_length: Eigen.VectorXd = Eigen.VectorXd()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_Triangle_PCC_2D_LocalSpace_Data:
+                """
+                (final class)
+                """
+                map_data: Gedim.MapTriangle.MapTriangleData
+                b_lap: Eigen.Matrix3d
+                order: int
+                number_of_basis_functions: int
+                num_boundary_basis_functions: int
+                num_internal_basis_functions: int
+                dofs: Eigen.MatrixXd
+                dofs_mesh_order: List[int]
+                dof0_ds_index: List[int]
+                dof1_ds_index: List[int]
+                dof2_ds_index: List[int]
+                internal_quadrature: Gedim.Quadrature.QuadratureData
+                boundary_quadrature: List[Gedim.Quadrature.QuadratureData]
+                def __init__(
+                    self,
+                    map_data: Gedim.MapTriangle.MapTriangleData = Gedim.MapTriangle.MapTriangleData(),
+                    b_lap: Eigen.Matrix3d = Eigen.Matrix3d(),
+                    dofs: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    internal_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    boundary_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_Quadrilateral_PCC_2D_LocalSpace_Data:
+                """
+                (final class)
+                """
+                vertices: Eigen.MatrixXd
+                map_data: Gedim.MapParallelogram.MapParallelogramData
+                b_lap: Eigen.Matrix3d
+                order: int
+                number_of_basis_functions: int
+                dofs: Eigen.MatrixXd
+                dofs_mesh_order: List[int]
+                dof0_ds_index: List[int]
+                dof1_ds_index: List[int]
+                dof2_ds_index: List[int]
+                internal_quadrature: Gedim.Quadrature.QuadratureData
+                boundary_quadrature: List[Gedim.Quadrature.QuadratureData]
+                quadrilateral_type: Polydim.FEM.PCC.QuadrilateralType
+                def __init__(
+                    self,
+                    vertices: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    map_data: Gedim.MapParallelogram.MapParallelogramData = Gedim.MapParallelogram.MapParallelogramData(),
+                    b_lap: Eigen.Matrix3d = Eigen.Matrix3d(),
+                    dofs: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    internal_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    boundary_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData](),
+                    quadrilateral_type: FEM.PCC.QuadrilateralType = FEM.PCC.QuadrilateralType()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_PCC_2D_LocalSpace_Data:
+                """
+                (final class)
+                """
+                triangle_local_space_data: Polydim.FEM.PCC.FEM_Triangle_PCC_2D_LocalSpace_Data
+                quadrilateral_local_space_data: Polydim.FEM.PCC.FEM_Quadrilateral_PCC_2D_LocalSpace_Data
+                fem_type: Polydim.FEM.PCC.FEM_PCC_2D_Types
+
+                internal_quadrature: Gedim.Quadrature.QuadratureData
+                boundary_quadrature: List[Gedim.Quadrature.QuadratureData]
+                number_of_basis_functions: int
+                def __init__(
+                    self,
+                    triangle_local_space_data: FEM.PCC.FEM_Triangle_PCC_2D_LocalSpace_Data = FEM.PCC.FEM_Triangle_PCC_2D_LocalSpace_Data(),
+                    quadrilateral_local_space_data: FEM.PCC.FEM_Quadrilateral_PCC_2D_LocalSpace_Data = FEM.PCC.FEM_Quadrilateral_PCC_2D_LocalSpace_Data(),
+                    fem_type: FEM.PCC.FEM_PCC_2D_Types = FEM.PCC.FEM_PCC_2D_Types(),
+                    internal_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    boundary_quadrature: List[Gedim.Quadrature.QuadratureData] = List[Gedim.Quadrature.QuadratureData]()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+
+        # </submodule pcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_PCC_2D_LocalSpace_Data.hpp>    ####################
+
+
+####################    <generated_from:FEM_PCC_2D_LocalSpace.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_PCC_2D_LocalSpace_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule pcc>
+        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace PCC"""
+
+            class FEM_PCC_2D_LocalSpace:
+                """
+                (final class)
+                """
+                def create_local_space(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    polygon: FEM_PCC_2D_Polygon_Geometry
+                    ) -> FEM_PCC_2D_LocalSpace_Data:
+                    pass
+
+                @overload
+                def compute_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_laplacian_values(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_derivative_values(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data
+                    ) -> List[Eigen.MatrixXd]:
+                    pass
+
+                @overload
+                def compute_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_laplacian_values(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_derivative_values(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> List[Eigen.MatrixXd]:
+                    pass
+
+                @overload
+                def compute_basis_functions_values_on_edge(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_values_on_edge(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data,
+                    points_curvilinear_coordinates: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def edge_do_fs_coordinates(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data,
+                    edge_local_index: int
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def internal_do_fs_coordinates(
+                    self,
+                    reference_element_data: FEM_PCC_2D_ReferenceElement_Data,
+                    local_space: FEM_PCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+        # </submodule pcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_PCC_2D_LocalSpace.hpp>    ####################
+
+
 ####################    <generated_from:FEM_Hexahedron_PCC_3D_LocalSpace.hpp>    ####################
 # _LICENSE_HEADER_
 #
@@ -16092,6 +16092,322 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
 # </submodule polydim>
 ####################    </generated_from:FEM_Hexahedron_PCC_3D_ReferenceElement.hpp>    ####################
+
+
+####################    <generated_from:FEM_Tetrahedron_PCC_3D_LocalSpace.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_Tetrahedron_PCC_3D_LocalSpace_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule pcc>
+        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace PCC"""
+
+            class FEM_Tetrahedron_PCC_3D_LocalSpace:
+                """
+                (final class)
+                """
+                def create_local_space(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    polyhedron: FEM_PCC_3D_Polyhedron_Geometry
+                    ) -> FEM_Tetrahedron_PCC_3D_LocalSpace_Data:
+                    pass
+
+                @overload
+                def compute_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_derivative_values(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data
+                    ) -> List[Eigen.MatrixXd]:
+                    pass
+
+                @overload
+                def compute_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_derivative_values(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
+                    ) -> List[Eigen.MatrixXd]:
+                    pass
+
+                def edge_do_fs_coordinates(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
+                    edge_local_index: int
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def face_do_fs_coordinates(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
+                    face_local_index: int
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_values_on_face(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
+                    face_index: int
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_basis_functions_values_on_face(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
+                    face_index: int,
+                    points2_d: Eigen.MatrixXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                def compute_basis_functions_values_on_edge(
+                    self,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
+                    points_curvilinear_coordinates: Eigen.VectorXd
+                    ) -> Eigen.MatrixXd:
+                    pass
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+        # </submodule pcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_Tetrahedron_PCC_3D_LocalSpace.hpp>    ####################
+
+
+####################    <generated_from:FEM_Tetrahedron_PCC_3D_ReferenceElement.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_Tetrahedron_PCC_3D_ReferenceElement_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule pcc>
+        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace PCC"""
+            class FEM_Tetrahedron_PCC_3D_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                dimension: int
+                order: int
+                num_dofs0_d: int
+                num_dofs1_d: int
+                num_dofs2_d: int
+                num_dofs3_d: int
+
+                edges_by_vertices: Dict[Tuple[int, int], Tuple[int, bool]]
+                faces_by_edge_vertex: Dict[Tuple[int, int], int]
+                faces_by_edges: Dict[Tuple[int, int], Tuple[List[int], bool]]
+
+                num_basis_functions: int
+                dof_positions: Eigen.MatrixXd
+                dof_types: List[List[int]]
+
+                reference_tetrahedron_quadrature: Gedim.Quadrature.QuadratureData
+
+                reference_basis_function_values: Eigen.MatrixXd
+                reference_basis_function_derivative_values: List[Eigen.MatrixXd]
+
+                edge_reference_element_data: Polydim.FEM.PCC.FEM_PCC_1D_ReferenceElement_Data
+                boundary_reference_element_data: Polydim.FEM.PCC.FEM_Triangle_PCC_2D_ReferenceElement_Data
+                def __init__(
+                    self,
+                    dof_positions: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    reference_tetrahedron_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
+                    reference_basis_function_values: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    reference_basis_function_derivative_values: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                    edge_reference_element_data: FEM.PCC.FEM_PCC_1D_ReferenceElement_Data = FEM.PCC.FEM_PCC_1D_ReferenceElement_Data(),
+                    boundary_reference_element_data: FEM.PCC.FEM_Triangle_PCC_2D_ReferenceElement_Data = FEM.PCC.FEM_Triangle_PCC_2D_ReferenceElement_Data()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_Tetrahedron_PCC_3D_ReferenceElement:
+                """
+                (final class)
+                """
+                def create(self, order: int) -> FEM_Tetrahedron_PCC_3D_ReferenceElement_Data:
+                    pass
+                def evaluate_lambda(self, points: Eigen.MatrixXd) -> Eigen.MatrixXd:
+                    """ ***************************************************************************"""
+                    pass
+                def evaluate_grad_lambda(self, points: Eigen.MatrixXd) -> List[Eigen.MatrixXd]:
+                    """ ***************************************************************************"""
+                    pass
+                def evaluate_basis_functions(
+                    self,
+                    points: Eigen.MatrixXd,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data
+                    ) -> Eigen.MatrixXd:
+                    """ ***************************************************************************"""
+                    pass
+                def evaluate_basis_function_derivatives(
+                    self,
+                    points: Eigen.MatrixXd,
+                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data
+                    ) -> List[Eigen.MatrixXd]:
+                    """ ***************************************************************************"""
+                    pass
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+        # </submodule pcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_Tetrahedron_PCC_3D_ReferenceElement.hpp>    ####################
+
+
+####################    <generated_from:FEM_PCC_3D_ReferenceElement.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __FEM_PCC_3D_ReferenceElement_HPP
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule fem>
+    class fem:  # Proxy class that introduces typings for the *submodule* fem
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace FEM"""
+
+        # <submodule pcc>
+        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace PCC"""
+            class FEM_PCC_3D_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                dimension: int
+                order: int
+
+                num_dofs0_d: int
+                num_dofs1_d: int
+
+                tetrahedron_reference_element_data: Polydim.FEM.PCC.FEM_Tetrahedron_PCC_3D_ReferenceElement_Data
+                hexahedron_reference_element_data: Polydim.FEM.PCC.FEM_Hexahedron_PCC_3D_ReferenceElement_Data
+                def __init__(
+                    self,
+                    tetrahedron_reference_element_data: FEM.PCC.FEM_Tetrahedron_PCC_3D_ReferenceElement_Data = FEM.PCC.FEM_Tetrahedron_PCC_3D_ReferenceElement_Data(),
+                    hexahedron_reference_element_data: FEM.PCC.FEM_Hexahedron_PCC_3D_ReferenceElement_Data = FEM.PCC.FEM_Hexahedron_PCC_3D_ReferenceElement_Data()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_PCC_3D_ReferenceElement:
+                """
+                (final class)
+                """
+                def __init__(self) -> None:
+                    pass
+
+
+                def create(self, order: int) -> FEM_PCC_3D_ReferenceElement_Data:
+                    pass
+
+        # </submodule pcc>
+
+    # </submodule fem>
+
+# </submodule polydim>
+####################    </generated_from:FEM_PCC_3D_ReferenceElement.hpp>    ####################
 
 
 ####################    <generated_from:FEM_PCC_3D_LocalSpace_Data.hpp>    ####################
@@ -16398,7 +16714,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 ####################    </generated_from:FEM_PCC_3D_LocalSpace.hpp>    ####################
 
 
-####################    <generated_from:FEM_PCC_3D_ReferenceElement.hpp>    ####################
+####################    <generated_from:FEM_Triangle_RT_MCC_2D_LocalSpace.hpp>    ####################
 # _LICENSE_HEADER_
 #
 # Copyright (C) 2019 - 2025.
@@ -16410,7 +16726,7 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 #
 # This file can be used citing references in CITATION.cff file.
 
-# #ifndef __FEM_PCC_3D_ReferenceElement_HPP
+# #ifndef __FEM_Triangle_RT_MCC_2D_LocalSpace_HPP
 #
 
 
@@ -16428,183 +16744,86 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
         pass  # (This corresponds to a C++ namespace. All method are static!)
         """ namespace FEM"""
 
-        # <submodule pcc>
-        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+        # <submodule mcc>
+        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
             pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace PCC"""
-            class FEM_PCC_3D_ReferenceElement_Data:
-                """
-                (final class)
-                """
-                dimension: int
-                order: int
+            """ namespace MCC"""
 
-                num_dofs0_d: int
-                num_dofs1_d: int
-
-                tetrahedron_reference_element_data: Polydim.FEM.PCC.FEM_Tetrahedron_PCC_3D_ReferenceElement_Data
-                hexahedron_reference_element_data: Polydim.FEM.PCC.FEM_Hexahedron_PCC_3D_ReferenceElement_Data
-                def __init__(
-                    self,
-                    tetrahedron_reference_element_data: FEM.PCC.FEM_Tetrahedron_PCC_3D_ReferenceElement_Data = FEM.PCC.FEM_Tetrahedron_PCC_3D_ReferenceElement_Data(),
-                    hexahedron_reference_element_data: FEM.PCC.FEM_Hexahedron_PCC_3D_ReferenceElement_Data = FEM.PCC.FEM_Hexahedron_PCC_3D_ReferenceElement_Data()
-                    ) -> None:
-                    """Auto-generated default constructor with named params"""
-                    pass
-
-            class FEM_PCC_3D_ReferenceElement:
-                """
-                (final class)
-                """
-                def __init__(self) -> None:
-                    pass
-
-
-                def create(self, order: int) -> FEM_PCC_3D_ReferenceElement_Data:
-                    pass
-
-        # </submodule pcc>
-
-    # </submodule fem>
-
-# </submodule polydim>
-####################    </generated_from:FEM_PCC_3D_ReferenceElement.hpp>    ####################
-
-
-####################    <generated_from:FEM_Tetrahedron_PCC_3D_LocalSpace.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
-
-# #ifndef __FEM_Tetrahedron_PCC_3D_LocalSpace_HPP
-#
-
-
-
-# #endif
-#
-
-# <submodule polydim>
-class polydim:  # Proxy class that introduces typings for the *submodule* polydim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Polydim"""
-
-    # <submodule fem>
-    class fem:  # Proxy class that introduces typings for the *submodule* fem
-        pass  # (This corresponds to a C++ namespace. All method are static!)
-        """ namespace FEM"""
-
-        # <submodule pcc>
-        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
-            pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace PCC"""
-
-            class FEM_Tetrahedron_PCC_3D_LocalSpace:
+            class FEM_Triangle_RT_MCC_2D_LocalSpace:
                 """
                 (final class)
                 """
                 def create_local_space(
                     self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    polyhedron: FEM_PCC_3D_Polyhedron_Geometry
-                    ) -> FEM_Tetrahedron_PCC_3D_LocalSpace_Data:
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    polygon: FEM_MCC_2D_Polygon_Geometry
+                    ) -> FEM_Triangle_RT_MCC_2D_LocalSpace_Data:
                     pass
 
                 @overload
-                def compute_basis_functions_values(
+                def compute_pressure_basis_functions_values(
                     self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
                     ) -> Eigen.MatrixXd:
+                    """ Basis functions"""
                     pass
 
                 @overload
-                def compute_basis_functions_derivative_values(
+                def compute_velocity_basis_functions_values(
                     self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
                     ) -> List[Eigen.MatrixXd]:
                     pass
 
                 @overload
-                def compute_basis_functions_values(
+                def compute_velocity_basis_functions_divergence_values(
                     self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
+                    ) -> Eigen.MatrixXd:
+                    pass
+
+                @overload
+                def compute_pressure_basis_functions_values(
+                    self,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
                     points: Eigen.MatrixXd
                     ) -> Eigen.MatrixXd:
                     pass
 
                 @overload
-                def compute_basis_functions_derivative_values(
+                def compute_velocity_basis_functions_values(
                     self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
                     points: Eigen.MatrixXd
                     ) -> List[Eigen.MatrixXd]:
                     pass
 
-                def edge_do_fs_coordinates(
-                    self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
-                    edge_local_index: int
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                def face_do_fs_coordinates(
-                    self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
-                    face_local_index: int
-                    ) -> Eigen.MatrixXd:
-                    pass
-
                 @overload
-                def compute_basis_functions_values_on_face(
+                def compute_velocity_basis_functions_divergence_values(
                     self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
-                    face_index: int
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                @overload
-                def compute_basis_functions_values_on_face(
-                    self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    local_space: FEM_Tetrahedron_PCC_3D_LocalSpace_Data,
-                    face_index: int,
-                    points2_d: Eigen.MatrixXd
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                def compute_basis_functions_values_on_edge(
-                    self,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data,
-                    points_curvilinear_coordinates: Eigen.VectorXd
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
+                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
+                    points: Eigen.MatrixXd
                     ) -> Eigen.MatrixXd:
                     pass
                 def __init__(self) -> None:
                     """Autogenerated default constructor"""
                     pass
 
-        # </submodule pcc>
+        # </submodule mcc>
 
     # </submodule fem>
 
 # </submodule polydim>
-####################    </generated_from:FEM_Tetrahedron_PCC_3D_LocalSpace.hpp>    ####################
+####################    </generated_from:FEM_Triangle_RT_MCC_2D_LocalSpace.hpp>    ####################
 
 
-####################    <generated_from:FEM_Tetrahedron_PCC_3D_ReferenceElement.hpp>    ####################
+####################    <generated_from:FEM_Triangle_RT_MCC_2D_ReferenceElement.hpp>    ####################
 # _LICENSE_HEADER_
 #
 # Copyright (C) 2019 - 2025.
@@ -16616,8 +16835,9 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 #
 # This file can be used citing references in CITATION.cff file.
 
-# #ifndef __FEM_Tetrahedron_PCC_3D_ReferenceElement_HPP
+# #ifndef __FEM_Triangle_RT_MCC_2D_ReferenceElement_HPP
 #
+
 
 
 
@@ -16634,84 +16854,146 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
         pass  # (This corresponds to a C++ namespace. All method are static!)
         """ namespace FEM"""
 
-        # <submodule pcc>
-        class pcc:  # Proxy class that introduces typings for the *submodule* pcc
+        # <submodule mcc>
+        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
             pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace PCC"""
-            class FEM_Tetrahedron_PCC_3D_ReferenceElement_Data:
+            """ namespace MCC"""
+
+            class FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                num_dofs0_d: int
+                num_dofs1_d: int
+                num_dofs2_d: int
+
+                num_basis_functions: int
+
+                reference_basis_function_values: Eigen.MatrixXd
+                def __init__(
+                    self,
+                    reference_basis_function_values: Eigen.MatrixXd = Eigen.MatrixXd()
+                    ) -> None:
+                    """Auto-generated default constructor with named params"""
+                    pass
+
+            class FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data:
+                """
+                (final class)
+                """
+                class BasisFunctions:
+                    monomials_coefficients: Eigen.MatrixXd
+
+                    reference_basis_function_values: List[Eigen.MatrixXd]
+                    reference_basis_function_divergence_values: Eigen.MatrixXd
+                    def __init__(
+                        self,
+                        monomials_coefficients: Eigen.MatrixXd = Eigen.MatrixXd(),
+                        reference_basis_function_values: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
+                        reference_basis_function_divergence_values: Eigen.MatrixXd = Eigen.MatrixXd()
+                        ) -> None:
+                        """Auto-generated default constructor with named params"""
+                        pass
+                num_dofs0_d: int
+                num_dofs1_d: int
+                num_dofs2_d: int
+
+                num_basis_functions: int
+
+                basis_functions: Dict[List[bool], Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data.BasisFunctions]
+                def __init__(self) -> None:
+                    """Auto-generated default constructor"""
+                    pass
+
+            class FEM_Triangle_RT_MCC_2D_ReferenceElement_Data:
                 """
                 (final class)
                 """
                 dimension: int
                 order: int
-                num_dofs0_d: int
-                num_dofs1_d: int
-                num_dofs2_d: int
-                num_dofs3_d: int
+                nk: int
+                nkm1: int
 
-                edges_by_vertices: Dict[Tuple[int, int], Tuple[int, bool]]
-                faces_by_edge_vertex: Dict[Tuple[int, int], int]
-                faces_by_edges: Dict[Tuple[int, int], Tuple[List[int], bool]]
+                quadrature: Polydim.VEM.Quadrature.VEM_QuadratureData_2D
+                boundary_quadrature: Dict[List[bool], Polydim.VEM.Quadrature.VEM_Quadrature_2D.Edges_QuadratureData]
 
-                num_basis_functions: int
-                dof_positions: Eigen.MatrixXd
-                dof_types: List[List[int]]
+                monomials_2_d_data: Polydim.Utilities.Monomials_Data
+                monomials_2_d_center: Eigen.Vector3d
+                monomials_2_d_scale: float
 
-                reference_tetrahedron_quadrature: Gedim.Quadrature.QuadratureData
+                monomials_1_d_data: Polydim.Utilities.Monomials_Data
+                monomials_1_d_center: Eigen.Vector3d
+                monomials_1_d_scale: float
 
-                reference_basis_function_values: Eigen.MatrixXd
-                reference_basis_function_derivative_values: List[Eigen.MatrixXd]
+                vander_boundary1_d: Eigen.MatrixXd
 
-                edge_reference_element_data: Polydim.FEM.PCC.FEM_PCC_1D_ReferenceElement_Data
-                boundary_reference_element_data: Polydim.FEM.PCC.FEM_Triangle_PCC_2D_ReferenceElement_Data
+                triangle_vertices: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0).finished()
+                edge_lengths: Eigen.Vector3d = (Eigen.Vector3d() << 1.0, sqrt(2.0), 1.0).finished()
+                edge_tangents: Eigen.Matrix3d = (Eigen.Matrix3d() << 1.0, -1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0).finished()
+                edge_normals: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0 / sqrt(2.0), -1.0, -1.0, 1.0 / sqrt(2.0), 0.0, 0.0, 0.0, 0.0).finished()
+
+                reference_element_data_velocity: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data
+                reference_element_data_pressure: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data
                 def __init__(
                     self,
-                    dof_positions: Eigen.MatrixXd = Eigen.MatrixXd(),
-                    reference_tetrahedron_quadrature: Gedim.Quadrature.QuadratureData = Gedim.Quadrature.QuadratureData(),
-                    reference_basis_function_values: Eigen.MatrixXd = Eigen.MatrixXd(),
-                    reference_basis_function_derivative_values: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
-                    edge_reference_element_data: FEM.PCC.FEM_PCC_1D_ReferenceElement_Data = FEM.PCC.FEM_PCC_1D_ReferenceElement_Data(),
-                    boundary_reference_element_data: FEM.PCC.FEM_Triangle_PCC_2D_ReferenceElement_Data = FEM.PCC.FEM_Triangle_PCC_2D_ReferenceElement_Data()
+                    quadrature: VEM.Quadrature.VEM_QuadratureData_2D = VEM.Quadrature.VEM_QuadratureData_2(),
+                    monomials_2_d_data: Utilities.Monomials_Data = Utilities.Monomials_Data(),
+                    monomials_2_d_center: Eigen.Vector3d = Eigen.Vector3d(),
+                    monomials_2_d_scale: float = float(),
+                    monomials_1_d_data: Utilities.Monomials_Data = Utilities.Monomials_Data(),
+                    monomials_1_d_center: Eigen.Vector3d = Eigen.Vector3d(),
+                    monomials_1_d_scale: float = float(),
+                    vander_boundary1_d: Eigen.MatrixXd = Eigen.MatrixXd(),
+                    triangle_vertices: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0).finished(),
+                    edge_lengths: Eigen.Vector3d = (Eigen.Vector3d() << 1.0, sqrt(2.0), 1.0).finished(),
+                    edge_tangents: Eigen.Matrix3d = (Eigen.Matrix3d() << 1.0, -1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0).finished(),
+                    edge_normals: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0 / sqrt(2.0), -1.0, -1.0, 1.0 / sqrt(2.0), 0.0, 0.0, 0.0, 0.0).finished(),
+                    reference_element_data_velocity: FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data = FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data(),
+                    reference_element_data_pressure: FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data = FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data()
                     ) -> None:
                     """Auto-generated default constructor with named params"""
                     pass
 
-            class FEM_Tetrahedron_PCC_3D_ReferenceElement:
+            class FEM_Triangle_RT_MCC_2D_ReferenceElement:
                 """
                 (final class)
                 """
-                def create(self, order: int) -> FEM_Tetrahedron_PCC_3D_ReferenceElement_Data:
+                def create(self, order: int) -> FEM_Triangle_RT_MCC_2D_ReferenceElement_Data:
                     pass
-                def evaluate_lambda(self, points: Eigen.MatrixXd) -> Eigen.MatrixXd:
-                    """ ***************************************************************************"""
-                    pass
-                def evaluate_grad_lambda(self, points: Eigen.MatrixXd) -> List[Eigen.MatrixXd]:
-                    """ ***************************************************************************"""
-                    pass
-                def evaluate_basis_functions(
+                def evaluate_velocity_basis_functions(
                     self,
                     points: Eigen.MatrixXd,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data
-                    ) -> Eigen.MatrixXd:
-                    """ ***************************************************************************"""
-                    pass
-                def evaluate_basis_function_derivatives(
-                    self,
-                    points: Eigen.MatrixXd,
-                    reference_element_data: FEM_Tetrahedron_PCC_3D_ReferenceElement_Data
+                    monomials_coefficients: Eigen.MatrixXd,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
                     ) -> List[Eigen.MatrixXd]:
                     """ ***************************************************************************"""
                     pass
+                def evaluate_pressure_basis_functions(
+                    self,
+                    points: Eigen.MatrixXd,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
+                    ) -> Eigen.MatrixXd:
+                    """ ***************************************************************************"""
+                    pass
+                def evaluate_velocity_basis_functions_divergence(
+                    self,
+                    points: Eigen.MatrixXd,
+                    monomials_coefficients: Eigen.MatrixXd,
+                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
+                    ) -> Eigen.MatrixXd:
+                    """ ***************************************************************************"""
+                    pass
+                # ***************************************************************************
                 def __init__(self) -> None:
                     """Autogenerated default constructor"""
                     pass
 
-        # </submodule pcc>
+        # </submodule mcc>
 
     # </submodule fem>
 
 # </submodule polydim>
-####################    </generated_from:FEM_Tetrahedron_PCC_3D_ReferenceElement.hpp>    ####################
+####################    </generated_from:FEM_Triangle_RT_MCC_2D_ReferenceElement.hpp>    ####################
 
 
 ####################    <generated_from:FEM_MCC_2D_LocalSpace_Data.hpp>    ####################
@@ -17086,288 +17368,6 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
 # </submodule polydim>
 ####################    </generated_from:FEM_MCC_2D_ReferenceElement.hpp>    ####################
-
-
-####################    <generated_from:FEM_Triangle_RT_MCC_2D_LocalSpace.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
-
-# #ifndef __FEM_Triangle_RT_MCC_2D_LocalSpace_HPP
-#
-
-
-
-# #endif
-#
-
-# <submodule polydim>
-class polydim:  # Proxy class that introduces typings for the *submodule* polydim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Polydim"""
-
-    # <submodule fem>
-    class fem:  # Proxy class that introduces typings for the *submodule* fem
-        pass  # (This corresponds to a C++ namespace. All method are static!)
-        """ namespace FEM"""
-
-        # <submodule mcc>
-        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
-            pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace MCC"""
-
-            class FEM_Triangle_RT_MCC_2D_LocalSpace:
-                """
-                (final class)
-                """
-                def create_local_space(
-                    self,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
-                    polygon: FEM_MCC_2D_Polygon_Geometry
-                    ) -> FEM_Triangle_RT_MCC_2D_LocalSpace_Data:
-                    pass
-
-                @overload
-                def compute_pressure_basis_functions_values(
-                    self,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
-                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
-                    ) -> Eigen.MatrixXd:
-                    """ Basis functions"""
-                    pass
-
-                @overload
-                def compute_velocity_basis_functions_values(
-                    self,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
-                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
-                    ) -> List[Eigen.MatrixXd]:
-                    pass
-
-                @overload
-                def compute_velocity_basis_functions_divergence_values(
-                    self,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
-                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                @overload
-                def compute_pressure_basis_functions_values(
-                    self,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
-                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
-                    points: Eigen.MatrixXd
-                    ) -> Eigen.MatrixXd:
-                    pass
-
-                @overload
-                def compute_velocity_basis_functions_values(
-                    self,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
-                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
-                    points: Eigen.MatrixXd
-                    ) -> List[Eigen.MatrixXd]:
-                    pass
-
-                @overload
-                def compute_velocity_basis_functions_divergence_values(
-                    self,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data,
-                    local_space: FEM_Triangle_RT_MCC_2D_LocalSpace_Data,
-                    points: Eigen.MatrixXd
-                    ) -> Eigen.MatrixXd:
-                    pass
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-        # </submodule mcc>
-
-    # </submodule fem>
-
-# </submodule polydim>
-####################    </generated_from:FEM_Triangle_RT_MCC_2D_LocalSpace.hpp>    ####################
-
-
-####################    <generated_from:FEM_Triangle_RT_MCC_2D_ReferenceElement.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
-
-# #ifndef __FEM_Triangle_RT_MCC_2D_ReferenceElement_HPP
-#
-
-
-
-
-# #endif
-#
-
-# <submodule polydim>
-class polydim:  # Proxy class that introduces typings for the *submodule* polydim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Polydim"""
-
-    # <submodule fem>
-    class fem:  # Proxy class that introduces typings for the *submodule* fem
-        pass  # (This corresponds to a C++ namespace. All method are static!)
-        """ namespace FEM"""
-
-        # <submodule mcc>
-        class mcc:  # Proxy class that introduces typings for the *submodule* mcc
-            pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace MCC"""
-
-            class FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data:
-                """
-                (final class)
-                """
-                num_dofs0_d: int
-                num_dofs1_d: int
-                num_dofs2_d: int
-
-                num_basis_functions: int
-
-                reference_basis_function_values: Eigen.MatrixXd
-                def __init__(
-                    self,
-                    reference_basis_function_values: Eigen.MatrixXd = Eigen.MatrixXd()
-                    ) -> None:
-                    """Auto-generated default constructor with named params"""
-                    pass
-
-            class FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data:
-                """
-                (final class)
-                """
-                class BasisFunctions:
-                    monomials_coefficients: Eigen.MatrixXd
-
-                    reference_basis_function_values: List[Eigen.MatrixXd]
-                    reference_basis_function_divergence_values: Eigen.MatrixXd
-                    def __init__(
-                        self,
-                        monomials_coefficients: Eigen.MatrixXd = Eigen.MatrixXd(),
-                        reference_basis_function_values: List[Eigen.MatrixXd] = List[Eigen.MatrixXd](),
-                        reference_basis_function_divergence_values: Eigen.MatrixXd = Eigen.MatrixXd()
-                        ) -> None:
-                        """Auto-generated default constructor with named params"""
-                        pass
-                num_dofs0_d: int
-                num_dofs1_d: int
-                num_dofs2_d: int
-
-                num_basis_functions: int
-
-                basis_functions: Dict[List[bool], Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data.BasisFunctions]
-                def __init__(self) -> None:
-                    """Auto-generated default constructor"""
-                    pass
-
-            class FEM_Triangle_RT_MCC_2D_ReferenceElement_Data:
-                """
-                (final class)
-                """
-                dimension: int
-                order: int
-                nk: int
-                nkm1: int
-
-                quadrature: Polydim.VEM.Quadrature.VEM_QuadratureData_2D
-                boundary_quadrature: Dict[List[bool], Polydim.VEM.Quadrature.VEM_Quadrature_2D.Edges_QuadratureData]
-
-                monomials_2_d_data: Polydim.Utilities.Monomials_Data
-                monomials_2_d_center: Eigen.Vector3d
-                monomials_2_d_scale: float
-
-                monomials_1_d_data: Polydim.Utilities.Monomials_Data
-                monomials_1_d_center: Eigen.Vector3d
-                monomials_1_d_scale: float
-
-                vander_boundary1_d: Eigen.MatrixXd
-
-                triangle_vertices: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0).finished()
-                edge_lengths: Eigen.Vector3d = (Eigen.Vector3d() << 1.0, sqrt(2.0), 1.0).finished()
-                edge_tangents: Eigen.Matrix3d = (Eigen.Matrix3d() << 1.0, -1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0).finished()
-                edge_normals: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0 / sqrt(2.0), -1.0, -1.0, 1.0 / sqrt(2.0), 0.0, 0.0, 0.0, 0.0).finished()
-
-                reference_element_data_velocity: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data
-                reference_element_data_pressure: Polydim.FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data
-                def __init__(
-                    self,
-                    quadrature: VEM.Quadrature.VEM_QuadratureData_2D = VEM.Quadrature.VEM_QuadratureData_2(),
-                    monomials_2_d_data: Utilities.Monomials_Data = Utilities.Monomials_Data(),
-                    monomials_2_d_center: Eigen.Vector3d = Eigen.Vector3d(),
-                    monomials_2_d_scale: float = float(),
-                    monomials_1_d_data: Utilities.Monomials_Data = Utilities.Monomials_Data(),
-                    monomials_1_d_center: Eigen.Vector3d = Eigen.Vector3d(),
-                    monomials_1_d_scale: float = float(),
-                    vander_boundary1_d: Eigen.MatrixXd = Eigen.MatrixXd(),
-                    triangle_vertices: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0).finished(),
-                    edge_lengths: Eigen.Vector3d = (Eigen.Vector3d() << 1.0, sqrt(2.0), 1.0).finished(),
-                    edge_tangents: Eigen.Matrix3d = (Eigen.Matrix3d() << 1.0, -1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0).finished(),
-                    edge_normals: Eigen.Matrix3d = (Eigen.Matrix3d() << 0.0, 1.0 / sqrt(2.0), -1.0, -1.0, 1.0 / sqrt(2.0), 0.0, 0.0, 0.0, 0.0).finished(),
-                    reference_element_data_velocity: FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data = FEM.MCC.FEM_Triangle_RT_MCC_2D_Velocity_ReferenceElement_Data(),
-                    reference_element_data_pressure: FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data = FEM.MCC.FEM_Triangle_RT_MCC_2D_Pressure_ReferenceElement_Data()
-                    ) -> None:
-                    """Auto-generated default constructor with named params"""
-                    pass
-
-            class FEM_Triangle_RT_MCC_2D_ReferenceElement:
-                """
-                (final class)
-                """
-                def create(self, order: int) -> FEM_Triangle_RT_MCC_2D_ReferenceElement_Data:
-                    pass
-                def evaluate_velocity_basis_functions(
-                    self,
-                    points: Eigen.MatrixXd,
-                    monomials_coefficients: Eigen.MatrixXd,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
-                    ) -> List[Eigen.MatrixXd]:
-                    """ ***************************************************************************"""
-                    pass
-                def evaluate_pressure_basis_functions(
-                    self,
-                    points: Eigen.MatrixXd,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
-                    ) -> Eigen.MatrixXd:
-                    """ ***************************************************************************"""
-                    pass
-                def evaluate_velocity_basis_functions_divergence(
-                    self,
-                    points: Eigen.MatrixXd,
-                    monomials_coefficients: Eigen.MatrixXd,
-                    reference_element_data: FEM_Triangle_RT_MCC_2D_ReferenceElement_Data
-                    ) -> Eigen.MatrixXd:
-                    """ ***************************************************************************"""
-                    pass
-                # ***************************************************************************
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-        # </submodule mcc>
-
-    # </submodule fem>
-
-# </submodule polydim>
-####################    </generated_from:FEM_Triangle_RT_MCC_2D_ReferenceElement.hpp>    ####################
 
 
 ####################    <generated_from:VEM_DF_PCC_2D_Creator.hpp>    ####################
@@ -24397,804 +24397,6 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 ####################    </generated_from:DOFsManager.hpp>    ####################
 
 
-####################    <generated_from:LocalSpace_DF_PCC_2D.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
-
-# #ifndef __LocalSpace_DF_PCC_2D_H
-#
-
-
-
-# #endif
-#
-
-# <submodule polydim>
-class polydim:  # Proxy class that introduces typings for the *submodule* polydim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Polydim"""
-
-    # <submodule pde_tools>
-    class pde_tools:  # Proxy class that introduces typings for the *submodule* pde_tools
-        pass  # (This corresponds to a C++ namespace. All method are static!)
-        """ namespace PDETools"""
-
-        #/ @brief Unified interface to the 2D divergence-free primal conforming (DF_PCC) local spaces.
-        #/
-        #/ This namespace provides a single, method-agnostic API for building and evaluating
-        #/ the coupled velocity/pressure local spaces of a 2D incompressible (divergence-free)
-        #/ vector problem — e.g. Stokes, Navier–Stokes or Brinkman flow. It hides the
-        #/ differences between a Taylor–Hood finite element pair and the divergence-free
-        #/ virtual element method (VEM DF), in its full and reduced variants. The active
-        #/ backend is selected through MethodTypes; the free functions dispatch accordingly,
-        #/ so assemblers can be written once and reused across methods.
-
-        # <submodule local_space_df_pcc_2_d>
-        class local_space_df_pcc_2_d:  # Proxy class that introduces typings for the *submodule* local_space_df_pcc_2_d
-            pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace LocalSpace_DF_PCC_2D"""
-            class MethodTypes(enum.IntEnum):
-                """/ @brief Discretization method for the 2D DF_PCC velocity/pressure pair."""
-                taylor_hood = enum.auto()        # (= 0)  #/< Taylor–Hood finite element velocity/pressure pair.
-                vem_df_pcc_full = enum.auto()    # (= 1)  #/< Divergence-free VEM, full velocity space. \cite DaVeigaLovadina2017
-                vem_df_pcc_reduced = enum.auto() # (= 2)  #/< Divergence-free VEM, reduced velocity space. \cite DaVeigaLovadina2017
-
-            class ReferenceElement_Data:
-                """/ @brief Method-specific reference-element data for the 2D DF_PCC local space.
-                /
-                / Holds the selected method, polynomial order and spatial dimension together with the
-                / velocity and pressure reference-element / local-space handles of the active backend.
-                / Only the members belonging to @ref Method_Type are populated.
-                (final class)
-                """
-                method_type: Polydim.PDETools.LocalSpace_DF_PCC_2D.MethodTypes
-                order: int
-                dimension: int = 2
-
-                vem_type: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_LocalSpace_Types
-                vem_velocity_reference_element: Polydim.VEM.DF_PCC.I_VEM_DF_PCC_2D_Velocity_ReferenceElement
-                vem_velocity_reference_element_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Velocity_ReferenceElement_Data
-                vem_pressure_reference_element: Polydim.VEM.DF_PCC.I_VEM_DF_PCC_2D_Pressure_ReferenceElement
-                vem_pressure_reference_element_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Pressure_ReferenceElement_Data
-                vem_velocity_local_space: Polydim.VEM.DF_PCC.I_VEM_DF_PCC_2D_Velocity_LocalSpace
-                vem_pressure_local_space: Polydim.VEM.DF_PCC.I_VEM_DF_PCC_2D_Pressure_LocalSpace
-
-                fem_reference_element: Polydim.FEM.PCC.FEM_PCC_2D_ReferenceElement
-                fem_reference_element_data: Polydim.FEM.PCC.FEM_PCC_2D_ReferenceElement_Data
-                fem_local_space: Polydim.FEM.PCC.FEM_PCC_2D_LocalSpace
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-            class LocalSpace_Data:
-                """/ @brief Per-cell local-space data for the 2D DF_PCC local space.
-                /
-                / Stores the polygon geometry and the computed velocity/pressure local-space data for
-                / the active backend; only the members of the selected method are populated.
-                (final class)
-                """
-                vem_geometry: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Polygon_Geometry
-                vem_velocity_local_space_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Velocity_LocalSpace_Data
-                vem_pressure_local_space_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Pressure_LocalSpace_Data
-
-                fem_geometry: Polydim.FEM.PCC.FEM_PCC_2D_Polygon_Geometry
-                fem_local_space_data: Polydim.FEM.PCC.FEM_PCC_2D_LocalSpace_Data
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-            class Performance_Data:
-                """/ @brief Per-cell performance metrics for the 2D DF_PCC local space.
-                (final class)
-                """
-                class Cell2D_Performance:
-                    """
-                    (final class)
-                    """
-                    num_boundary_quadrature_points: int = 0
-                    num_internal_quadrature_points: int = 0
-                    vem_analysis_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_PerformanceAnalysis_Data
-                    def __init__(self) -> None:
-                        """Autogenerated default constructor"""
-                        pass
-
-                performance_data: Polydim.PDETools.LocalSpace_DF_PCC_2D.Performance_Data.Cell2D_Performance
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-            @staticmethod
-            def create_reference_element(
-                method_type: MethodTypes,
-                method_order: int
-                ) -> ReferenceElement_Data:
-                """/ @brief Create the velocity/pressure reference elements for the chosen method and order.
-                /
-                / Factory that instantiates the backend-specific reference elements and populates the
-                / corresponding members of the returned @ref ReferenceElement_Data.
-                /
-                / @param method_type  Discretization method to use.
-                / @param method_order Polynomial order of the velocity space.
-                / @return The initialized reference-element data.
-                """
-                pass
-
-            @staticmethod
-            def set_mesh_do_fs_info(
-                reference_element_data: ReferenceElement_Data,
-                mesh: Gedim.MeshMatricesDAO,
-                boundary_info: List[DOFs.DOFsManager.MeshDOFsInfo.BoundaryMap]
-                ) -> List[DOFs.DOFsManager.MeshDOFsInfo]:
-                """/ @brief Build the DOF layout over the mesh for the velocity and pressure fields.
-                /
-                / Determines how the DOFs of the coupled spaces are distributed over mesh entities and
-                / marks boundary DOFs from @p boundary_info. The returned vector holds one
-                / MeshDOFsInfo per field (velocity and pressure).
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param mesh                   Mesh data access object.
-                / @param boundary_info          Per-field boundary maps (index 0: velocity, index 1: pressure).
-                / @return One mesh DOFs layout per field.
-                """
-                pass
-
-            @staticmethod
-            def create_local_space(
-                geometric_tolerance_1_d: float,
-                geometric_tolerance_2_d: float,
-                mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
-                cell2_d_index: int,
-                reference_element_data: ReferenceElement_Data
-                ) -> LocalSpace_Data:
-                """/ @brief Build the coupled velocity/pressure local space on a given cell.
-                /
-                / Computes the backend-specific velocity and pressure local-space data on cell
-                / @p cell2D_index from the precomputed mesh geometric data.
-                /
-                / @param geometric_tolerance_1D Geometric tolerance for 1D (edge) operations.
-                / @param geometric_tolerance_2D Geometric tolerance for 2D (polygon) operations.
-                / @param mesh_geometric_data    Precomputed geometric data of the mesh.
-                / @param cell2D_index           Index of the 2D cell to process.
-                / @param reference_element_data Reference-element data describing the method.
-                / @return The computed local-space data for the cell.
-                """
-                pass
-
-            @staticmethod
-            @overload
-            def velocity_basis_functions_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi0k
-                ) -> List[Eigen.MatrixXd]:
-                """/ @brief Evaluate the (vector) velocity basis functions at the internal quadrature points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
-                / @return One (quadrature points \f$\times\f$ velocity DOFs) matrix per velocity component.
-                """
-                pass
-
-            @staticmethod
-            @overload
-            def velocity_basis_functions_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                points: Eigen.MatrixXd,
-                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi0k
-                ) -> List[Eigen.MatrixXd]:
-                """/ @brief Evaluate the (vector) velocity basis functions at arbitrary points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param points                 Evaluation points (one per column).
-                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
-                / @return One (points \f$\times\f$ velocity DOFs) matrix per velocity component.
-                """
-                pass
-
-            @staticmethod
-            @overload
-            def pressure_basis_functions_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> Eigen.MatrixXd:
-                """/ @brief Evaluate the (scalar) pressure basis functions at the internal quadrature points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return A (quadrature points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
-                """
-                pass
-
-            @staticmethod
-            @overload
-            def pressure_basis_functions_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                points: Eigen.MatrixXd
-                ) -> Eigen.MatrixXd:
-                """/ @brief Evaluate the (scalar) pressure basis functions at arbitrary points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param points                 Evaluation points (one per column).
-                / @return A (points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
-                """
-                pass
-
-            @staticmethod
-            @overload
-            def velocity_basis_functions_derivative_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
-                ) -> List[Eigen.MatrixXd]:
-                """/ @brief Evaluate the velocity basis-function derivatives at the internal quadrature points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to the energy projection
-                / \f$\Pi^\nabla\f$.
-                / @return The velocity gradient components (one matrix per derivative/component pair).
-                """
-                pass
-
-            @staticmethod
-            @overload
-            def velocity_basis_functions_derivative_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                points: Eigen.MatrixXd,
-                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
-                ) -> List[Eigen.MatrixXd]:
-                """/ @brief Evaluate the velocity basis-function derivatives at arbitrary points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param points                 Evaluation points (one per column).
-                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to the energy projection
-                / \f$\Pi^\nabla\f$.
-                / @return The velocity gradient components (one matrix per derivative/component pair).
-                """
-                pass
-
-            @staticmethod
-            def velocity_basis_functions_divergence_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> Eigen.MatrixXd:
-                """/ @brief Evaluate the velocity divergence at the internal quadrature points.
-                /
-                / Returns \f$\nabla \cdot \boldsymbol{u}\f$ for each velocity basis function; for the
-                / divergence-free VEM this quantity is exactly represented.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return A (quadrature points \f$\times\f$ velocity DOFs) matrix of divergence values.
-                """
-                pass
-
-            @staticmethod
-            def internal_quadrature(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> Gedim.Quadrature.QuadratureData:
-                """/ @brief Internal quadrature rule of the cell.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return The internal quadrature points and weights used for volume integration.
-                """
-                pass
-
-            @staticmethod
-            def velocity_basis_functions_values_on_edge(
-                edge_local_index: int,
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                points_curvilinear_coordinates: Eigen.MatrixXd
-                ) -> Eigen.MatrixXd:
-                """/ @brief Evaluate the velocity basis functions on a given edge.
-                /
-                / @param edge_local_index             Local index of the edge within the cell.
-                / @param reference_element_data       Reference-element data describing the method.
-                / @param local_space_data             Local-space data for the cell.
-                / @param pointsCurvilinearCoordinates Evaluation points on the edge, in curvilinear coordinates.
-                / @return A matrix of velocity edge basis-function values at the requested points.
-                """
-                pass
-
-            @staticmethod
-            def velocity_stabilization_matrix(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
-                ) -> Eigen.MatrixXd:
-                """/ @brief Compute the (VEM) velocity stabilization matrix of the local space.
-                /
-                / Returns the stabilization term complementing the consistency part of the VEM
-                / velocity bilinear form; empty/zero for the Taylor–Hood FEM pair.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param projectionType         Projection used to define the stabilization; defaults to the energy projection
-                / \f$\Pi^\nabla\f$.
-                / @return The local velocity stabilization matrix.
-                """
-                pass
-
-            @staticmethod
-            def velocity_edge_dofs_coordinates(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                edge_local_index: int
-                ) -> Eigen.MatrixXd:
-                """/ @brief Coordinates of the velocity DOFs associated with a given edge.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param edge_local_index       Local index of the edge within the cell.
-                / @return The physical coordinates of the edge velocity DOFs (one per column).
-                """
-                pass
-
-            @staticmethod
-            def velocity_size(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> int:
-                """/ @brief Number of local velocity degrees of freedom of the cell.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return The velocity local-space dimension (number of local velocity DOFs).
-                """
-                pass
-
-            @staticmethod
-            def compute_performance(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> Performance_Data:
-                """/ @brief Compute the per-cell performance metrics of the local space.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return The collected @ref Performance_Data (quadrature counts and VEM analysis).
-                """
-                pass
-
-            @staticmethod
-            def export_velocity_dofs(
-                geometry_utilities: Gedim.GeometryUtilities,
-                mesh: Gedim.MeshMatricesDAO,
-                mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
-                mesh_dofs_info: List[DOFs.DOFsManager.MeshDOFsInfo],
-                dofs_data: List[DOFs.DOFsManager.DOFsData],
-                count_dofs: Assembler_Utilities.count_dofs_data,
-                right_hand_side: Gedim.IArray,
-                solution: Gedim.IArray,
-                solution_strongs: Gedim.IArray,
-                file_path: str
-                ) -> None:
-                """/ @brief Export the velocity DOFs and solution fields to file for visualization.
-                /
-                / Writes the right-hand side, the computed solution and the strongly-imposed
-                / (Dirichlet) solution over the velocity DOFs to @p file_path, for post-processing.
-                / The DOF layout and counts are provided per field.
-                /
-                / @param geometry_utilities  GeDiM geometry helper.
-                / @param mesh                Mesh data access object.
-                / @param mesh_geometric_data Precomputed geometric data of the mesh.
-                / @param mesh_dofs_info      Per-field mesh DOFs layout information.
-                / @param dofs_data           Per-field DOF numbering/data.
-                / @param count_dofs          Aggregated DOF counts across fields.
-                / @param right_hand_side     Right-hand-side vector.
-                / @param solution            Computed solution over the free DOFs.
-                / @param solution_strongs    Values of the strongly-imposed (Dirichlet) DOFs.
-                / @param file_path           Output file path.
-                """
-                pass
-
-
-        # </submodule local_space_df_pcc_2_d>
-
-    # </submodule pde_tools>
-
-# </submodule polydim>
-####################    </generated_from:LocalSpace_DF_PCC_2D.hpp>    ####################
-
-
-####################    <generated_from:LocalSpace_MCC_2D.hpp>    ####################
-# _LICENSE_HEADER_
-#
-# Copyright (C) 2019 - 2025.
-# Terms register on the GPL-3.0 license.
-#
-# This file can be redistributed and/or modified under the license terms.
-#
-# See top level LICENSE file for more details.
-#
-# This file can be used citing references in CITATION.cff file.
-
-# #ifndef __LocalSpace_MCC_2D_H
-#
-
-
-
-# #endif
-#
-
-# <submodule polydim>
-class polydim:  # Proxy class that introduces typings for the *submodule* polydim
-    pass  # (This corresponds to a C++ namespace. All method are static!)
-    """ namespace Polydim"""
-
-    # <submodule pde_tools>
-    class pde_tools:  # Proxy class that introduces typings for the *submodule* pde_tools
-        pass  # (This corresponds to a C++ namespace. All method are static!)
-        """ namespace PDETools"""
-
-        #/ @brief Unified interface to the 2D mixed conforming (MCC) local spaces.
-        #/
-        #/ This namespace provides a single, method-agnostic API for building and evaluating
-        #/ the coupled velocity(flux)/pressure local spaces of a 2D mixed formulation (e.g. of
-        #/ an elliptic/Darcy problem). It hides the differences between the mixed virtual
-        #/ element method (VEM MCC), in its several orthogonalized/partial variants, and the
-        #/ Raviart–Thomas finite element (FEM RT). The active backend is selected through
-        #/ MethodTypes; the free functions dispatch accordingly, so assemblers can be written
-        #/ once and reused across methods.
-
-        # <submodule local_space_mcc_2_d>
-        class local_space_mcc_2_d:  # Proxy class that introduces typings for the *submodule* local_space_mcc_2_d
-            pass  # (This corresponds to a C++ namespace. All method are static!)
-            """ namespace LocalSpace_MCC_2D"""
-            class MethodTypes(enum.IntEnum):
-                """/ @brief Discretization method for the 2D MCC velocity/pressure pair."""
-                vem_mcc = enum.auto()                  # (= 1)  #/< Mixed VEM (standard basis). \cite secondMixed
-                vem_mcc_partial = enum.auto()          # (= 2)  #/< Mixed VEM with a partially computed velocity space.
-                vem_mcc_ortho = enum.auto()            # (= 3)  #/< Mixed VEM with an orthonormalized internal basis.
-                vem_mcc_edge_ortho = enum.auto()       # (= 4)  #/< Mixed VEM with an orthonormalized edge basis. \cite Teora2023
-                vem_mcc_ortho_edge_ortho = enum.auto() # (= 5)  #/< Mixed VEM with both internal and edge orthonormalization. \cite Teora2023
-                fem_rt_mcc = enum.auto()               # (= 6)  #/< Raviart–Thomas finite element.
-
-            class ReferenceElement_Data:
-                """/ @brief Method-specific reference-element data for the 2D MCC local space.
-                /
-                / Holds the selected method and polynomial order together with the velocity and
-                / pressure reference-element / local-space handles of the active backend. Only the
-                / members belonging to @ref Method_Type are populated.
-                (final class)
-                """
-                method_type: Polydim.PDETools.LocalSpace_MCC_2D.MethodTypes
-                order: int
-
-                vem_reference_element_velocity: Polydim.VEM.MCC.I_VEM_MCC_2D_Velocity_ReferenceElement
-                vem_reference_element_pressure: Polydim.VEM.MCC.I_VEM_MCC_2D_Pressure_ReferenceElement
-                vem_reference_element_data_velocity: Polydim.VEM.MCC.VEM_MCC_2D_Velocity_ReferenceElement_Data
-                vem_reference_element_data_pressure: Polydim.VEM.MCC.VEM_MCC_2D_Pressure_ReferenceElement_Data
-                vem_type: Polydim.VEM.MCC.VEM_MCC_2D_LocalSpace_Types
-                vem_local_space_velocity: VEM.MCC.I_VEM_MCC_2D_Velocity_LocalSpace
-                vem_local_space_pressure: VEM.MCC.I_VEM_MCC_2D_Pressure_LocalSpace
-
-                fem_type: Polydim.FEM.MCC.FEM_MCC_Types
-                fem_local_space: Polydim.FEM.MCC.FEM_MCC_2D_LocalSpace
-                fem_reference_element: Polydim.FEM.MCC.FEM_MCC_2D_ReferenceElement
-                fem_reference_element_data: Polydim.FEM.MCC.FEM_MCC_2D_ReferenceElement_Data
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-            class LocalSpace_Data:
-                """/ @brief Per-cell local-space data for the 2D MCC local space.
-                /
-                / Stores the polygon geometry and the computed velocity/pressure local-space data for
-                / the active backend; only the members of the selected method are populated.
-                (final class)
-                """
-                vem_geometry: Polydim.VEM.MCC.VEM_MCC_2D_Polygon_Geometry
-                vem_local_space_data_velocity: Polydim.VEM.MCC.VEM_MCC_2D_Velocity_LocalSpace_Data
-                vem_local_space_data_pressure: Polydim.VEM.MCC.VEM_MCC_2D_Pressure_LocalSpace_Data
-
-                fem_geometry: Polydim.FEM.MCC.FEM_MCC_2D_Polygon_Geometry
-                fem_local_space_data: Polydim.FEM.MCC.FEM_MCC_2D_LocalSpace_Data
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-            class Performance_Data:
-                """/ @brief Per-cell performance metrics for the 2D MCC local space.
-                (final class)
-                """
-                class Cell2D_Performance:
-                    """
-                    (final class)
-                    """
-                    num_boundary_quadrature_points: int = 0
-                    num_internal_quadrature_points: int = 0
-                    vem_analysis: Polydim.VEM.MCC.VEM_MCC_PerformanceAnalysis_Data
-                    def __init__(self) -> None:
-                        """Autogenerated default constructor"""
-                        pass
-
-                performance_data: Polydim.PDETools.LocalSpace_MCC_2D.Performance_Data.Cell2D_Performance
-                def __init__(self) -> None:
-                    """Autogenerated default constructor"""
-                    pass
-
-            @staticmethod
-            def create_reference_element(
-                method_type: MethodTypes,
-                method_order: int
-                ) -> ReferenceElement_Data:
-                """/ @brief Create the velocity/pressure reference elements for the chosen method and order.
-                /
-                / Factory that instantiates the backend-specific reference elements and populates the
-                / corresponding members of the returned @ref ReferenceElement_Data.
-                /
-                / @param method_type  Discretization method to use.
-                / @param method_order Polynomial order of the space.
-                / @return The initialized reference-element data.
-                """
-                pass
-
-            @staticmethod
-            def reference_element_num_do_fs(
-                reference_element_data: ReferenceElement_Data
-                ) -> List[List[int]]:
-                """/ @brief Number of reference-element DOFs per mesh-entity type, for velocity and pressure.
-                /
-                / Returns, for each of the two fields, the number of degrees of freedom associated
-                / with the four mesh-entity categories (e.g. vertices, edges, internal, and the
-                / remaining entity slot), as used to lay out the DOFs.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @return A 2\f$\times\f$4 array of DOF counts (row 0: velocity, row 1: pressure).
-                """
-                pass
-
-            @staticmethod
-            def create_local_space(
-                geometric_tolerance_1_d: float,
-                geometric_tolerance_2_d: float,
-                mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
-                cell2_d_index: int,
-                reference_element_data: ReferenceElement_Data
-                ) -> LocalSpace_Data:
-                """/ @brief Build the coupled velocity/pressure local space on a given cell.
-                /
-                / Computes the backend-specific velocity and pressure local-space data on cell
-                / @p cell2D_index from the precomputed mesh geometric data.
-                /
-                / @param geometric_tolerance_1D Geometric tolerance for 1D (edge) operations.
-                / @param geometric_tolerance_2D Geometric tolerance for 2D (polygon) operations.
-                / @param mesh_geometric_data    Precomputed geometric data of the mesh.
-                / @param cell2D_index           Index of the 2D cell to process.
-                / @param reference_element_data Reference-element data describing the method.
-                / @return The computed local-space data for the cell.
-                """
-                pass
-
-            @staticmethod
-            @overload
-            def velocity_basis_functions_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
-                ) -> List[Eigen.MatrixXd]:
-                """/ @brief Evaluate the (vector) velocity/flux basis functions at the internal quadrature points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
-                / @return One (quadrature points \f$\times\f$ velocity DOFs) matrix per velocity component.
-                """
-                pass
-
-            @staticmethod
-            def pressure_basis_functions_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> Eigen.MatrixXd:
-                """/ @brief Evaluate the (scalar) pressure basis functions at the internal quadrature points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return A (quadrature points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
-                """
-                pass
-
-            @staticmethod
-            def velocity_basis_functions_divergence_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> Eigen.MatrixXd:
-                """/ @brief Evaluate the velocity/flux divergence at the internal quadrature points.
-                /
-                / Returns \f$\nabla \cdot \boldsymbol{u}\f$ for each velocity basis function, as used
-                / in the divergence (velocity–pressure coupling) term of the mixed formulation.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return A (quadrature points \f$\times\f$ velocity DOFs) matrix of divergence values.
-                """
-                pass
-
-            @staticmethod
-            def stabilization_matrix(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
-                ) -> Eigen.MatrixXd:
-                """/ @brief Compute the (VEM) stabilization matrix of the velocity local space.
-                /
-                / Returns the stabilization term complementing the consistency part of the mixed VEM
-                / velocity bilinear form; empty/zero for the Raviart–Thomas FEM.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param projectionType         Projection used to define the stabilization; defaults to \f$\Pi^0_k\f$.
-                / @return The local stabilization matrix.
-                """
-                pass
-
-            @staticmethod
-            def edge_dofs_coordinates(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                edge_local_index: int
-                ) -> Gedim.Quadrature.QuadratureData:
-                """/ @brief Coordinates (and weights) of the velocity DOFs on a given edge.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param edge_local_index       Local index of the edge within the cell.
-                / @return Quadrature-like data holding the edge-DOF coordinates and weights.
-                """
-                pass
-
-            @staticmethod
-            def edge_dofs(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                edge_local_index: int,
-                edge_dofs_coordinates: Gedim.Quadrature.QuadratureData,
-                strong_values: Eigen.VectorXd
-                ) -> Eigen.VectorXd:
-                """/ @brief Compute the edge velocity DOFs from strongly-imposed boundary values.
-                /
-                / Evaluates the degrees of freedom associated with an edge (the normal-flux moments)
-                / from the boundary data sampled at the edge-DOF coordinates, e.g. to strongly impose
-                / Neumann/essential conditions of the mixed problem.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param edge_local_index       Local index of the edge within the cell.
-                / @param edge_dofs_coordinates  Edge-DOF coordinates/weights from EdgeDofsCoordinates().
-                / @param strong_values          Boundary values sampled at the edge-DOF coordinates.
-                / @return The vector of edge velocity DOFs.
-                """
-                pass
-
-            @staticmethod
-            def velocity_basis_functions_values_on_edges(
-                edge_local_index: int,
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                edge_quadrature_points: Eigen.MatrixXd
-                ) -> Eigen.MatrixXd:
-                """/ @brief Evaluate the velocity basis functions on a given edge.
-                /
-                / @param edge_local_index       Local index of the edge within the cell.
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param edge_quadrature_points Evaluation points on the edge.
-                / @return A matrix of velocity edge basis-function values at the requested points.
-                """
-                pass
-
-            @staticmethod
-            @overload
-            def velocity_basis_functions_values(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                points: Eigen.MatrixXd,
-                projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
-                ) -> List[Eigen.MatrixXd]:
-                """/ @brief Evaluate the (vector) velocity/flux basis functions at arbitrary points.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param points                 Evaluation points (one per column).
-                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
-                / @return One (points \f$\times\f$ velocity DOFs) matrix per velocity component.
-                """
-                pass
-
-            @staticmethod
-            def edge_quadrature(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data,
-                edge_local_index: int
-                ) -> Gedim.Quadrature.QuadratureData:
-                """/ @brief Quadrature rule on a given (physical) edge of the cell.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @param edge_local_index       Local index of the edge within the cell.
-                / @return The edge quadrature points and weights.
-                """
-                pass
-
-            @staticmethod
-            def edge_reference_quadrature(
-                reference_element_data: ReferenceElement_Data
-                ) -> Gedim.Quadrature.QuadratureData:
-                """/ @brief Quadrature rule on the reference edge.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @return The quadrature points and weights on the reference edge, independent of the cell.
-                """
-                pass
-
-            @staticmethod
-            def internal_quadrature(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> Gedim.Quadrature.QuadratureData:
-                """/ @brief Internal quadrature rule of the cell.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return The internal quadrature points and weights used for volume integration.
-                """
-                pass
-
-            @staticmethod
-            def velocity_size(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> int:
-                """/ @brief Number of local velocity degrees of freedom of the cell.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return The velocity local-space dimension (number of local velocity DOFs).
-                """
-                pass
-
-            @staticmethod
-            def compute_performance(
-                reference_element_data: ReferenceElement_Data,
-                local_space_data: LocalSpace_Data
-                ) -> Performance_Data:
-                """/ @brief Compute the per-cell performance metrics of the local space.
-                /
-                / @param reference_element_data Reference-element data describing the method.
-                / @param local_space_data       Local-space data for the cell.
-                / @return The collected @ref Performance_Data (quadrature counts and VEM analysis).
-                """
-                pass
-
-
-        # </submodule local_space_mcc_2_d>
-
-    # </submodule pde_tools>
-
-# </submodule polydim>
-####################    </generated_from:LocalSpace_MCC_2D.hpp>    ####################
-
-
 ####################    <generated_from:LocalSpace_PCC_2D.hpp>    ####################
 # _LICENSE_HEADER_
 #
@@ -25859,6 +25061,804 @@ class polydim:  # Proxy class that introduces typings for the *submodule* polydi
 
 # </submodule polydim>
 ####################    </generated_from:LocalSpace_PCC_3D.hpp>    ####################
+
+
+####################    <generated_from:LocalSpace_MCC_2D.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __LocalSpace_MCC_2D_H
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule pde_tools>
+    class pde_tools:  # Proxy class that introduces typings for the *submodule* pde_tools
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace PDETools"""
+
+        #/ @brief Unified interface to the 2D mixed conforming (MCC) local spaces.
+        #/
+        #/ This namespace provides a single, method-agnostic API for building and evaluating
+        #/ the coupled velocity(flux)/pressure local spaces of a 2D mixed formulation (e.g. of
+        #/ an elliptic/Darcy problem). It hides the differences between the mixed virtual
+        #/ element method (VEM MCC), in its several orthogonalized/partial variants, and the
+        #/ Raviart–Thomas finite element (FEM RT). The active backend is selected through
+        #/ MethodTypes; the free functions dispatch accordingly, so assemblers can be written
+        #/ once and reused across methods.
+
+        # <submodule local_space_mcc_2_d>
+        class local_space_mcc_2_d:  # Proxy class that introduces typings for the *submodule* local_space_mcc_2_d
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace LocalSpace_MCC_2D"""
+            class MethodTypes(enum.IntEnum):
+                """/ @brief Discretization method for the 2D MCC velocity/pressure pair."""
+                vem_mcc = enum.auto()                  # (= 1)  #/< Mixed VEM (standard basis). \cite secondMixed
+                vem_mcc_partial = enum.auto()          # (= 2)  #/< Mixed VEM with a partially computed velocity space.
+                vem_mcc_ortho = enum.auto()            # (= 3)  #/< Mixed VEM with an orthonormalized internal basis.
+                vem_mcc_edge_ortho = enum.auto()       # (= 4)  #/< Mixed VEM with an orthonormalized edge basis. \cite Teora2023
+                vem_mcc_ortho_edge_ortho = enum.auto() # (= 5)  #/< Mixed VEM with both internal and edge orthonormalization. \cite Teora2023
+                fem_rt_mcc = enum.auto()               # (= 6)  #/< Raviart–Thomas finite element.
+
+            class ReferenceElement_Data:
+                """/ @brief Method-specific reference-element data for the 2D MCC local space.
+                /
+                / Holds the selected method and polynomial order together with the velocity and
+                / pressure reference-element / local-space handles of the active backend. Only the
+                / members belonging to @ref Method_Type are populated.
+                (final class)
+                """
+                method_type: Polydim.PDETools.LocalSpace_MCC_2D.MethodTypes
+                order: int
+
+                vem_reference_element_velocity: Polydim.VEM.MCC.I_VEM_MCC_2D_Velocity_ReferenceElement
+                vem_reference_element_pressure: Polydim.VEM.MCC.I_VEM_MCC_2D_Pressure_ReferenceElement
+                vem_reference_element_data_velocity: Polydim.VEM.MCC.VEM_MCC_2D_Velocity_ReferenceElement_Data
+                vem_reference_element_data_pressure: Polydim.VEM.MCC.VEM_MCC_2D_Pressure_ReferenceElement_Data
+                vem_type: Polydim.VEM.MCC.VEM_MCC_2D_LocalSpace_Types
+                vem_local_space_velocity: VEM.MCC.I_VEM_MCC_2D_Velocity_LocalSpace
+                vem_local_space_pressure: VEM.MCC.I_VEM_MCC_2D_Pressure_LocalSpace
+
+                fem_type: Polydim.FEM.MCC.FEM_MCC_Types
+                fem_local_space: Polydim.FEM.MCC.FEM_MCC_2D_LocalSpace
+                fem_reference_element: Polydim.FEM.MCC.FEM_MCC_2D_ReferenceElement
+                fem_reference_element_data: Polydim.FEM.MCC.FEM_MCC_2D_ReferenceElement_Data
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+            class LocalSpace_Data:
+                """/ @brief Per-cell local-space data for the 2D MCC local space.
+                /
+                / Stores the polygon geometry and the computed velocity/pressure local-space data for
+                / the active backend; only the members of the selected method are populated.
+                (final class)
+                """
+                vem_geometry: Polydim.VEM.MCC.VEM_MCC_2D_Polygon_Geometry
+                vem_local_space_data_velocity: Polydim.VEM.MCC.VEM_MCC_2D_Velocity_LocalSpace_Data
+                vem_local_space_data_pressure: Polydim.VEM.MCC.VEM_MCC_2D_Pressure_LocalSpace_Data
+
+                fem_geometry: Polydim.FEM.MCC.FEM_MCC_2D_Polygon_Geometry
+                fem_local_space_data: Polydim.FEM.MCC.FEM_MCC_2D_LocalSpace_Data
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+            class Performance_Data:
+                """/ @brief Per-cell performance metrics for the 2D MCC local space.
+                (final class)
+                """
+                class Cell2D_Performance:
+                    """
+                    (final class)
+                    """
+                    num_boundary_quadrature_points: int = 0
+                    num_internal_quadrature_points: int = 0
+                    vem_analysis: Polydim.VEM.MCC.VEM_MCC_PerformanceAnalysis_Data
+                    def __init__(self) -> None:
+                        """Autogenerated default constructor"""
+                        pass
+
+                performance_data: Polydim.PDETools.LocalSpace_MCC_2D.Performance_Data.Cell2D_Performance
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+            @staticmethod
+            def create_reference_element(
+                method_type: MethodTypes,
+                method_order: int
+                ) -> ReferenceElement_Data:
+                """/ @brief Create the velocity/pressure reference elements for the chosen method and order.
+                /
+                / Factory that instantiates the backend-specific reference elements and populates the
+                / corresponding members of the returned @ref ReferenceElement_Data.
+                /
+                / @param method_type  Discretization method to use.
+                / @param method_order Polynomial order of the space.
+                / @return The initialized reference-element data.
+                """
+                pass
+
+            @staticmethod
+            def reference_element_num_do_fs(
+                reference_element_data: ReferenceElement_Data
+                ) -> List[List[int]]:
+                """/ @brief Number of reference-element DOFs per mesh-entity type, for velocity and pressure.
+                /
+                / Returns, for each of the two fields, the number of degrees of freedom associated
+                / with the four mesh-entity categories (e.g. vertices, edges, internal, and the
+                / remaining entity slot), as used to lay out the DOFs.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @return A 2\f$\times\f$4 array of DOF counts (row 0: velocity, row 1: pressure).
+                """
+                pass
+
+            @staticmethod
+            def create_local_space(
+                geometric_tolerance_1_d: float,
+                geometric_tolerance_2_d: float,
+                mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                cell2_d_index: int,
+                reference_element_data: ReferenceElement_Data
+                ) -> LocalSpace_Data:
+                """/ @brief Build the coupled velocity/pressure local space on a given cell.
+                /
+                / Computes the backend-specific velocity and pressure local-space data on cell
+                / @p cell2D_index from the precomputed mesh geometric data.
+                /
+                / @param geometric_tolerance_1D Geometric tolerance for 1D (edge) operations.
+                / @param geometric_tolerance_2D Geometric tolerance for 2D (polygon) operations.
+                / @param mesh_geometric_data    Precomputed geometric data of the mesh.
+                / @param cell2D_index           Index of the 2D cell to process.
+                / @param reference_element_data Reference-element data describing the method.
+                / @return The computed local-space data for the cell.
+                """
+                pass
+
+            @staticmethod
+            @overload
+            def velocity_basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
+                ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the (vector) velocity/flux basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
+                / @return One (quadrature points \f$\times\f$ velocity DOFs) matrix per velocity component.
+                """
+                pass
+
+            @staticmethod
+            def pressure_basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the (scalar) pressure basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return A (quadrature points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
+                """
+                pass
+
+            @staticmethod
+            def velocity_basis_functions_divergence_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the velocity/flux divergence at the internal quadrature points.
+                /
+                / Returns \f$\nabla \cdot \boldsymbol{u}\f$ for each velocity basis function, as used
+                / in the divergence (velocity–pressure coupling) term of the mixed formulation.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return A (quadrature points \f$\times\f$ velocity DOFs) matrix of divergence values.
+                """
+                pass
+
+            @staticmethod
+            def stabilization_matrix(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
+                ) -> Eigen.MatrixXd:
+                """/ @brief Compute the (VEM) stabilization matrix of the velocity local space.
+                /
+                / Returns the stabilization term complementing the consistency part of the mixed VEM
+                / velocity bilinear form; empty/zero for the Raviart–Thomas FEM.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         Projection used to define the stabilization; defaults to \f$\Pi^0_k\f$.
+                / @return The local stabilization matrix.
+                """
+                pass
+
+            @staticmethod
+            def edge_dofs_coordinates(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                edge_local_index: int
+                ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Coordinates (and weights) of the velocity DOFs on a given edge.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @return Quadrature-like data holding the edge-DOF coordinates and weights.
+                """
+                pass
+
+            @staticmethod
+            def edge_dofs(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                edge_local_index: int,
+                edge_dofs_coordinates: Gedim.Quadrature.QuadratureData,
+                strong_values: Eigen.VectorXd
+                ) -> Eigen.VectorXd:
+                """/ @brief Compute the edge velocity DOFs from strongly-imposed boundary values.
+                /
+                / Evaluates the degrees of freedom associated with an edge (the normal-flux moments)
+                / from the boundary data sampled at the edge-DOF coordinates, e.g. to strongly impose
+                / Neumann/essential conditions of the mixed problem.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @param edge_dofs_coordinates  Edge-DOF coordinates/weights from EdgeDofsCoordinates().
+                / @param strong_values          Boundary values sampled at the edge-DOF coordinates.
+                / @return The vector of edge velocity DOFs.
+                """
+                pass
+
+            @staticmethod
+            def velocity_basis_functions_values_on_edges(
+                edge_local_index: int,
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                edge_quadrature_points: Eigen.MatrixXd
+                ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the velocity basis functions on a given edge.
+                /
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_quadrature_points Evaluation points on the edge.
+                / @return A matrix of velocity edge basis-function values at the requested points.
+                """
+                pass
+
+            @staticmethod
+            @overload
+            def velocity_basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                points: Eigen.MatrixXd,
+                projection_type: VEM.MCC.ProjectionTypes = VEM.MCC.ProjectionTypes.pi0k
+                ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the (vector) velocity/flux basis functions at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
+                / @return One (points \f$\times\f$ velocity DOFs) matrix per velocity component.
+                """
+                pass
+
+            @staticmethod
+            def edge_quadrature(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                edge_local_index: int
+                ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Quadrature rule on a given (physical) edge of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @return The edge quadrature points and weights.
+                """
+                pass
+
+            @staticmethod
+            def edge_reference_quadrature(
+                reference_element_data: ReferenceElement_Data
+                ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Quadrature rule on the reference edge.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @return The quadrature points and weights on the reference edge, independent of the cell.
+                """
+                pass
+
+            @staticmethod
+            def internal_quadrature(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Internal quadrature rule of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The internal quadrature points and weights used for volume integration.
+                """
+                pass
+
+            @staticmethod
+            def velocity_size(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> int:
+                """/ @brief Number of local velocity degrees of freedom of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The velocity local-space dimension (number of local velocity DOFs).
+                """
+                pass
+
+            @staticmethod
+            def compute_performance(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Performance_Data:
+                """/ @brief Compute the per-cell performance metrics of the local space.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The collected @ref Performance_Data (quadrature counts and VEM analysis).
+                """
+                pass
+
+
+        # </submodule local_space_mcc_2_d>
+
+    # </submodule pde_tools>
+
+# </submodule polydim>
+####################    </generated_from:LocalSpace_MCC_2D.hpp>    ####################
+
+
+####################    <generated_from:LocalSpace_DF_PCC_2D.hpp>    ####################
+# _LICENSE_HEADER_
+#
+# Copyright (C) 2019 - 2025.
+# Terms register on the GPL-3.0 license.
+#
+# This file can be redistributed and/or modified under the license terms.
+#
+# See top level LICENSE file for more details.
+#
+# This file can be used citing references in CITATION.cff file.
+
+# #ifndef __LocalSpace_DF_PCC_2D_H
+#
+
+
+
+# #endif
+#
+
+# <submodule polydim>
+class polydim:  # Proxy class that introduces typings for the *submodule* polydim
+    pass  # (This corresponds to a C++ namespace. All method are static!)
+    """ namespace Polydim"""
+
+    # <submodule pde_tools>
+    class pde_tools:  # Proxy class that introduces typings for the *submodule* pde_tools
+        pass  # (This corresponds to a C++ namespace. All method are static!)
+        """ namespace PDETools"""
+
+        #/ @brief Unified interface to the 2D divergence-free primal conforming (DF_PCC) local spaces.
+        #/
+        #/ This namespace provides a single, method-agnostic API for building and evaluating
+        #/ the coupled velocity/pressure local spaces of a 2D incompressible (divergence-free)
+        #/ vector problem — e.g. Stokes, Navier–Stokes or Brinkman flow. It hides the
+        #/ differences between a Taylor–Hood finite element pair and the divergence-free
+        #/ virtual element method (VEM DF), in its full and reduced variants. The active
+        #/ backend is selected through MethodTypes; the free functions dispatch accordingly,
+        #/ so assemblers can be written once and reused across methods.
+
+        # <submodule local_space_df_pcc_2_d>
+        class local_space_df_pcc_2_d:  # Proxy class that introduces typings for the *submodule* local_space_df_pcc_2_d
+            pass  # (This corresponds to a C++ namespace. All method are static!)
+            """ namespace LocalSpace_DF_PCC_2D"""
+            class MethodTypes(enum.IntEnum):
+                """/ @brief Discretization method for the 2D DF_PCC velocity/pressure pair."""
+                taylor_hood = enum.auto()        # (= 0)  #/< Taylor–Hood finite element velocity/pressure pair.
+                vem_df_pcc_full = enum.auto()    # (= 1)  #/< Divergence-free VEM, full velocity space. \cite DaVeigaLovadina2017
+                vem_df_pcc_reduced = enum.auto() # (= 2)  #/< Divergence-free VEM, reduced velocity space. \cite DaVeigaLovadina2017
+
+            class ReferenceElement_Data:
+                """/ @brief Method-specific reference-element data for the 2D DF_PCC local space.
+                /
+                / Holds the selected method, polynomial order and spatial dimension together with the
+                / velocity and pressure reference-element / local-space handles of the active backend.
+                / Only the members belonging to @ref Method_Type are populated.
+                (final class)
+                """
+                method_type: Polydim.PDETools.LocalSpace_DF_PCC_2D.MethodTypes
+                order: int
+                dimension: int = 2
+
+                vem_type: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_LocalSpace_Types
+                vem_velocity_reference_element: Polydim.VEM.DF_PCC.I_VEM_DF_PCC_2D_Velocity_ReferenceElement
+                vem_velocity_reference_element_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Velocity_ReferenceElement_Data
+                vem_pressure_reference_element: Polydim.VEM.DF_PCC.I_VEM_DF_PCC_2D_Pressure_ReferenceElement
+                vem_pressure_reference_element_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Pressure_ReferenceElement_Data
+                vem_velocity_local_space: Polydim.VEM.DF_PCC.I_VEM_DF_PCC_2D_Velocity_LocalSpace
+                vem_pressure_local_space: Polydim.VEM.DF_PCC.I_VEM_DF_PCC_2D_Pressure_LocalSpace
+
+                fem_reference_element: Polydim.FEM.PCC.FEM_PCC_2D_ReferenceElement
+                fem_reference_element_data: Polydim.FEM.PCC.FEM_PCC_2D_ReferenceElement_Data
+                fem_local_space: Polydim.FEM.PCC.FEM_PCC_2D_LocalSpace
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+            class LocalSpace_Data:
+                """/ @brief Per-cell local-space data for the 2D DF_PCC local space.
+                /
+                / Stores the polygon geometry and the computed velocity/pressure local-space data for
+                / the active backend; only the members of the selected method are populated.
+                (final class)
+                """
+                vem_geometry: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Polygon_Geometry
+                vem_velocity_local_space_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Velocity_LocalSpace_Data
+                vem_pressure_local_space_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_2D_Pressure_LocalSpace_Data
+
+                fem_geometry: Polydim.FEM.PCC.FEM_PCC_2D_Polygon_Geometry
+                fem_local_space_data: Polydim.FEM.PCC.FEM_PCC_2D_LocalSpace_Data
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+            class Performance_Data:
+                """/ @brief Per-cell performance metrics for the 2D DF_PCC local space.
+                (final class)
+                """
+                class Cell2D_Performance:
+                    """
+                    (final class)
+                    """
+                    num_boundary_quadrature_points: int = 0
+                    num_internal_quadrature_points: int = 0
+                    vem_analysis_data: Polydim.VEM.DF_PCC.VEM_DF_PCC_PerformanceAnalysis_Data
+                    def __init__(self) -> None:
+                        """Autogenerated default constructor"""
+                        pass
+
+                performance_data: Polydim.PDETools.LocalSpace_DF_PCC_2D.Performance_Data.Cell2D_Performance
+                def __init__(self) -> None:
+                    """Autogenerated default constructor"""
+                    pass
+
+            @staticmethod
+            def create_reference_element(
+                method_type: MethodTypes,
+                method_order: int
+                ) -> ReferenceElement_Data:
+                """/ @brief Create the velocity/pressure reference elements for the chosen method and order.
+                /
+                / Factory that instantiates the backend-specific reference elements and populates the
+                / corresponding members of the returned @ref ReferenceElement_Data.
+                /
+                / @param method_type  Discretization method to use.
+                / @param method_order Polynomial order of the velocity space.
+                / @return The initialized reference-element data.
+                """
+                pass
+
+            @staticmethod
+            def set_mesh_do_fs_info(
+                reference_element_data: ReferenceElement_Data,
+                mesh: Gedim.MeshMatricesDAO,
+                boundary_info: List[DOFs.DOFsManager.MeshDOFsInfo.BoundaryMap]
+                ) -> List[DOFs.DOFsManager.MeshDOFsInfo]:
+                """/ @brief Build the DOF layout over the mesh for the velocity and pressure fields.
+                /
+                / Determines how the DOFs of the coupled spaces are distributed over mesh entities and
+                / marks boundary DOFs from @p boundary_info. The returned vector holds one
+                / MeshDOFsInfo per field (velocity and pressure).
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param mesh                   Mesh data access object.
+                / @param boundary_info          Per-field boundary maps (index 0: velocity, index 1: pressure).
+                / @return One mesh DOFs layout per field.
+                """
+                pass
+
+            @staticmethod
+            def create_local_space(
+                geometric_tolerance_1_d: float,
+                geometric_tolerance_2_d: float,
+                mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                cell2_d_index: int,
+                reference_element_data: ReferenceElement_Data
+                ) -> LocalSpace_Data:
+                """/ @brief Build the coupled velocity/pressure local space on a given cell.
+                /
+                / Computes the backend-specific velocity and pressure local-space data on cell
+                / @p cell2D_index from the precomputed mesh geometric data.
+                /
+                / @param geometric_tolerance_1D Geometric tolerance for 1D (edge) operations.
+                / @param geometric_tolerance_2D Geometric tolerance for 2D (polygon) operations.
+                / @param mesh_geometric_data    Precomputed geometric data of the mesh.
+                / @param cell2D_index           Index of the 2D cell to process.
+                / @param reference_element_data Reference-element data describing the method.
+                / @return The computed local-space data for the cell.
+                """
+                pass
+
+            @staticmethod
+            @overload
+            def velocity_basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi0k
+                ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the (vector) velocity basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
+                / @return One (quadrature points \f$\times\f$ velocity DOFs) matrix per velocity component.
+                """
+                pass
+
+            @staticmethod
+            @overload
+            def velocity_basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                points: Eigen.MatrixXd,
+                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi0k
+                ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the (vector) velocity basis functions at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to \f$\Pi^0_k\f$.
+                / @return One (points \f$\times\f$ velocity DOFs) matrix per velocity component.
+                """
+                pass
+
+            @staticmethod
+            @overload
+            def pressure_basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the (scalar) pressure basis functions at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return A (quadrature points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
+                """
+                pass
+
+            @staticmethod
+            @overload
+            def pressure_basis_functions_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                points: Eigen.MatrixXd
+                ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the (scalar) pressure basis functions at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @return A (points \f$\times\f$ pressure DOFs) matrix of pressure basis values.
+                """
+                pass
+
+            @staticmethod
+            @overload
+            def velocity_basis_functions_derivative_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
+                ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the velocity basis-function derivatives at the internal quadrature points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to the energy projection
+                / \f$\Pi^\nabla\f$.
+                / @return The velocity gradient components (one matrix per derivative/component pair).
+                """
+                pass
+
+            @staticmethod
+            @overload
+            def velocity_basis_functions_derivative_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                points: Eigen.MatrixXd,
+                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
+                ) -> List[Eigen.MatrixXd]:
+                """/ @brief Evaluate the velocity basis-function derivatives at arbitrary points.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param points                 Evaluation points (one per column).
+                / @param projectionType         VEM projection operator to apply (ignored by FEM); defaults to the energy projection
+                / \f$\Pi^\nabla\f$.
+                / @return The velocity gradient components (one matrix per derivative/component pair).
+                """
+                pass
+
+            @staticmethod
+            def velocity_basis_functions_divergence_values(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the velocity divergence at the internal quadrature points.
+                /
+                / Returns \f$\nabla \cdot \boldsymbol{u}\f$ for each velocity basis function; for the
+                / divergence-free VEM this quantity is exactly represented.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return A (quadrature points \f$\times\f$ velocity DOFs) matrix of divergence values.
+                """
+                pass
+
+            @staticmethod
+            def internal_quadrature(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Gedim.Quadrature.QuadratureData:
+                """/ @brief Internal quadrature rule of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The internal quadrature points and weights used for volume integration.
+                """
+                pass
+
+            @staticmethod
+            def velocity_basis_functions_values_on_edge(
+                edge_local_index: int,
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                points_curvilinear_coordinates: Eigen.MatrixXd
+                ) -> Eigen.MatrixXd:
+                """/ @brief Evaluate the velocity basis functions on a given edge.
+                /
+                / @param edge_local_index             Local index of the edge within the cell.
+                / @param reference_element_data       Reference-element data describing the method.
+                / @param local_space_data             Local-space data for the cell.
+                / @param pointsCurvilinearCoordinates Evaluation points on the edge, in curvilinear coordinates.
+                / @return A matrix of velocity edge basis-function values at the requested points.
+                """
+                pass
+
+            @staticmethod
+            def velocity_stabilization_matrix(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                projection_type: VEM.DF_PCC.ProjectionTypes = VEM.DF_PCC.ProjectionTypes.pi_nabla
+                ) -> Eigen.MatrixXd:
+                """/ @brief Compute the (VEM) velocity stabilization matrix of the local space.
+                /
+                / Returns the stabilization term complementing the consistency part of the VEM
+                / velocity bilinear form; empty/zero for the Taylor–Hood FEM pair.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param projectionType         Projection used to define the stabilization; defaults to the energy projection
+                / \f$\Pi^\nabla\f$.
+                / @return The local velocity stabilization matrix.
+                """
+                pass
+
+            @staticmethod
+            def velocity_edge_dofs_coordinates(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data,
+                edge_local_index: int
+                ) -> Eigen.MatrixXd:
+                """/ @brief Coordinates of the velocity DOFs associated with a given edge.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @param edge_local_index       Local index of the edge within the cell.
+                / @return The physical coordinates of the edge velocity DOFs (one per column).
+                """
+                pass
+
+            @staticmethod
+            def velocity_size(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> int:
+                """/ @brief Number of local velocity degrees of freedom of the cell.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The velocity local-space dimension (number of local velocity DOFs).
+                """
+                pass
+
+            @staticmethod
+            def compute_performance(
+                reference_element_data: ReferenceElement_Data,
+                local_space_data: LocalSpace_Data
+                ) -> Performance_Data:
+                """/ @brief Compute the per-cell performance metrics of the local space.
+                /
+                / @param reference_element_data Reference-element data describing the method.
+                / @param local_space_data       Local-space data for the cell.
+                / @return The collected @ref Performance_Data (quadrature counts and VEM analysis).
+                """
+                pass
+
+            @staticmethod
+            def export_velocity_dofs(
+                geometry_utilities: Gedim.GeometryUtilities,
+                mesh: Gedim.MeshMatricesDAO,
+                mesh_geometric_data: Gedim.MeshUtilities.MeshGeometricData2D,
+                mesh_dofs_info: List[DOFs.DOFsManager.MeshDOFsInfo],
+                dofs_data: List[DOFs.DOFsManager.DOFsData],
+                count_dofs: Assembler_Utilities.count_dofs_data,
+                right_hand_side: Gedim.IArray,
+                solution: Gedim.IArray,
+                solution_strongs: Gedim.IArray,
+                file_path: str
+                ) -> None:
+                """/ @brief Export the velocity DOFs and solution fields to file for visualization.
+                /
+                / Writes the right-hand side, the computed solution and the strongly-imposed
+                / (Dirichlet) solution over the velocity DOFs to @p file_path, for post-processing.
+                / The DOF layout and counts are provided per field.
+                /
+                / @param geometry_utilities  GeDiM geometry helper.
+                / @param mesh                Mesh data access object.
+                / @param mesh_geometric_data Precomputed geometric data of the mesh.
+                / @param mesh_dofs_info      Per-field mesh DOFs layout information.
+                / @param dofs_data           Per-field DOF numbering/data.
+                / @param count_dofs          Aggregated DOF counts across fields.
+                / @param right_hand_side     Right-hand-side vector.
+                / @param solution            Computed solution over the free DOFs.
+                / @param solution_strongs    Values of the strongly-imposed (Dirichlet) DOFs.
+                / @param file_path           Output file path.
+                """
+                pass
+
+
+        # </submodule local_space_df_pcc_2_d>
+
+    # </submodule pde_tools>
+
+# </submodule polydim>
+####################    </generated_from:LocalSpace_DF_PCC_2D.hpp>    ####################
 
 
 ####################    <generated_from:assembler_PCC_2D_functions_data.hpp>    ####################
