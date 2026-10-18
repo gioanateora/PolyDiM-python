@@ -72,6 +72,9 @@ jobs:
           name: generated-bindings
           path: .
 
+      - uses: ilammy/msvc-dev-cmd@v1
+        if: runner.os == 'Windows'
+
       - uses: fortran-lang/setup-fortran@v1
         id: setup-fortran
         if: runner.os == 'Windows'
