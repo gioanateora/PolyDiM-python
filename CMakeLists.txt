@@ -16,9 +16,13 @@ set(ENABLE_PETSC OFF CACHE BOOL "Enable PETSc extension")
 ###########################################################################################
 
 ## PyBind11
-# Use Python from venv if one is active
-if(DEFINED ENV{VIRTUAL_ENV})
-    set(Python3_EXECUTABLE $ENV{VIRTUAL_ENV}/bin/python)
+# Use Python from venv if one is active (and none was given explicitly)
+if(DEFINED ENV{VIRTUAL_ENV} AND NOT DEFINED Python3_EXECUTABLE)
+    if(WIN32)
+        set(Python3_EXECUTABLE "$ENV{VIRTUAL_ENV}/Scripts/python.exe")
+    else()
+        set(Python3_EXECUTABLE "$ENV{VIRTUAL_ENV}/bin/python")
+    endif()
     message(STATUS "Using Python from: $ENV{VIRTUAL_ENV}")
 endif()
 
