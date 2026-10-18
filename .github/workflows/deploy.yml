@@ -72,15 +72,24 @@ jobs:
           name: generated-bindings
           path: .
 
-      - uses: ilammy/msvc-dev-cmd@v1
-        if: runner.os == 'Windows'
-
-      - uses: fortran-lang/setup-fortran@v1
-        id: setup-fortran
+      - uses: msys2/setup-msys2@v2
         if: runner.os == 'Windows'
         with:
-          compiler: gcc
-          version: 13
+          msystem: UCRT64
+          release: false   # usa l'MSYS2 già presente in C:\msys64
+          install: >-
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-gcc-fortran
+            mingw-w64-ucrt-x86_64-openblas
+            mingw-w64-ucrt-x86_64-lapack
+            mingw-w64-ucrt-x86_64-eigen3
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-ninja
+
+      - name: Add MinGW to PATH
+        if: runner.os == 'Windows'
+        shell: bash
+        run: echo "C:\msys64\ucrt64\bin" >> "$GITHUB_PATH"
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v3.2.0
